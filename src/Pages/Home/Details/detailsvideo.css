@@ -1,0 +1,214 @@
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  gap: 30px !important;
+  margin-top: 10px;
+  padding-left: 72px;
+}
+
+.progress-css {
+  border: none !important;
+  background-color: #102841 !important;
+}
+.proress-video {
+  background-color: #143961 !important;
+}
+.sk {
+  background-color: #0a2b4e !important;
+  width: 100% !important;
+}
+.skHalf {
+  background-color: #0a2b4e !important;
+  width: 60% !important;
+}
+
+.video-size-details {
+  background-color: #0a2b4e !important;
+  height: 500px !important;
+  width: 100% !important;
+}
+.title-font {
+  margin-top: 20px;
+}
+.interaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.interect {
+  margin-right: 40px !important;
+}
+.holder-details {
+  margin-bottom: 0px;
+}
+.holder-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.full-nav {
+  display: flex;
+  justify-content: space-between;
+}
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.responsive-icons {
+  display: none !important;
+}
+.icons-color {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: aliceblue !important;
+}
+.bg-accordion {
+  background-color: rgba(0, 0, 128, 0) !important;
+  color: aliceblue !important;
+}
+.input-style {
+  height: 10px !important;
+}
+.comment-container {
+  display: flex;
+  width: 100% !important;
+}
+.input-comment {
+  width: 100% !important;
+  color: aliceblue !important;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+.button-comment {
+  border-radius: 20px !important;
+  width: 8rem !important;
+  color: aliceblue !important;
+  height: 2.5rem !important;
+}
+.comment-count {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.people-comment-container {
+  display: flex;
+  gap: 20px !important;
+  align-items: center;
+}
+.people-comment {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.responsiveBtn-i {
+  display: none !important;
+}
+@media only screen and (max-width: 1400px) {
+  .video-size-details {
+    height: 366px !important;
+  }
+}
+
+@media only screen and (max-width: 1062px) {
+  .details-grid {
+    grid-template-columns: 4fr 1fr !important;
+    gap: 20px !important;
+    margin-top: 10px;
+  }
+  .video-size-details {
+    height: 400px !important;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .details-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin-top: 10px;
+  }
+  .video-size-details {
+    height: 350px !important;
+  }
+}
+@media only screen and (max-width: 686px) {
+  .video-size-details {
+    height: 300px !important;
+  }
+  .holder-container {
+    gap: 10px;
+  }
+}
+@media only screen and (max-width: 666px) {
+  .int-icons {
+    display: none !important;
+  }
+  .holder-container {
+    gap: 10px;
+  }
+  .responsive-icons {
+    display: block !important;
+  }
+}
+@media only screen and (max-width: 578px) {
+  .icons-color {
+    font-size: xx-small !important;
+  }
+  .responsiveBtn {
+    font-size: xx-small !important;
+  }
+  .holder-container {
+    gap: 3px;
+  }
+  .video-size-details {
+    height: 250px !important;
+  }
+  .details-grid {
+    padding-left: 55px;
+  }
+}
+@media only screen and (max-width: 498px) {
+  .responsiveBtn-arrow {
+    display: none !important;
+  }
+
+  .responsiveBtn-i {
+    display: block !important;
+  }
+  .video-size-details {
+    height: 200px !important;
+  }  
+  .details-grid {
+    margin-top: 2px;
+  }
+}
+
+/* Aside */
+
+.aside-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 20px !important;
+}
+.video-size-aside {
+  width: 100% !important;
+  height: 120px !important;
+}
+
+@media only screen and (max-width: 1062px) {
+  .aside-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 790px) {
+  .aside-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100%;
+  }
+}
+
+/* (min-width: ) and */

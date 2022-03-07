@@ -1,0 +1,11 @@
+.card{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+.card img{
+    height: 150px;
+    /* display: block;
+    margin-left: auto;
+    margin-right: auto; */
+    width: 150px;
+}

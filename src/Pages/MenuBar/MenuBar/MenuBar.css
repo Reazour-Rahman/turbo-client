@@ -1,0 +1,28 @@
+.menu-plate{
+    border: 1px solid white !important;
+}
+
+.menu-style{
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+.menu-style:hover{
+    margin-right: 10px !important;
+    border-radius: 10px;
+    background-color: rgb(20, 120, 145) !important;
+
+}
+.comment-button-style{
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+.comment-button-style:hover{
+    margin-right: 5px !important;
+    margin-left: 5px !important;
+    border-radius: 10px;
+    background-color: rgb(20, 120, 145) !important;
+}

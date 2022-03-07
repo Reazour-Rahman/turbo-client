@@ -1,0 +1,144 @@
+.report-message:nth-child(even) {
+  background-color: #102841;
+  /* padding: 0px 10px; */
+  /* color: white; */
+}
+.report-message:nth-child(odd) {
+  background-color: #0d2b4d;
+  /* padding: 0px 10px; */
+  /* color: white; */
+}
+
+.report-message:hover {
+  background-color: #091725;
+}
+.report-header {
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  padding-top: 15px;
+}
+
+/* Grid system */
+
+/* ::::::::::::::::::::::::::::::::
+Chart Grid
+::::::::::::::::::::::::::::::::::*/
+.chart-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 15px;
+}
+
+.left-chart {
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #102841;
+  /* padding-right: 15px; */
+}
+
+.right-chart {
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #102841;
+  /* padding-right: 15px; */
+}
+
+@media only screen and (max-width: 900px) {
+  .chart-grid-container {
+    /* display: grid; */
+    grid-template-columns: 1fr;
+    /* gap: 30px;
+    padding-left: 15px;
+    padding-right: 15px; */
+  }
+}
+
+/* ::::::::::::::::::::::::::::::::
+User Help messages Grid
+::::::::::::::::::::::::::::::::::*/
+.help-message-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 30px;
+}
+
+.left-message {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+.right-message {
+  width: 100% !important;
+  height: 300px !important;
+}
+@media only screen and (max-width: 1000px) {
+  .help-message-grid-container {
+    /* display: grid; */
+    grid-template-columns: 1fr;
+
+    /* gap: 30px;
+    padding-left: 15px;
+    padding-right: 15px; */
+  }
+}
+
+.message-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  padding: 15px 20px;
+  /* border: 1px solid #a8abad; */
+}
+.report-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 10px;
+  padding: 15px 20px;
+}
+.message-container h1,
+p {
+  color: white;
+}
+.report-container h1,
+p {
+  color: white;
+}
+
+.reports-gap {
+  margin-bottom: 5px;
+}
+.report-post-id {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fix-font-weight b {
+  font-weight: 500;
+}
+
+/* ::::: modal css :::::::: */
+.css-1wnsr1i {
+  background-color: #102841 !important;
+  border: none !important;
+  border-radius: 10px !important;
+}
+
+.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input {
+  color: white !important;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+  color: rgb(244 236 236) !important;
+}
+/* :::::::select css ::::::::: */
+.MuiInputBase-formControl
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  outline: 2px solid white !important;
+}

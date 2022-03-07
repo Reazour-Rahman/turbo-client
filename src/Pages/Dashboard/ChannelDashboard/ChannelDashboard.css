@@ -1,0 +1,58 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  /* width: 40%; */
+}
+h6 {
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+h2 {
+  font-weight: bold;
+  margin-left: 10px;
+}
+a {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.container {
+  padding: 20px 16px;
+}
+.grid-container {
+  display: grid;
+  column-gap: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+}
+.grid-carddetails-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.grid-item {
+  margin-top: 15px;
+}
+.card img {
+  width: 100%;
+}
+
+/* 1st Column */
+.first-column-size {
+  width: 100%;
+  max-height: 300px;
+}
+
+/* 3rd cloumn */
+.News-img {
+  max-height: 180px;
+  margin-bottom: 8px;
+}
+.third-column-second-row-size {
+  width: 100%;
+  height: 420px;
+}
+.third-column-third-row-img {
+  max-height: 200px;
+  margin-bottom: 8px;
+}

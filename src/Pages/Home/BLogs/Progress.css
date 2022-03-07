@@ -1,0 +1,21 @@
+.progress-css{
+    width: 333px !important;
+    border: none !important;
+    background-color: #102841!important;
+    
+}
+.proress-video{
+    background-color: #143961!important;
+}
+.gr{
+
+    display: flex !important;
+    /* grid-template-columns: repeat(4, 1fr) !important;
+    gap: 25px !important;
+    padding-left: 25px;
+    margin-top: 15px; */
+    margin-top: 25px;
+    padding-left: 25px;
+    justify-content: space-between;
+
+}

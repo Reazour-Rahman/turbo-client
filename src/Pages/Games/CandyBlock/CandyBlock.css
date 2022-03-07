@@ -1,0 +1,29 @@
+.game-bg{
+    background-image: url(../../../assets/candy/bg.jpg);
+    background-size: cover;
+    height: 100%;
+}
+
+
+
+.app {
+    margin-left: 72px;
+    display: flex;
+    padding: 30px;
+    height: 100%;
+    justify-content: space-around;
+  }
+  
+  .game {
+    width: 560px;
+    height: 560px;
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+  
+  .game img {
+    border: 2px double rgb(0, 34, 128);
+    width: 70px;
+    height: 70px;
+  }

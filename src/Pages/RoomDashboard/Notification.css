@@ -1,0 +1,44 @@
+.menu-plate {
+  border: 1px solid white !important;
+}
+
+.menu-style {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.menu-style:hover {
+  margin-right: 10px !important;
+  border-radius: 10px;
+  background-color: rgb(20, 120, 145) !important;
+}
+.p-mg {
+  margin-bottom: 0px;
+  color: aliceblue;
+}
+.p-li {
+  padding-bottom: 0px !important;
+  margin-left: 18px !important;
+}
+.dev {
+  margin: 0px !important;
+  padding: 0px !important;
+  color: aliceblue !important;
+}
+
+.notify {
+  background-color: rgb(218, 218, 218);
+  color: aliceblue !important;
+}
+.category-color {
+  color: aliceblue !important;
+  margin-right: 5px !important;
+  border-radius: 20px !important;
+}
+.not-filter {
+  margin-left: 19px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  color: aliceblue !important;
+}

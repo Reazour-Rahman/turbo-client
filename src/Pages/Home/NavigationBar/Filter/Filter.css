@@ -1,0 +1,39 @@
+.filter-parent {
+  width: 80vw !important;
+  margin: 0 auto;
+}
+.slider-parent {
+  text-align: center;
+}
+.slick-next {
+  right: -2% !important;
+}
+.slick-prev {
+  left: -2% !important;
+}
+.filter-button {
+  width: 80px !important;
+}
+@media screen and (max-width: 1366px) {
+  .filter-parent {
+    width: 80vw !important;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .filter-parent {
+    width: 75vw !important;
+  }
+  .slick-prev {
+    left: -4% !important;
+  }
+  .slick-next {
+    right: -4% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filter-parent {
+    width: 70vw !important;
+  }
+
+}

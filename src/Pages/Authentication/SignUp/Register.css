@@ -1,0 +1,65 @@
+
+  form input {
+    display: block;
+  
+    padding: 7px;
+    border: 1px solid rgb(19, 16, 20);
+    border-radius: 5px;
+    width: 100%;
+  }
+  .select-div {
+    /* background-color: rebeccapurple; */
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+  .select-div > div {
+    /* padding: 10px; */
+    /* background-color: rebeccapurple; */
+    /* width: 50%; */
+  }
+  .select-div > option {
+    padding: 10px;
+  }
+  select {
+    margin-right: 10px;
+    /* display: inline-block; */
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid rgb(19, 16, 20);
+    border-radius: 5px;
+  }
+  .error {
+    color: red;
+  }
+  .submit-btn {
+    margin-top: 20px;
+  }
+  .submit-btn:hover {
+    cursor: pointer;
+  }
+
+  .fa-google {
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  i{
+    cursor: pointer;
+  }
+
+
+.input{
+  background-color: white !important;
+  border-radius: 4px;
+}
+  
+.login-header{
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}

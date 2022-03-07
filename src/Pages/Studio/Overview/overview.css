@@ -1,0 +1,37 @@
+.studio-tab-mid {
+  border-left: 1px solid #746f6f;
+  border-right: 1px solid #746f6f;
+}
+.chart-container {
+  border: 1px solid #746f6f;
+}
+.studio-tab {
+  background-color: #091a2b;
+}
+/* .studio-tab-left {
+  background-color: #102841;
+  border-top: 5px solid #7676db;
+} */
+.studio-tab-clicked {
+  background-color: #102841;
+  border-top: 5px solid #7676db;
+}
+
+.overview {
+  /* background-color: #f5f5f5; */
+  /* margin: 30px; */
+  /* overflow-x: hidden; */
+}
+.overview-left {
+  background-color: #102841 !important;
+  /* background-color: #f5f5f5 !important; */
+}
+* {
+  /* border: 2px solid red; */
+}
+.css-1r2mp6z-MuiGrid-root {
+  width: 95% !important;
+}
+.css-1xhw9ty-MuiGrid-root {
+  width: 95% !important;
+}

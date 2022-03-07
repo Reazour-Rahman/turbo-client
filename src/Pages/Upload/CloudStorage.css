@@ -1,0 +1,20 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+.cloud-container{
+    margin-top: 20%;
+    margin-bottom: 20%;
+    display: flex;
+    justify-content: center;
+}
+.full-width{
+    width: 100%;
+}
+.conditional-btn{
+    cursor: not-allowed !important;
+    
+}
+.cloud-container-thumb{
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
