@@ -11,43 +11,95 @@ import axios from "axios";
 import useFirebase from '../../../Hooks/useFirebase'
 
 
-const Buttons = ({ uploadTime, bloggerName, blogId, count, allLikers, allReadyLiked}) => {
+const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering, allLikers, allReadyLiked, setRendering}) => {
 
-  const [liked, setLiked] = useState(allReadyLiked)
-  const [likeCount, setLikeCount] = useState(count)
+  // const [liked, setLiked] = useState(allReadyLiked)
+  // const [likeCount, setLikeCount] = useState(count)
+  // const {user} = useFirebase()
+
+
   const {user} = useFirebase()
+    const [like, setLike] = useState(false)
+    const [likeCount, setLikeCount] = useState(countNumber)
+    const [liker, setLiker] = useState([])
+    const [effectRender, setEffectRender] = useState(0)
+
+    console.log(rendering, likeCount);
+
+    useEffect(() => {
+      if (allReadyLiked) {
+        setLike(allReadyLiked)
+      }
+      else{
+        setLike(false)
+      }
+
+    },[allReadyLiked])
 
 
   //sending liker array of object
 
 
-  const countPlus = () => {  
-    setLiked(true)
-    setLikeCount(parseInt(likeCount) + 1)
+  // const countPlus = () => {  
+  //   setLiked(true)
+  //   setLikeCount(parseInt(likeCount) + 1)
+  // }
+
+
+  // const countMinus = () => {
+  //   setLiked(false)
+  //   setLikeCount(parseInt(likeCount) - 1)
+  //   // const userWithdraw = allLikers.filter(l => l.liker !== user.email)
+  //   // setLiker(userWithdraw)
+  // }
+
+  const likeMinus = () => {
+    setLike(false)
+    setLikeCount(parseInt(countNumber) - 1)
+    const userWithdraw = blog?.likers?.filter(l => l?.likerEmail !== user?.email)
+    setLiker(userWithdraw)
+    setEffectRender(effectRender + 1)
+    
   }
-
-
-  const countMinus = () => {
-    setLiked(false)
-    setLikeCount(parseInt(likeCount) - 1)
-    // const userWithdraw = allLikers.filter(l => l.liker !== user.email)
-    // setLiker(userWithdraw)
+  const likePlus = () => {
+    setLike(true)
+    setLikeCount(parseInt(countNumber) + 1)
+    setLiker({likerEmail : user.email})
+    setEffectRender(effectRender + 1)
   }
 
   useEffect(() => {
-    const likes = {
-      likes : likeCount
-    }
+    // const likes = {
+    //   likes : likeCount
+    // }
     // if (userLiked) {
     //   setLiked(true)
     // }
     // else{
     //   setLiked((false))
     // }
-    console.log(likes);
-    axios.put(`https://aqueous-tor-77774.herokuapp.com/blogs/likes/${blogId}`, likes)
+    // console.log(likes);
+    // axios.put(`https://aqueous-tor-77774.herokuapp.com/blogs/likes/${blogId}`, likes)
+
+    if (effectRender) {
+      setRendering(rendering + 1)
+      if (like) {
+        const likes = {
+          likes : likeCount,
+          likers : [liker, ...blog?.likers]
+        }
+        axios.put(`http://localhost:5000/blogs/likes/${blogId}`, likes)
+      }
+      else{
+        const likes = {
+          likes : likeCount,
+          likers : [...liker]
+        }
+        axios.put(`http://localhost:5000/blogs/likes/${blogId}`, likes)
+      }
+    }
     
-  },[blogId, likeCount])
+  },[ likeCount])
   
   return (
     <div>
@@ -68,8 +120,8 @@ const Buttons = ({ uploadTime, bloggerName, blogId, count, allLikers, allReadyLi
           <p className="icons">
             
             {
-              !liked  ? <FavoriteBorderIcon onClick={countPlus}/> :
-              <FavoriteIcon onClick={countMinus} style={{color:'red'}}/>
+              !like  ? <FavoriteBorderIcon onClick={likePlus}/> :
+              <FavoriteIcon onClick={likeMinus} style={{color:'red'}}/>
             }
             <VideoStableIcon className="int-icons" />
             <HistoryIcon className="int-icons" />
