@@ -23,13 +23,17 @@ const Blogs = ({ filter }) => {
   /*:: filter end ::*/
 
   useEffect(() => {
-    const blogUrl = `https://aqueous-tor-77774.herokuapp.com/blogsh`;
-    setTimeout(() => {
+    setLoading(true);
+    const blogUrl = `https://aqueous-tor-77774.herokuapp.com/blogs`;
+
       fetch(blogUrl)
         .then((response) => response.json())
-        .then((data) => setBlogs(data.blogs));
-      setLoading(true);
-    }, 4000);
+        .then((data) => {
+          setLoading(false);
+          setBlogs(data.blogs)
+        });
+        
+
   }, []);
   console.log(blogs);
 
@@ -41,7 +45,7 @@ const Blogs = ({ filter }) => {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 2, sm: 8, md: 12, lg: 16 }}
         >
-          {loading ? (
+          {!loading ? (
             blogs.map((blog) => <Blog key={blog._id} blog={blog}></Blog>)
           ) : (
             <div>

@@ -1,0 +1,37 @@
+.video-size {
+  width: 100% !important;
+  height: 200px !important;
+}
+.card-bg {
+  background-color: #102841 !important;
+}
+.card-color {
+  color: rgb(255, 255, 255) !important;
+}
+.date-color {
+  color: rgb(226, 226, 226) !important;
+}
+.card-hover:hover {
+  background-color: rgb(30 30 30) !important;
+}
+.name-color {
+  color: rgb(255, 255, 255) !important;
+  margin-top: 0px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.video-js .vjs-big-play-button {
+  width: 50px;
+  border-radius: 50%;
+  opacity: 60%;
+}
+.pd {
+  padding-top: 15px !important;
+  padding-bottom: 11px !important;
+}
+
+/* Reset */
+#elementId .funTimes {
+  all: initial !important;
+}
