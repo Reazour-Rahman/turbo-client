@@ -1,0 +1,225 @@
+.default-top-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 15px;
+  padding: 25px;
+}
+.column-width {
+  width: 100% !important;
+}
+
+/* All text color */
+.text-color-container {
+  color: aliceblue;
+}
+
+/* P size */
+.paragraph-size {
+  font-size: 12px !important;
+  font-weight: 300;
+}
+.p-dark{
+  color: rgb(191, 192, 194);
+  font-size: 9px;
+}
+
+
+/* ::::::::::::::::::::::
+Top Three
+::::::::::::::::::::::*/
+
+/*  Default margin*/
+.default-margin {
+  margin: 0px !important;
+}
+
+/* Align flex */
+.top-align {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  padding-top: 30px;
+}
+
+/* Danger color */
+.danger {
+  margin-left: 5px;
+  font-weight: 600;
+  color: rgb(185, 23, 23);
+}
+
+/* success color */
+.success {
+  margin-left: 5px;
+  font-weight: 600;
+  color: rgb(8, 165, 8);
+}
+
+.three-card-bg {
+  background-color: #102841;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.top-three-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+/* ::::::::::::::::::::::
+Visitors
+::::::::::::::::::::::*/
+.visitor-mt {
+  margin-top: 15px;
+}
+.indicators {
+  display: flex;
+  align-items: center;
+}
+.indicator-circle {
+  display: flex;
+  align-items: center;
+}
+.visitors-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+.fullStop {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.duration {
+  background-color: #32cd32;
+}
+.views {
+  margin-left: 10px;
+  background-color: #007aff;
+}
+.visitors-card-bg {
+  background-color: #102841;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+  border-radius: 10px;
+}
+
+/* :::::::::::::::::::::::::::
+ Default Aside
+ ::::::::::::::::::::::::::::::::::*/
+
+.monthly-target {
+  background-color: #102841;
+  padding: 30px;
+}
+.aside-container {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  gap: 15px;
+}
+
+.aside-bg {
+  background-color: #102841;
+  padding: 25px;
+  /* padding-bottom: 0%; */
+  border-radius: 10px;
+}
+.aside-inner-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.aside-margin-bottom {
+  margin-bottom: 15px;
+}
+
+/* _____________________________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________*/
+/* Top Part ended, Here Also i'm going to use some classes from top part so that i can reduce codes */
+
+/* :::::::::::::::::::::::::::
+ Default Bottom 
+ ::::::::::::::::::::::::::::::::::*/
+.default-bottom-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 15px;
+  padding: 25px;
+  padding-top: 0% ;
+}
+
+.new-members-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.team-members-list{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.team-members-id{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.add-btn{
+  color: aliceblue !important;
+}
+.members-container{
+  
+  background-color: #102841;
+  padding: 25px;
+  /* padding-bottom: 0%; */
+  border-radius: 10px;
+}
+
+
+/* :::::::::::::::::::::::::::::::::
+Transcation
+::::::::::::::::::::::::::::*/
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  /* border: .5px solid aliceblue; */
+  padding: 10px;
+  color: aliceblue;
+  font-size: 13px;
+  font-weight: 300 !important;
+}
+
+/* #customers tr:nth-child(even){background-color: #f2f2f2;} */
+
+#customers tr:hover {background-color: #0c1f33a6;}
+tr{
+  align-items: center;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  /* background-color: #04AA6D; */
+  color: aliceblue;
+}
+.td-flx{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.status-transaction{
+  color: #32cd32 !important;
+}

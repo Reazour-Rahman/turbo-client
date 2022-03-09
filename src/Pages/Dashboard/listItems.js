@@ -14,10 +14,19 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import './Dashboard.css';
 
 export const mainListItems = (
     <React.Fragment>
+
+        <ListItemButton as={Link} component="a" to="/dashboard/default">
+            <ListItemIcon>
+                <AppRegistrationIcon className='dashboard-button'/>
+            </ListItemIcon>
+            <ListItemText className='dashboard-button' primary="Default" />
+        </ListItemButton>
+
         <ListItemButton as={Link} component="a" to="/dashboard">
             <ListItemIcon>
                 <DashboardIcon className='dashboard-button'/>

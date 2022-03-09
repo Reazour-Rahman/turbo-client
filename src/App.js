@@ -32,6 +32,8 @@ import Register from "./Pages/Authentication/SignUp/Register";
 import React from "react";
 import { Auth } from "./Pages/Dashboard/UsersMessage/message";
 import AdminRoute from "./Pages/PrivateRoute/AdminRoute";
+import Fake from "./Pages/Search/HomeSearch/fake";
+import Default from "./Pages/Dashboard/Default/Default";
 
 function App() {
   return (
@@ -92,6 +94,8 @@ function App() {
           <Route path="/dashboard" element={<DashboardHome />}></Route>
 
           <Route exact path="/dashboard/bloggerList" element={<Bloggers />} />
+          
+          <Route exact path="/dashboard/default" element={<Default />} />
 
           <Route
             exact
@@ -113,6 +117,7 @@ function App() {
         </Route>
         
         <Route path="/userMessage" element={<UsersMessage />}></Route>
+        <Route path="/fake" element={<Fake />}></Route>
 
         <Route path="/roomDashboard" element={<RoomDashboard />}>
           <Route path="/roomDashboard" element={<RoomDashboardHome />}></Route>

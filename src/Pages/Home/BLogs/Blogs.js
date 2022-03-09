@@ -23,7 +23,7 @@ const Blogs = ({ filter }) => {
   /*:: filter end ::*/
 
   useEffect(() => {
-    const blogUrl = `https://aqueous-tor-77774.herokuapp.com/blogsh`;
+    const blogUrl = `https://aqueous-tor-77774.herokuapp.com/blogs`;
     setTimeout(() => {
       fetch(blogUrl)
         .then((response) => response.json())

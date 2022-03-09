@@ -4,23 +4,13 @@ import Blog from "./Blog";
 import Progress from "./Progress";
 import "./Video.css";
 
-const Blogs = ({ filter }) => {
+const Blogs = ({ text }) => {
   /*:::::::::::::::::::::::::::::::::::::::::
                 ALl states
     ::::::::::::::::::::::::::::::::::::::::::*/
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
   // console.log(filter) ;
-
-  /*:: filter start (this block will be inside useEffect) ::*/
-  let url;
-  if (!filter) {
-    url = `https://api.jsonbin.io/b/6203768369b72261be560c47`;
-  } else {
-    url = `https://api.jsonbin.io/b/6203768369b72261be560c47?filter=${filter}`;
-    console.log(url);
-  }
-  /*:: filter end ::*/
 
   useEffect(() => {
     setLoading(true);
@@ -37,6 +27,33 @@ const Blogs = ({ filter }) => {
   }, []);
   console.log(blogs);
 
+
+
+  const [name, setName] = useState('');
+
+  // the search result
+  const [foundUsers, setFoundUsers] = useState(blogs);
+
+  // const filter = (e) => {
+  //   const keyword = e.target.value;
+
+    if (text !== '') {
+      const results = blogs.filter((user) => {
+
+        return user.title.toLowerCase().startsWith(text.toLowerCase());
+        // Use the toLowerCase() method to make it case-insensitive
+      });
+      setFoundUsers(results);
+      
+    } else {
+      setFoundUsers(blogs);
+      // If the text field is empty, show all users
+    }
+
+    setName(text);
+  // };
+
+
   return (
     <div>
       <Box>
@@ -46,7 +63,7 @@ const Blogs = ({ filter }) => {
           columns={{ xs: 2, sm: 8, md: 12, lg: 16 }}
         >
           {!loading ? (
-            blogs.map((blog) => <Blog key={blog._id} blog={blog}></Blog>)
+            foundUsers.map((blog) => <Blog key={blog._id} blog={blog}></Blog>)
           ) : (
             <div>
               <Progress />
