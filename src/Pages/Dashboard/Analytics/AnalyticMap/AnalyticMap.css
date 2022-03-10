@@ -1,0 +1,67 @@
+.main{
+
+}
+
+.map{
+    display: grid;
+    grid-template-columns: 3fr 6fr;
+    background-color: #283142;
+    border-radius: 10px;
+    margin: 20px;
+    
+
+    
+}
+
+.pre{
+    border-right: 1px solid wheat;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    padding-left: 25px;
+    padding-top: 25px;
+}
+
+.google-map{
+    text-align: center;
+    justify-content:center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+
+.throat{
+    display: flex;
+    margin-bottom: -10px;
+}
+
+.header{
+    font-size: 20px;
+}
+.banner-title{
+    color: rgba(237, 228, 228, 0.782);
+}
+
+.banner-img{
+    height: 20px;
+    width: 20px;
+}
+
+.country-persentence{
+    margin-top:40px
+}
+
+.li{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color:#abb6ca
+    
+}
+
+small{
+    
+    
+}

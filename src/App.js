@@ -38,6 +38,7 @@ import useFirebase from "./Hooks/useFirebase";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice";
 import { useEffect } from "react";
+import Analytics from "./Pages/Dashboard/Analytics/Analytics/Analytics";
 
 function App() {
   const dispatch = useDispatch()
@@ -127,6 +128,9 @@ function App() {
           <Route exact path="/dashboard/bloggerList" element={<Bloggers />} />
           
           <Route exact path="/dashboard/default" element={<Default />} />
+
+
+          <Route exact path="/dashboard/analytics" element={<Analytics />} />
 
           <Route
             exact

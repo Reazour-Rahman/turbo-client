@@ -1,0 +1,20 @@
+
+  body {
+    margin: 0;
+  }
+  
+   svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .GoogleMap {
+    font-family: sans-serif;
+    text-align: center;
+    
+  }
+
+  .google{
+    height: 400px;
+  }
+  
