@@ -146,12 +146,14 @@ function EnhancedTableHead(props) {
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
+          sx={{color: 'white',}}
             key={headCell.id}
             align={headCell.numeric ? 'left' : 'right'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
+            sx={{color: 'white',}}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
             // onClick={createSortHandler(headCell.id)}
@@ -185,6 +187,7 @@ const EnhancedTableToolbar = (props) => {
   return (
     <Toolbar
       sx={{
+        
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
         ...(numSelected > 0 && {
@@ -197,14 +200,14 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton>
-            <DeleteIcon />
+            <DeleteIcon sx={{color: 'white', mr: 2}}/>
             <Typography>Delete</Typography>
           </IconButton>
         </Tooltip>
       ) : (
         <Tooltip title="Filter list">
           <IconButton>
-            <FilterListIcon />
+            <FilterListIcon sx={{color: 'white', mr: 2}} />
             <Typography>Filter</Typography>
           </IconButton>
         </Tooltip>
@@ -283,7 +286,11 @@ export default function Content() {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: '100%', backgroundColor: 'rgb(9, 26, 43)', mt: 5 }}>
+    <Box 
+    sx={{ width: '100%', 
+    backgroundColor: 'rgb(9, 26, 43)', 
+    mt: 5 
+    }}>
       <Box>
         <Box sx={{mb: 2}} >
           <Link
@@ -307,7 +314,10 @@ export default function Content() {
           </Link>
         </Box>
       </Box>
-      <Paper sx={{ width: '100%', mb: 2, }}>
+      <Paper 
+      sx={{ width: '100%', 
+      mb: 2, backgroundColor: 'rgb(9, 26, 43)' 
+      }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
@@ -358,9 +368,16 @@ export default function Content() {
                         id={labelId}
                         scope="row"
                         padding="none"
+                        sx={{color: 'white'}}
                       >
                         
-                        <Box style={{ display: 'flex', justifyContent: 'spaceBetween', alignItems: 'center', padding: '10px'}}>
+                        <Box 
+                        style={{ 
+                          display: 'flex', 
+                          justifyContent: 'spaceBetween', 
+                          alignItems: 'center', 
+                          padding: '10px'
+                          }}>
 
                          {/*========== video will be added here  ===========*/}
                           {/* <div style={{ width: '200px' }}>
@@ -370,18 +387,51 @@ export default function Content() {
 
                           <img style={{ width: '45%' }} src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="" />
 
-                          <Typography style={{ marginLeft: '20px' }}>somethings will be heppend here</Typography>
+                          <Typography 
+                          style={{ marginLeft: '20px' 
+                          }}>
+                            somethings will be heppend here</Typography>
                         </Box>
 
 
                         {/* {row.name} */}
                       </TableCell>
-                      <TableCell align="right">23859</TableCell>
-                      <TableCell align="right">456</TableCell>
-                      <TableCell align="right">35</TableCell>
-                      <TableCell align="right">345</TableCell>
-                      <TableCell align="right">35</TableCell>
-                      <TableCell align="right">3534</TableCell>
+                      <TableCell 
+                      sx={{color: 'white'}} 
+                      align="right"
+                      >
+                        23859
+                      </TableCell>
+                      <TableCell 
+                      sx={{color: 'white'}} 
+                      align="right"
+                      >
+                        456
+                      </TableCell>
+                      <TableCell 
+                      sx={{color: 'white'}} 
+                      align="right"
+                      >
+                        35
+                        </TableCell>
+                      <TableCell 
+                      sx={{color: 'white'}} 
+                      align="right"
+                      >
+                        345
+                        </TableCell>
+                      <TableCell 
+                      sx={{color: 'white'}} 
+                      align="right"
+                      >
+                        35
+                        </TableCell>
+                      <TableCell 
+                      sx={{color: 'white'}} 
+                      align="right"
+                      >
+                        3534
+                      </TableCell>
                     </TableRow>
                   );
                 })}
