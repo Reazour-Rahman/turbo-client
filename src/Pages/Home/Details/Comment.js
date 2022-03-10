@@ -11,12 +11,13 @@ import Fade from "@mui/material/Fade";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReplyIcon from "@mui/icons-material/Reply";
 import { grey } from "@mui/material/colors";
+import { useSelector } from "react-redux";
 
 const ariaLabel = { "aria-label": "description" };
 
-const Comment = ({ blogId, setBackendComment, backendComment }) => {
+const Comment = ({ blogId, setBackendComment, backendComment, tt }) => {
   const [comment, setComment] = useState("");
-  const { user } = useFirebase();
+  const user = useSelector((state) => state.firebase.user)
   const time = new Date().toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",
@@ -82,12 +83,17 @@ const Comment = ({ blogId, setBackendComment, backendComment }) => {
     fontSize: "14px",
     fontWeight: 300,
   };
+
+  let theme;
+  theme = localStorage.getItem("theme");
+  
+
   return (
     <div>
       {/* Comment count and filtering */}
       <hr />
-      <span className="comment-count">
-        <small>12300 Comments</small>
+      <span className="comment-count" id={ theme === "light" ? "black" : "darkLight" }>
+        <small>{tt} Comments</small>
         <small>
           <FilterAltOffIcon /> Short by
         </small>
@@ -127,13 +133,14 @@ const Comment = ({ blogId, setBackendComment, backendComment }) => {
         <>
           <section className="people-comment-container">
             <Avatar alt="Remy Sharp" src={c?.userImage} />
-            <div className="people-comment">
+            <div className="people-comment" id={ theme === "light" ? "black" : "darkLight" }>
               <small>
                 {c?.username} &nbsp; &nbsp;
                 <span style={{ color: "gray" }}>{c.createdAt}</span>
               </small>
               <small>
                 {c?.comment}
+                
                 {/* <IconButton style={{color:'white'}}  id="fade-button"
             aria-controls={open ? 'fade-menu' : undefined}
             aria-haspopup="true"

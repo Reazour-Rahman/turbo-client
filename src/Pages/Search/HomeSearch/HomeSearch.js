@@ -77,7 +77,7 @@ export default function HomeSearch() {
   return (
     <div>
       <Search
-      
+      id={ mode === "light" ? "moreLight" : "moreDark" }
         style={{ cursor: "pointer" }}
         onKeyPress={(ev) => {
           if (ev.key === "Enter") {

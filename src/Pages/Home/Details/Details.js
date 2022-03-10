@@ -25,6 +25,7 @@ import "./skeleton/Skeleton.css";
 import LinearProgressWithLabel from "./LinearProgressWithLabel";
 import axios from "axios";
 import useFirebase from "../../../Hooks/useFirebase";
+import { useSelector } from "react-redux";
 
 const Details = () => {
   const { blogId } = useParams();
@@ -36,7 +37,7 @@ const Details = () => {
   const [allReadyLiked, setAllReadyLiked] = useState(false)
   const [rendering, setRendering] = useState(0)
   const [singleBlog, setSingleBlog] = useState({})
-  const {user} = useFirebase()
+  const user = useSelector((state) => state.firebase.user)
 
 
   useEffect(() => {
@@ -90,6 +91,8 @@ const Details = () => {
   },[blogId, rendering])
 
   console.log(singleBlog);
+  let theme;
+  theme = localStorage.getItem("theme")
   return (
     <div className="">
       <Grid spacing={3}>
@@ -109,8 +112,8 @@ const Details = () => {
                     />
                     <p className="title-font">{blog.title}</p>
 
-                    <span className="interaction">
-                      <small>113144 views</small>
+                    <span className="interaction" id={ theme === "light" ? "black" : "darkLight" }>
+                      <small>{blog.views} views</small>
                       <span>
                         <span className="interect">
                           <MoodBadIcon /> 112k
@@ -184,7 +187,7 @@ const Details = () => {
                       </Accordion>
                     </div>
                     {/* Comment page */}
-                    <Comment  setBackendComment={setBackendComment} backendComment={backendComment} blogId={blogId}/>
+                    <Comment  setBackendComment={setBackendComment} backendComment={backendComment} blogId={blogId} tt={blog.comment.length}/>
                   </article>
 
                   {/* :::::::::::::::::::::::::

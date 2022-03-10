@@ -22,11 +22,32 @@ import "./MenuBar.css";
 import useFirebase from "../../../Hooks/useFirebase";
 import { Button, CircularProgress } from "@mui/material";
 import HelpCenter from "../../Home/Profile/HelpCenter/HelpCenter/HelpCenter";
+import Cookies from "universal-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsLoading, setUser } from "../../../reducers/slices/firebaseSlice";
+
+const cookies = new Cookies();
+
+
+const logout = () => {
+  cookies.remove("token");
+  cookies.remove('userId');
+  cookies.remove('username');
+  cookies.remove('fullName');
+  cookies.remove('avatarURL');
+  cookies.remove('hashedPassword');
+  cookies.remove('phoneNumber');
+
+  window.location.reload();
+}
 
 export default function MenuBar({ handleClickOpen }) {
-  const { user, logOut } = useFirebase();
+  const {signOut,auth} = useFirebase();
+  const user = useSelector((state) => state.firebase.user)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch()
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -34,6 +55,20 @@ export default function MenuBar({ handleClickOpen }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const userLogOut = () => {
+    signOut(auth)
+    .then(() => {
+      dispatch(setUser({}));
+      logout()
+    })
+    .catch((error) => {
+      // An error happened.
+    })
+    .finally(() => {
+      dispatch(setIsLoading(false));
+    });
+  }
 
   const style = {
     color: "#fff3e0",
@@ -69,12 +104,12 @@ export default function MenuBar({ handleClickOpen }) {
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
             >
-              <Avatar sx={{ width: 32, height: 32 }}>
+              <Avatar sx={{ width: 42, height: 42 }}>
                 {!user.email ? (
                   <CircularProgress />
                 ) : (
                   <img
-                    style={{ width: 32, height: 32 }}
+                    style={{ width: 42, height: 42 }}
                     src={user.photoURL}
                     alt="profile"
                   />
@@ -205,7 +240,7 @@ export default function MenuBar({ handleClickOpen }) {
             </MenuItem>
           </Link>
 
-          <MenuItem onClick={logOut} className="menu-style" style={style}>
+          <MenuItem onClick={userLogOut} className="menu-style" style={style}>
             <ListItemIcon style={style}>
               <Logout style={iconStyle}/>
             </ListItemIcon>

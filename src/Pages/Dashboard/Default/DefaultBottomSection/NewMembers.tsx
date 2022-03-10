@@ -10,8 +10,7 @@ import Avatar from "@mui/material/Avatar";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import useFirebase from "../../../../Hooks/useFirebase.js";
 
-const NewMembers = () => {
-  const { user } = useFirebase();
+const NewMembers = ({user}) => {
   const avatar = user.photoURL;
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

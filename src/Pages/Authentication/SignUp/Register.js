@@ -35,14 +35,14 @@ const Register = ({ handleClose }) => {
   const [userList , setUserList] = useState([])
   // const [isLogin, setIsLogin] = useState(false)
 
-  const userDetails = useSelector((state) => state.firebase.user);
+  const user = useSelector((state) => state.firebase.user);
   const gender = useSelector((state) => state.firebase.gender);
   const errorMessage = useSelector((state) => state.firebase.errorMessage);
   const toggle = useSelector((state) => state.firebase.toggle);
   const isLogin = useSelector((state) => state.firebase.isLogin);
 
   // console.log(gender);
-  console.log(userDetails);
+  console.log(user);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -53,6 +53,8 @@ const Register = ({ handleClose }) => {
     signUpWithEmailAndPass,
     loginWithEmailAndPassword,
     saveUser,
+    updateProfile,
+    auth
   } = useFirebase();
 
   const url = location.state?.from || "/";
@@ -75,15 +77,6 @@ const Register = ({ handleClose }) => {
     signInWithGoogle()
       .then(async(result) => {
         const user = result.user;
-
-        // if (url) {
-        //     navigate(url)
-        // }
-        // else{
-        //     navigate('/')
-        // }
-
-        
         console.log(user,userList);
         const matched = userList.find(u => u?.email === user?.email)
         console.log('mathced ', userList ,matched);
@@ -136,7 +129,54 @@ const Register = ({ handleClose }) => {
     const image = data.image;
     const mobileNumber = data.mobileNumber
     if (data.password === data.confirmpassword) {
-      signUpWithEmailAndPass(name, email, password, image, mobileNumber, gender, url,  handleClose);
+      signUpWithEmailAndPass(name, email, password, image, mobileNumber, gender, url,  handleClose)
+      .then(async(userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        const URL = 'http://localhost:5000/auth';
+            // const URL = 'https://medical-pager.herokuapp.com/auth';
+            const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+                username : email, password : password, fullName: name, phoneNumber : mobileNumber, avatarURL : image,
+            });
+    
+            cookies.set('token', token);
+            cookies.set('username', email);
+            cookies.set('fullName', fullName);
+            cookies.set('userId', userId);
+    
+            if(isSignup) {
+                cookies.set('phoneNumber', mobileNumber);
+                cookies.set('avatarURL', image);
+                cookies.set('hashedPassword', hashedPassword);
+            }
+    
+        dispatch(setUser(user))
+    
+        handleClose()
+        updateProfile(auth.currentUser, {
+          displayName: name, phoneNumber : mobileNumber,
+          photoURL : image
+        })
+
+          .then(() => {
+            saveUser(email, name, 'POST')
+            dispatch(setErrorMessage(''));
+            
+          })
+          .catch((error) => {
+            dispatch(setErrorMessage(error.errorMessage));
+          });
+        // navigate(url)
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        dispatch(setErrorMessage(errorMessage))
+      })
+      .finally(async() =>{ 
+        dispatch(setIsLoading(false))    
+      });
     } else {
       dispatch(
         setErrorMessage("password and confirm password did not matched ")
@@ -148,6 +188,36 @@ const Register = ({ handleClose }) => {
   const onSubmitSignIn = (data) => {
     dispatch(setIsLogin(true));
     loginWithEmailAndPassword(data.email, data.password, handleClose)
+    .then(async(res) => {
+
+      const URL = 'http://localhost:5000/auth';
+      // const URL = 'https://medical-pager.herokuapp.com/auth';
+      const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/login`, {
+          username : data.email, password : data.password, 
+      });
+
+      cookies.set('token', token);
+      cookies.set('username', data.email);
+      cookies.set('fullName', fullName);
+      cookies.set('userId', userId);
+
+
+      dispatch(setUser(res.user));
+      dispatch(setIsLogin(false));
+    
+      // navigate(url);
+      dispatch(setErrorMessage(""));
+      handleClose();
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      dispatch(setErrorMessage(errorMessage));
+      dispatch(setIsLogin(false));
+    })
+    .finally(() => {
+      dispatch(setIsLoading(false));
+    });
     // setUser(data);
   };
 
@@ -166,6 +236,7 @@ const Register = ({ handleClose }) => {
   //     }
   //   });
   // };
+
 
   return (
     <>
@@ -373,7 +444,7 @@ const Register = ({ handleClose }) => {
                 marginTop:'10px'
          
             }} onClick={loginWithGoogle}>Google</Button>
-          {userDetails?.email && (
+          {user?.email && (
             <i
               onClick={logOut}
               style={{ fontSize: "25px", color: "red", marginLeft: "10px" }}

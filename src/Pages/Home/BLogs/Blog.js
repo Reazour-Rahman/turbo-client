@@ -8,16 +8,43 @@ import { CardActionArea } from "@mui/material";
 import Video from "./Video";
 import "./Video.css";
 import Setting from "./Setting";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { async } from "@firebase/util";
+import { useSelector } from "react-redux";
 
 const Blog = (props) => {
   /*:::::::::::::::::::::::::::::::::::::::::
                 Destructure the props
     ::::::::::::::::::::::::::::::::::::::::::*/
-  const { _id, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto } =props.blog;
-  console.log(thumbnail);
+    const [allViewers, setAllViewers] = useState([])
+  const { _id, title, video, bloggerName, category, bloggerEmail, viewers, uploadTime, thumbnail, bloggerPhoto, views } =props.blog;
   let theme;
   theme = localStorage.getItem("theme");
+  const navigate = useNavigate()
+  const user = useSelector(state => state.firebase.user)
+  const matched = viewers?.find(v => v.viewerEmail === user.email)
+
+  const singleBlog = async (id) => {
+    navigate(`details/${id}`)
+
+    if (matched) {
+      const viewsData = {
+        views : views + 1,
+        viewers : [...viewers]
+      }
+      await axios.put(`http://localhost:5000/blogs/views/${id}`, viewsData)
+    }
+    else {
+      const viewerData = {viewerEmail :user.email}
+      const viewsData = {
+        views : views + 1,
+        viewers : [...viewers,  viewerData]
+      }
+      await axios.put(`http://localhost:5000/blogs/views/${id}`, viewsData)
+    }
+
+  }
 
 
 
@@ -52,7 +79,7 @@ const Blog = (props) => {
                 </div>
               </CardContent>
               <Video video={video} poster={thumbnail}></Video>
-              <Link to={`details/${_id}`} style={{textDecoration:"none"}}>
+              <div onClick={() => singleBlog(_id)}  style={{textDecoration:"none"}}>
               <CardContent>
                 <Typography
                   id={ theme === "light" ? "black" : "darkLight" }
@@ -62,7 +89,7 @@ const Blog = (props) => {
                   {title.slice(0, 53)}...
                 </Typography>
               </CardContent>
-              </Link>
+              </div>
             </CardActionArea>
           </Card>
         </Box>

@@ -9,6 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import axios from "axios";
 import useFirebase from '../../../Hooks/useFirebase'
+import { useSelector } from "react-redux";
 
 
 const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering, allLikers, allReadyLiked, setRendering}) => {
@@ -18,7 +19,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
   // const {user} = useFirebase()
 
 
-  const {user} = useFirebase()
+  const user = useSelector((state) => state.firebase.user)
     const [like, setLike] = useState(false)
     const [likeCount, setLikeCount] = useState(countNumber)
     const [liker, setLiker] = useState([])

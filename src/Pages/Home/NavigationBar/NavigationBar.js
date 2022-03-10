@@ -65,7 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function NavigationBar() {
+export default function NavigationBar({user}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [open, setOpen] = React.useState(false);
@@ -77,14 +77,9 @@ export default function NavigationBar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const { user, logOut } = useFirebase();
+
   const handleMenuClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleLogOut = () => {
-    handleMenuClose();
-    logOut();
   };
 
   const menuId = "primary-search-account-menu";
@@ -129,15 +124,7 @@ export default function NavigationBar() {
       >
         My account
       </MenuItem>
-      <MenuItem
-        sx={{ paddingLeft: "50px ", paddingRight: "50px ", fontSize: "18px" }}
-        onClick={handleLogOut}
-      >
-        <i
-          style={{ fontSize: "25px", color: "red", marginLeft: "10px" }}
-          className="fas fa-power-off"
-        ></i>
-      </MenuItem>
+
     </Menu>
   );
   let theme;
@@ -172,6 +159,7 @@ export default function NavigationBar() {
             variant="contained"
             size="small"
             onClick={handleOpen}
+            data-testid = "login-button"
           >
             Sign In
           </Button>

@@ -16,9 +16,10 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Button } from "@mui/material";
 import useFirebase from "../../Hooks/useFirebase";
 import { fontSize } from "@mui/system";
+import { useSelector } from "react-redux";
 
 export default function Messaging() {
-    const { user, logOut } = useFirebase();
+    const user = useSelector((state) => state.firebase.user)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {

@@ -11,6 +11,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
 import useFirebase from '../../Hooks/useFirebase'
 import { Button, Checkbox, FormControlLabel, FormGroup, FormLabel, Grid, MenuItem, Select, Stack, TextField } from '@mui/material';
+import { useSelector } from 'react-redux';
 // const fileInput = React.createRef();
 
 
@@ -39,7 +40,7 @@ export default function InputAdornments() {
     const [allTags, setAllTags] = React.useState([]);
     const [tags, setTags] = React.useState(allTags);
 
-    const { user } = useFirebase()
+    const user = useSelector((state) => state.firebase.user)
 
     console.log(user, time, date);
 

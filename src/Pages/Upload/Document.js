@@ -32,6 +32,7 @@ import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import ImageIcon from '@mui/icons-material/Image';
 import useFirebase from "../../Hooks/useFirebase";
 
+
 const steps = ["Details", "Checks", "Visibility"];
 
 
@@ -194,7 +195,7 @@ const handleChangeCategory = (event) => {
 /* :::::::::::::::::::::::::::::
 Send Data to Database
 :::::::::::::::::::::::::::::::*/
-const {user} = useFirebase();
+const user = useSelector((state) => state.firebase.user)
 
 const bloggerName = user.displayName;
 const bloggerEmail = user.email;

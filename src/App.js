@@ -34,8 +34,39 @@ import { Auth } from "./Pages/Dashboard/UsersMessage/message";
 import AdminRoute from "./Pages/PrivateRoute/AdminRoute";
 import Fake from "./Pages/Search/HomeSearch/fake";
 import Default from "./Pages/Dashboard/Default/Default";
+import useFirebase from "./Hooks/useFirebase";
+import { useDispatch, useSelector } from "react-redux";
+import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch()
+  
+  const user = useSelector((state) => state.firebase.user)
+  const {onAuthStateChanged,getIdToken, auth } = useFirebase()
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        getIdToken(user)
+          .then(idToken => localStorage.setItem('idToken', idToken));
+        // setUser(user);
+
+        // console.log(user);
+        dispatch(setUser(user))
+      } else {
+        // nothing was here 
+        dispatch(setUser({}));
+      }
+      dispatch(setIsLoading(false));
+    });
+  }, [auth, dispatch])
+
+  useEffect( () => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+    .then(res => res.json())
+    .then(data =>  dispatch(setAdmin(data?.admin)))
+  },[user?.email])
   return (
     <div className="App">
       <Routes>
