@@ -19,14 +19,20 @@ export default function ChannelSetting({ handleCloseSetting, openSetting }) {
                 aria-describedby="alert-dialog-description"
             >
 
-                <DialogContent>
+                <DialogContent sx={{ width: '600px', backgroundColor: '#091a2b' }}>
                     <Box>
                         <Grid style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <Button onClick={handleCloseSetting}>
                                 <ArrowBackIcon></ArrowBackIcon>
                             </Button>
 
-                            <Typography sx={{ fontWeight: 'bold' }} variant="h4">Help Center
+                            <Typography 
+                            sx={{ 
+                                fontWeight: 'bold', 
+                                color: 'rgba(255, 255, 255, 0.905)' 
+                                }} 
+                                variant="h4"
+                                >Help Center
                             </Typography>
 
                             <Button onClick={handleCloseSetting}>
@@ -36,28 +42,53 @@ export default function ChannelSetting({ handleCloseSetting, openSetting }) {
 
                         <Grid sx={{ mt: 4 }}>
 
-                            <Typography sx={{ fontWeight: 'bold', mb: 3 }} variant="h5">Request a refund
+                            <Typography 
+                            sx={{ 
+                                fontWeight: 'bold', 
+                                mb: 3, color: 'rgba(255, 255, 255, 0.905)' 
+                                }} 
+                                variant="h5"
+                                >Request a refund
                             </Typography>
 
                             <Box >
-                                <Box sx={{textAlign: 'center'}}>
-                                    <Button sx={{ width: '25%', mb: 3 }} variant="contained">Request
+                                <Box sx={{ textAlign: 'center' }}>
+                                    <Button 
+                                    sx={{ 
+                                        width: '25%', 
+                                        mb: 3 }} 
+                                        variant="contained"
+                                        >Request
                                     </Button>
                                 </Box>
 
-                                <Typography>
+                                <Typography 
+                                sx={{ 
+                                    color: 'rgba(255, 255, 255, 0.905)', fontWeight: 400 }}>
                                     If you made a purchase using your iPhone or iPad, or signed up for a YouTube paid membership via Apple, youll need to get in touch with Apple support to request a refund. Apples refund policy will apply.
                                 </Typography>
 
-                                <Typography sx={{ mt: 2 }}>
+                                <Typography 
+                                sx={{ 
+                                    mt: 2, 
+                                    color: 'rgba(255, 255, 255, 0.905)', fontWeight: 400 
+                                    }}>
                                     If you made a purchase using your iPhone or iPad, or signed up for a YouTube paid membership via Apple, youll need to get in touch with Apple support to request a refund.
                                 </Typography>
-                                
-                                <Typography>
+
+                                <Typography 
+                                sx={{ 
+                                    mt: 2, 
+                                    color: 'rgba(255, 255, 255, 0.905)', fontWeight: 400 
+                                    }}>
                                     If you made a purchase using your iPhone or iPad, or signed up for a YouTube paid membership via Apple, youll need to get in touch with Apple support to request a refund. Apples refund policy will apply.
                                 </Typography>
 
-                                <Typography sx={{ mt: 2 }}>
+                                <Typography 
+                                sx={{ 
+                                    mt: 2, 
+                                    color: 'rgba(255, 255, 255, 0.905)', fontWeight: 400 
+                                    }}>
                                     If you made a purchase using your iPhone or iPad, or signed up for a YouTube paid membership via Apple, youll need to get in touch with Apple support to request a refund.
                                 </Typography>
 
@@ -70,7 +101,8 @@ export default function ChannelSetting({ handleCloseSetting, openSetting }) {
                                 sx={{
                                     fontWeight: 'bold',
                                     mb: 3,
-                                    mt: 3
+                                    mt: 3,
+                                    color: 'rgba(255, 255, 255, 0.905)'
                                 }}
                                 variant="h5">
                                 Pro-Player membership <br /> refunds
@@ -90,14 +122,22 @@ export default function ChannelSetting({ handleCloseSetting, openSetting }) {
                                     </Button>
                                 </Box>
 
-                                <Typography>
+                                <Typography 
+                                sx={{ 
+                                    mt: 2, 
+                                    color: 'rgba(255, 255, 255, 0.905)', fontWeight: 400 
+                                    }}>
                                     If you made a purchase using your iPhone or iPad, or signed up for a YouTube paid membership via Apple, youll need to get in touch with Apple support to request a refund. Apples refund policy will apply.
                                 </Typography>
 
-                                <Typography sx={{ mt: 2 }}>
+                                <Typography 
+                                sx={{ 
+                                    mt: 2, 
+                                    color: 'rgba(255, 255, 255, 0.905)', fontWeight: 400 
+                                    }}>
                                     If you made a purchase using your iPhone or iPad, or signed up for a YouTube paid membership via Apple, youll need to get in touch with Apple support to request a refund.
                                 </Typography>
-                                
+
                             </Box>
                         </Grid>
                     </Box>

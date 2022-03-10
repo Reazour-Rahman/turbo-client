@@ -12,16 +12,17 @@ const PopularVideo = (props) => {
                     <Card className="card-bg">
                         <CardActionArea>
                             <ContentVideos video={video}></ContentVideos>
-                            <Link to={`details/${_id}`} style={{ textDecoration: "none" }}>
+                            <Link to={`details/${_id}`} style={{ textDecoration: "none", fontWeight: 500 }}>
                                 <CardContent>
                                     <Typography
+                                        sx={{fontWeight: 500, mb: 2}}
                                         className="card-color"
                                         variant="body2"
                                         color="text.secondary"
                                     >
                                         {title.slice(0, 53)}...
                                     </Typography>
-                                    <small className="date-color">
+                                    <small style={{fontWeight: 500}} className="date-color">
                                         {uploadTime}
                                     </small>
                                 </CardContent>

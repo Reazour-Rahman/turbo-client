@@ -1,0 +1,51 @@
+.containers{
+    margin: 20px;
+}
+
+.page-containers{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-gap: 15px;
+
+}
+
+.visited-pages{
+    background-color: #283142;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.media-pages{
+    background-color: #283142;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.rooms{
+    margin-top:10px;
+}
+
+.room{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -15px;
+}
+
+.p-header{
+    font-size:20px;
+    font-weight: 700;
+    color: #D6D7DC;
+}
+
+.p-view{
+    color: inherit;
+    text-align: center;
+    width: 50px;
+    background-color: rgb(76, 121, 155);
+    border-radius:5px;
+}
+
+.room-i{
+    display:flex;
+    
+}

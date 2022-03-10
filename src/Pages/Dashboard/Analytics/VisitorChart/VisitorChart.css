@@ -1,0 +1,14 @@
+.visitor-chart{
+    background-color: #283142;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.chart-title{
+    color: #d8ff2ddc;
+    font-size: 18px;
+}

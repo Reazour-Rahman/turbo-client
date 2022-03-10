@@ -22,7 +22,7 @@ const Content = (props) => {
           <Card className="card-bg">
             <CardActionArea>
               <ContentVideos video={video}></ContentVideos>
-              <Link to={`details/${_id}`} style={{ textDecoration: "none" }}>
+              <Link to={`details/${_id}`} style={{ textDecoration: "none", fontWeight:500 }}>
                 <CardContent>
                   <Typography
                     className="card-color"
