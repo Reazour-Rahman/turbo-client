@@ -23,3 +23,26 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+
+/* Dark Colors */
+#darkish{
+  background-color: #061724 !important;
+}
+#moreDark{
+ background-color: #0c2233 !important;
+}
+#darkLight{
+color: #d6d6d6 !important;
+}
+
+/* Light Colors */
+#lightest{
+ background-color: white !important;
+}
+#moreLight{
+  background-color: rgb(248, 247, 247) !important;
+}
+#black{
+  color: #051624 !important;
+}

@@ -69,12 +69,12 @@ export default function MenuBar({ handleClickOpen }) {
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
             >
-              <Avatar sx={{ width: 42, height: 42 }}>
+              <Avatar sx={{ width: 32, height: 32 }}>
                 {!user.email ? (
                   <CircularProgress />
                 ) : (
                   <img
-                    style={{ width: 42, height: 42 }}
+                    style={{ width: 32, height: 32 }}
                     src={user.photoURL}
                     alt="profile"
                   />

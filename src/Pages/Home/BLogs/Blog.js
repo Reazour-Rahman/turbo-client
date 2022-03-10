@@ -16,15 +16,21 @@ const Blog = (props) => {
     ::::::::::::::::::::::::::::::::::::::::::*/
   const { _id, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto } =props.blog;
   console.log(thumbnail);
+  let theme;
+  theme = localStorage.getItem("theme");
+
+
+
 
   return (
     <Grid item xs={2} sm={4} md={4}>
       <Box>
         <Box>
-          <Card className="card-bg card-hover">
+          <Card id={ theme === "light" ? "moreLight" : "moreDark" }>
             <CardActionArea>
               <CardContent className="pd">
-                <div className="name-color">
+                <div id={`${ theme === "light" ? "black" : "darkLight" }`} className="name-color">
+
                   <span style={{ display: "flex", alignItems: "center" }}>
                     <Avatar
                       alt="Remy Sharp"
@@ -37,7 +43,7 @@ const Blog = (props) => {
                       >
                         {bloggerName.slice(0, 20)}..
                       </small>
-                      <small className="date-color">{uploadTime}</small>
+                      <small className="date-color" id={ theme === "light" ? "black" : "darkLight" }>{uploadTime}</small>
                     </span>
                   </span>
                   <small>
@@ -49,9 +55,9 @@ const Blog = (props) => {
               <Link to={`details/${_id}`} style={{textDecoration:"none"}}>
               <CardContent>
                 <Typography
-                  className="card-color"
+                  id={ theme === "light" ? "black" : "darkLight" }
                   variant="body2"
-                  color="text.secondary"
+                  
                 >
                   {title.slice(0, 53)}...
                 </Typography>

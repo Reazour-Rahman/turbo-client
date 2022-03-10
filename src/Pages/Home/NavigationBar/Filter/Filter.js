@@ -69,6 +69,8 @@ const Filter = ({ setFilter }) => {
     "Horror",
     "RPG",
   ];
+  let theme;
+  theme = localStorage.getItem("theme");
   return (
     <div className="filter-parent" style={{ width: "70vw" }}>
       <Slider {...settings} style={{}}>
@@ -78,8 +80,8 @@ const Filter = ({ setFilter }) => {
             <Button
               className="filter-button"
               onClick={() => getFilter(category)}
+              id={ theme === "light" ? "black" : "darkLight" }
               sx={{
-                color: "#fff",
                 border: 2,
                 borderRadius: 16,
 
