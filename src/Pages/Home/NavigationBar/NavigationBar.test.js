@@ -8,5 +8,5 @@ describe("NavigationBar Component", () => {
         const logInButton = screen.getByTestId("login-button");
         expect(logInButton).toBeTruthy()
     })
-   
+   //this unit testing
 })
