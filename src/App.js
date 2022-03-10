@@ -32,6 +32,7 @@ import Register from "./Pages/Authentication/SignUp/Register";
 import React from "react";
 import { Auth } from "./Pages/Dashboard/UsersMessage/message";
 import AdminRoute from "./Pages/PrivateRoute/AdminRoute";
+import Shorts from "./Pages/Shorts/Shorts";
 
 function App() {
   return (
@@ -40,7 +41,14 @@ function App() {
         <Route exact path="/" element={<MiniDrawer />}>
           <Route path="/signUp" element={<SignUp />}></Route>
           <Route path="/logIn" element={<Auth></Auth>}></Route>
-          <Route path="/profile" element={<AdminRoute><Profile /></AdminRoute>}></Route>
+          <Route
+            path="/profile"
+            element={
+              <AdminRoute>
+                <Profile />
+              </AdminRoute>
+            }
+          ></Route>
 
           <Route path="/candyBlock" element={<CandyBlock />}></Route>
 
@@ -55,6 +63,8 @@ function App() {
 
           <Route path="/cloudStorage" element={<UploadVideoModal />}></Route>
 
+          <Route path="/shorts" element={<Shorts />}></Route>
+
           <Route
             path="/breakout"
             element={
@@ -64,7 +74,14 @@ function App() {
             }
           ></Route>
 
-          <Route path="/details/:blogId" element={<PrivateRoute><Details /></PrivateRoute>}></Route>
+          <Route
+            path="/details/:blogId"
+            element={
+              <PrivateRoute>
+                <Details />
+              </PrivateRoute>
+            }
+          ></Route>
 
           <Route path="/addBlog" element={<AddBlog />}></Route>
 
@@ -111,7 +128,7 @@ function App() {
 
           <Route path="/dashboard/reports" element={<Reports />} />
         </Route>
-        
+
         <Route path="/userMessage" element={<UsersMessage />}></Route>
 
         <Route path="/roomDashboard" element={<RoomDashboard />}>
@@ -119,9 +136,6 @@ function App() {
           <Route path="/roomDashboard/content" element={<Content />}></Route>
           <Route path="/roomDashboard/userAnalytics" element={<Studio />} />
         </Route>
-
-
-
       </Routes>
     </div>
   );

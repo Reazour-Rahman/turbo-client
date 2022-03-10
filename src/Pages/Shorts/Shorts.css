@@ -1,0 +1,17 @@
+.story-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.short-body {
+  /* z-index: 999;
+  position: absolute; */
+}
+
+.blogger-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
