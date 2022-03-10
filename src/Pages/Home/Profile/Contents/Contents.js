@@ -21,8 +21,8 @@ const Contents = (props) => {
     return (
         <Box style={{paddingLeft:"72px"}}>
             <ProfileHeader/>
-            <Grid sx={{ mb: '20px' }}>
-                <Typography style={{ fontWeight: 900 }}>
+            <Grid sx={{ mb: '20px', mt: '45px' }}>
+                <Typography style={{ fontWeight: 400, fontSize: 22 }}>
                     Videos
                 </Typography>
             </Grid>

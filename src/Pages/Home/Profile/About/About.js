@@ -5,20 +5,20 @@ import ProfileHeader from "../ProfileHeader/ProfileHeader";
 
 const About = () => {
     return (
-        <Box sx={{ mt: '30px' }} style={{paddingLeft:"72px"}}>
+        <Box style={{paddingLeft:"72px"}}>
             <ProfileHeader/>
             <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} sx={{ mb: '20px', mt: '30px' }}>
                     <Grid item xs={7}>
                         <Box>
-                            <Grid sx={{ mb: '20px' }}>
+                            <Grid >
                                 <Typography variant="h6">Description</Typography>
                             </Grid>
                             <Grid>
                                 <Typography>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed harum provident error et nihil modi eius molestiae aperiam quam, vel nemo itaque deleniti autem totam natus non? Perferendis, blanditiis ab?</Typography>
                             </Grid>
                         </Box>
-                        <Box sx={{ flexGrow: 1, mt: "50px" }}>
+                        <Box sx={{ flexGrow: 1,  }}>
                             <Grid sx={{ mb: '20px' }}>
                                 <Typography variant="h6">Link</Typography>
                             </Grid>

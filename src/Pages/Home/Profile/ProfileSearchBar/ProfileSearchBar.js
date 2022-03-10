@@ -141,7 +141,7 @@ export default function ProfileSearchBar() {
             color: "white",
           }}
         >
-          Subscibe
+          Follow
         </Button>
       </MenuItem>
     </Menu>
@@ -170,11 +170,11 @@ export default function ProfileSearchBar() {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                sx={{ display: { xs: "none", sm: "block", fontWeight: 500} }}
               >
                 ScereBro
               </Typography>
-              <Typography style={{ fontSize: 12 }}>
+              <Typography style={{ fontSize: 12, fontWeight: 500, color: "rgba(255, 255, 255, 0.823)" }}>
                 123234 Subscriber
               </Typography>
             </Box>
@@ -210,7 +210,7 @@ export default function ProfileSearchBar() {
                   color: "white",
                 }}
               >
-                Subscibe
+                Follow
               </Button>
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>

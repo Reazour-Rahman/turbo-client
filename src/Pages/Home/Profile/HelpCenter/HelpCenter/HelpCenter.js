@@ -9,12 +9,13 @@ import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import TextField from "@mui/material/TextField";
-import { Button, Divider, ListItemIcon, MenuItem } from "@mui/material";
+import { Button, Divider, Grid, ListItemIcon, MenuItem } from "@mui/material";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ChannelSetting from "../ChannelSetting/ChannelSetting";
 import useFirebase from "../../../../../Hooks/useFirebase";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: "absolute",
@@ -27,6 +28,8 @@ const style = {
   borderRadius: "15px",
   boxShadow: 24,
   p: 4,
+  backgroundColor: '#091a2b',
+  color: 'white'
 };
 
 const Search = styled("div")(({ theme }) => ({
@@ -79,7 +82,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
 
   /* const [title, setTitle] = useState("");
   const [description, setDescription] = useState(""); */
-  const user = useSelector((state) => state.firebase.user)
+  const { user } = useFirebase();
   const displayName = user?.displayName;
   const email = user?.email;
 
@@ -88,7 +91,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
     let userHelp = { ...data, displayName, email };
     console.log(userHelp);
 
-    fetch(`https://aqueous-tor-77774.herokuapp.com/userhelp`, {
+    fetch(`http://localhost:5000/userhelp`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -115,17 +118,31 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
         }}
       >
         <Fade in={openModal}>
+
           <Box sx={style}>
-            <Box sx={{ textAlign: "center", mb: 2 }}>
-              <Typography
-                sx={{ fontWeight: "bold" }}
-                id="transition-modal-title"
+            <Grid 
+            style={{ 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              marginBottom: '30px' 
+              }}>
+              <Button onClick={handleCloseModal}>
+                <ArrowBackIcon></ArrowBackIcon>
+              </Button>
+
+              <Typography 
+              sx={{ 
+                fontWeight: 'bold', 
+                color: 'rgba(255, 255, 255, 0.905)' 
+                }} 
                 variant="h4"
-                component="h2"
-              >
-                Help Center
+                >Help Center
               </Typography>
-            </Box>
+
+              <Button onClick={handleCloseModal}>
+                <CloseIcon></CloseIcon>
+              </Button>
+            </Grid>
             <Search sx={{ borderRadius: "20px" }}>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -136,58 +153,68 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
               />
             </Search>
             <Box sx={{ mt: 3 }}>
-              <Typography variant="h6" component="h2">
+              <Typography 
+              variant="h6" 
+              component="h2" 
+              sx={{ 
+                color: 'rgba(255, 255, 255, 0.905)' 
+                }}>
                 Popular help resources
               </Typography>
               <Divider />
               <Box sx={{ mt: 2 }}>
                 <Button
                   onClick={handleOpenSetting}
+                  sx={{ 
+                    textDecoration: "none", 
+                    color: "inherit" 
+                  }}
+                >
+                  <MenuItem sx={{ fontSize: 15, fontWeight: 400 }}>
+                    <ListItemIcon>
+                      <DescriptionIcon 
+                      sx={{ 
+                        color: "skyBlue", 
+                        fontSize: 18 
+                        }} />
+                    </ListItemIcon>
+                    Manage clannel settings
+                  </MenuItem>
+                </Button>
+                <Button
+                  onClick={handleOpenSetting}
+                  sx={{ 
+                    textDecoration: "none", 
+                    color: "inherit" 
+                }}
+                >
+                  <MenuItem sx={{ fontSize: 15, fontWeight: 400 }}>
+                    <ListItemIcon>
+                      <DescriptionIcon 
+                      sx={{ 
+                        color: "skyBlue", 
+                        fontSize: 18 
+                        }} />
+                    </ListItemIcon>
+                    Manage clannel settings
+                  </MenuItem>
+                </Button>
+                <Button
+                  onClick={handleOpenSetting}
                   sx={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <MenuItem sx={{ fontSize: 18 }}>
+                  <MenuItem sx={{ fontSize: 15, fontWeight: 400 }}>
                     <ListItemIcon>
-                      <DescriptionIcon sx={{ color: "skyBlue" }} />
+                      <DescriptionIcon 
+                      sx={{ 
+                        color: "skyBlue", 
+                        fontSize: 18 }} />
                     </ListItemIcon>
                     Manage clannel settings
                   </MenuItem>
                 </Button>
 
-                <Button
-                  onClick={handleOpenSetting}
-                  sx={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <MenuItem sx={{ fontSize: 18 }}>
-                    <ListItemIcon>
-                      <DescriptionIcon sx={{ color: "skyBlue" }} />
-                    </ListItemIcon>
-                    Manage clannel settings
-                  </MenuItem>
-                </Button>
 
-                <Button
-                  onClick={handleOpenSetting}
-                  sx={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <MenuItem sx={{ fontSize: 18 }}>
-                    <ListItemIcon>
-                      <DescriptionIcon sx={{ color: "skyBlue" }} />
-                    </ListItemIcon>
-                    Manage clannel settings
-                  </MenuItem>
-                </Button>
-
-                <Button
-                  onClick={handleOpenSetting}
-                  sx={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <MenuItem sx={{ fontSize: 18 }}>
-                    <ListItemIcon>
-                      <DescriptionIcon sx={{ color: "skyBlue" }} />
-                    </ListItemIcon>
-                    Manage clannel settings
-                  </MenuItem>
-                </Button>
               </Box>
               {/* :::::::::::::::::::::::::
                 form starts        
@@ -195,11 +222,12 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
               <form onSubmit={handleSubmit(handleModalSubmit)}>
                 <TextField
                   sx={{ width: "100%", mt: 2 }}
-                  id="outlined-basic"
+                  id="outlined-multiline-static"
                   label="Title"
                   variant="outlined"
                   name="problemTitle"
                   required
+                  multiline
                   //   onBlur={(e) => setTitle(e.target.value)}
                   {...register("title", { required: true })}
                 />
@@ -215,7 +243,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
                   required
                   {...register("description", { required: true })}
 
-                  //   onBlur={(e) => setDescription(e.target.value)}
+                //   onBlur={(e) => setDescription(e.target.value)}
                 />
                 <Button
                   sx={{ width: "100%", mt: 2 }}
@@ -234,7 +262,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
       </Modal>
       <ChannelSetting
         openSetting={openSetting}
-        handleCloseSetting={(e) => handleCloseSetting}
+        handleCloseSetting={handleCloseSetting}
       ></ChannelSetting>
     </div>
   );

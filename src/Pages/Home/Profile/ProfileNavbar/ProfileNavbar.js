@@ -16,7 +16,7 @@ const ProfileNavbar = () => {
             <Typography sx={{ marginRight: "25px" }}>
               <Link
                 to="/profile"
-                style={{ textDecoration: "none", color: "inherit" }}
+                style={{ textDecoration: "none", color: "inherit", fontWeight: 500 }}
               >
                 Home
               </Link>
@@ -24,7 +24,7 @@ const ProfileNavbar = () => {
             <Typography sx={{ marginRight: "25px" }}>
               <Link
                 to="/profile/content"
-                style={{ textDecoration: "none", color: "inherit" }}
+                style={{ textDecoration: "none", color: "inherit", fontWeight: 500 }}
               >
                 Contents
               </Link>
@@ -32,7 +32,7 @@ const ProfileNavbar = () => {
             <Typography sx={{ marginRight: "25px" }}>
               <Link
                 to="/profile/playlist"
-                style={{ textDecoration: "none", color: "inherit" }}
+                style={{ textDecoration: "none", color: "inherit", fontWeight: 500 }}
               >
                 Playlist
               </Link>
@@ -40,7 +40,7 @@ const ProfileNavbar = () => {
             <Typography sx={{ marginRight: "25px" }}>
               <Link
                 to="/profile/about"
-                style={{ textDecoration: "none", color: "inherit" }}
+                style={{ textDecoration: "none", color: "inherit", fontWeight: 500 }}
               >
                 About
               </Link>
@@ -48,7 +48,7 @@ const ProfileNavbar = () => {
             <Typography sx={{ marginRight: "25px" }}>
               <Link
                 to="/profile/amazon"
-                style={{ textDecoration: "none", color: "inherit" }}
+                style={{ textDecoration: "none", color: "inherit", fontWeight: 500 }}
               >
                 Amazon Products
               </Link>
