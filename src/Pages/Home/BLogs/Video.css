@@ -8,14 +8,11 @@
 .card-color {
   color: rgb(255, 255, 255) !important;
 }
-.date-color {
-  color: rgb(226, 226, 226) !important;
-}
+
 .card-hover:hover {
   background-color: rgb(30 30 30) !important;
 }
 .name-color {
-  color: rgb(255, 255, 255) !important;
   margin-top: 0px !important;
   display: flex;
   align-items: center;

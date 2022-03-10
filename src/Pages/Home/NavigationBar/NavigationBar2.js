@@ -25,16 +25,18 @@ const pages = [
   <PlayCircleIcon></PlayCircleIcon>,
   <WatchLaterIcon></WatchLaterIcon>,
 ];
+let theme;
+theme = localStorage.getItem("theme");
 
 const NavigationBar2 = ({ setFilter }) => {
   // console.log(setFilter);
   return (
     <AppBar
       position="static"
-      sx={{ marginBottom: "15px" }}
+      sx={{ marginBottom: "15px", marginTop:"15px" }}
       className="nav-color"
     >
-      <Container maxWidth="xl" style={{ backgroundColor: "#102841" }}>
+      <Container maxWidth="xl" id={ theme === "light" ? "moreLight" : "moreDark" }>
         <Toolbar disableGutters>
           {/* <Box sx={{  display:'flex'}} style={{height:"50px"}}>
             {pages.map((page) => (

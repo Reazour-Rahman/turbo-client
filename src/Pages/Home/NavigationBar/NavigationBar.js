@@ -23,6 +23,7 @@ import useFirebase from "../../../Hooks/useFirebase";
 import MenuBar from "../../MenuBar/MenuBar/MenuBar";
 import HomeSearch from "../../Search/HomeSearch/HomeSearch";
 import CreateProfile from "../Profile/CreateProfile/CreateProfile/CreateProfile";
+import SettingDrawer from "../../Shared/SettingDrawer.tsx";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -139,9 +140,11 @@ export default function NavigationBar() {
       </MenuItem>
     </Menu>
   );
+  let theme;
+  theme = localStorage.getItem("theme");
 
   return (
-    <Toolbar className="nav-color" sx={{ flexGrow: 1 }}>
+    <Toolbar id={ theme === "light" ? "moreLight" : "moreDark" } sx={{ flexGrow: 1 }}>
       <Typography
         variant="h6"
         noWrap
@@ -153,7 +156,11 @@ export default function NavigationBar() {
       <Box sx={{ flexGrow: 1 }}>
         <HomeSearch />
       </Box>
+
       <Box sx={{ flexGrow: 1 }} />
+
+        <SettingDrawer />
+
       <Box sx={{ display: "flex" }}>
         {!user?.email ? (
           <Button
