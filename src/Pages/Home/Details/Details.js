@@ -25,6 +25,7 @@ import "./skeleton/Skeleton.css";
 import LinearProgressWithLabel from "./LinearProgressWithLabel";
 import axios from "axios";
 import useFirebase from "../../../Hooks/useFirebase";
+import { useSelector } from "react-redux";
 
 const Details = () => {
   const { blogId } = useParams();
@@ -36,7 +37,7 @@ const Details = () => {
   const [allReadyLiked, setAllReadyLiked] = useState(false)
   const [rendering, setRendering] = useState(0)
   const [singleBlog, setSingleBlog] = useState({})
-  const {user} = useFirebase()
+  const user = useSelector((state) => state.firebase.user)
 
 
   useEffect(() => {

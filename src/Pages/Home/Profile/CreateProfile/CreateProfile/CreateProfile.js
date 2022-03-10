@@ -13,6 +13,7 @@ import useFirebase from '../../../../../Hooks/useFirebase';
 import swal from "sweetalert";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useSelector } from 'react-redux';
 
 
 
@@ -61,7 +62,7 @@ export default function CreateProfile({ handleOpenModal }) {
 /* :::::::::::::::::::::::::::::
 Send Data to Database
 :::::::::::::::::::::::::::::::*/
-const {user} = useFirebase();
+const user = useSelector((state) => state.firebase.user)
 
 const bloggerName = user.displayName;
 const bloggerEmail = user.email;

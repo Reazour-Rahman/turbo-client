@@ -11,12 +11,13 @@ import Fade from "@mui/material/Fade";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReplyIcon from "@mui/icons-material/Reply";
 import { grey } from "@mui/material/colors";
+import { useSelector } from "react-redux";
 
 const ariaLabel = { "aria-label": "description" };
 
 const Comment = ({ blogId, setBackendComment, backendComment }) => {
   const [comment, setComment] = useState("");
-  const { user } = useFirebase();
+  const user = useSelector((state) => state.firebase.user)
   const time = new Date().toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",

@@ -23,6 +23,7 @@ import useFirebase from "../../../Hooks/useFirebase";
 import MenuBar from "../../MenuBar/MenuBar/MenuBar";
 import HomeSearch from "../../Search/HomeSearch/HomeSearch";
 import CreateProfile from "../Profile/CreateProfile/CreateProfile/CreateProfile";
+import { useSelector } from "react-redux";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -64,9 +65,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function NavigationBar() {
+export default function NavigationBar({user}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -76,15 +77,10 @@ export default function NavigationBar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const { user, logOut } = useFirebase();
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
 
-  const handleLogOut = () => {
-    handleMenuClose();
-    logOut();
-  };
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -128,15 +124,6 @@ export default function NavigationBar() {
       >
         My account
       </MenuItem>
-      <MenuItem
-        sx={{ paddingLeft: "50px ", paddingRight: "50px ", fontSize: "18px" }}
-        onClick={handleLogOut}
-      >
-        <i
-          style={{ fontSize: "25px", color: "red", marginLeft: "10px" }}
-          className="fas fa-power-off"
-        ></i>
-      </MenuItem>
     </Menu>
   );
 
@@ -165,6 +152,7 @@ export default function NavigationBar() {
             variant="contained"
             size="small"
             onClick={handleOpen}
+            data-testid = "login-button"
           >
             Sign In
           </Button>

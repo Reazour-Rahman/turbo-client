@@ -29,11 +29,42 @@ import RoomDashboardHome from "./Pages/RoomDashboard/RoomDashboardHome";
 import Content from "./Pages/RoomDashboard/Contents/Content/Content";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import Register from "./Pages/Authentication/SignUp/Register";
-import React from "react";
+import React, { useEffect } from "react";
 import { Auth } from "./Pages/Dashboard/UsersMessage/message";
 import AdminRoute from "./Pages/PrivateRoute/AdminRoute";
-
+import useFirebase from "./Hooks/useFirebase";
+import { useDispatch, useSelector } from "react-redux";
+import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice";
 function App() {
+
+  const dispatch = useDispatch()
+  
+  const user = useSelector((state) => state.firebase.user)
+  const {onAuthStateChanged,getIdToken, auth } = useFirebase()
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        getIdToken(user)
+          .then(idToken => localStorage.setItem('idToken', idToken));
+        // setUser(user);
+
+        // console.log(user);
+        dispatch(setUser(user))
+      } else {
+        // nothing was here 
+        dispatch(setUser({}));
+      }
+      dispatch(setIsLoading(false));
+    });
+  }, [auth, dispatch])
+
+  useEffect( () => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+    .then(res => res.json())
+    .then(data =>  dispatch(setAdmin(data?.admin)))
+  },[user?.email])
+  
   return (
     <div className="App">
       <Routes>

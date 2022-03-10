@@ -35,6 +35,7 @@ import "./Drawer.css";
 import NavigationBar from "../Home/NavigationBar/NavigationBar";
 import Home from "../Home/Home";
 import Details from "../Home/Details/Details";
+import { useSelector } from "react-redux";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -105,6 +106,7 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const user = useSelector((state) => state.firebase.user)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -137,7 +139,7 @@ export default function MiniDrawer() {
           {/* <img width={150} src={logo} alt="" /> */}
           {/* </Typography> */}
           <div></div>
-          <NavigationBar></NavigationBar>
+          <NavigationBar user ={user}></NavigationBar>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open} className="side-navigation">

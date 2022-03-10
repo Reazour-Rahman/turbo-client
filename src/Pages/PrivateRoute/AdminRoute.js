@@ -50,7 +50,7 @@ import { CircularProgress, Stack } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 const AdminRoute = ({children, ...rest}) => {
-    let {user} = useFirebase();
+    const user = useSelector((state) => state.firebase.user)
     const admin = useSelector((state) => state.firebase.admin)
     const isLoading = useSelector((state) => state.firebase.isLoading)
     let location = useLocation();

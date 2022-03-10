@@ -5,6 +5,7 @@ import useFirebase from '../../Hooks/useFirebase'
 import profile from '../../assets/default/profile.png'
 import { TextField } from '@mui/material';
 import logo from '../../assets/logo.png'
+import { useSelector } from 'react-redux';
 const messages = [
     {email : 'alexrabbi111@gmail.com', name:'Reaz', messages : 'Hi How are you'},
     {email : 'md.ravi78@gmail.com', name:'fahad', messages : 'Fine'},
@@ -16,7 +17,7 @@ const messages = [
 ]
 
 const Message = () => {
-    const {user} = useFirebase()
+    const user = useSelector((state) => state.firebase.user)
     return (
         <div>
             <Box >

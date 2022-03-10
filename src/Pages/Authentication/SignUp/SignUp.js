@@ -35,7 +35,7 @@ const SignUp = ({handleClose, open}) => {
     const {modalBox} = useStyle()
     
 
-    const {user} = useFirebase()
+    // const {user} = useFirebase()
     return (
       <div>
       <Modal

@@ -14,6 +14,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import ChannelSetting from "../ChannelSetting/ChannelSetting";
 import useFirebase from "../../../../../Hooks/useFirebase";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 
 const style = {
   position: "absolute",
@@ -78,7 +79,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
 
   /* const [title, setTitle] = useState("");
   const [description, setDescription] = useState(""); */
-  const { user } = useFirebase();
+  const user = useSelector((state) => state.firebase.user)
   const displayName = user?.displayName;
   const email = user?.email;
 

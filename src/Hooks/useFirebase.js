@@ -35,14 +35,14 @@ const logout = () => {
   window.location.reload();
 }
 const useFirebase = () => {
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.firebase.user)
+  // const dispatch = useDispatch()
+  // const user = useSelector((state) => state.firebase.user)
   // const navigate = useNavigate()
 
   // console.log(user);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
-  const [isSignup, setIsSignup] = useState(true);
+  // const [isSignup, setIsSignup] = useState(true);
 
 
 
@@ -51,124 +51,29 @@ const useFirebase = () => {
     return signInWithPopup(auth, googleProvider)
   };
 
-  const createAccountWithGoogle = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+  // const createAccountWithGoogle = (email, password) => {
+  //   return createUserWithEmailAndPassword(auth, email, password);
+  // };
 
   const signUpWithEmailAndPass = (name, email, password, image, mobileNumber, gender, url,  handleClose) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async(userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        const URL = 'http://localhost:5000/auth';
-            // const URL = 'https://medical-pager.herokuapp.com/auth';
-            const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
-                username : email, password : password, fullName: name, phoneNumber : mobileNumber, avatarURL : image,
-            });
-    
-            cookies.set('token', token);
-            cookies.set('username', email);
-            cookies.set('fullName', fullName);
-            cookies.set('userId', userId);
-    
-            if(isSignup) {
-                cookies.set('phoneNumber', mobileNumber);
-                cookies.set('avatarURL', image);
-                cookies.set('hashedPassword', hashedPassword);
-            }
-    
-        dispatch(setUser(user))
-    
-        handleClose()
-        updateProfile(auth.currentUser, {
-          displayName: name, phoneNumber : mobileNumber,
-          photoURL : image
-        })
-
-          .then(() => {
-            saveUser(email, name, 'POST')
-            dispatch(setErrorMessage(''));
-            
-          })
-          .catch((error) => {
-            dispatch(setErrorMessage(error.errorMessage));
-          });
-        // navigate(url)
-        
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        dispatch(setErrorMessage(errorMessage))
-      })
-      .finally(async() =>{ 
-        dispatch(setIsLoading(false))    
-      });
+    return createUserWithEmailAndPassword(auth, email, password)
   }
 
   const loginWithEmailAndPassword = (email, password,handleClose) => {
-   
-     signInWithEmailAndPassword(auth, email, password)
-     .then(async(res) => {
-
-      const URL = 'http://localhost:5000/auth';
-      // const URL = 'https://medical-pager.herokuapp.com/auth';
-      const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/login`, {
-          username : email, password : password, 
-      });
-
-      cookies.set('token', token);
-      cookies.set('username', email);
-      cookies.set('fullName', fullName);
-      cookies.set('userId', userId);
-
-
-      dispatch(setUser(res.user));
-      dispatch(setIsLogin(false));
-    
-      // navigate(url);
-      dispatch(setErrorMessage(""));
-      handleClose();
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      dispatch(setErrorMessage(errorMessage));
-      dispatch(setIsLogin(false));
-    })
-    .finally(() => {
-      dispatch(setIsLoading(false));
-    });
+   return signInWithEmailAndPassword(auth, email, password)
   };
 
 
 
   // checking admin
 
-  useEffect( () => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
-    .then(res => res.json())
-    .then(data =>  dispatch(setAdmin(data?.admin)))
-  },[user?.email])
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        getIdToken(user)
-          .then(idToken => localStorage.setItem('idToken', idToken));
-        // setUser(user);
+  // useEffect( () => {
+  //   fetch(`http://localhost:5000/users/${user?.email}`)
+  //   .then(res => res.json())
+  //   .then(data =>  dispatch(setAdmin(data?.admin)))
+  // },[user?.email])
 
 
-
-        // console.log(user);
-        dispatch(setUser(user))
-      } else {
-        // nothing was here 
-        setUser({});
-      }
-      dispatch(setIsLoading(false));
-    });
-  }, [auth, dispatch])
 
   const saveUser = (email, name, method) => {
     const user = { email, name, room:[] }
@@ -181,28 +86,18 @@ const useFirebase = () => {
     })
   }
 
-  const logOut = () => {
-    signOut(auth)
-      .then(() => {
-        dispatch(setUser({}));
-        logout()
-      })
-      .catch((error) => {
-        // An error happened.
-      })
-      .finally(() => {
-        dispatch(setIsLoading(false));
-      });
-  };
+ 
 
   return {
     signInWithGoogle,
-    createAccountWithGoogle,
+    updateProfile,
+    auth,
     loginWithEmailAndPassword,
-    logOut,
+    signOut,
     signUpWithEmailAndPass,
     saveUser,
-    user
+    onAuthStateChanged,
+    getIdToken
   };
 };
 

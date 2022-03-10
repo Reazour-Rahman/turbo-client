@@ -88,7 +88,7 @@ import Details from '../Home/Details/Details';
 import MiniDrawer from '../Shared/MiniDrawer';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const {user} = useFirebase()
+    const user = useSelector((state) => state.firebase.user)
     const [open, setOpen] = React.useState(true);
     const handleOpen = () => setOpen(true);
     const navigate = useNavigate()
