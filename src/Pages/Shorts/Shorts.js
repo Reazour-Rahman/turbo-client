@@ -5,6 +5,8 @@ import shortsData from "./FakeShortsData/FakeShortsData";
 
 const Shorts = () => {
   // console.log(shortsData);
+  for (const shortData of shortsData) {
+  }
   return (
     <div>
       <h1>this is shorts</h1>
