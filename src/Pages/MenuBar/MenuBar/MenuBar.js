@@ -25,6 +25,9 @@ import HelpCenter from "../../Home/Profile/HelpCenter/HelpCenter/HelpCenter";
 import Cookies from "universal-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsLoading, setUser } from "../../../reducers/slices/firebaseSlice";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import WorkspacesIcon from '@mui/icons-material/Workspaces';
+import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 
 const cookies = new Cookies();
 
@@ -173,10 +176,19 @@ export default function MenuBar({ handleClickOpen }) {
           </MenuItem>
 
           <Divider />
+          <Link style={{ textDecoration: "none" }} to="/dashboard">
+            <MenuItem className="menu-style" style={style}>
+              <ListItemIcon style={style}>
+                <AdminPanelSettingsIcon style={iconStyle} />
+              </ListItemIcon>
+              Admin Panel
+            </MenuItem>
+          </Link>
+
           <Link style={{ textDecoration: "none" }} to="/profile">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <ManageAccountsIcon style={iconStyle} />
+                <WorkspacesIcon style={iconStyle} />
               </ListItemIcon>
               Your room
             </MenuItem>
@@ -185,7 +197,7 @@ export default function MenuBar({ handleClickOpen }) {
           <Button onClick={handleClickOpen} style={{ textDecoration: "none", color: '#f1f8e9'}}>
             <MenuItem className="menu-style" sx={{fontSize: 14,}}>
               <ListItemIcon style={style}>
-                <ManageAccountsIcon style={iconStyle} />
+                <CreateNewFolderIcon style={iconStyle} />
               </ListItemIcon>
               Create room
             </MenuItem>
