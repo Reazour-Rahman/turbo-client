@@ -129,7 +129,7 @@ function RoomDashboardContent() {
                             </Badge>
                         </IconButton>
                         <IconButton color="inherit">
-                            <UploadVideoModal/>
+                            <UploadVideoModal />
                         </IconButton>
                     </Toolbar>
                 </AppBar>
@@ -165,9 +165,9 @@ function RoomDashboardContent() {
                         flexGrow: 1,
                         height: '100vh',
                         overflow: 'auto',
-                        
+
                     }}
-                    style={{backgroundColor:"rgb(9 26 43)"}}
+                    style={{ backgroundColor: "rgb(9 26 43)" }}
                 >
                     <Toolbar />
 
