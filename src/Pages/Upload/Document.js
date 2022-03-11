@@ -211,7 +211,7 @@ const { register, handleSubmit, reset, trigger } = useForm();
 
 const onSubmit = (data) => {
   axios
-    .post("https://aqueous-tor-77774.herokuapp.com/blogs", data, (data.status = "pending", 
+    .post("https://aqueous-chamber-45567.herokuapp.com/blogs", data, (data.status = "pending", 
     data.video = videoSrc, 
     data.thumbnail= image, 
     data.category=personName,

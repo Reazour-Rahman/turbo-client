@@ -44,7 +44,7 @@ const Details = () => {
     setLoader(true);
     setTimeout(async () => {
       const response = await fetch(
-        "http://localhost:5000/blogs/"
+        "https://aqueous-chamber-45567.herokuapp.com/blogs/"
       );
       const data = await response.json();
       setLoader(false);
@@ -58,7 +58,7 @@ const Details = () => {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${blogId}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs/${blogId}`)
     .then(res => res.json())
     .then(data => setBackendComment(data.comment))
   },[blogId])
@@ -82,7 +82,7 @@ const Details = () => {
 
 
     useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${blogId}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs/${blogId}`)
     .then(res => res.json())
     .then(data => {
       setSingleBlog(data)

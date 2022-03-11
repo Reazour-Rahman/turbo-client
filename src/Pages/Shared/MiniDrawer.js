@@ -37,6 +37,8 @@ import Home from "../Home/Home";
 import Details from "../Home/Details/Details";
 import DarkMode from "../Theme/DarkMode";
 import { useSelector } from "react-redux";
+import SportsTennisIcon from '@mui/icons-material/SportsTennis';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -180,6 +182,23 @@ export default function MiniDrawer() {
                 <ExploreIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
               </ListItemIcon>
               <ListItemText primary={"Explore"} />
+            </ListItem>
+          </NavLink>
+
+          <NavLink className="nav-btn" id={mode=== "light" ? "black" : "darkLight" }  to="/candyBlock">
+            <ListItem className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } button>
+              <ListItemIcon className="ms-2 fs-5">
+                <ConnectWithoutContactIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
+              </ListItemIcon>
+              <ListItemText primary={"Social Game"} />
+            </ListItem>
+          </NavLink>
+          <NavLink className="nav-btn" id={mode=== "light" ? "black" : "darkLight" }  to="/breakOut">
+            <ListItem className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } button>
+              <ListItemIcon className="ms-2 fs-5">
+                <SportsTennisIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
+              </ListItemIcon>
+              <ListItemText primary={"Break It Out"} />
             </ListItem>
           </NavLink>
 

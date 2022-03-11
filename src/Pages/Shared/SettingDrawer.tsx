@@ -80,6 +80,7 @@ export default function SettingDrawer() {
           </IconButton>
 
           <SwipeableDrawer
+          
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
@@ -91,7 +92,7 @@ export default function SettingDrawer() {
            <br />
            <Divider />
 
-           <div className="top-setting">
+           <div className="top-setting" id={ theme === "light" ? "lightest" : "darkish" }>
                 <IconButton onClick={toggleDrawer(anchor, false)} aria-label="setting">
                     <ClearIcon id={ theme === "light" ? "black" : "darkLight" } fontSize="inherit" sx={{ width: 32, height: 32}}/>
                 </IconButton>
@@ -100,7 +101,7 @@ export default function SettingDrawer() {
            <Divider />
 
 
-           <div className="mode-setting">
+           <div className="mode-setting" id={ theme === "light" ? "lightest" : "darkish" } style={{height:"100vh"}}>
                <DarkMode/>
                <p id={ theme === "light" ? "black" : "darkLight" }> {theme} Mode</p>
            </div>

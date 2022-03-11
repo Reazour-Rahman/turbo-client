@@ -55,32 +55,34 @@ function preventDefault(event) {
 }
 
 export default function BloggerInfo() {
+    let theme;
+    theme= localStorage.getItem("theme")
     return (
         <React.Fragment>
-            <Title>Your Videos</Title>
-            <Table size="small">
+            <Title id={ theme === "light" ? "black" : "darkLight" }>Your Videos</Title>
+            <Table size="small" >
                 <TableHead>
-                    <TableRow>
-                        <TableCell>Upload Date</TableCell>
-                        <TableCell>Title</TableCell>
-                        <TableCell>Category</TableCell>
-                        <TableCell>Views</TableCell>
+                    <TableRow >
+                        <TableCell id={ theme === "light" ? "black" : "darkLight" }>Upload Date</TableCell>
+                        <TableCell id={ theme === "light" ? "black" : "darkLight" }>Title</TableCell>
+                        <TableCell id={ theme === "light" ? "black" : "darkLight" }>Category</TableCell>
+                        <TableCell id={ theme === "light" ? "black" : "darkLight" }>Views</TableCell>
 
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell>{row.date}</TableCell>
-                            <TableCell>{row.title}</TableCell>
-                            <TableCell>{row.category}</TableCell>
-                            <TableCell>{row.views}</TableCell>
+                            <TableCell id={ theme === "light" ? "black" : "darkLight" }>{row.date}</TableCell>
+                            <TableCell id={ theme === "light" ? "black" : "darkLight" }>{row.title}</TableCell>
+                            <TableCell id={ theme === "light" ? "black" : "darkLight" }>{row.category}</TableCell>
+                            <TableCell id={ theme === "light" ? "black" : "darkLight" }>{row.views}</TableCell>
 
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
-            <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
+            <Link id={ theme === "light" ? "black" : "darkLight" } href="#" onClick={preventDefault} sx={{ mt: 3 }}>
                 See more Info
             </Link>
         </React.Fragment>

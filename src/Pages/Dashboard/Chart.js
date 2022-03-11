@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
+
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
 
@@ -21,13 +21,16 @@ const data = [
 ];
 
 export default function Chart() {
-    const theme = useTheme();
+    // const theme = useTheme();
+    let mode;
+    mode = localStorage.getItem("theme")
 
     return (
         <React.Fragment>
             <Title>Today</Title>
             <ResponsiveContainer>
                 <LineChart
+                
                     data={data}
                     margin={{
                         top: 16,
@@ -37,31 +40,35 @@ export default function Chart() {
                     }}
                 >
                     <XAxis
+                    id={ mode === "light" ? "black" : "darkLight" }
                         dataKey="time"
-                        stroke={theme.palette.text.secondary}
-                        style={theme.typography.body2}
+                        // stroke={theme.palette.text.secondary}
+                        // style={theme.typography.body2}
                     />
                     <YAxis
-                        stroke={theme.palette.text.secondary}
-                        style={theme.typography.body2}
+                    id={ mode === "light" ? "black" : "darkLight" }
+                        // stroke={theme.palette.text.secondary}
+                        // style={theme.typography.body2}
                     >
                         <Label
+                        id={ mode === "light" ? "black" : "darkLight" }
                             angle={270}
                             position="left"
                             style={{
                                 textAnchor: 'middle',
-                                fill: theme.palette.text.primary,
-                                ...theme.typography.body1,
+                                // fill: theme.palette.text.primary,
+                                // ...theme.typography.body1,
                             }}
                         >
                             Today Views
                         </Label>
                     </YAxis>
                     <Line
+                    id={ mode === "light" ? "black" : "darkLight" }
                         isAnimationActive={false}
                         type="monotone"
                         dataKey="amount"
-                        stroke={theme.palette.primary.main}
+                        // stroke={theme.palette.primary.main}
                         dot={false}
                     />
                 </LineChart>

@@ -8,17 +8,19 @@ function preventDefault(event) {
 }
 
 export default function TotalViews() {
+    let theme;
+    theme= localStorage.getItem("theme")
     return (
         <React.Fragment>
-            <Title>Total views</Title>
-            <Typography component="p" variant="h4">
+            <Title id={ theme === "light" ? "black" : "darkLight" }>Total views</Title>
+            <Typography component="p" variant="h4" id={ theme === "light" ? "black" : "darkLight" }>
                 5600
             </Typography>
-            <Typography color="text.secondary" sx={{ flex: 1 }}>
+            <Typography id={ theme === "light" ? "black" : "darkLight" } sx={{ flex: 1 }}>
                 till 09 February,2022
             </Typography>
             <div>
-                <Link color="primary" href="#" onClick={preventDefault}>
+                <Link id={ theme === "light" ? "black" : "darkLight" } href="#" onClick={preventDefault}>
                     View balance
                 </Link>
             </div>

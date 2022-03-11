@@ -148,7 +148,7 @@ const Reports = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    fetch(`https://aqueous-tor-77774.herokuapp.com/userhelp`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/userhelp`)
       .then((res) => res.json())
       .then((data) => setMessages(data));
   }, []);
