@@ -49,7 +49,7 @@ const Details = () => {
       const data = await response.json();
       setLoader(false);
       setProducts(data.blogs);
-    }, 4000);
+    }, );
   }, []);
   
   const poster = "https://wallpapercave.com/wp/wp6543230.jpg";
