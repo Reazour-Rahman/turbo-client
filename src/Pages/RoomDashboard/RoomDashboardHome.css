@@ -39,13 +39,13 @@ a {
   width: 100%;
 }
 
-/* 1st Column /
+/* 1st Column  */
 .first-column-size {
   width: 100%;
   max-height: 300px;
 }
 
-/ 3rd cloumn */
+/* 3rd cloumn  */
 .News-img {
   max-height: 150px;
   margin-bottom: 8px;
@@ -58,6 +58,6 @@ a {
   height: 200px;
   margin-bottom: 8px;
 }
-.hr{
+.hr {
   background-color: black !important;
 }
