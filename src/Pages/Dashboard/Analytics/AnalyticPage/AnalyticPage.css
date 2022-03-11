@@ -10,13 +10,13 @@
 }
 
 .visited-pages{
-    background-color: #283142;
+    background-color: rgb(16 40 65);
     border-radius: 10px;
     padding: 20px;
 }
 
 .media-pages{
-    background-color: #283142;
+    background-color: rgb(16 40 65);
     border-radius: 10px;
     padding: 20px;
 }
