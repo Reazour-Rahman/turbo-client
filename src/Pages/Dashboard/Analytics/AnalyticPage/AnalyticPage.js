@@ -16,7 +16,7 @@ const AnalyticPage = () => {
                         <div className="room">
                             <div>
                                 <p className="p-header">Home</p>
-                                <p>/app/home</p>
+                                <p className="p-link">dashboard/home</p>
                             </div>
                             <div>
                                 <p className="p-view">2342</p>
@@ -26,8 +26,8 @@ const AnalyticPage = () => {
 
                         <div className="room">
                             <div>
-                                <p className="p-header">Home</p>
-                                <p>/app/home</p>
+                                <p className="p-header">Room</p>
+                                <p className="p-link">dashboard/room</p>
                             </div>
                             <div>
                                 <p className="p-view">2342</p>
@@ -37,8 +37,8 @@ const AnalyticPage = () => {
 
                         <div className="room">
                             <div>
-                                <p className="p-header">Home</p>
-                                <p>/app/home</p>
+                                <p className="p-header">Message</p>
+                                <p className="p-link">dashboard/message</p>
                             </div>
                             <div>
                                 <p className="p-view">2342</p>
@@ -48,8 +48,8 @@ const AnalyticPage = () => {
 
                         <div className="room">
                             <div>
-                                <p className="p-header">Home</p>
-                                <p>/app/home</p>
+                                <p className="p-header">Game</p>
+                                <p className="p-link">dashboard/game</p>
                             </div>
                             <div>
                                 <p className="p-view">2342</p>
@@ -73,7 +73,7 @@ const AnalyticPage = () => {
                                 </div>
                                 <div>
                                 <p className="p-header">Facebook</p>
-                                <p>Total: 342</p>
+                                <p className="p-count">Total: 342</p>
                                 </div>
                             </div>
                             <div>
@@ -88,7 +88,7 @@ const AnalyticPage = () => {
                                 </div>
                                 <div>
                                 <p className="p-header">Twitter</p>
-                                <p>Total: 342</p>
+                                <p className="p-count">Total: 342</p>
                                 </div>
                             </div>
                             <div>
@@ -103,7 +103,7 @@ const AnalyticPage = () => {
                                 </div>
                                 <div>
                                 <p className="p-header">YouTube</p>
-                                <p>Total: 342</p>
+                                <p className="p-count">Total: 342</p>
                                 </div>
                             </div>
                             <div>
@@ -118,7 +118,7 @@ const AnalyticPage = () => {
                                 </div>
                                 <div>
                                 <p className="p-header">LinkedIn</p>
-                                <p>Total: 342</p>
+                                <p className="p-count">Total: 342</p>
                                 </div>
                             </div>
                             <div>

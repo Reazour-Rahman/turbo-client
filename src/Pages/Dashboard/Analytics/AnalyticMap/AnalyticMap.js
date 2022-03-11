@@ -8,7 +8,7 @@ const AnalyticMap = () => {
             <div className="map">
                 <div className="pre">
                     <div>
-                        <h2 className="header">Entrance of region</h2>
+                        <h6 className="header">Entrance of region</h6>
                     </div>
                     <div className="country-persentence">
                         <div className="throat">

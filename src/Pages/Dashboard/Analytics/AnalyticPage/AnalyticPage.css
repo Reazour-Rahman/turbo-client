@@ -32,9 +32,17 @@
 }
 
 .p-header{
-    font-size:20px;
-    font-weight: 700;
+    font-size:18px;
+    
     color: #D6D7DC;
+}
+
+.p-link{
+    color:#6c7d9d
+}
+
+.p-count{
+    color:#b1bdd3
 }
 
 .p-view{
