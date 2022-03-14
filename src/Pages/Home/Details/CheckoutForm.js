@@ -54,7 +54,7 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
     });
 
     if (error) {
-      setError(error.message);
+      setError(error.message + "Please input the amount again and press enter");
       setSuccess("");
     } else {
       setError("");
@@ -75,7 +75,9 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
       });
 
     if (intentError) {
-      setError(intentError.message);
+      setError(
+        intentError.message + "Please input the amount again and press enter"
+      );
       setSuccess("");
     } else {
       setError("");
@@ -100,7 +102,12 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
         body: JSON.stringify(payment),
       })
         .then((res) => res.json())
-        .then((data) => handleClose());
+        .then((data) => {
+          alert("you donated successfully");
+          if (alert) {
+            handleClose();
+          }
+        });
     }
   };
 
@@ -141,9 +148,14 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
           }}
         />
         {processing ? (
-          <CircularProgress />
+          <CircularProgress style={{ display: "block", margin: "10px auto" }} />
         ) : (
-          <Button variant="outlined" type="submit" disabled={!stripe}>
+          <Button
+            variant="content"
+            type="submit"
+            disabled={!stripe}
+            style={{ display: "block", margin: "10px auto", color: "green" }}
+          >
             Donate
           </Button>
         )}
