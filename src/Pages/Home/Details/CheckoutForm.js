@@ -1,6 +1,6 @@
 import { Button, CircularProgress } from "@material-ui/core";
 import { Typography } from "@mui/material";
-import { padding } from "@mui/system";
+
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
@@ -22,7 +22,7 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
   let donation = {};
 
   const handleDonation = (e) => {
-    donation["amount"] = parseInt(donateRef.current.value);
+    donation["amount"] = parseInt(donateRef.current?.value);
     console.log(donation, typeof donation.amount);
     axios
       .post("http://localhost:5000/create-payment-intent", {
@@ -90,6 +90,7 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
         amount: paymentIntent.amount,
         trasaction: paymentIntent.client_secret,
         doner: displayName,
+        email: user.email,
         created: paymentIntent.created,
         last4: paymentMethod.last4,
       };
