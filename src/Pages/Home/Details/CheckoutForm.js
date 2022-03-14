@@ -54,7 +54,7 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
     });
 
     if (error) {
-      setError(error.message + "Please input the amount again and press enter");
+      setError(error.message);
       setSuccess("");
     } else {
       setError("");
@@ -75,9 +75,7 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
       });
 
     if (intentError) {
-      setError(
-        intentError.message + "Please input the amount again and press enter"
-      );
+      setError(intentError.message);
       setSuccess("");
     } else {
       setError("");
