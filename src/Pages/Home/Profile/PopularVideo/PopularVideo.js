@@ -3,7 +3,7 @@ import React from 'react';
 import ContentVideos from '../Videos/ContentVideos/ContentVideos';
 
 const PopularVideo = (props) => {
-    const { _id, title, video, bloggerName, uploadTime } =
+    const { _id, title, video, bloggerName, uploadTime ,thumbnail} =
         props.popularVideo;
     return (
         <Grid item xs={2} sm={4} md={4}>
@@ -11,7 +11,7 @@ const PopularVideo = (props) => {
                 <Box>
                     <Card className="card-bg">
                         <CardActionArea>
-                            <ContentVideos video={video}></ContentVideos>
+                            <ContentVideos video={video} thumbnail ={thumbnail}></ContentVideos>
                             <Link to={`details/${_id}`} style={{ textDecoration: "none", fontWeight: 500 }}>
                                 <CardContent>
                                     <Typography
