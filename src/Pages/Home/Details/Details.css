@@ -1,4 +1,3 @@
-
 .nav {
   display: flex;
   justify-content: center;
@@ -59,18 +58,16 @@
   margin: 4px;
 }
 
-
-
 .skeleton {
-  opacity: .7;
+  opacity: 0.7;
   animation: skeleton-loading 1s linear infinite alternate;
 }
 
 .skeleton-text {
   width: 100%;
-  height: .5rem;
-  margin-bottom: .25rem;
-  border-radius: .125rem;
+  height: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0.125rem;
 }
 
 .skeleton-text:last-child {
@@ -88,10 +85,6 @@
   }
 }
 
-
-
-
-
 .grid {
   display: grid;
   gap: 1rem;
@@ -101,7 +94,8 @@
 
 .card {
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   padding: 16px;
   border-radius: 4px;
 }
@@ -130,4 +124,14 @@
   text-overflow: ellipsis;
   overflow: hidden;
   flex-grow: 1;
+}
+
+.amount-input {
+  width: 100%;
+}
+.ElementsApp .InputElement {
+  background: #fff !important;
+}
+.css-1wnsr1i {
+  width: 50% !important;
 }

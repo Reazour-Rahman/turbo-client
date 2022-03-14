@@ -16,20 +16,16 @@ const Blogs = ({ text }) => {
     setLoading(true);
     const blogUrl = `https://aqueous-tor-77774.herokuapp.com/blogs`;
 
-      fetch(blogUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setLoading(false);
-          setBlogs(data.blogs)
-        });
-        
-
+    fetch(blogUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+        setBlogs(data.blogs);
+      });
   }, []);
   console.log(blogs);
 
-
-
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
   // the search result
   const [foundUsers, setFoundUsers] = useState(blogs);
@@ -37,22 +33,19 @@ const Blogs = ({ text }) => {
   // const filter = (e) => {
   //   const keyword = e.target.value;
 
-    if (text !== '') {
-      const results = blogs.filter((user) => {
+  if (text !== "") {
+    const results = blogs.filter((user) => {
+      return user.title.toLowerCase().startsWith(text.toLowerCase());
+      // Use the toLowerCase() method to make it case-insensitive
+    });
+    setFoundUsers(results);
+  } else {
+    setFoundUsers(blogs);
+    // If the text field is empty, show all users
+  }
 
-        return user.title.toLowerCase().startsWith(text.toLowerCase());
-        // Use the toLowerCase() method to make it case-insensitive
-      });
-      setFoundUsers(results);
-      
-    } else {
-      setFoundUsers(blogs);
-      // If the text field is empty, show all users
-    }
-
-    setName(text);
+  setName(text);
   // };
-
 
   return (
     <div>
