@@ -5,19 +5,34 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
+const CheckoutForm = ({
+  bloggerName,
+  blogId,
+  user,
+  handleClose,
+  bloggerEmail,
+  blogTitle,
+  bloggerPhoto,
+}) => {
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
 
   const displayName = user.displayName;
-  console.log(blogId);
+  // console.log(blogId);
 
   const stripe = useStripe();
   const elements = useElements();
   const donateRef = useRef();
   const cardRef = useRef();
+
+  const time = new Date().toLocaleString("en-US", {
+    dateStyle: "short",
+    timeStyle: "short",
+    hour12: false,
+  });
+  console.log(time, typeof time);
 
   let donation = {};
 
@@ -83,15 +98,29 @@ const CheckoutForm = ({ bloggerName, blogId, user, handleClose }) => {
       setSuccess("Your payment processed successfully");
       setProcessing(false);
 
-      const url = `http://localhost:5000/blogs/payment/${blogId}`;
+      const url = `http://localhost:5000/blogs/payment/${bloggerEmail}`;
       const payment = {
         amount: paymentIntent.amount,
         trasaction: paymentIntent.client_secret,
         doner: displayName,
         email: user.email,
+        bloggerName: bloggerName,
+        blogTitle: blogTitle,
+        blogId: blogId,
+        bloggerPhoto: bloggerPhoto,
         created: paymentIntent.created,
         last4: paymentMethod.last4,
+        time: new Date().toLocaleString("en-US", {
+          dateStyle: "medium",
+        }),
+        date: new Date().toLocaleString("en-US", {
+          dateStyle: "short",
+          timeStyle: "short",
+          hour12: false,
+        }),
       };
+
+      console.log(payment);
 
       fetch(url, {
         method: "PUT",

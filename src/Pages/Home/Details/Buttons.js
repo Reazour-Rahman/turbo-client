@@ -23,6 +23,9 @@ const Buttons = ({
   allLikers,
   allReadyLiked,
   setRendering,
+  bloggerEmail,
+  blogTitle,
+  bloggerPhoto,
 }) => {
   // const [liked, setLiked] = useState(allReadyLiked)
   // const [likeCount, setLikeCount] = useState(count)
@@ -34,8 +37,8 @@ const Buttons = ({
   const [liker, setLiker] = useState([]);
   const [effectRender, setEffectRender] = useState(0);
 
-  console.log(rendering, likeCount);
-
+  // console.log(rendering, likeCount);
+  // console.log(bloggerEmail);
   useEffect(() => {
     if (allReadyLiked) {
       setLike(allReadyLiked);
@@ -171,6 +174,9 @@ const Buttons = ({
                 blogId={blogId}
                 user={user}
                 handleClose={handleClose}
+                bloggerEmail={bloggerEmail}
+                blogTitle={blogTitle}
+                bloggerPhoto={bloggerPhoto}
               ></Payment>
             </Modal>
 

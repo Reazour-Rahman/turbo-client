@@ -8,7 +8,16 @@ import CheckoutForm from "./CheckoutForm";
 const stripePromise = loadStripe(
   "pk_test_51KbxEzCVVcBNgjD55ZRIduAmTFUc9CMNwbyAbNZ2ov35HLiPvW89rPMSvNtrTG6xSFOMqIXxmkxIAFYNZ5ailyni00YSCLYXsR"
 );
-const Payment = ({ style, bloggerName, blogId, user, handleClose }) => {
+const Payment = ({
+  style,
+  bloggerName,
+  blogId,
+  user,
+  handleClose,
+  bloggerEmail,
+  blogTitle,
+  bloggerPhoto,
+}) => {
   return (
     <Box sx={style}>
       <Typography id="modal-modal-title">Donate {bloggerName}</Typography>
@@ -19,6 +28,9 @@ const Payment = ({ style, bloggerName, blogId, user, handleClose }) => {
           blogId={blogId}
           user={user}
           handleClose={handleClose}
+          bloggerEmail={bloggerEmail}
+          blogTitle={blogTitle}
+          bloggerPhoto={bloggerPhoto}
         />
       </Elements>
 

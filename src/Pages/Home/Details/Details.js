@@ -30,27 +30,24 @@ const Details = () => {
   const { blogId } = useParams();
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(false);
-  const [backendComment , setBackendComment] = useState([])
-  const [count, setCount] = useState(0)
-  const [allLikers, setAllLikers] = useState([])
-  const [allReadyLiked, setAllReadyLiked] = useState(false)
-  const [rendering, setRendering] = useState(0)
-  const [singleBlog, setSingleBlog] = useState({})
-  const {user} = useFirebase()
-
+  const [backendComment, setBackendComment] = useState([]);
+  const [count, setCount] = useState(0);
+  const [allLikers, setAllLikers] = useState([]);
+  const [allReadyLiked, setAllReadyLiked] = useState(false);
+  const [rendering, setRendering] = useState(0);
+  const [singleBlog, setSingleBlog] = useState({});
+  const { user } = useFirebase();
 
   useEffect(() => {
     setLoader(true);
     setTimeout(async () => {
-      const response = await fetch(
-        "http://localhost:5000/blogs/"
-      );
+      const response = await fetch("http://localhost:5000/blogs/");
       const data = await response.json();
       setLoader(false);
       setProducts(data.blogs);
     }, 4000);
   }, []);
-  
+
   const poster = "https://wallpapercave.com/wp/wp6543230.jpg";
 
   /* Accordion */
@@ -58,9 +55,9 @@ const Details = () => {
 
   useEffect(() => {
     fetch(`http://localhost:5000/blogs/${blogId}`)
-    .then(res => res.json())
-    .then(data => setBackendComment(data.comment))
-  },[blogId])
+      .then((res) => res.json())
+      .then((data) => setBackendComment(data.comment));
+  }, [blogId]);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -69,25 +66,24 @@ const Details = () => {
   /* Comment */
 
   useEffect(() => {
-    const allReadyLiker = singleBlog?.likers?.find(b => b?.likerEmail === user?.email)
+    const allReadyLiker = singleBlog?.likers?.find(
+      (b) => b?.likerEmail === user?.email
+    );
     if (allReadyLiker?.likerEmail === user?.email) {
-      setAllReadyLiked(true)
+      setAllReadyLiked(true);
+    } else {
+      setAllReadyLiked(false);
     }
-    else{
-      setAllReadyLiked(false)
-    }
+  }, [user.email, singleBlog?.likers]);
 
-  },[user.email, singleBlog?.likers])
-
-
-    useEffect(() => {
+  useEffect(() => {
     fetch(`http://localhost:5000/blogs/${blogId}`)
-    .then(res => res.json())
-    .then(data => {
-      setSingleBlog(data)
-      setCount(data.likes)
-    })
-  },[blogId, rendering])
+      .then((res) => res.json())
+      .then((data) => {
+        setSingleBlog(data);
+        setCount(data.likes);
+      });
+  }, [blogId, rendering]);
 
   console.log(singleBlog);
   return (
@@ -123,16 +119,19 @@ const Details = () => {
                     <hr />
 
                     <Buttons
-                      countNumber = {count}
-                      blogId = {blogId}
-                      allLikers = {allLikers}                           
+                      countNumber={count}
+                      blogId={blogId}
+                      allLikers={allLikers}
                       bloggerName={blog.bloggerName}
                       uploadTime={blog.uploadTime}
                       allReadyLiked={allReadyLiked}
-                      setAllLikers = {setAllLikers}
-                      setRendering = {setRendering}
-                      rendering = {rendering}
+                      setAllLikers={setAllLikers}
+                      setRendering={setRendering}
+                      rendering={rendering}
                       blog={singleBlog}
+                      bloggerEmail={blog.bloggerEmail}
+                      blogTitle={blog.title}
+                      bloggerPhoto={blog.bloggerPhoto}
                     />
 
                     <div>
@@ -184,7 +183,11 @@ const Details = () => {
                       </Accordion>
                     </div>
                     {/* Comment page */}
-                    <Comment  setBackendComment={setBackendComment} backendComment={backendComment} blogId={blogId}/>
+                    <Comment
+                      setBackendComment={setBackendComment}
+                      backendComment={backendComment}
+                      blogId={blogId}
+                    />
                   </article>
 
                   {/* :::::::::::::::::::::::::
@@ -204,7 +207,6 @@ const Details = () => {
                 style={{
                   marginTop: "8px",
                   paddingLeft: "23px",
-                  
                 }}
               >
                 <main className="details-grid" style={{ width: "100%" }}>
