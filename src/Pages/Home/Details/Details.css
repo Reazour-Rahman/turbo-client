@@ -135,3 +135,13 @@
 .css-1wnsr1i {
   width: 50% !important;
 }
+@media screen and (max-width: 992px) {
+  .css-1wnsr1i {
+    width: 80% !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  .css-1wnsr1i {
+    width: 100% !important;
+  }
+}
