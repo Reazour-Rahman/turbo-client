@@ -226,7 +226,10 @@ const onSubmit = (data) => {
     }),
     data.bloggerPhoto=bloggerPhoto,
     data.comment=[],
-    data.likes="0"
+    data.likes=0,
+    data.likers = [],
+    data.views = 0,
+    data.viewers = []
     ))
     .then((res) => {
       if (res.data.insertedId) {

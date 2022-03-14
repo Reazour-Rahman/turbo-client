@@ -8,9 +8,34 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box, Grid, IconButton, Input, Stack, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 
-export default function UploadPicture({ openPictureModal, handleCloseUpdatePicture }) {
+export default function UploadPicture({ openPictureModal, handleCloseUpdatePicture, roomName,handleClose }) {
+
+  const [cover, setCover] = React.useState('https://timelinecovers.pro/facebook-cover/download/anime-one-piece-monkey-d-luffy-in-hat-facebook-cover.jpg')
+  const [profile, setProfile] = React.useState('https://c4.wallpaperflare.com/wallpaper/535/25/215/anime-one-piece-monkey-d-luffy-wallpaper-preview.jpg')
+
+
+  const user = useSelector((state) => state.firebase.user)
+  console.log(user);
+
+  const handleCreateRoom = () => {
+    const data = {
+      roomName  : roomName,
+      cover : cover,
+      profile : profile
+
+    }
+
+    axios.put(`http://localhost:5000/users/room/${user?.email}`, data)
+    
+    console.log(data);
+
+    handleCloseUpdatePicture()
+    handleClose()
+  }
 
   return (
     <div>
@@ -137,7 +162,7 @@ export default function UploadPicture({ openPictureModal, handleCloseUpdatePictu
         </DialogContent>
         <DialogActions sx={{ backgroundColor: '#091a2b' }}>
           <Button onClick={handleCloseUpdatePicture}>Disagree</Button>
-          <Button onClick={handleCloseUpdatePicture} autoFocus>
+          <Button onClick={handleCreateRoom} autoFocus>
             Agree
           </Button>
         </DialogActions>

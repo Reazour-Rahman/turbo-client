@@ -88,7 +88,7 @@ const Details = () => {
       setSingleBlog(data)
       setCount(data.likes)
     })
-  },[blogId, rendering])
+  },[blogId, rendering, singleBlog?.likers])
 
   console.log(singleBlog);
   let theme;
