@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Banner from "./Banner/Banner";
 import Blogs from "./BLogs/Blogs";
 import LoadMore from "./BLogs/LoadMore";
 import NavigationBar2 from "./NavigationBar/NavigationBar2";
@@ -8,6 +9,7 @@ const Home = () => {
   //   console.log(filter);
   return (
     <div style={{ paddingLeft: "72px" }}>
+      <Banner/>
 
       <NavigationBar2 setFilter={setFilter}></NavigationBar2>
       <Blogs filter={filter} />

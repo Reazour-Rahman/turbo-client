@@ -124,7 +124,7 @@ const Details = () => {
                       </span>
                     </span>
                     <hr />
-
+{/* 
                     <Buttons
                       countNumber = {count}
                       blogId = {blogId}
@@ -136,6 +136,22 @@ const Details = () => {
                       setRendering = {setRendering}
                       rendering = {rendering}
                       blog={singleBlog}
+                    /> */}
+
+                    <Buttons
+                      countNumber={count}
+                      blogId={blogId}
+                      allLikers={allLikers}
+                      bloggerName={blog.bloggerName}
+                      uploadTime={blog.uploadTime}
+                      allReadyLiked={allReadyLiked}
+                      setAllLikers={setAllLikers}
+                      setRendering={setRendering}
+                      rendering={rendering}
+                      blog={singleBlog}
+                      bloggerEmail={blog.bloggerEmail}
+                      blogTitle={blog.title}
+                      bloggerPhoto={blog.bloggerPhoto}
                     />
 
                     <div>

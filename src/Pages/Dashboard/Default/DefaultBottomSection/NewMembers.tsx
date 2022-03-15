@@ -74,7 +74,7 @@ const NewMembers = ({user}) => {
                   <Avatar alt="Remy Sharp" src={avatar} />
                 </div>
                 <div>
-                  <p className="paragraph-size ">{user.name.slice(0, 15)}</p>
+                  <p className="paragraph-size ">{user.name}</p>
                   <p className=" p-dark">{user.email}</p>
                 </div>
               </aside>

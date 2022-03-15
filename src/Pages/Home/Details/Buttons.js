@@ -1,4 +1,4 @@
-import { Avatar, Button } from "@mui/material";
+
 import React, { useEffect, useState } from "react";
 import "./detailsvideo.css";
 import VideoStableIcon from "@mui/icons-material/VideoStable";
@@ -10,10 +10,27 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import axios from "axios";
 import useFirebase from '../../../Hooks/useFirebase'
 import { useSelector } from "react-redux";
+import { Avatar, Button, TextField } from "@mui/material";
+import Modal from "@mui/material/Modal";
+import Payment from "./Payment";
 
 
-const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering, allLikers, allReadyLiked, setRendering}) => {
+const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering, allLikers, allReadyLiked, setRendering, bloggerEmail,blogTitle, bloggerPhoto,}) => {
 
+
+  /* uploadTime,
+  bloggerName,
+  blogId,
+  blog,
+  countNumber,
+  rendering,
+  allLikers,
+  allReadyLiked,
+  setRendering,
+  bloggerEmail,
+  blogTitle,
+  bloggerPhoto,
+   */
   // const [liked, setLiked] = useState(allReadyLiked)
   // const [likeCount, setLikeCount] = useState(count)
   // const {user} = useFirebase()
@@ -100,7 +117,24 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
       }
     }
     
-  },[ likeCount])
+  },[ likeCount]);
+
+
+    /* :::payment modal condition::::: */
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const style = {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      width: 400,
+      bgcolor: "background.paper",
+      border: "2px solid #000",
+      boxShadow: 24,
+      p: 4,
+    };
   
   return (
     <div>
@@ -130,9 +164,32 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
             <span className="responsive-icons">
               <ResponsiveButton />
             </span>
-            <Button variant="outlined" className="icons-color">
-              Donate
-            </Button>
+              {/*:::: payment modal start :::: */}
+
+              <Button
+                variant="outlined"
+                className="icons-color"
+                onClick={handleOpen}
+              >
+                Donate
+              </Button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Payment
+                  style={style}
+                  bloggerName={bloggerName}
+                  blogId={blogId}
+                  user={user}
+                  handleClose={handleClose}
+                  bloggerPhoto={bloggerPhoto}
+                  blogTitle={blogTitle}
+                ></Payment>
+              </Modal>
+              {/*:::: payment modal end ::::*/}
             <Button variant="outlined" className="icons-color">
               Follow 119M
             </Button>
