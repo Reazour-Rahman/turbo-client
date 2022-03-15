@@ -37,6 +37,7 @@ const Transaction = () => {
     paymentArray.map((payment) => {
       console.log(payment);
     });
+    
   });
  */
 
