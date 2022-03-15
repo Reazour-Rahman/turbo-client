@@ -97,12 +97,12 @@ export default function MenuBar({ handleClickOpen }) {
   Load Users 
   :::::::::::::::::::::*/
 
-  const [users, setUsers] = React.useState([]);
+  const [users, setUsers] = React.useState({});
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     setLoading(true);
-    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/users`;
       fetch(blogUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -113,8 +113,6 @@ export default function MenuBar({ handleClickOpen }) {
           
         });
   }, []);
-
-
 
   return (
     <>
@@ -223,7 +221,7 @@ export default function MenuBar({ handleClickOpen }) {
               <ListItemIcon style={style}>
                 <CreateNewFolderIcon style={iconStyle} />
               </ListItemIcon>
-              {user.room ? "Edit Room" : "Create Room"}
+              {users?.room?.roomName ? "Edit Room" : "Create Room"}
             </MenuItem>
           </Button>
 
