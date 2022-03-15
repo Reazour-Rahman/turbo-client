@@ -27,7 +27,7 @@ const NewSubscriber = ({ user }) => {
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);
-  console.log(users);
+  //   console.log(users);
 
   return (
     <div className=" members-container">
