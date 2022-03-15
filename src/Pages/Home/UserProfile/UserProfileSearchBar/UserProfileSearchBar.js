@@ -61,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function ProfileSearchBar() {
+export default function UserProfileSearchBar({email}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [followed, setFollowed] = React.useState(false)
@@ -73,10 +73,10 @@ export default function ProfileSearchBar() {
 
   const user = useSelector(state => state.firebase.user)
   React.useEffect(() => {
-    fetch(`http://localhost:5000/users/room/${user?.email}`)
+    fetch(`http://localhost:5000/users/room/${email.email}`)
     .then(res => res.json())
     .then(data => setProfile(data.room))
-  },[user?.email, followed, count])
+  },[email.email, followed, count])
 
   React.useEffect(() => {
     const alreadyFollowed = bloggerProfile?.followers?.find(b => b?.followerEmail === user.email)
@@ -90,12 +90,12 @@ export default function ProfileSearchBar() {
   },[user.email, bloggerProfile?.followers])
 
   React.useEffect(() => {
-    fetch(`http://localhost:5000/users/room/${user?.email}`)
+    fetch(`http://localhost:5000/users/room/${email.email}`)
     .then(res => res.json())
     .then(data => {
       setBloggerProfile(data)
     })
-  },[user?.email, count])
+  },[email.email, count])
 
   console.log(followed);
 
@@ -192,7 +192,7 @@ export default function ProfileSearchBar() {
     }
     setFollowed(true)
     setCount(count + 1)
-    axios.put(`http://localhost:5000/users/followers/${user?.email}`, follower)
+    axios.put(`http://localhost:5000/users/followers/${email.email}`, follower)
   }
 
   const handleUnFollow = () => {
@@ -205,7 +205,7 @@ export default function ProfileSearchBar() {
     }
     setFollowed(false)
     setCount(count + 1)
-    axios.put(`http://localhost:5000/users/followers/${user?.email}`, follower)
+    axios.put(`http://localhost:5000/users/followers/${email.email}`, follower)
   }
   return (
     <Box>
@@ -235,7 +235,7 @@ export default function ProfileSearchBar() {
                 {profile.roomName}
               </Typography>
               <Typography style={{ fontSize: 12, fontWeight: 500, color: "rgba(255, 255, 255, 0.823)" }}>
-              {bloggerProfile.followersCount} Followers
+                {bloggerProfile.followersCount} Followers
               </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
