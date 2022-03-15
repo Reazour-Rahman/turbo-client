@@ -33,7 +33,7 @@ const Blog = (props) => {
         views : views + 1,
         viewers : [...viewers]
       }
-      await axios.put(`http://localhost:5000/blogs/views/${id}`, viewsData)
+      await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
     }
     else {
       const viewerData = {viewerEmail :user.email}
@@ -41,7 +41,7 @@ const Blog = (props) => {
         views : views + 1,
         viewers : [...viewers,  viewerData]
       }
-      await axios.put(`http://localhost:5000/blogs/views/${id}`, viewsData)
+      await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
     }
 
   }

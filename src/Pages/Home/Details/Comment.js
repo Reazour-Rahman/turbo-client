@@ -42,7 +42,7 @@ const Comment = ({ blogId, setBackendComment, backendComment, tt }) => {
     if (comment) {
       axios
         .put(
-          `https://aqueous-tor-77774.herokuapp.com/blogs/comment/${blogId}`,
+          `https://aqueous-chamber-45567.herokuapp.com/blogs/comment/${blogId}`,
           [commentData, ...backendComment]
         )
         .then((data) => {
@@ -62,7 +62,7 @@ const Comment = ({ blogId, setBackendComment, backendComment, tt }) => {
     console.log(id);
     const restComments = backendComment.filter((rest) => rest?.id !== id);
     axios.put(
-      `https://aqueous-tor-77774.herokuapp.com/blogs/comment/${blogId}`,
+      `https://aqueous-chamber-45567.herokuapp.com/blogs/comment/${blogId}`,
       [...restComments]
     );
     setBackendComment([...restComments]);

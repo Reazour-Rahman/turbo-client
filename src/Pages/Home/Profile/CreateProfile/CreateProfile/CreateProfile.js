@@ -14,6 +14,7 @@ import swal from "sweetalert";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useSelector } from 'react-redux';
+import {useState} from 'react'
 
 
 
@@ -23,7 +24,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function CreateProfile({ handleOpenModal }) {
     const [open, setOpen] = React.useState(false);
-    const [loadingData, setLoadingData] = React.useState({})
+    const [roomName, setRoomName] = React.useState('')
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -44,16 +45,8 @@ export default function CreateProfile({ handleOpenModal }) {
     };
 
 
-    const handleOnBlur = e => {
-        const field = e.target.name;
-        const value = e.target.value;
-        const newLoadingData = { ...loadingData };
-        newLoadingData[field] = value;
-        setLoadingData(newLoadingData);
-    };
-
-    const handleOnSubmit = e => {
-        console.log(loadingData.userName)
+    const handleOnSubmit = e => {      
+        console.log(roomName)
         e.preventDefault();
     }
 
@@ -95,7 +88,6 @@ export default function CreateProfile({ handleOpenModal }) {
                             <CloseIcon></CloseIcon>
                         </Button>
                     </Grid>
-                    <form onSubmit={handleOnSubmit}>
                         <Box>
                             <img style={{ height: '200px', width: '100%' }} src="https://i.pinimg.com/736x/cc/4f/4a/cc4f4a21ed639f807585dfe2613adfd6.jpg" alt="" />
                         </Box>
@@ -117,10 +109,13 @@ export default function CreateProfile({ handleOpenModal }) {
                         <TextField
                             style={{ width: '100%', marginTop: '20px', backgroundColor: 'rgba(221, 221, 201, 0.905)', marginBottom: '20px', borderRadius: '10px' }}
                             id="outlined-basic"
-                            onBlur={handleOnBlur}
-                            label="Your Name"
-                            variant="outlined"
-                            name="userName"
+                            onBlur={e => setRoomName(e.target.value)}
+                            placeholder="Your Room Name"
+    
+                            hiddenLabel
+                            variant="filled"
+                            type="text"
+                            required
                         />
                         <Typography style={{ fontWeight: 400 }}>
                             <small style={{ fontWeight: 400 }}>I understand that I am creating a new Profile Account with its own settings, including Pro-Player search and watch history. Learn more</small>
@@ -140,14 +135,15 @@ export default function CreateProfile({ handleOpenModal }) {
                             variant="contained"
                             onClick={handleClose}
                         >
-                            Cencle
+                            Cancel
                         </Button>
-                    </form>
                 </DialogContent>
             </Dialog>
             <MenuBar handleClickOpen={handleClickOpen} ></MenuBar>
             <UploadPicture
+                roomName = {roomName}
                 openPictureModal={openPictureModal}
+                handleClose = {handleClose}
                 handleCloseUpdatePicture={handleCloseUpdatePicture}
             ></UploadPicture>
         </div>

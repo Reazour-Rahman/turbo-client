@@ -2,20 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import RecentVideo from "../RecentVideo/RecentVideo";
 import Progress from "../../BLogs/Progress";
+import { useSelector } from 'react-redux';
 
 const RecentVideos = () => {
   const [recentVideos, setRecentVideos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const user = useSelector((state) => state.firebase.user)
+
   useEffect(() => {
-    const contentUrl = `https://api.jsonbin.io/b/6203768369b72261be560c47`;
+    const contentUrl = `http://localhost:5000/blogs?email=${user?.email}`;
     setTimeout(() => {
       fetch(contentUrl)
         .then((response) => response.json())
-        .then((data) => setRecentVideos(data));
+        .then((data) => setRecentVideos(data.blogs));
       setLoading(true);
     }, 4000);
-  }, []);
+  }, [user?.email]);
 
+  // const recentSomeVideos = recentVideos.sort()
+  // console.log(recentSomeVideos);
   return (
     <Box sx={{ mt: "50px", color: "inherit" }}>
       <Grid sx={{ mb: '20px' }}>
@@ -30,8 +35,8 @@ const RecentVideos = () => {
           columns={{ xs: 2, sm: 8, md: 12, lg: 16 }}
         >
           {loading ? (
-            recentVideos.slice(0, 8).map((recentVideo) => <RecentVideo key={recentVideo._id} recentVideo={recentVideo}></RecentVideo>)
-          ) : (
+            recentVideos.map((recentVideo) => <RecentVideo key={recentVideo._id} recentVideo={recentVideo}></RecentVideo>)
+          ).reverse().slice(0,8) : (
             <div>
               <Progress />
             </div>

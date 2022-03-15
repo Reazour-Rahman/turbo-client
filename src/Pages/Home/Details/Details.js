@@ -44,12 +44,12 @@ const Details = () => {
     setLoader(true);
     setTimeout(async () => {
       const response = await fetch(
-        "http://localhost:5000/blogs/"
+        "https://aqueous-chamber-45567.herokuapp.com/blogs/"
       );
       const data = await response.json();
       setLoader(false);
       setProducts(data.blogs);
-    }, 4000);
+    }, );
   }, []);
   
   const poster = "https://wallpapercave.com/wp/wp6543230.jpg";
@@ -58,7 +58,7 @@ const Details = () => {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${blogId}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs/${blogId}`)
     .then(res => res.json())
     .then(data => setBackendComment(data.comment))
   },[blogId])
@@ -82,13 +82,13 @@ const Details = () => {
 
 
     useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${blogId}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs/${blogId}`)
     .then(res => res.json())
     .then(data => {
       setSingleBlog(data)
       setCount(data.likes)
     })
-  },[blogId, rendering])
+  },[blogId, rendering, singleBlog?.likers])
 
   console.log(singleBlog);
   let theme;

@@ -17,6 +17,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { Button, Container } from "@mui/material";
 import { green } from "@mui/material/colors";
+import { useSelector } from "react-redux";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -61,6 +62,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function ProfileSearchBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  const [profile, setProfile] = React.useState('')
+  const user = useSelector(state => state.firebase.user)
+  React.useEffect(() => {
+    fetch(`http://localhost:5000/users/room/${user?.email}`)
+    .then(res => res.json())
+    .then(data => setProfile(data.room))
+  },[user?.email])
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -147,6 +156,9 @@ export default function ProfileSearchBar() {
     </Menu>
   );
 
+  const handleFollower = () => {
+    console.log('clicked');
+  }
   return (
     <Box>
       <Box sx={{ flexGrow: 1, mt: "25px" }}>
@@ -161,7 +173,7 @@ export default function ProfileSearchBar() {
             >
               <img
                 style={{ width: "60px", height: "60px", borderRadius: "30px" }}
-                src="https://cdn5.f-cdn.com/contestentries/1815047/32275363/5f54457f75e68_thumb900.jpg"
+                src={profile.profile}
                 alt=""
               />
             </IconButton>
@@ -172,7 +184,7 @@ export default function ProfileSearchBar() {
                 component="div"
                 sx={{ display: { xs: "none", sm: "block", fontWeight: 500} }}
               >
-                ScereBro
+                {profile.roomName}
               </Typography>
               <Typography style={{ fontSize: 12, fontWeight: 500, color: "rgba(255, 255, 255, 0.823)" }}>
                 123234 Subscriber
@@ -209,6 +221,7 @@ export default function ProfileSearchBar() {
                   paddingBottom: "0",
                   color: "white",
                 }}
+                onClick={handleFollower}
               >
                 Follow
               </Button>

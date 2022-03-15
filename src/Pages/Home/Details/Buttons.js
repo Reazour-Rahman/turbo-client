@@ -89,14 +89,14 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
           likes : likeCount,
           likers : [liker, ...blog?.likers]
         }
-        axios.put(`http://localhost:5000/blogs/likes/${blogId}`, likes)
+        axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/likes/${blogId}`, likes)
       }
       else{
         const likes = {
           likes : likeCount,
           likers : [...liker]
         }
-        axios.put(`http://localhost:5000/blogs/likes/${blogId}`, likes)
+        axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/likes/${blogId}`, likes)
       }
     }
     

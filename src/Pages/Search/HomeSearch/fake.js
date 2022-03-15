@@ -25,7 +25,7 @@ function App() {
   
     useEffect(() => {
     //   setLoading(true);
-      const blogUrl = `https://aqueous-tor-77774.herokuapp.com/blogs`;
+      const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
   
         fetch(blogUrl)
           .then((response) => response.json())

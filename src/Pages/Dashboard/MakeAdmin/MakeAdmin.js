@@ -35,8 +35,13 @@ const MakeAdmin = (props) => {
     }
 
     const handleAdminSubmit = e => {
+
         const user = { email, role };
         fetch("http://localhost:5000/users", {
+
+
+//         const user = { email };
+//         fetch("https://aqueous-chamber-45567.herokuapp.com/admin", {
 
             method: 'PUT',
             headers: {

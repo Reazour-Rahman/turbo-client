@@ -64,7 +64,7 @@ function App() {
   }, [auth, dispatch])
 
   useEffect( () => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/${user?.email}`)
     .then(res => res.json())
     .then(data =>  dispatch(setAdmin(data?.admin)))
   },[user?.email])
@@ -97,6 +97,7 @@ function App() {
               </div>
             }
           ></Route>
+          <Route path="/message" element={<UsersMessage />}></Route>
 
           <Route path="/details/:blogId" element={<PrivateRoute><Details /></PrivateRoute>}></Route>
 
@@ -128,6 +129,7 @@ function App() {
           <Route exact path="/dashboard/bloggerList" element={<Bloggers />} />
           
           <Route exact path="/dashboard/default" element={<Default />} />
+          <Route path="/dashboard/message" element={<UsersMessage />}></Route>
 
 
           <Route exact path="/dashboard/analytics" element={<Analytics />} />
@@ -144,14 +146,14 @@ function App() {
             element={<MakeAdminList />}
           />
 
-          <Route path="/dashboard/message" element={<Message />} />
+
 
           <Route path="/dashboard/upload" element={<UploadBlog />} />
 
           <Route path="/dashboard/reports" element={<Reports />} />
         </Route>
         
-        <Route path="/userMessage" element={<UsersMessage />}></Route>
+        
         <Route path="/fake" element={<Fake />}></Route>
 
         <Route path="/roomDashboard" element={<RoomDashboard />}>

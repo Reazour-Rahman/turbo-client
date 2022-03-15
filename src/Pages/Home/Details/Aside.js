@@ -19,7 +19,7 @@ export default function Aside(props) {
     setLoader(true);
     setTimeout(async () => {
       const response = await fetch(
-        "https://aqueous-tor-77774.herokuapp.com/blogs"
+        "https://aqueous-chamber-45567.herokuapp.com/blogs"
       );
       const data = await response.json();
       setLoader(false);

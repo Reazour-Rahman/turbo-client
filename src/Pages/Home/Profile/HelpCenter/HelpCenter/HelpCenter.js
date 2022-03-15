@@ -91,7 +91,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
     let userHelp = { ...data, displayName, email };
     console.log(userHelp);
 
-    fetch(`http://localhost:5000/userhelp`, {
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/userhelp`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
