@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import Link from '@mui/material/Link';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Button, Grid } from '@mui/material';
-import { BugReportTwoTone } from '@mui/icons-material';
+import "./DotMenuBar"
+import DotMenuBar from './DotMenuBar';
 
 
 
@@ -26,15 +25,19 @@ function preventDefault(event) {
 
 
 const MakeAdmin = (props) => {
-    const { _id, bloggerName, index, status, bloggerEmail, pending, approved } =
+    const { _id, bloggerName, index, status, bloggerEmail, pending, approved, name, role, email } =
         props.blogger;
-    const [email, setEmail] = useState('');
+    const [adminemail, setadminEmail] = useState('');
     const [success, setSuccess] = useState(false);
 
+    const handleMakeAdmin = e => {
+        const makeAdmin = { email };
+    }
 
     const handleAdminSubmit = e => {
-        const user = { email };
-        fetch("http://localhost:5000/admin", {
+        const user = { email, role };
+        fetch("http://localhost:5000/users", {
+
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('idToken')}`,
@@ -44,10 +47,8 @@ const MakeAdmin = (props) => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.modifiedCount) {
-                    console.log(data);
-                    setSuccess(true);
-                }
+                console.log(data);
+
             })
         e.preventDefault()
     }
@@ -62,42 +63,51 @@ const MakeAdmin = (props) => {
 
                         <TableRow>
                             <Grid container spacing={2}>
-                                <Grid item xs={2}>
-                                    <TableCell>{index}</TableCell>
+                                <Grid item xs={2} style={{ color: "white" }}>
+                                    <TableCell style={{ color: "white" }}>{index}</TableCell>
                                 </Grid>
                                 <Grid item xs={3}>
-                                    <TableCell>{bloggerName}</TableCell>
+                                    <TableCell style={{ color: "white" }}>{name}</TableCell>
                                 </Grid>
                                 <Grid item xs={3}>
-                                    <TableCell>{bloggerEmail}</TableCell>
+                                    <TableCell style={{ color: "white" }}>{email}</TableCell>
                                 </Grid>
-                                <Grid item xs={2}>
-                                    <TableCell>{status}</TableCell>
+                                <Grid item xs={2} >
+                                    <TableCell style={{ color: "white" }}>{role == "admin" ? "Admin" : "User"}</TableCell>
                                 </Grid>
-                                <Grid item xs={2}>
-                                    <TableCell>
+                                <Grid item xs={2} >
+                                    <TableCell style={{ padding: "0px", color: "white" }}>
+
+                                        <div className='d-flex'>
+                                            <div >
+                                                {role == "admin" ? <form onClick={handleAdminSubmit}>
+                                                    <Button className='bg-success' style={{
+                                                        borderRadius: 35,
+                                                        // backgroundColor: "#21b6ae",
+                                                        // backgroundColor: "#21b6ae",
+                                                        padding: "4px 16px",
+                                                        fontSize: "10px",
+                                                        status: 'pending',
+                                                        onclick: { handleAdminSubmit },
+
+                                                        // role: 'admin'
+                                                    }} variant="contained">Admin</Button></form> : <form onClick={handleAdminSubmit}>
+                                                    <Button style={{
+                                                        borderRadius: 35,
+                                                        backgroundColor: "red",
+                                                        padding: "4px 16px",
+                                                        fontSize: "10px",
+                                                        onclick: { handleAdminSubmit },
+                                                        // role: 'admin'
+                                                    }} variant="contained"> User</Button>
+                                                </form>}
+
+                                            </div>
+                                            <div> <DotMenuBar ></DotMenuBar></div>
+                                        </div>
 
 
 
-
-
-                                        {status == "pending" ? <Button style={{
-                                            borderRadius: 35,
-                                            backgroundColor: "red",
-                                            padding: "4px 16px",
-                                            fontSize: "10px",
-                                            // onclick: { handleAdminSubmit },
-                                            status: 'approved'
-                                        }} variant="contained">Make Admin</Button> :
-
-                                            <Button style={{
-                                                borderRadius: 35,
-                                                backgroundColor: "#21b6ae",
-                                                padding: "4px 16px",
-                                                fontSize: "10px",
-                                                status: 'pending',
-                                                // onclick: { handleAdminSubmit },
-                                            }} variant="contained">Admin</Button>}
 
 
 
@@ -116,7 +126,7 @@ const MakeAdmin = (props) => {
                 </Table>
 
             </React.Fragment>
-        </div>
+        </div >
     );
 };
 
