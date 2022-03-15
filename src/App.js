@@ -22,6 +22,7 @@ import Studio from "./Pages/Studio/Studio";
 import StudioHeader from "./Pages/Studio/StudioHeader/StudioHeader";
 import Audience from "./Pages/Studio/Audience/Audience";
 import UsersMessage from "./Pages/Dashboard/UsersMessage/UsersMessage";
+import Analytics from "./Pages/Dashboard/Analytics/Analytics/Analytics";
 import UploadVideoModal from "./Pages/Upload/UploadVideoModal";
 import Reports from "./Pages/Dashboard/Reports/Reports";
 import RoomDashboard from "./Pages/RoomDashboard/RoomDashboard";
@@ -38,7 +39,7 @@ import useFirebase from "./Hooks/useFirebase";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice";
 import { useEffect } from "react";
-import Analytics from "./Pages/Dashboard/Analytics/Analytics/Analytics";
+import UserProfile from "./Pages/Home/UserProfile/UserProfile/UserProfile";
 
 function App() {
   const dispatch = useDispatch()
@@ -104,6 +105,8 @@ function App() {
           <Route path="/addBlog" element={<AddBlog />}></Route>
 
           <Route path="/profile" element={<Profile />}></Route>
+
+          <Route path="/userprofile/:email" element={<UserProfile />}></Route>
 
           <Route
             path="/profile/content"

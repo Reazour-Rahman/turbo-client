@@ -67,7 +67,7 @@ export const mainListItems = (
             <ListItemText className='dashboard-button' primary="Comments" />
         </ListItemButton>
 
-        <ListItemButton as={Link} component="a" to="">
+        <ListItemButton as={Link} component="a" to="/roomDashboard/liquidity">
             <ListItemIcon>
                 <MonetizationOnIcon className='dashboard-button' />
             </ListItemIcon>

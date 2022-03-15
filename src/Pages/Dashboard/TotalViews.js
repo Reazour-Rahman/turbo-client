@@ -10,14 +10,32 @@ function preventDefault(event) {
 export default function TotalViews() {
     let theme;
     theme= localStorage.getItem("theme")
+    const [blogs, setBlogs] = React.useState([])
+    const current = new Date();
+    // const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+
+    const date = current.toLocaleDateString(undefined, options);
+    React.useEffect(() => {
+        fetch(`http://localhost:5000/blogs`)
+        .then(res => res.json())
+        .then(data => setBlogs(data.blogs))
+    },[])
+
+    var totalViews = blogs.reduce(function(a, b){
+        console.log(a + b.views);
+        return b.views + a;
+    }, 0);
+
     return (
         <React.Fragment>
             <Title id={ theme === "light" ? "black" : "darkLight" }>Total views</Title>
             <Typography component="p" variant="h4" id={ theme === "light" ? "black" : "darkLight" }>
-                5600
+                {totalViews}
             </Typography>
             <Typography id={ theme === "light" ? "black" : "darkLight" } sx={{ flex: 1 }}>
-                till 09 February,2022
+                {date}
             </Typography>
             <div>
                 <Link id={ theme === "light" ? "black" : "darkLight" } href="#" onClick={preventDefault}>

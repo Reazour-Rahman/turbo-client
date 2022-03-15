@@ -18,6 +18,46 @@ const Transaction = () => {
     setAnchorEl(null);
   };
 
+  const [users, setUsers] = useState([]);
+  const payments = [];
+
+  const url = `http://localhost:5000/users`;
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUsers(data);
+      });
+  }, []);
+
+  /*  users.map((user) => {
+    const paymentArray = user?.payment;
+    paymentArray.map((payment) => {
+      console.log(payment);
+    });
+    
+  });
+ */
+
+  users.forEach((user) => {
+    const paymentArray = user?.payment;
+    if (paymentArray) {
+      paymentArray.forEach((payment) => {
+        // console.log(payment);
+        payments.push(payment);
+      });
+    }
+  });
+
+  // console.log(payments);
+  payments.sort(function (a, b) {
+    return b.date.localeCompare(a.date);
+  });
+
+  console.log(payments);
+
   return (
     <div className="members-container">
       <div className="new-members-head">
@@ -55,18 +95,25 @@ const Transaction = () => {
         <tr>
           <th>Customer</th>
           <th>Date</th>
+          <th>Time</th>
           <th>Amount</th>
+          <th>Donor</th>
           <th>Status</th>
         </tr>
 
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
+        {payments.map((payment) => (
           <tr>
             <td className="td-flx">
-              <Avatar sx={{ bgcolor: deepPurple[500] }}>I'v</Avatar>
-              Alfreds Futterkiste
+              <Avatar
+                sx={{ bgcolor: deepPurple[500] }}
+                src={payment.bloggerPhoto}
+              ></Avatar>
+              {payment.bloggerName}
             </td>
-            <td>8 May 2021</td>
-            <td>$ 140.00</td>
+            <td>{payment.time}</td>
+            <td>{payment.date}</td>
+            <td>$ {payment.amount / 100}</td>
+            <td>{payment.doner}</td>
             <td className="status-transaction">Approve</td>
           </tr>
         ))}

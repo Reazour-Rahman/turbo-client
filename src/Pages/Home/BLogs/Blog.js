@@ -74,7 +74,7 @@ const Blog = (props) => {
                     </span>
                   </span>
                   <small>
-                    <Setting />
+                    <Setting bloggerEmail={bloggerEmail} />
                   </small>
                 </div>
               </CardContent>

@@ -92,6 +92,28 @@ export default function MenuBar({ handleClickOpen }) {
   const handleCloseModal = () => setOpenModal(false);
 
 
+
+  /* :::::::::::::::::::::::
+  Load Users 
+  :::::::::::::::::::::*/
+
+  const [users, setUsers] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    setLoading(true);
+    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/users`;
+      fetch(blogUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          setLoading(false);
+          for (const allUser of data) {
+            setUsers(allUser)
+          }
+          
+        });
+  }, []);
+
   return (
     <>
       <React.Fragment>
@@ -176,14 +198,14 @@ export default function MenuBar({ handleClickOpen }) {
           </MenuItem>
 
           <Divider />
-          <Link style={{ textDecoration: "none" }} to="/dashboard">
+          {users.role === "admin" &&<Link style={{ textDecoration: "none" }} to="/dashboard">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <AdminPanelSettingsIcon style={iconStyle} />
               </ListItemIcon>
               Admin Panel
             </MenuItem>
-          </Link>
+          </Link>}
 
           <Link style={{ textDecoration: "none" }} to="/profile">
             <MenuItem className="menu-style" style={style}>
@@ -199,7 +221,7 @@ export default function MenuBar({ handleClickOpen }) {
               <ListItemIcon style={style}>
                 <CreateNewFolderIcon style={iconStyle} />
               </ListItemIcon>
-              Create room
+              {users?.room?.roomName ? "Edit Room" : "Create Room"}
             </MenuItem>
           </Button>
 

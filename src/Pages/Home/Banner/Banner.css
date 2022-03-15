@@ -1,0 +1,73 @@
+
+/* :::::::::::::::::::::::::::::::
+Carousel Structure
+::::::::::::::::::::::::::::::::::*/
+
+.banner{
+    display: block;
+    padding-top: 15px;
+    height: 365px;
+    
+}
+.carousel-bg{
+    background-color: aliceblue !important;
+}
+.banner-container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+.banner-size{
+    height: 500px;
+}
+
+
+
+
+.banner-video-size{
+    width: 100%;
+    height: 350px;
+}
+/* :::::::::::::::::::::::::::::::
+Carousel text
+::::::::::::::::::::::::::::::::::*/
+.banner-text-container{
+    padding: 20px 20px 0px 0px;
+}
+.blogger-name{
+    color: coral;
+    font: 500;
+}
+.blogger-identity{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+@media screen and (min-width: 500px) and (max-width: 1000px) {
+    .banner{
+        height: 485px;
+    }
+    .banner-video-size{
+        width: 100%;
+        height: 250px;
+    }
+    .banner-container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .banner-text-container{
+        padding-left: 10px;
+        padding-bottom: 10px;
+        padding-top: 5px;
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 595px) {
+.banner{
+    margin-bottom: 15px;
+}
+}

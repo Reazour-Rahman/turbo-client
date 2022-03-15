@@ -20,7 +20,7 @@ const MakeAdminList = () => {
 
 //         const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users/admin";
 
-        setTimeout(() => {
+
 
             fetch(bloggerUrl, {
 
@@ -34,8 +34,8 @@ const MakeAdminList = () => {
                 .then((response) => response.json())
                 .then((data) => setBloggers(data));
             setLoading(true);
-        }, 4000);
-    }, []);
+        
+    }, [bloggers]);
     console.log(bloggers);
 
     return (
