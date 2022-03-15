@@ -14,7 +14,12 @@ const MakeAdminList = () => {
 
     useEffect(() => {
         // const bloggerUrl = `https://mocki.io/v1/24ee15c5-3e9e-401c-b397-06a8e56db4a5`;
-        const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users/admin";
+
+        // const bloggerUrl = "https://aqueous-tor-77774.herokuapp.com/users/admin";
+        const bloggerUrl = "http://localhost:5000/users";
+
+//         const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users/admin";
+
         setTimeout(() => {
 
             fetch(bloggerUrl, {
@@ -34,7 +39,7 @@ const MakeAdminList = () => {
     console.log(bloggers);
 
     return (
-        <div>
+        <div style={{ color: "white" }}>
             <Box sx={{ m: 5 }}>
                 <SearchBox></SearchBox>
 
@@ -43,30 +48,27 @@ const MakeAdminList = () => {
                     spacing={{ xs: 2, md: 2 }}
                     columns={{ xs: 2, sm: 8, md: 8, lg: 10 }}
                 > */}
-                <Table size="small">
+                <Table size="small" >
                     <TableHead>
-                        <TableRow>
-                            <Grid container spacing={2} >
+                        <TableRow >
+                            <Grid container spacing={2}  >
                                 <Grid item xs={2}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>Index</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Index</TableCell>
                                 </Grid>
                                 <Grid item xs={3}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>Blogger Name</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Blogger Name</TableCell>
                                 </Grid>
                                 <Grid item xs={3}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>Blogger Email</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Blogger Email</TableCell>
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>Status</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Role</TableCell>
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <TableCell></TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Status</TableCell>
                                 </Grid>
+
                             </Grid>
-
-
-
-
 
 
                         </TableRow>
