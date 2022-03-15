@@ -40,6 +40,7 @@ import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice
 import { useEffect } from "react";
 import Analytics from "./Pages/Dashboard/Analytics/Analytics/Analytics";
 import Liquidity from "./Pages/RoomDashboard/Liquidity/Liquidity";
+import History from "./Pages/Home/History/History";
 
 function App() {
   const dispatch = useDispatch()
@@ -89,6 +90,8 @@ function App() {
           ></Route>
 
           <Route path="/cloudStorage" element={<UploadVideoModal />}></Route>
+          
+          <Route path="/history" element={<History />}></Route>
 
           <Route
             path="/breakout"
