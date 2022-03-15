@@ -39,6 +39,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice";
 import { useEffect } from "react";
 import Analytics from "./Pages/Dashboard/Analytics/Analytics/Analytics";
+import Liquidity from "./Pages/RoomDashboard/Liquidity/Liquidity";
 
 function App() {
   const dispatch = useDispatch()
@@ -160,6 +161,7 @@ function App() {
           <Route path="/roomDashboard" element={<RoomDashboardHome />}></Route>
           <Route path="/roomDashboard/content" element={<Content />}></Route>
           <Route path="/roomDashboard/userAnalytics" element={<Studio />} />
+          <Route path="/roomDashboard/liquidity" element={<Liquidity />} />
         </Route>
 
 
