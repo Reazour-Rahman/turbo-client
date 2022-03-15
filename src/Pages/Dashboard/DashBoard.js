@@ -97,7 +97,7 @@ function DashboardContent() {
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar position="absolute" open={open}>
+                <AppBar position="absolute" open={open} >
                     <Toolbar
                         sx={{
                             pr: '24px', // keep right padding when drawer closed
@@ -132,7 +132,7 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open}>
+                <Drawer variant="permanent" open={open} >
                     <Toolbar
                     style={{backgroundColor:"#102841"}}
                     
@@ -148,7 +148,7 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav"  style={{backgroundColor:"#102841", color:"white"}}>
+                    <List component="nav"  style={{backgroundColor:"#102841", color:"white", height:"100%"}}>
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}
