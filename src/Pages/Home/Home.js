@@ -10,6 +10,7 @@ const Home = () => {
   return (
     <div style={{ paddingLeft: "72px" }}>
       <Banner/>
+
       <NavigationBar2 setFilter={setFilter}></NavigationBar2>
       <Blogs filter={filter} />
 

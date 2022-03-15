@@ -6,6 +6,7 @@ Carousel Structure
 .banner{
     display: block;
     padding-top: 15px;
+    height: 365px;
     
 }
 .carousel-bg{
@@ -46,3 +47,27 @@ Carousel text
 
 
 
+@media screen and (min-width: 500px) and (max-width: 1000px) {
+    .banner{
+        height: 485px;
+    }
+    .banner-video-size{
+        width: 100%;
+        height: 250px;
+    }
+    .banner-container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .banner-text-container{
+        padding-left: 10px;
+        padding-bottom: 10px;
+        padding-top: 5px;
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 595px) {
+.banner{
+    margin-bottom: 15px;
+}
+}
