@@ -39,12 +39,7 @@ import useFirebase from "./Hooks/useFirebase";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice";
 import { useEffect } from "react";
-
 import UserProfile from "./Pages/Home/UserProfile/UserProfile/UserProfile";
-
-import Liquidity from "./Pages/RoomDashboard/Liquidity/Liquidity";
-import History from "./Pages/Home/History/History";
-
 
 function App() {
   const dispatch = useDispatch()
@@ -94,8 +89,6 @@ function App() {
           ></Route>
 
           <Route path="/cloudStorage" element={<UploadVideoModal />}></Route>
-          
-          <Route path="/history" element={<History />}></Route>
 
           <Route
             path="/breakout"
@@ -170,7 +163,6 @@ function App() {
           <Route path="/roomDashboard" element={<RoomDashboardHome />}></Route>
           <Route path="/roomDashboard/content" element={<Content />}></Route>
           <Route path="/roomDashboard/userAnalytics" element={<Studio />} />
-          <Route path="/roomDashboard/liquidity" element={<Liquidity />} />
         </Route>
 
 
