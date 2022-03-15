@@ -22,6 +22,7 @@ import Studio from "./Pages/Studio/Studio";
 import StudioHeader from "./Pages/Studio/StudioHeader/StudioHeader";
 import Audience from "./Pages/Studio/Audience/Audience";
 import UsersMessage from "./Pages/Dashboard/UsersMessage/UsersMessage";
+import Analytics from "./Pages/Dashboard/Analytics/Analytics/Analytics";
 import UploadVideoModal from "./Pages/Upload/UploadVideoModal";
 import Reports from "./Pages/Dashboard/Reports/Reports";
 import RoomDashboard from "./Pages/RoomDashboard/RoomDashboard";
