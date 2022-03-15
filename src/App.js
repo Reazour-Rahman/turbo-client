@@ -75,7 +75,7 @@ function App() {
         <Route exact path="/" element={<MiniDrawer />}>
           <Route path="/signUp" element={<SignUp />}></Route>
           <Route path="/logIn" element={<Auth></Auth>}></Route>
-          <Route path="/profile" element={<AdminRoute><Profile /></AdminRoute>}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
 
           <Route path="/candyBlock" element={<CandyBlock />}></Route>
 
@@ -127,11 +127,11 @@ function App() {
         </Route>
 
         <Route path="dashboard" element={<Dashboard />}>
-          <Route path="/dashboard" element={<DashboardHome />}></Route>
+          <Route path="/dashboard" element={<Default />}></Route>
 
+          <Route exact path="/dashboard/home" element={<DashboardHome />} />
           <Route exact path="/dashboard/bloggerList" element={<Bloggers />} />
           
-          <Route exact path="/dashboard/default" element={<Default />} />
           <Route path="/dashboard/message" element={<UsersMessage />}></Route>
 
 

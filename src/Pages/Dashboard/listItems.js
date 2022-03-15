@@ -20,14 +20,14 @@ import './Dashboard.css';
 export const mainListItems = (
     <React.Fragment>
 
-        <ListItemButton as={Link} component="a" to="/dashboard/default">
+        <ListItemButton as={Link} component="a" to="/dashboard">
             <ListItemIcon>
                 <AppRegistrationIcon className='dashboard-button'/>
             </ListItemIcon>
             <ListItemText className='dashboard-button' primary="Default" />
         </ListItemButton>
 
-        <ListItemButton as={Link} component="a" to="/dashboard">
+        <ListItemButton as={Link} component="a" to="/dashboard/home">
             <ListItemIcon>
                 <DashboardIcon className='dashboard-button'/>
             </ListItemIcon>
@@ -41,11 +41,11 @@ export const mainListItems = (
             <ListItemText className='dashboard-button' primary="Home" />
         </ListItemButton>
 
-        <ListItemButton>
+        <ListItemButton as={Link} component="a" to="/dashboard/analytics">
             <ListItemIcon>
                 <SubscriptionsIcon className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Subscription" />
+            <ListItemText className='dashboard-button' primary="Analytics" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/dashboard/bloggerList">
@@ -76,12 +76,6 @@ export const mainListItems = (
             <ListItemText className='dashboard-button' primary="Reports" />
         </ListItemButton>
 
-        <ListItemButton>
-            <ListItemIcon>
-                <LayersIcon className='dashboard-button' />
-            </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Another" />
-        </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/dashboard/message">
             <ListItemIcon>
@@ -96,20 +90,9 @@ export const mainListItems = (
 export const secondaryListItems = (
     <React.Fragment>
         <ListSubheader className='dashboard-button' style={{backgroundColor:"#102841"}} component="div" inset>
-            Saved reports
+            Welcome To Pro Player
         </ListSubheader>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon className='dashboard-button' />
-            </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Another" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon className='dashboard-button' />
-            </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Another" />
-        </ListItemButton>
+
         <ListItemButton>
             <ListItemIcon>
                 <LogoutIcon className='dashboard-button' />
