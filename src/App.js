@@ -38,9 +38,12 @@ import useFirebase from "./Hooks/useFirebase";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice";
 import { useEffect } from "react";
-import Analytics from "./Pages/Dashboard/Analytics/Analytics/Analytics";
+
+import UserProfile from "./Pages/Home/UserProfile/UserProfile/UserProfile";
+
 import Liquidity from "./Pages/RoomDashboard/Liquidity/Liquidity";
 import History from "./Pages/Home/History/History";
+
 
 function App() {
   const dispatch = useDispatch()
@@ -108,6 +111,8 @@ function App() {
           <Route path="/addBlog" element={<AddBlog />}></Route>
 
           <Route path="/profile" element={<Profile />}></Route>
+
+          <Route path="/userprofile/:email" element={<UserProfile />}></Route>
 
           <Route
             path="/profile/content"
