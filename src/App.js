@@ -38,7 +38,7 @@ import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice
 import { useEffect } from "react";
 import UserProfile from "./Pages/Home/UserProfile/UserProfile/UserProfile";
 import History from "./Pages/Home/History/History";
-import HistoryList from "./Pages/Home/History/HistoryList";
+import Subscription from "./Pages/Home/Subscription/Subscription";
 import DetailProduct from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/DetailProduct/DetailProduct";
 import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/UploadAmazonProducts/UploadeAmazonProducts";
 
@@ -102,7 +102,8 @@ function App() {
           ></Route>
           <Route path="/message" element={<UsersMessage />}></Route>
           <Route path="/history" element={<History />}></Route>
-          
+          <Route path="/subscriptions" element={<Subscription />}></Route>
+
 
           <Route path="/details/:blogId" element={<PrivateRoute><Details /></PrivateRoute>}></Route>
 
@@ -112,7 +113,7 @@ function App() {
 
           </Route>
           <Route exact path='/profile/detail/:productId' element={<DetailProduct />} />
-          
+
 
           <Route path="/userprofile/:email" element={<UserProfile />}></Route>
 
@@ -162,7 +163,7 @@ function App() {
 
 
           <Route path="/dashboard/upload" element={<UploadBlog />} />
-          
+
 
           <Route path="/dashboard/reports" element={<Reports />} />
         </Route>
