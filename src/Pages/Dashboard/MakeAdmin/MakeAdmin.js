@@ -37,7 +37,7 @@ const MakeAdmin = (props) => {
     const handleAdminSubmit = e => {
 
         const user = { email, role };
-        fetch("https://aqueous-chamber-45567.herokuapp.com/users", {
+        fetch("https://aqueous-chamber-45567.herokuapp.com/users/admin", {
 
 
 //         const user = { email };

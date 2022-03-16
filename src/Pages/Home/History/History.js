@@ -21,7 +21,7 @@ const History = ({history}) => {
                     {/* :::::::::::::::::::::::::::::::
                     Please Map here for Video dynamic
                     :::::::::::::::::::::::::::::::::*/}
-                    {[1,2,3,4,5,6,7,8 ,9,10].map((c) => <HistoryVideo />)}
+                    <HistoryVideo history={history} />
                     </section>
 
                 </div>

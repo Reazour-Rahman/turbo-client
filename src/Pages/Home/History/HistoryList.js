@@ -1,5 +1,6 @@
 import { Box, Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import History from "./History";
 
 const HistoryList = () => {
@@ -7,30 +8,31 @@ const HistoryList = () => {
 
   const [histories, setHistories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const user = useSelector(state => state.firebase.user)
   useEffect(() => {
     setLoading(true);
     setTimeout(async () => {
       const response = await fetch(
-        "https://aqueous-chamber-45567.herokuapp.com/blogs"
+        "http://localhost:5000/views"
       );
       const data = await response.json();
-        let main = data.blogs;
-
-        for (const data of main) {
-            setHistories(data);
-        }
+      setHistories(data);
+      
         setLoading(false);
     });
   }, []);
 
 console.log(histories);
 
+const userHistory = histories.filter(h => h?.viewerEmail === user?.email)
+
   return (
     <div style={{ color: "white" }}>
       <Box sx={{ m: 5 }}>
+        
         {!loading ? (
-          histories?.viewers?.map((history) => (
-            console.log(history)
+          userHistory?.map((history) => (
+            <History history={history}></History>
           ))
         ) : (
           <div></div>
