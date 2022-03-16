@@ -8,7 +8,7 @@ const UserFeaturedVideos = ({email}) => {
   const [featuredVideos, setFeaturedVideos] = useState([]);
   const user = useSelector((state) => state.firebase.user)
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs?email=${email.email}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs?email=${email.email}`)
       .then((res) => res.json())
       .then((data) => setFeaturedVideos(data.blogs));
   }, [email]);

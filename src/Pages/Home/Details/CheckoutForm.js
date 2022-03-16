@@ -40,7 +40,7 @@ const CheckoutForm = ({
     donation["amount"] = parseInt(donateRef.current?.value);
     console.log(donation, typeof donation.amount);
     axios
-      .post("http://localhost:5000/create-payment-intent", {
+      .post("https://aqueous-chamber-45567.herokuapp.com/create-payment-intent", {
         ...donation,
       })
       .then(function (response) {
@@ -98,7 +98,7 @@ const CheckoutForm = ({
       setSuccess("Your payment processed successfully");
       setProcessing(false);
 
-      const url = `http://localhost:5000/blogs/payment/${bloggerEmail}`;
+      const url = `https://aqueous-chamber-45567.herokuapp.com/blogs/payment/${bloggerEmail}`;
       const payment = {
         amount: paymentIntent.amount,
         trasaction: paymentIntent.client_secret,

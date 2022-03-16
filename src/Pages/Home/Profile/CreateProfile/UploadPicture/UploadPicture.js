@@ -29,7 +29,7 @@ export default function UploadPicture({ openPictureModal, handleCloseUpdatePictu
 
     }
 
-    axios.put(`http://localhost:5000/users/room/${user?.email}`, data)
+    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`, data)
     
     console.log(data);
 

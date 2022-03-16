@@ -24,7 +24,7 @@ const NewSubscriber = ({ user }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://aqueous-chamber-45567.herokuapp.com/users")
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);

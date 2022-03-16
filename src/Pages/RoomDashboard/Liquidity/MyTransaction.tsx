@@ -19,7 +19,7 @@ const MyTransaction = ({ user }) => {
 
   const [payments, setPayments] = useState([]);
 
-  const url = `http://localhost:5000/user/${user?.email}`;
+  const url = `https://aqueous-chamber-45567.herokuapp.com/user/${user?.email}`;
 
   useEffect(() => {
     fetch(url)

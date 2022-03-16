@@ -21,7 +21,7 @@ const Transaction = () => {
   const [users, setUsers] = useState([]);
   const payments = [];
 
-  const url = `http://localhost:5000/users`;
+  const url = `https://aqueous-chamber-45567.herokuapp.com/users`;
 
   useEffect(() => {
     fetch(url)
