@@ -8,7 +8,7 @@ const RoomDashboardHome = () => {
   const user = useSelector((state) => state.firebase.user)
 
   useEffect(() => {
-    const contentUrl = `http://localhost:5000/blogs?email=${user?.email}`;
+    const contentUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs?email=${user?.email}`;
     fetch(contentUrl)
       .then((response) => response.json())
       .then((data) => setRecentVideos(data.blogs));
@@ -17,7 +17,7 @@ const RoomDashboardHome = () => {
   const [profile, setProfile] = React.useState('')
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/room/${user?.email}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`)
       .then(res => res.json())
       .then(data => setProfile(data))
   }, [user?.email])

@@ -14,7 +14,7 @@ const MakeAdminList = () => {
 
     useEffect(() => {
 
-        const bloggerUrl = "http://localhost:5000/users";
+        const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users";
 
         //         const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users/admin";
 
