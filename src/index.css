@@ -35,6 +35,9 @@ body {
 #darkLight{
 color: #d6d6d6 !important;
 }
+#muted{
+color: #8b8b8b !important;
+}
 
 /* Light Colors */
 #lightest{
