@@ -14,13 +14,10 @@ import Contents from "./Pages/Home/Profile/Contents/Contents";
 import About from "./Pages/Home/Profile/About/About";
 import AmazonProducts from "./Pages/Home/Profile/AmazonProducts/AmazonProducts";
 import PlayList from "./Pages/Home/Profile/PlayLists/PlayList";
-import Message from "./Pages/Dashboard/Message";
 import ChannelDashboard from "./Pages/Dashboard/ChannelDashboard/ChannelDashboard";
 import CandyBlock from "./Pages/Games/CandyBlock/CandyBlock";
 import Breakout from "./games/breakout";
 import Studio from "./Pages/Studio/Studio";
-import StudioHeader from "./Pages/Studio/StudioHeader/StudioHeader";
-import Audience from "./Pages/Studio/Audience/Audience";
 import UsersMessage from "./Pages/Dashboard/UsersMessage/UsersMessage";
 import Analytics from "./Pages/Dashboard/Analytics/Analytics/Analytics";
 import UploadVideoModal from "./Pages/Upload/UploadVideoModal";
@@ -29,10 +26,10 @@ import RoomDashboard from "./Pages/RoomDashboard/RoomDashboard";
 import RoomDashboardHome from "./Pages/RoomDashboard/RoomDashboardHome";
 import Content from "./Pages/RoomDashboard/Contents/Content/Content";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
-import Register from "./Pages/Authentication/SignUp/Register";
 import React from "react";
 import { Auth } from "./Pages/Dashboard/UsersMessage/message";
 import AdminRoute from "./Pages/PrivateRoute/AdminRoute";
+import Liquidity from "./Pages/RoomDashboard/Liquidity/Liquidity";
 import Fake from "./Pages/Search/HomeSearch/fake";
 import Default from "./Pages/Dashboard/Default/Default";
 import useFirebase from "./Hooks/useFirebase";
@@ -163,6 +160,7 @@ function App() {
           <Route path="/roomDashboard" element={<RoomDashboardHome />}></Route>
           <Route path="/roomDashboard/content" element={<Content />}></Route>
           <Route path="/roomDashboard/userAnalytics" element={<Studio />} />
+          <Route path="/roomDashboard/liquidity" element={<Liquidity />} />
         </Route>
 
 
