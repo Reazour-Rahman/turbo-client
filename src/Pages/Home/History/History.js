@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const History = () => {
+
+const History = ({ viewerEmail }) => {
+
+
+
+
     return (
         <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero sed quibusdam pariatur blanditiis, temporibus odit eum animi iste nisi velit! Maiores natus molestias in nisi corporis assumenda alias, laboriosam saepe ullam molestiae corrupti atque? Saepe iure repudiandae rerum dolorum error et excepturi deserunt quaerat iusto incidunt perspiciatis impedit eum quibusdam totam itaque harum eligendi dolor amet accusamus, quae aliquid? Atque dolore facilis nesciunt modi sequi, maiores ut tempora nulla, ea minus ducimus, unde est deleniti et exercitationem quo eligendi cupiditate. Cupiditate, nihil. Esse, quis. Ut iure libero earum veniam magni, ad doloribus non? Quos suscipit libero tenetur est modi veniam reprehenderit, et, natus eveniet voluptatum consequatur, porro at culpa. Aspernatur enim nostrum aliquid numquam? Neque amet consequatur fugit magnam earum eveniet consequuntur accusantium. Ut porro sapiente, quasi veniam at velit quis, sit voluptates magni accusantium tempore, reprehenderit beatae sint ab quisquam! Natus libero quod sapiente cumque veniam qui dolorum tempora ullam, maxime ipsam aliquam exercitationem, impedit saepe repellat, repudiandae iusto distinctio ratione atque et? Natus, laboriosam. Labore modi eligendi suscipit corporis quidem, necessitatibus harum quam hic natus sed, officia facilis iste vitae perferendis rem quas impedit illum libero! Doloremque eligendi sunt unde dicta ratione iusto nihil veniam officiis dolorum accusamus.
-        </div>
+            <React.Fragment>
+                <div style={{ color: "white", marginLeft: "150px", marginRight: "15px" }}>
+                    <h2>Watch History</h2>
+                    <div className="row">
+                        <div className="col-sm-8 d-flex">
+                            <div className="col-sm-2 col-lg-2 " style={{ marginLeft: "20px", marginRight: "20px" }} >
+                                {/* <img src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M=" alt="" /> */}
+                                {viewerEmail}
+                            </div>
+                            <div className="col-sm-6 col-lg-9">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi non eaque ratione modi voluptatum ipsam velit. Velit porro omnis nulla!
+                                {viewerEmail}
+                            </div>
+                        </div>
+                        <div className="col-sm-4 bg-primary  ">
+                            Search
+
+                        </div>
+                    </div>
+
+                </div >
+            </React.Fragment>
+        </div >
     );
 };
 

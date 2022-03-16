@@ -97,7 +97,7 @@ const SearchBox = () => {
 
                 </Grid>
                 <Grid item xs={8}>
-                    <Search sx={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Search sx={{ justifyContent: 'center', alignItems: 'center' }} style={{ color: "white" }}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>

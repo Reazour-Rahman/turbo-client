@@ -37,12 +37,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAdmin, setIsLoading, setUser } from "./reducers/slices/firebaseSlice";
 import { useEffect } from "react";
 import UserProfile from "./Pages/Home/UserProfile/UserProfile/UserProfile";
+import History from "./Pages/Home/History/History";
+import HistoryList from "./Pages/Home/History/HistoryList";
 
 function App() {
   const dispatch = useDispatch()
-  
+
   const user = useSelector((state) => state.firebase.user)
-  const {onAuthStateChanged,getIdToken, auth } = useFirebase()
+  const { onAuthStateChanged, getIdToken, auth } = useFirebase()
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -61,11 +63,11 @@ function App() {
     });
   }, [auth, dispatch])
 
-  useEffect( () => {
+  useEffect(() => {
     fetch(`https://aqueous-chamber-45567.herokuapp.com/users/${user?.email}`)
-    .then(res => res.json())
-    .then(data =>  dispatch(setAdmin(data?.admin)))
-  },[user?.email])
+      .then(res => res.json())
+      .then(data => dispatch(setAdmin(data?.admin)))
+  }, [user?.email])
   return (
     <div className="App">
       <Routes>
@@ -96,6 +98,7 @@ function App() {
             }
           ></Route>
           <Route path="/message" element={<UsersMessage />}></Route>
+          <Route path="/history" element={<HistoryList />}></Route>
 
           <Route path="/details/:blogId" element={<PrivateRoute><Details /></PrivateRoute>}></Route>
 
@@ -128,7 +131,9 @@ function App() {
 
           <Route exact path="/dashboard/home" element={<DashboardHome />} />
           <Route exact path="/dashboard/bloggerList" element={<Bloggers />} />
-          
+
+          <Route exact path="/dashboard/default" element={<Default />} />
+
           <Route path="/dashboard/message" element={<UsersMessage />}></Route>
 
 
@@ -152,8 +157,8 @@ function App() {
 
           <Route path="/dashboard/reports" element={<Reports />} />
         </Route>
-        
-        
+
+
         <Route path="/fake" element={<Fake />}></Route>
 
         <Route path="/roomDashboard" element={<RoomDashboard />}>

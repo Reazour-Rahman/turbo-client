@@ -12,12 +12,12 @@ const Bloggers = () => {
 
     useEffect(() => {
         const bloggerUrl = `https://mocki.io/v1/24ee15c5-3e9e-401c-b397-06a8e56db4a5`;
-        setTimeout(() => {
-            fetch(bloggerUrl)
-                .then((response) => response.json())
-                .then((data) => setBloggers(data));
-            setLoading(true);
-        }, 4000);
+
+        fetch(bloggerUrl)
+            .then((response) => response.json())
+            .then((data) => setBloggers(data));
+        setLoading(true);
+
     }, []);
     console.log(bloggers);
 
@@ -25,7 +25,7 @@ const Bloggers = () => {
         <div>
 
             <Box sx={{ m: 5, mt: 2 }}>
-                <SearchBox></SearchBox>
+                <SearchBox ></SearchBox>
 
                 <Grid
                     container
