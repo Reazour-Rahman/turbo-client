@@ -39,6 +39,9 @@ import { useEffect } from "react";
 import UserProfile from "./Pages/Home/UserProfile/UserProfile/UserProfile";
 import History from "./Pages/Home/History/History";
 import HistoryList from "./Pages/Home/History/HistoryList";
+import DetailProduct from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/DetailProduct/DetailProduct";
+import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/UploadAmazonProducts/UploadeAmazonProducts";
+
 
 function App() {
   const dispatch = useDispatch()
@@ -105,7 +108,11 @@ function App() {
 
           <Route path="/addBlog" element={<AddBlog />}></Route>
 
-          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/profile" element={<Profile />}>
+
+          </Route>
+          <Route exact path='/profile/detail/:productId' element={<DetailProduct />} />
+          
 
           <Route path="/userprofile/:email" element={<UserProfile />}></Route>
 
@@ -136,7 +143,7 @@ function App() {
           <Route exact path="/dashboard/default" element={<Default />} />
 
           <Route path="/dashboard/message" element={<UsersMessage />}></Route>
-
+          <Route exact path="/dashboard/upload-products" element={<UploadeAmazonProducts />} />
 
           <Route exact path="/dashboard/analytics" element={<Analytics />} />
 
@@ -155,6 +162,7 @@ function App() {
 
 
           <Route path="/dashboard/upload" element={<UploadBlog />} />
+          
 
           <Route path="/dashboard/reports" element={<Reports />} />
         </Route>
