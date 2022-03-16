@@ -88,9 +88,9 @@ const Details = () => {
       setSingleBlog(data)
       setCount(data.likes)
     })
-  },[blogId, rendering, singleBlog?.likers])
+  },[blogId, rendering])
 
-  console.log(singleBlog);
+
   let theme;
   theme = localStorage.getItem("theme")
   return (

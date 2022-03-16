@@ -69,11 +69,11 @@ const NewSubscriber = ({ user }) => {
             <section className="team-members-list">
               <aside className="team-members-id">
                 <div>
-                  <Avatar alt="Remy Sharp" src={users.photoURL} />
+                  
                 </div>
                 <div>
                   <p className="paragraph-size ">{user.name}</p>
-                  <p className=" p-dark">{user?.photoURL}</p>
+                  {/* <p className=" p-dark">{user?.photoURL}</p> */}
                 </div>
               </aside>
               {console.log(user)}
