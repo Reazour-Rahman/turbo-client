@@ -9,7 +9,8 @@ import Avatar from "@mui/material/Avatar";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 const NewSubscriber = ({ user }) => {
-  const avatar = user.photoURL;
+  const avatar = user?.photoURL;
+  console.log(user);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -23,17 +24,17 @@ const NewSubscriber = ({ user }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://aqueous-chamber-45567.herokuapp.com/users")
+    fetch("http://localhost:5000/users")
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);
-  console.log(users);
+  //   console.log(users);
 
   return (
     <div className=" members-container">
       <section>
         <div className="new-members-head">
-          <p>My Subscribers</p>
+          <p>My Followers</p>
           <div>
             <IconButton
               className="add-btn"
@@ -68,14 +69,14 @@ const NewSubscriber = ({ user }) => {
             <section className="team-members-list">
               <aside className="team-members-id">
                 <div>
-                  <Avatar alt="Remy Sharp" src={avatar} />
+                  <Avatar alt="Remy Sharp" src={users.photoURL} />
                 </div>
                 <div>
                   <p className="paragraph-size ">{user.name}</p>
-                  <p className=" p-dark">{user.email}</p>
+                  <p className=" p-dark">{user?.photoURL}</p>
                 </div>
               </aside>
-
+              {console.log(user)}
               <div>
                 <Button
                   className="add-btn"
