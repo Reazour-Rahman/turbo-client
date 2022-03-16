@@ -18,7 +18,7 @@ const Blog = (props) => {
                 Destructure the props
     ::::::::::::::::::::::::::::::::::::::::::*/
     const [allViewers, setAllViewers] = useState([])
-  const { _id, title, video, bloggerName, category, bloggerEmail, viewers, uploadTime, thumbnail, bloggerPhoto, views } =props.blog;
+  const { _id, title, video, bloggerName, category, bloggerEmail, viewers, uploadTime, thumbnail, bloggerPhoto, views, description } =props.blog;
   let theme;
   theme = localStorage.getItem("theme");
   const navigate = useNavigate()
@@ -43,6 +43,11 @@ const Blog = (props) => {
       }
       await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
     }
+
+    const data = {
+      blogId : _id, viewerName:user.displayName, viewerEmail:user.email, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto, views, description
+    }
+    await axios.post('http://localhost:5000/views', data)
 
   }
 
