@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./RoomDashboardHome.css";
+import VideoPlayer from "react-video-js-player";
 
 const RoomDashboardHome = () => {
+  const [recentVideos, setRecentVideos] = useState([]);
+  const user = useSelector((state) => state.firebase.user)
+
+  useEffect(() => {
+    const contentUrl = `http://localhost:5000/blogs?email=${user?.email}`;
+         fetch(contentUrl)
+        .then((response) => response.json())
+        .then((data) => setRecentVideos(data.blogs));  
+  }, [user?.email]);
+
+  const [profile, setProfile] = React.useState('')
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/room/${user?.email}`)
+    .then(res => res.json())
+    .then(data => setProfile(data))
+  },[user?.email])
+  console.log('followers', profile);
+
+  var totalViews = recentVideos?.reduce(function(a, b){
+    console.log(a + b.views);
+    return b.views + a;
+}, 0);
+  var totalLikes = recentVideos?.reduce(function(a, b){
+    console.log(a + b.likes);
+    return b.likes + a;
+}, 0);
+
+const mostviewed = recentVideos.sort((a,b)=> b.views - a.views)
+
+console.log('most views',mostviewed);
+
+console.log(totalViews);
   return (
     <div>
       <div className="" style={{ color: "white", height: '100vh', marginLeft: "15px", marginRight: '15px' }}>
@@ -11,20 +46,25 @@ const RoomDashboardHome = () => {
           <div className="first-column-size">
             <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
               <h6>Latest video performance</h6>
-              <img
-                src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                alt="Pic"
-              />
+              {
+                recentVideos.map(r => <>
+                <VideoPlayer
+                className="videos"
+                src={r.video} 
+                poster={r.thumbnail}
+                playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
+                />
+                <h1 style={{fontSize:'22px', marginTop:'10px'}}>{r.title}</h1>
               <div className="grid-carddetails-container">
                 <div class="grid-item">
-                  <p>Views</p>
-                  <p>Impressions click-through rate</p>
-                  <p>Average view duration</p>
+                  <p>Blog Views</p>
+                  <p>Total Like Impressions</p>
+                  <p>Upload At</p>
                 </div>
                 <div class="grid-item " style={{ textAlign: "right" }}>
-                  <p>309</p>
-                  <p>12.4%</p>
-                  <p>1:05</p>
+                  <p>{r.views}</p>
+                  <p>{r.likes}</p>
+                  <p>{r.uploadTime}</p>
                 </div>
 
                 <a href="" style={{ textDecoration: "none" }}>
@@ -35,6 +75,8 @@ const RoomDashboardHome = () => {
                   SEE COMMENTS{" "}
                 </a>
               </div>
+                </>).reverse().slice(0,1)
+              }
             </div>
           </div>
           {/* 2nd column */}
@@ -42,29 +84,48 @@ const RoomDashboardHome = () => {
             <div style={{ height: "370px" }}>
               <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
                 <h6>Room Analytics</h6>
-                <p>Current subscribers</p>
-                <h4>8</h4>
+                <p>Current Followers</p>
+                <h4>{profile.followersCount}</h4>
                 <hr className="hr" />
 
                 <h6 style={{ paddingBottom: "0px" }}>Summary</h6>
                 <p style={{ paddingBottom: "5px" }}>Last 28 days</p>
                 <div className="grid-carddetails-container">
                   <div>
-                    <p style={{ paddingBottom: "3px" }}>Views</p>
-                    <p>Watch time (hours)</p>
+                    <p style={{ paddingBottom: "3px" }}>Total Blog Views</p>
+                    <p>Total Blog Likes</p>
                   </div>
                   <div style={{ textAlign: "right" }} class="">
-                    <p style={{ paddingBottom: "3px" }}>3</p>
-                    <p>0.0</p>
+                    <p style={{ paddingBottom: "3px" }}>{totalViews}</p>
+                    <p>{totalLikes}</p>
                   </div>
                 </div>
                 <hr className="hr" />
-                <p>Top videos</p>
-                <p>Last 48 hours-Views</p>
+                <p>Most Viewed Blog video</p>
+                {
+                mostviewed.map(r => <>
+               <VideoPlayer
+                className="videos"
+                src={r.video} 
+                poster={r.thumbnail}
+                playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
+                />
 
-                <a href="" style={{ textDecoration: "none" }}>
-                  GO TO CHANNEL ANALYTICS
-                </a>
+                <h1 style={{fontSize:'22px', marginTop:'10px'}}>{r.title}</h1>
+              <div className="grid-carddetails-container">
+                <div class="grid-item">
+                  <p>Blog Views</p>
+                  <p>Total Like Impressions</p>
+                  <p>Upload At</p>
+                </div>
+                <div class="grid-item " style={{ textAlign: "right" }}>
+                  <p>{r.views}</p>
+                  <p>{r.likes}</p>
+                  <p>{r.uploadTime}</p>
+                </div>
+              </div>
+                </>).slice(0,1)
+              }
                 <br />
               </div>
             </div>{" "}
