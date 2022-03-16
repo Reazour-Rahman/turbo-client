@@ -8,41 +8,41 @@ const RoomDashboardHome = () => {
   const user = useSelector((state) => state.firebase.user)
 
   useEffect(() => {
-    const contentUrl = `http://localhost:5000/blogs?email=${user?.email}`;
-         fetch(contentUrl)
-        .then((response) => response.json())
-        .then((data) => setRecentVideos(data.blogs));  
+    const contentUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs?email=${user?.email}`;
+    fetch(contentUrl)
+      .then((response) => response.json())
+      .then((data) => setRecentVideos(data.blogs));
   }, [user?.email]);
 
   const [profile, setProfile] = React.useState('')
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/room/${user?.email}`)
-    .then(res => res.json())
-    .then(data => setProfile(data))
-  },[user?.email])
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`)
+      .then(res => res.json())
+      .then(data => setProfile(data))
+  }, [user?.email])
   console.log('followers', profile);
 
-  var totalViews = recentVideos?.reduce(function(a, b){
+  var totalViews = recentVideos?.reduce(function (a, b) {
     console.log(a + b.views);
     return b.views + a;
-}, 0);
-  var totalLikes = recentVideos?.reduce(function(a, b){
+  }, 0);
+  var totalLikes = recentVideos?.reduce(function (a, b) {
     console.log(a + b.likes);
     return b.likes + a;
-}, 0);
+  }, 0);
 
-// const mostviewed = 
+  // const mostviewed = 
 
 
 
-// console.log('most views',mostviewed);
+  // console.log('most views',mostviewed);
 
-console.log(totalViews);
+  console.log(totalViews);
   return (
     <div>
       <div className="" style={{ color: "white", height: '100vh', marginLeft: "15px", marginRight: '15px' }}>
-        <h2 style={{ color: "white" }} className="mt-5" >Room dashboard</h2>
+        <h2 style={{ color: "white" }} className="mt-5 h2section" >Room dashboard</h2>
         <div class="grid-container" >
           {/* 1st Column */}
           <div className="first-column-size">
@@ -50,34 +50,34 @@ console.log(totalViews);
               <h6>Latest video performance</h6>
               {
                 recentVideos.map(r => <>
-                <VideoPlayer
-                className="videos"
-                src={r.video} 
-                poster={r.thumbnail}
-                playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
-                />
-                <h1 style={{fontSize:'22px', marginTop:'10px'}}>{r.title}</h1>
-              <div className="grid-carddetails-container">
-                <div class="grid-item">
-                  <p>Blog Views</p>
-                  <p>Total Like Impressions</p>
-                  <p>Upload At</p>
-                </div>
-                <div class="grid-item " style={{ textAlign: "right" }}>
-                  <p>{r.views}</p>
-                  <p>{r.likes}</p>
-                  <p>{r.uploadTime}</p>
-                </div>
+                  <VideoPlayer
+                    className="videos"
+                    src={r.video}
+                    poster={r.thumbnail}
+                    playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
+                  />
+                  <h1 style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
+                  <div className="grid-carddetails-container">
+                    <div class="grid-item">
+                      <p>Blog Views</p>
+                      <p>Total Like Impressions</p>
+                      <p>Upload At</p>
+                    </div>
+                    <div class="grid-item " style={{ textAlign: "right" }}>
+                      <p>{r.views}</p>
+                      <p>{r.likes}</p>
+                      <p>{r.uploadTime}</p>
+                    </div>
 
-                <a href="" style={{ textDecoration: "none" }}>
-                  GO TO VIDEO ANALYTICS
-                </a>
-                <br />
-                <a href="" style={{ textDecoration: "none" }}>
-                  SEE COMMENTS{" "}
-                </a>
-              </div>
-                </>).reverse().slice(0,1)
+                    <a href="" style={{ textDecoration: "none" }}>
+                      GO TO VIDEO ANALYTICS
+                    </a>
+                    <br />
+                    <a href="" style={{ textDecoration: "none" }}>
+                      SEE COMMENTS{" "}
+                    </a>
+                  </div>
+                </>).reverse().slice(0, 1)
               }
             </div>
           </div>
@@ -104,31 +104,31 @@ console.log(totalViews);
                   </div>
                 </div>
                 <hr className="hr" />
-                <p style={{fontSize:'20px', marginBottom:'5px'}}>Most Liked Blog video</p>
+                <p style={{ fontSize: '20px', marginBottom: '5px' }}>Most Liked Blog video</p>
                 {
-                    recentVideos.sort((a,b)=> b.likes - a.likes).map(r => <>
+                  recentVideos.sort((a, b) => b.likes - a.likes).map(r => <>
                     <VideoPlayer
-                    className="videos"
-                    src={r.video} 
-                    poster={r.thumbnail}
-                    playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
+                      className="videos"
+                      src={r.video}
+                      poster={r.thumbnail}
+                      playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
                     />
-                    <h1 style={{fontSize:'22px', marginTop:'10px'}}>{r.title}</h1>
-                  <div className="grid-carddetails-container">
-                    <div class="grid-item">
-                      <p>Blog Views</p>
-                      <p>Total Like Impressions</p>
-                      <p>Upload At</p>
+                    <h1 style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
+                    <div className="grid-carddetails-container">
+                      <div class="grid-item">
+                        <p>Blog Views</p>
+                        <p>Total Like Impressions</p>
+                        <p>Upload At</p>
+                      </div>
+                      <div class="grid-item " style={{ textAlign: "right" }}>
+                        <p>{r.views}</p>
+                        <p>{r.likes}</p>
+                        <p>{r.uploadTime}</p>
+                      </div>
                     </div>
-                    <div class="grid-item " style={{ textAlign: "right" }}>
-                      <p>{r.views}</p>
-                      <p>{r.likes}</p>
-                      <p>{r.uploadTime}</p>
-                    </div>
-                  </div>
-                    </>).slice(0,1)
-                  }
-      
+                  </>).slice(0, 1)
+                }
+
               </div>
             </div>{" "}
             <br />
@@ -176,37 +176,37 @@ console.log(totalViews);
           {/* 3rd Column */}
 
           <div style={{ width: "100%" }}>
-            <div className="third-column-second-row-size">
-              <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
-              <p style={{fontSize:'20px', marginBottom:'5px'}}>Most Viewed Blog video</p>
+            <div className="third-column-second-row-size" style={{ marginBottom: "30px" }}>
+              <div className="card" style={{ backgroundColor: "#102841", color: "white", marginBottom: "30px" }}>
+                <p style={{ fontSize: '20px', marginBottom: '5px' }}>Most Viewed Blog video</p>
                 {
-                recentVideos.sort((a,b)=> b.views - a.views).map(r => <>
-               <VideoPlayer
-                className="videos"
-                src={r.video} 
-                poster={r.thumbnail}
-                playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
-                />
+                  recentVideos.sort((a, b) => b.views - a.views).map(r => <>
+                    <VideoPlayer
+                      className="videos"
+                      src={r.video}
+                      poster={r.thumbnail}
+                      playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
+                    />
 
-                <h1 style={{fontSize:'22px', marginTop:'10px'}}>{r.title}</h1>
-              <div className="grid-carddetails-container">
-                <div class="grid-item">
-                  <p>Blog Views</p>
-                  <p>Total Like Impressions</p>
-                  <p>Upload At</p>
-                </div>
-                <div class="grid-item " style={{ textAlign: "right" }}>
-                  <p>{r.views}</p>
-                  <p>{r.likes}</p>
-                  <p>{r.uploadTime}</p>
-                </div>
-              </div>
-                </>).slice(0,1)
-              }
+                    <h1 style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
+                    <div className="grid-carddetails-container">
+                      <div class="grid-item">
+                        <p>Blog Views</p>
+                        <p>Total Like Impressions</p>
+                        <p>Upload At</p>
+                      </div>
+                      <div class="grid-item " style={{ textAlign: "right" }}>
+                        <p>{r.views}</p>
+                        <p>{r.likes}</p>
+                        <p>{r.uploadTime}</p>
+                      </div>
+                    </div>
+                  </>).slice(0, 1)
+                }
               </div>
             </div>
-            <div style={{ width: "100%", height: "200px", marginTop :'30px' }}>
-              <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
+            <div style={{ width: "100%", height: "200px", marginTop: '30px' }}>
+              <div className="card" style={{ backgroundColor: "#102841", color: "white", }}>
                 <h6>Ideas for you</h6>
 
                 <div className="grid-carddetails-container">

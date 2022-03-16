@@ -20,6 +20,7 @@ import InsertCommentIcon from '@mui/icons-material/InsertComment';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ReportIcon from '@mui/icons-material/Report';
 import { Avatar } from '@mui/material';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 export const mainListItems = (
 
@@ -81,11 +82,11 @@ export const mainListItems = (
             <ListItemText className='dashboard-button' primary="Reports" />
         </ListItemButton>
 
-        <ListItemButton>
+        <ListItemButton as={Link} component="a" to="roomDashboard/uploadProducts">
             <ListItemIcon>
-                <LayersIcon className='dashboard-button' />
+                <FileUploadIcon className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Another" />
+            <ListItemText className='dashboard-button' primary="Gaming Console" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="">

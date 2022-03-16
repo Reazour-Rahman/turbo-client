@@ -37,15 +37,13 @@ const MakeAdmin = (props) => {
     const handleAdminSubmit = e => {
 
         const user = { email, role };
-        fetch("https://aqueous-chamber-45567.herokuapp.com/users/admin", {
 
+        fetch("https://aqueous-chamber-45567.herokuapp.com/makeAdmin", {
 
-//         const user = { email };
-//         fetch("https://aqueous-chamber-45567.herokuapp.com/admin", {
 
             method: 'PUT',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('idToken')}`,
+                // 'authorization': `Bearer ${localStorage.getItem('idToken')}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)
