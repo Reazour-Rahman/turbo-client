@@ -33,7 +33,7 @@ const NewSubscriber = ({ user }) => {
     <div className=" members-container">
       <section>
         <div className="new-members-head">
-          <p>My Subscribers</p>
+          <p>My Followers</p>
           <div>
             <IconButton
               className="add-btn"
