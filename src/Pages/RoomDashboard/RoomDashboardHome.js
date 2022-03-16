@@ -88,45 +88,20 @@ console.log(totalViews);
                 <h4>{profile.followersCount}</h4>
                 <hr className="hr" />
 
-                <h6 style={{ paddingBottom: "0px" }}>Summary</h6>
-                <p style={{ paddingBottom: "5px" }}>Last 28 days</p>
+                <h6 style={{ paddingBottom: "5px" }}>Summary</h6>
                 <div className="grid-carddetails-container">
                   <div>
                     <p style={{ paddingBottom: "3px" }}>Total Blog Views</p>
                     <p>Total Blog Likes</p>
+                    <p>Total Blog Upload</p>
                   </div>
                   <div style={{ textAlign: "right" }} class="">
                     <p style={{ paddingBottom: "3px" }}>{totalViews}</p>
                     <p>{totalLikes}</p>
+                    <p>{recentVideos.length}</p>
                   </div>
                 </div>
                 <hr className="hr" />
-                <p>Most Viewed Blog video</p>
-                {
-                mostviewed.map(r => <>
-               <VideoPlayer
-                className="videos"
-                src={r.video} 
-                poster={r.thumbnail}
-                playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
-                />
-
-                <h1 style={{fontSize:'22px', marginTop:'10px'}}>{r.title}</h1>
-              <div className="grid-carddetails-container">
-                <div class="grid-item">
-                  <p>Blog Views</p>
-                  <p>Total Like Impressions</p>
-                  <p>Upload At</p>
-                </div>
-                <div class="grid-item " style={{ textAlign: "right" }}>
-                  <p>{r.views}</p>
-                  <p>{r.likes}</p>
-                  <p>{r.uploadTime}</p>
-                </div>
-              </div>
-                </>).slice(0,1)
-              }
-                <br />
               </div>
             </div>{" "}
             <br />
@@ -176,26 +151,34 @@ console.log(totalViews);
           <div style={{ width: "100%" }}>
             <div className="third-column-second-row-size">
               <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
-                <h6>News</h6>
-                <img
-                  className="News-img"
-                  src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                  alt="Pic"
+              <p style={{fontSize:'20px', marginBottom:'5px'}}>Most Viewed Blog video</p>
+                {
+                mostviewed.map(r => <>
+               <VideoPlayer
+                className="videos"
+                src={r.video} 
+                poster={r.thumbnail}
+                playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
                 />
-                <div>
-                  <h6>We're back,Creators!</h6>
-                  <p>
-                    Take a look at the months creator roundup featuring all the
-                    latest ProPlayers news,updates and tips. All on the
-                    ProPlayers creators channel
-                  </p>
+
+                <h1 style={{fontSize:'22px', marginTop:'10px'}}>{r.title}</h1>
+              <div className="grid-carddetails-container">
+                <div class="grid-item">
+                  <p>Blog Views</p>
+                  <p>Total Like Impressions</p>
+                  <p>Upload At</p>
                 </div>
-                <a href="" style={{ textDecoration: "none" }}>
-                  WATCH NOW
-                </a>
+                <div class="grid-item " style={{ textAlign: "right" }}>
+                  <p>{r.views}</p>
+                  <p>{r.likes}</p>
+                  <p>{r.uploadTime}</p>
+                </div>
+              </div>
+                </>).slice(0,1)
+              }
               </div>
             </div>
-            <div style={{ width: "100%", height: "200px" }}>
+            <div style={{ width: "100%", height: "200px", marginTop :'30px' }}>
               <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
                 <h6>Ideas for you</h6>
 
