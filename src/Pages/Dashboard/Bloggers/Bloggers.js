@@ -25,7 +25,7 @@ const Bloggers = () => {
         <div>
 
             <Box sx={{ m: 5, mt: 2 }}>
-                <SearchBox style={{ color: "white" }}></SearchBox>
+                <SearchBox ></SearchBox>
 
                 <Grid
                     container
