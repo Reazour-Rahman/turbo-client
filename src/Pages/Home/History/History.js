@@ -1,36 +1,37 @@
+import { Grid } from '@mui/material';
 import React, { useState } from 'react';
+import './History.css';
+import HistoryRight from './HistoryRight';
+import HistoryVideo from './HistoryVideo'
 
 
-const History = ({ viewerEmail }) => {
-
-
-
-
+const History = ({history}) => {
+    console.log("Eta ar ki", history);
+    let theme;
+    theme = localStorage.getItem("theme");
+    let text = theme === "light" ? "black" : "darkLight" ;
     return (
-        <div>
-            <React.Fragment>
-                <div style={{ color: "white", marginLeft: "150px", marginRight: "15px" }}>
-                    <h2>Watch History</h2>
-                    <div className="row">
-                        <div className="col-sm-8 d-flex">
-                            <div className="col-sm-2 col-lg-2 " style={{ marginLeft: "20px", marginRight: "20px" }} >
-                                {/* <img src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M=" alt="" /> */}
-                                {viewerEmail}
-                            </div>
-                            <div className="col-sm-6 col-lg-9">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi non eaque ratione modi voluptatum ipsam velit. Velit porro omnis nulla!
-                                {viewerEmail}
-                            </div>
-                        </div>
-                        <div className="col-sm-4 bg-primary  ">
-                            Search
+        <Grid container columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} className="history-container">
+            <Grid item xs={8} sm={8} md={9} lg={8} id={ theme === "light" ? "moreLight" : "moreDark" }>
+                <div className='history-friction-element'>
+                    <h5 id={text}>Watch history</h5>
+                    <br />
+                    <h5 id={text}>All time</h5>
+                    <section >
+                    {/* :::::::::::::::::::::::::::::::
+                    Please Map here for Video dynamic
+                    :::::::::::::::::::::::::::::::::*/}
+                    {[1,2,3,4,5,6,7,8 ,9,10].map((c) => <HistoryVideo />)}
+                    </section>
 
-                        </div>
-                    </div>
-
-                </div >
-            </React.Fragment>
-        </div >
+                </div>
+            </Grid>
+            <Grid item xs={4} sm={4} md={3} lg={4}>
+                <div className='history-friction-element-2'>
+                    <HistoryRight/>
+                </div>
+            </Grid>
+        </Grid>
     );
 };
 
