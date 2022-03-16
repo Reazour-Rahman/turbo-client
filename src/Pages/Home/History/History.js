@@ -1,12 +1,13 @@
 import { Grid } from '@mui/material';
 import React, { useState } from 'react';
 import './History.css';
+import HistoryList from './HistoryList';
 import HistoryRight from './HistoryRight';
 import HistoryVideo from './HistoryVideo'
 
 
-const History = ({history}) => {
-    console.log("Eta ar ki", history);
+const History = () => {
+   
     let theme;
     theme = localStorage.getItem("theme");
     let text = theme === "light" ? "black" : "darkLight" ;
@@ -17,11 +18,12 @@ const History = ({history}) => {
                     <h5 id={text}>Watch history</h5>
                     <br />
                     <h5 id={text}>All time</h5>
+                    <br />
                     <section >
                     {/* :::::::::::::::::::::::::::::::
                     Please Map here for Video dynamic
                     :::::::::::::::::::::::::::::::::*/}
-                    <HistoryVideo history={history} />
+                    <HistoryList/>
                     </section>
 
                 </div>

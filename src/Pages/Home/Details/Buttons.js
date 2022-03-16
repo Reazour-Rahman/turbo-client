@@ -181,6 +181,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
               >
                 <Payment
                   style={style}
+                  bloggerEmail={bloggerEmail}
                   bloggerName={bloggerName}
                   blogId={blogId}
                   user={user}
