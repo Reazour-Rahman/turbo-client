@@ -8,7 +8,7 @@ const RoomDashboardHome = () => {
   const user = useSelector((state) => state.firebase.user)
 
   useEffect(() => {
-    const contentUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs?email=${user?.email}`;
+    const contentUrl = `http://localhost:5000/blogs?email=${user?.email}`;
          fetch(contentUrl)
         .then((response) => response.json())
         .then((data) => setRecentVideos(data.blogs));  
@@ -17,7 +17,7 @@ const RoomDashboardHome = () => {
   const [profile, setProfile] = React.useState('')
 
   useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`)
+    fetch(`http://localhost:5000/users/room/${user?.email}`)
     .then(res => res.json())
     .then(data => setProfile(data))
   },[user?.email])
@@ -32,9 +32,11 @@ const RoomDashboardHome = () => {
     return b.likes + a;
 }, 0);
 
-const mostviewed = recentVideos.sort((a,b)=> b.views - a.views)
+// const mostviewed = 
 
-console.log('most views',mostviewed);
+
+
+// console.log('most views',mostviewed);
 
 console.log(totalViews);
   return (
@@ -81,7 +83,7 @@ console.log(totalViews);
           </div>
           {/* 2nd column */}
           <div style={{ width: "100%" }}>
-            <div style={{ height: "370px" }}>
+            <div style={{}}>
               <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
                 <h6>Room Analytics</h6>
                 <p>Current Followers</p>
@@ -102,6 +104,31 @@ console.log(totalViews);
                   </div>
                 </div>
                 <hr className="hr" />
+                <p style={{fontSize:'20px', marginBottom:'5px'}}>Most Liked Blog video</p>
+                {
+                    recentVideos.sort((a,b)=> b.likes - a.likes).map(r => <>
+                    <VideoPlayer
+                    className="videos"
+                    src={r.video} 
+                    poster={r.thumbnail}
+                    playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
+                    />
+                    <h1 style={{fontSize:'22px', marginTop:'10px'}}>{r.title}</h1>
+                  <div className="grid-carddetails-container">
+                    <div class="grid-item">
+                      <p>Blog Views</p>
+                      <p>Total Like Impressions</p>
+                      <p>Upload At</p>
+                    </div>
+                    <div class="grid-item " style={{ textAlign: "right" }}>
+                      <p>{r.views}</p>
+                      <p>{r.likes}</p>
+                      <p>{r.uploadTime}</p>
+                    </div>
+                  </div>
+                    </>).slice(0,1)
+                  }
+      
               </div>
             </div>{" "}
             <br />
@@ -153,7 +180,7 @@ console.log(totalViews);
               <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
               <p style={{fontSize:'20px', marginBottom:'5px'}}>Most Viewed Blog video</p>
                 {
-                mostviewed.map(r => <>
+                recentVideos.sort((a,b)=> b.views - a.views).map(r => <>
                <VideoPlayer
                 className="videos"
                 src={r.video} 
