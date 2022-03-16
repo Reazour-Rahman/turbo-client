@@ -17,24 +17,23 @@ const MyTransaction = ({ user }) => {
     setAnchorEl(null);
   };
 
-  const [users, setUsers] = useState([]);
-  const payments = [];
+  const [payments, setPayments] = useState([]);
 
-  const url = `http://localhost:5000/user/${user.email}`;
+  const url = `http://localhost:5000/user/${user?.email}`;
 
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setUsers(data);
+        // console.log(data);
+        setPayments(data.payment);
       });
-  }, []);
-
-  // console.log(payments);
+  }, [url]);
+  //   console.log(payments);
 
   //   console.log(payments);
-  console.log(users?.payment);
+  //   console.log(users.payment);
+  //   const payments: any = users.payment;
 
   return (
     <div className="members-container">
@@ -78,14 +77,13 @@ const MyTransaction = ({ user }) => {
           <th>Blog </th>
           <th>Status</th>
         </tr>
-
-        {users.payment.map((payment) => (
+        {payments.map((payment) => (
           <tr>
             <td className="td-flx">
-              {/* <Avatar
+              <Avatar
                 sx={{ bgcolor: deepPurple[500] }}
-                src={payment.bloggerPhoto}
-              ></Avatar> */}
+                src={payment.donorPhoto}
+              ></Avatar>
               {payment.doner}
             </td>
             <td>{payment.time}</td>

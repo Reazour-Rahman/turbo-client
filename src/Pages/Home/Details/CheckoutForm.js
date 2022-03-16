@@ -20,7 +20,7 @@ const CheckoutForm = ({
   const [processing, setProcessing] = useState(false);
 
   const displayName = user.displayName;
-  // console.log(blogId);
+  console.log(user);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -109,7 +109,7 @@ const CheckoutForm = ({
         blogId: blogId,
         bloggerPhoto: bloggerPhoto,
         created: paymentIntent.created,
-        last4: paymentMethod.last4,
+        last4: paymentMethod?.last4,
         time: new Date().toLocaleString("en-US", {
           dateStyle: "medium",
         }),
@@ -118,6 +118,7 @@ const CheckoutForm = ({
           timeStyle: "short",
           hour12: false,
         }),
+        donorPhoto: user.photoURL,
       };
 
       console.log(payment);
@@ -136,7 +137,6 @@ const CheckoutForm = ({
             handleClose();
             window.location.reload();
           }
-          
         });
     }
   };
