@@ -52,7 +52,7 @@ a {
 }
 .third-column-second-row-size {
   width: 100%;
-  height: 350px;
+  /* height: 350px; */
 }
 .third-column-third-row-img {
   height: 200px;

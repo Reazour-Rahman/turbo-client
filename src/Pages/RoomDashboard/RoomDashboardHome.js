@@ -176,7 +176,7 @@ const RoomDashboardHome = () => {
           {/* 3rd Column */}
 
           <div style={{ width: "100%" }}>
-            <div className="third-column-second-row-size" style={{ marginBottom: "30px" }}>
+            <div className="third-column-first-row-size" style={{ marginBottom: "30px" }}>
               <div className="card" style={{ backgroundColor: "#102841", color: "white", marginBottom: "30px" }}>
                 <p style={{ fontSize: '20px', marginBottom: '5px' }}>Most Viewed Blog video</p>
                 {
@@ -205,8 +205,8 @@ const RoomDashboardHome = () => {
                 }
               </div>
             </div>
-            <div style={{ width: "100%", height: "200px", marginTop: '30px' }}>
-              <div className="card" style={{ backgroundColor: "#102841", color: "white", }}>
+            <div style={{ width: "100%", marginTop: '30px' }}>
+              <div className="card third-column-second-row-size" style={{ backgroundColor: "#102841", color: "white", }}>
                 <h6>Ideas for you</h6>
 
                 <div className="grid-carddetails-container">
