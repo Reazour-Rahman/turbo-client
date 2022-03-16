@@ -31,7 +31,7 @@ const HistoryVideo = ({history}) => {
     let muted = theme === "light" ? "black" : "muted" ;
 
     const deleteFromHistory = (id) => {
-      axios.delete(`http://localhost:5000/views/${id}`)
+      axios.delete(`https://aqueous-chamber-45567.herokuapp.com/views/${id}`)
       .then(res => {
         if (res.data.deletedCount) {
               window.location.reload();

@@ -25,8 +25,12 @@ import HomeSearch from "../../Search/HomeSearch/HomeSearch";
 import CreateProfile from "../Profile/CreateProfile/CreateProfile/CreateProfile";
 import SettingDrawer from "../../Shared/SettingDrawer.tsx";
 import MessageModal from "../../MessageModal/MessageModal.tsx";
+import UploadVideoModal from "../../Upload/UploadVideoModal";
+
 
 const Search = styled("div")(({ theme }) => ({
+
+
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -146,6 +150,9 @@ export default function NavigationBar({user}) {
       </Box>
 
       <Box sx={{ flexGrow: 1 }} />
+      {user?.email && <IconButton color="inherit" >
+          <UploadVideoModal />
+      </IconButton>}
       <MessageModal/>
 
         <SettingDrawer />

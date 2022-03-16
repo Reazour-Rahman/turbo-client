@@ -14,7 +14,7 @@ const HistoryList = () => {
     setLoading(true);
     setTimeout(async () => {
       const response = await fetch(
-        "http://localhost:5000/views"
+        "https://aqueous-chamber-45567.herokuapp.com/views"
       );
       const data = await response.json();
       setHistories(data);

@@ -47,7 +47,7 @@ const Blog = (props) => {
     const data = {
       blogId : _id, viewerName:user.displayName, viewerEmail:user.email, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto, views, description
     }
-    await axios.post('http://localhost:5000/views', data)
+    await axios.post('https://aqueous-chamber-45567.herokuapp.com/views', data)
 
   }
 

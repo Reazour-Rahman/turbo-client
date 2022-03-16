@@ -239,7 +239,7 @@ export default function MiniDrawer() {
             </ListItem>
           </NavLink>
           <Divider style={{backgroundColor:"white"}}/>
-          <NavLink className="nav-btn" to="/v">
+          <NavLink className="nav-btn" to="/">
             <ListItem button className="nav-btn">
               <ListItemIcon className="ms-2 fs-5">
                 <RestoreIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
@@ -248,7 +248,7 @@ export default function MiniDrawer() {
             </ListItem>
           </NavLink>
 
-          <NavLink className="nav-btn" to="/liked-Videos">
+          <NavLink className="nav-btn" to="/">
             <ListItem button className="nav-btn">
               <ListItemIcon className="ms-2 fs-5">
                 <SlowMotionVideoIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
