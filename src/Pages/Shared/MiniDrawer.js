@@ -285,6 +285,7 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box
+      
         component="main"
         className="main-color"
         id={ mode === "light" ? "lightest" : "darkish" }
@@ -294,7 +295,7 @@ export default function MiniDrawer() {
         {/* :::::::::::::::::::::::::::
         Default Route in main page
         ::::::::::::::::::::::::::::*/}
-        <Routes>
+        <Routes >
           <Route path="/" element={<Home />}/>
         </Routes>
 
