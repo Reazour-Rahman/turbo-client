@@ -6,7 +6,8 @@ const blogSlice = createSlice({
     initialState : {
         count : 0,
         blogDetails : {},
-        thumb : ""
+        thumb : "",
+        rendering : 0,
     },
     reducers : {
         increment: (state) => {
@@ -24,10 +25,13 @@ const blogSlice = createSlice({
           },
           storeThumb: (state, action) => {
             state.thumb = action.payload
-          }
+          },
+          setRendering: (state, action) => {
+            state.rendering = action.payload
+          },
     }
 })
 
-export const { increment, decrement, incrementByAmount, storeThumb } = blogSlice.actions
+export const { increment, decrement, incrementByAmount, storeThumb, setRendering } = blogSlice.actions
 
 export default blogSlice.reducer
