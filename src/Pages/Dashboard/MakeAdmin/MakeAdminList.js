@@ -13,28 +13,26 @@ const MakeAdminList = () => {
         MakeAdmin;
 
     useEffect(() => {
-        // const bloggerUrl = `https://mocki.io/v1/24ee15c5-3e9e-401c-b397-06a8e56db4a5`;
 
-        // const bloggerUrl = "https://aqueous-tor-77774.herokuapp.com/users/admin";
-        const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users";
+        const bloggerUrl = "http://localhost:5000/users";
 
-//         const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users/admin";
+        //         const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users/admin";
 
 
 
-            fetch(bloggerUrl, {
+        fetch(bloggerUrl, {
 
-                method: 'GET',
-                headers: {
-                    'authorization': `Bearer ${localStorage.getItem('idToken')}`,
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(bloggerEmail)
-            })
-                .then((response) => response.json())
-                .then((data) => setBloggers(data));
-            setLoading(true);
-        
+            method: 'GET',
+            headers: {
+                // 'authorization': `Bearer ${localStorage.getItem('idToken')}`,
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bloggerEmail)
+        })
+            .then((response) => response.json())
+            .then((data) => setBloggers(data));
+        setLoading(true);
+
     }, [bloggers]);
     console.log(bloggers);
 
