@@ -32,7 +32,7 @@ const UploadeAmazonProducts = () => {
         formData.append('description', description);
         formData.append('image', image);
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://aqueous-chamber-45567.herokuapp.com/products', {
             method: 'POST',
             body: formData
         })

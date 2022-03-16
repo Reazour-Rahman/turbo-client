@@ -18,7 +18,7 @@ export default function TotalViews() {
 
     const date = current.toLocaleDateString(undefined, options);
     React.useEffect(() => {
-        fetch(`http://localhost:5000/blogs`)
+        fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs`)
         .then(res => res.json())
         .then(data => setBlogs(data.blogs))
     },[])

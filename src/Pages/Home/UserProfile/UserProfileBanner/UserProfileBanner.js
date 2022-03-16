@@ -7,7 +7,7 @@ const UserProfileBanner = () => {
   const [cover, setCover] = useState('')
   const user = useSelector(state => state.firebase.user)
   useEffect(() => {
-    fetch(`http://localhost:5000/users/room/${user?.email}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`)
     .then(res => res.json())
     .then(data => setCover(data.room.cover))
   },[user?.email])

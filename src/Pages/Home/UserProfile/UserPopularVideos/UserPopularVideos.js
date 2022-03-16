@@ -10,7 +10,7 @@ const UserPopularVideos = ({email}) => {
   const user = useSelector((state) => state.firebase.user)
 
   useEffect(() => {
-    const contentUrl = `http://localhost:5000/blogs?email=${email.email}`;
+    const contentUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs?email=${email.email}`;
     setTimeout(() => {
       fetch(contentUrl)
         .then((response) => response.json())

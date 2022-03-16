@@ -10,7 +10,7 @@ const AdminRoute = ({children, ...rest}) => {
     const isLoading = useSelector((state) => state.firebase.isLoading)
     let location = useLocation();
 
-    if (isLoading) { return  <Stack sx={{py:5}} alignItems="center">
+    if (isLoading || !admin) { return  <Stack sx={{py:5}} alignItems="center">
     <CircularProgress />
     </Stack> }
     if (user?.email && admin) {

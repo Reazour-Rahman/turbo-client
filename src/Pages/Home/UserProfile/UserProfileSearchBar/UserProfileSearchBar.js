@@ -73,7 +73,7 @@ export default function UserProfileSearchBar({email}) {
 
   const user = useSelector(state => state.firebase.user)
   React.useEffect(() => {
-    fetch(`http://localhost:5000/users/room/${email.email}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${email.email}`)
     .then(res => res.json())
     .then(data => setProfile(data.room))
   },[email.email, followed, count])
@@ -90,7 +90,7 @@ export default function UserProfileSearchBar({email}) {
   },[user.email, bloggerProfile?.followers])
 
   React.useEffect(() => {
-    fetch(`http://localhost:5000/users/room/${email.email}`)
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${email.email}`)
     .then(res => res.json())
     .then(data => {
       setBloggerProfile(data)
@@ -192,7 +192,7 @@ export default function UserProfileSearchBar({email}) {
     }
     setFollowed(true)
     setCount(count + 1)
-    axios.put(`http://localhost:5000/users/followers/${email.email}`, follower)
+    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${email.email}`, follower)
   }
 
   const handleUnFollow = () => {
@@ -205,7 +205,7 @@ export default function UserProfileSearchBar({email}) {
     }
     setFollowed(false)
     setCount(count + 1)
-    axios.put(`http://localhost:5000/users/followers/${email.email}`, follower)
+    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${email.email}`, follower)
   }
   return (
     <Box>

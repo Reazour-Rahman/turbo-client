@@ -20,7 +20,7 @@ const CheckoutForm = ({
   const [processing, setProcessing] = useState(false);
 
   const displayName = user.displayName;
-  // console.log(blogId);
+  console.log(user);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -40,7 +40,7 @@ const CheckoutForm = ({
     donation["amount"] = parseInt(donateRef.current?.value);
     console.log(donation, typeof donation.amount);
     axios
-      .post("http://localhost:5000/create-payment-intent", {
+      .post("https://aqueous-chamber-45567.herokuapp.com/create-payment-intent", {
         ...donation,
       })
       .then(function (response) {
@@ -98,7 +98,7 @@ const CheckoutForm = ({
       setSuccess("Your payment processed successfully");
       setProcessing(false);
 
-      const url = `http://localhost:5000/blogs/payment/${bloggerEmail}`;
+      const url = `https://aqueous-chamber-45567.herokuapp.com/blogs/payment/${bloggerEmail}`;
       const payment = {
         amount: paymentIntent.amount,
         trasaction: paymentIntent.client_secret,
@@ -109,7 +109,7 @@ const CheckoutForm = ({
         blogId: blogId,
         bloggerPhoto: bloggerPhoto,
         created: paymentIntent.created,
-        last4: paymentMethod.last4,
+        last4: paymentMethod?.last4,
         time: new Date().toLocaleString("en-US", {
           dateStyle: "medium",
         }),
@@ -118,6 +118,7 @@ const CheckoutForm = ({
           timeStyle: "short",
           hour12: false,
         }),
+        donorPhoto: user.photoURL,
       };
 
       console.log(payment);
@@ -136,7 +137,6 @@ const CheckoutForm = ({
             handleClose();
             window.location.reload();
           }
-          
         });
     }
   };

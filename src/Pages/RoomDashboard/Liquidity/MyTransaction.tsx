@@ -3,12 +3,11 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
-import "../Default.css";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Avatar, Divider, IconButton } from "@mui/material";
 import { deepOrange, deepPurple } from "@mui/material/colors";
 
-const Transaction = () => {
+const MyTransaction = ({ user }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -18,45 +17,23 @@ const Transaction = () => {
     setAnchorEl(null);
   };
 
-  const [users, setUsers] = useState([]);
-  const payments = [];
+  const [payments, setPayments] = useState([]);
 
-  const url = `https://aqueous-chamber-45567.herokuapp.com/users`;
+  const url = `https://aqueous-chamber-45567.herokuapp.com/user/${user?.email}`;
 
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setUsers(data);
+        // console.log(data);
+        setPayments(data.payment);
       });
-  }, []);
+  }, [url]);
+  //   console.log(payments);
 
-  /*  users.map((user) => {
-    const paymentArray = user?.payment;
-    paymentArray.map((payment) => {
-      console.log(payment);
-    });
-    
-  });
- */
-
-  users.forEach((user) => {
-    const paymentArray = user?.payment;
-    if (paymentArray) {
-      paymentArray.forEach((payment) => {
-        // console.log(payment);
-        payments.push(payment);
-      });
-    }
-  });
-
-  // console.log(payments);
-  payments.sort(function (a, b) {
-    return b.date.localeCompare(a.date);
-  });
-
-  console.log(payments);
+  //   console.log(payments);
+  //   console.log(users.payment);
+  //   const payments: any = users.payment;
 
   return (
     <div className="members-container">
@@ -93,28 +70,27 @@ const Transaction = () => {
       <br />
       <table id="customers">
         <tr>
-          <th>Customer</th>
+          <th>Doner</th>
           <th>Date</th>
           <th>Time</th>
           <th>Amount</th>
-          <th>Donor</th>
+          <th>Blog </th>
           <th>Status</th>
         </tr>
-
         {payments.map((payment) => (
           <tr>
             <td className="td-flx">
               <Avatar
                 sx={{ bgcolor: deepPurple[500] }}
-                src={payment.bloggerPhoto}
+                src={payment.donorPhoto}
               ></Avatar>
-              {payment.bloggerName}
+              {payment.doner}
             </td>
             <td>{payment.time}</td>
             <td>{payment.date}</td>
             <td>$ {payment.amount / 100}</td>
-            <td>{payment.doner}</td>
-            <td className="status-transaction">Approve</td>
+            <td>{payment.blogTitle}</td>
+            <td className="status-transaction">Withdraw</td>
           </tr>
         ))}
       </table>
@@ -122,4 +98,4 @@ const Transaction = () => {
   );
 };
 
-export default Transaction;
+export default MyTransaction;

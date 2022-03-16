@@ -90,7 +90,7 @@ const Details = () => {
     })
   },[blogId, rendering, singleBlog?.likers])
 
-  console.log(singleBlog);
+
   let theme;
   theme = localStorage.getItem("theme")
   return (

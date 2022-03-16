@@ -24,6 +24,7 @@ import MenuBar from "../../MenuBar/MenuBar/MenuBar";
 import HomeSearch from "../../Search/HomeSearch/HomeSearch";
 import CreateProfile from "../Profile/CreateProfile/CreateProfile/CreateProfile";
 import SettingDrawer from "../../Shared/SettingDrawer.tsx";
+import MessageModal from "../../MessageModal/MessageModal.tsx";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -145,6 +146,7 @@ export default function NavigationBar({user}) {
       </Box>
 
       <Box sx={{ flexGrow: 1 }} />
+      <MessageModal/>
 
         <SettingDrawer />
 
