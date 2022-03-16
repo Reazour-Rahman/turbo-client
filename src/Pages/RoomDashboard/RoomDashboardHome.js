@@ -40,7 +40,7 @@ const RoomDashboardHome = () => {
   return (
     <div>
       <div className="" style={{ color: "white", height: '100vh', marginLeft: "15px", marginRight: '15px' }}>
-        <h2 style={{ color: "white" }} className="mt-5" >Room dashboard</h2>
+        <h2 style={{ color: "white" }} className="mt-5 h2section" >Room dashboard</h2>
         <div class="grid-container" >
           {/* 1st Column */}
           <div className="first-column-size">
@@ -150,7 +150,7 @@ const RoomDashboardHome = () => {
 
           <div style={{ width: "100%" }}>
             <div className="third-column-second-row-size">
-              <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
+              <div className="card" style={{ backgroundColor: "#102841", color: "white", marginBottom: "30px" }}>
                 <p style={{ fontSize: '20px', marginBottom: '5px' }}>Most Viewed Blog video</p>
                 {
                   mostviewed.map(r => <>
