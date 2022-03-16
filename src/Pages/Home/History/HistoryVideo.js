@@ -8,9 +8,10 @@ import Fade from '@mui/material/Fade';
 import { IconButton } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Grid } from '@mui/material';
+import axios from 'axios';
 
 
-const HistoryVideo = () => {
+const HistoryVideo = ({history}) => {
 
     /* :::::::::::::::::::::
     Menu
@@ -28,17 +29,27 @@ const HistoryVideo = () => {
     theme = localStorage.getItem("theme");
     let text = theme === "light" ? "black" : "darkLight" ;
     let muted = theme === "light" ? "black" : "muted" ;
+
+    const deleteFromHistory = (id) => {
+      axios.delete(`http://localhost:5000/views/${id}`)
+      .then(res => {
+        if (res.data.deletedCount) {
+              window.location.reload();
+        }
+      })
+      handleClose()
+    }
     
     return (
         <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} className='history-video-container'>
 
             <Grid item xs={12} sm={12} md={4} lg={3}>
-                <video controls src={video} type="video" className='history-video'></video>
+                <video controls src={history.video} poster={history.thumbnail} type="video" className='history-video'></video>
             </Grid>
 
             <Grid item xs={12} sm={12} md={8} lg={9}>
                 <div className='history-video-title-and-menu'>
-                    <p id={text}>PUBG Mobile app AWM whats app status || With Levinho and Sevou</p>
+                    <p id={text}>{history.title}</p>
                     <div>
                         <IconButton
                          size="large"
@@ -60,7 +71,7 @@ const HistoryVideo = () => {
                             onClose={handleClose}
                             TransitionComponent={Fade}
                         >
-                            <MenuItem onClick={handleClose}>Remove From History</MenuItem>
+                            <MenuItem onClick={() => deleteFromHistory(history._id)}>Remove From History</MenuItem>
                             <MenuItem onClick={handleClose}>Add To Que</MenuItem>
                             <MenuItem onClick={handleClose}>OPPS</MenuItem>
                         </Menu>
@@ -68,8 +79,8 @@ const HistoryVideo = () => {
                 </div>
 
                 <div className='history-des'>
-                    <small id={muted} className="ds-fs">123K views</small>
-                    <small id={muted} className="ds-fs">UBG: Battlegrounds (previously known as PlayerUnknown's Battlegrounds, or simply PUBG)[1] is an online multiplayer battle royale game developed and published by PUBG Corporation (current PUBG Studios)</small>
+                    <small id={muted} className="ds-fs">{history.views}</small>
+                    <small id={muted} className="ds-fs">{history?.description?.slice(0,250)}</small>
                 </div>
             </Grid>
         </Grid>
