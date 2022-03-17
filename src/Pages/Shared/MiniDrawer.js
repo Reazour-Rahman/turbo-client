@@ -202,7 +202,7 @@ export default function MiniDrawer() {
             </ListItem>
           </NavLink>
 
-          <NavLink className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } to="/">
+          <NavLink className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } to="/subscriptions">
             <ListItem className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } button>
               <ListItemIcon className="fs-6">
                 <SubscriptionsIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />

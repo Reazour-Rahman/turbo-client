@@ -3,27 +3,27 @@
   grid-template-columns: 1fr 0.5fr;
   gap: 30px !important;
   margin-top: 10px;
-  padding-left: 72px;
+  padding-left: 51px;
 }
 
 .progress-css {
   border: none !important;
-  background-color: #102841 !important;
+  /* background-color: #102841 !important; */
 }
 .proress-video {
-  background-color: #143961 !important;
+  /* background-color: #143961 !important; */
 }
 .sk {
-  background-color: #0a2b4e !important;
+  /* background-color: #0a2b4e !important; */
   width: 100% !important;
 }
 .skHalf {
-  background-color: #0a2b4e !important;
+  /* background-color: #0a2b4e !important; */
   width: 60% !important;
 }
 
 .video-size-details {
-  background-color: #0a2b4e !important;
+  /* background-color: #0a2b4e !important; */
   height: 500px !important;
   width: 100% !important;
 }
@@ -62,11 +62,11 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  color: aliceblue !important;
+
 }
 .bg-accordion {
-  background-color: rgba(0, 0, 128, 0) !important;
-  color: aliceblue !important;
+
+
 }
 .input-style {
   height: 10px !important;
@@ -77,13 +77,12 @@
 }
 .input-comment {
   width: 100% !important;
-  color: aliceblue !important;
-  border-bottom: 1px solid rgb(255, 255, 255);
+
 }
 .button-comment {
   border-radius: 20px !important;
   width: 8rem !important;
-  color: aliceblue !important;
+  
   height: 2.5rem !important;
 }
 .comment-count {

@@ -181,7 +181,8 @@ const CheckoutForm = ({
           <CircularProgress style={{ display: "block", margin: "10px auto" }} />
         ) : (
           <Button
-            variant="content"
+            size="small"
+            variant="outlined"
             type="submit"
             disabled={!stripe}
             style={{ display: "block", margin: "10px auto", color: "green" }}

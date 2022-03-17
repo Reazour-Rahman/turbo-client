@@ -32,6 +32,10 @@ export default function Aside(props) {
   const videoSource = videoSrc;
   console.log(props.video);
 
+  let theme;
+  theme = localStorage.getItem("theme")
+  const text= theme === "light" ? "black" : "darkLight" ;
+
   // const recommended = products.filter((product) => product.category);
 
   return (
@@ -53,10 +57,10 @@ export default function Aside(props) {
                   <CardContent
                     style={{ margin: "0px", padding: "0px", paddingTop: "5px" }}
                   >
-                    <small gutterBottom>{blog.title.slice(0, 40)}..</small>{" "}
+                    <small id={text} gutterBottom>{blog.title.slice(0, 40)}..</small>{" "}
                     <br />
                     <small>
-                      <strong>{blog.bloggerName}</strong>
+                      <strong id={text}>{blog.bloggerName}</strong>
                     </small>
                   </CardContent>
                 </CardActionArea>

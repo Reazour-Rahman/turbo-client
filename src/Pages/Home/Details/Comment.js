@@ -86,6 +86,7 @@ const Comment = ({ blogId, setBackendComment, backendComment, tt }) => {
 
   let theme;
   theme = localStorage.getItem("theme");
+  const text= theme === "light" ? "black" : "darkLight" ;
   
 
   return (
@@ -93,7 +94,7 @@ const Comment = ({ blogId, setBackendComment, backendComment, tt }) => {
       {/* Comment count and filtering */}
       <hr />
       <span className="comment-count" id={ theme === "light" ? "black" : "darkLight" }>
-        <small>{tt} Comments</small>
+        <small id={text}>{tt} Comments</small>
         <small>
           <FilterAltOffIcon /> Short by
         </small>
@@ -110,6 +111,8 @@ const Comment = ({ blogId, setBackendComment, backendComment, tt }) => {
         <form onSubmit={commentPost} style={{ width: "100%" }}>
           <div className="comment-container">
             <Input
+            id={text}
+            focused
               placeholder="Add a public comment"
               className="input-comment"
               inputProps={ariaLabel}
