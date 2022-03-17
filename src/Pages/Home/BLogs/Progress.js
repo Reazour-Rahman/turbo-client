@@ -79,24 +79,10 @@ Media.propTypes = {
 
 export default function Progress() {
   return (
-    <Grid className="gr" container>
+    <Grid item xs={12} sm={4} md={4} lg={3} xl={4} xxl={3}>
         
       <Media loading  />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
-      <Media />
+
     </Grid>
   );
 }

@@ -2,6 +2,7 @@ import { Box, Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import History from "./History";
+import HistoryVideo from "./HistoryVideo";
 
 const HistoryList = () => {
 
@@ -13,7 +14,7 @@ const HistoryList = () => {
     setLoading(true);
     setTimeout(async () => {
       const response = await fetch(
-        "http://localhost:5000/views"
+        "https://aqueous-chamber-45567.herokuapp.com/views"
       );
       const data = await response.json();
       setHistories(data);
@@ -28,11 +29,11 @@ const userHistory = histories.filter(h => h?.viewerEmail === user?.email)
 
   return (
     <div style={{ color: "white" }}>
-      <Box sx={{ m: 5 }}>
+      <Box>
         
         {!loading ? (
           userHistory?.map((history) => (
-            <History history={history}></History>
+            <HistoryVideo history={history}></HistoryVideo>
           ))
         ) : (
           <div></div>

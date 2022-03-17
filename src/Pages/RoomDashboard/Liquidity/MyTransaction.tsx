@@ -77,7 +77,7 @@ const MyTransaction = ({ user }) => {
           <th>Blog </th>
           <th>Status</th>
         </tr>
-        {payments.map((payment) => (
+        {payments?.map((payment) => (
           <tr>
             <td className="td-flx">
               <Avatar

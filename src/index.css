@@ -27,10 +27,10 @@ body {
 
 /* Dark Colors */
 #darkish{
-  background-color: #061724 !important;
+  background-color: #0e0e10 !important;
 }
 #moreDark{
- background-color: #0c2233 !important;
+ background-color: #18191A !important;
 }
 #darkLight{
 color: #d6d6d6 !important;
@@ -41,10 +41,11 @@ color: #8b8b8b !important;
 
 /* Light Colors */
 #lightest{
- background-color: #ffffff !important;
+ 
+ background-color: #efeff1 !important;
 }
 #moreLight{
-  background-color: #ffffff !important;
+  background-color: #FFFFFF !important;
 }
 #black{
   color: #051624 !important;

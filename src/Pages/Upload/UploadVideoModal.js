@@ -36,7 +36,7 @@ export default function UploadVideoModal() {
 
   return (
     <div>
-      <IconButton aria-label="delete" size="small" onClick={handleClickOpen("paper")} style={{color:"white"}}> <VideoCallIcon/> </IconButton>
+      <IconButton aria-label="delete" size="large" onClick={handleClickOpen("paper")} style={{color:"white"}}> <VideoCallIcon sx={{ width: 28, height: 28 }}/> </IconButton>
       <Dialog
         className="modal-bg"
         open={open}

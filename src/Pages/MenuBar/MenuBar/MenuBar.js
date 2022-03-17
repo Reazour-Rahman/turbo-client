@@ -225,7 +225,7 @@ export default function MenuBar({ handleClickOpen }) {
             </MenuItem>
           </Button>
 
-          <Link style={{ textDecoration: "none" }} to="/manage-account">
+          <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <ManageAccountsIcon style={iconStyle}/>
@@ -241,7 +241,7 @@ export default function MenuBar({ handleClickOpen }) {
               ProPlayer Studio
             </MenuItem>
           </Link>
-          <Link style={{ textDecoration: "none" }} to="/another-account">
+          <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <PersonAdd style={iconStyle}/>
@@ -249,7 +249,7 @@ export default function MenuBar({ handleClickOpen }) {
               Add another account
             </MenuItem>
           </Link>
-          <Link style={{ textDecoration: "none" }} to="/location">
+          <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <LocationOnIcon style={iconStyle}/>
@@ -265,7 +265,7 @@ export default function MenuBar({ handleClickOpen }) {
               Help center
             </MenuItem>
           </Button>
-          <Link style={{ textDecoration: "none" }} to="/setting">
+          <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <Settings style={iconStyle}/>

@@ -82,7 +82,7 @@ export const mainListItems = (
             <ListItemText className='dashboard-button' primary="Reports" />
         </ListItemButton>
 
-        <ListItemButton as={Link} component="a" to="roomDashboard/uploadProducts">
+        <ListItemButton as={Link} component="a" to="/roomDashboard/upload-products">
             <ListItemIcon>
                 <FileUploadIcon className='dashboard-button' />
             </ListItemIcon>

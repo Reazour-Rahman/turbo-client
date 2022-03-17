@@ -43,6 +43,8 @@ import DetailProduct from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProdu
 import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/UploadAmazonProducts/UploadeAmazonProducts";
 // import Subscriptions from "./Pages/Home/Subscription/Subscriptions";
 
+import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/AddCart/AddCart"
+
 
 function App() {
   const dispatch = useDispatch()
@@ -103,10 +105,14 @@ function App() {
           ></Route>
           <Route path="/message" element={<UsersMessage />}></Route>
 
+
           <Route path="/history" element={<History />}></Route>
           <Route path="/subscriptions" element={<Subscription />}></Route>
 
           {/* <Route path="/history" element={<HistoryList />}></Route> */}
+
+          <Route path="/history" element={<History />}></Route>
+
 
           <Route path="/details/:blogId" element={<PrivateRoute><Details /></PrivateRoute>}></Route>
 
@@ -116,6 +122,10 @@ function App() {
 
           </Route>
           <Route exact path='/profile/detail/:productId' element={<DetailProduct />} />
+
+
+          <Route exact path='/profile/cart' element={<AddCart />} />
+          
 
 
           <Route path="/userprofile/:email" element={<UserProfile />}></Route>
@@ -150,7 +160,7 @@ function App() {
           <Route exact path="/dashboard/default" element={<Default />} />
 
           <Route path="/dashboard/message" element={<UsersMessage />}></Route>
-          <Route exact path="/dashboard/upload-products" element={<UploadeAmazonProducts />} />
+          
 
           <Route exact path="/dashboard/analytics" element={<Analytics />} />
 
@@ -182,6 +192,7 @@ function App() {
           <Route path="/roomDashboard/content" element={<Content />}></Route>
           <Route path="/roomDashboard/userAnalytics" element={<Studio />} />
           <Route path="/roomDashboard/liquidity" element={<Liquidity />} />
+          <Route exact path="/roomDashboard/upload-products" element={<UploadeAmazonProducts />} />
         </Route>
 
 
