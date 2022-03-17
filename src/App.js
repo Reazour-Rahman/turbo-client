@@ -102,10 +102,12 @@ function App() {
             }
           ></Route>
           <Route path="/message" element={<UsersMessage />}></Route>
+
           <Route path="/history" element={<History />}></Route>
           <Route path="/subscriptions" element={<Subscription />}></Route>
 
-
+          <Route path="/history" element={<HistoryList />}></Route>
+          
           <Route path="/details/:blogId" element={<PrivateRoute><Details /></PrivateRoute>}></Route>
 
           <Route path="/addBlog" element={<AddBlog />}></Route>
