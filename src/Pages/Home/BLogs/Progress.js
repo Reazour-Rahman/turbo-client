@@ -14,13 +14,18 @@ import "./Progress.css";
 
 function Media(props) {
   const { loading = false } = props;
+  let theme;
+  theme = localStorage.getItem("theme");
+  const bg = theme === "light" ? "moreLight" : "darkish" ;
+  const card = theme === "light" ? "lightest" : "moreDark";
 
   return (
     <div style={{marginBottom:"25px"}}>
-    <Card className="progress-css">
+    <Card className="progress-css" id={bg}>
       <CardHeader className="progress-bg"
         avatar={
           <Skeleton
+          id={card}
           className="proress-video"
             animation="wave"
             variant="circular"
@@ -30,6 +35,7 @@ function Media(props) {
         }
         title={
           <Skeleton
+          id={card}
           className="proress-video"
             animation="wave"
             height={10}
@@ -37,32 +43,34 @@ function Media(props) {
             style={{ marginBottom: 6 }}
           />
         }
-        subheader={<Skeleton className="proress-video" animation="wave" height={10} width="40%" />}
+        subheader={<Skeleton className="proress-video" id={card} animation="wave" height={10} width="40%" />}
       />
-      {<Skeleton sx={{ height: 190 }} className="proress-video" animation="wave" variant="rectangular" />}
+      {<Skeleton sx={{ height: 190 }} className="proress-video" id={card} animation="wave" variant="rectangular" />}
 
       <CardContent className="progress-bg">
         {loading ? (
           <React.Fragment>
             <Skeleton
+            id={card}
             className="proress-video"
               animation="wave"
               height={10}
               style={{ marginBottom: 6 }}
             />
-            <Skeleton className="proress-video" animation="wave" height={10} width="80%" />
+            <Skeleton className="proress-video" id={card} animation="wave" height={10} width="80%" />
           </React.Fragment>
         ) : (
           <Typography variant="body2" color="text.secondary" component="p" >
             {
               <React.Fragment>
                 <Skeleton
+                id={card}
                 className="proress-video"
                   animation="wave"
                   height={10}
                   style={{ marginBottom: 6 }}
                 />
-                <Skeleton className="proress-video" animation="wave" height={10} width="80%" />
+                <Skeleton className="proress-video" id={card} animation="wave" height={10} width="80%" />
               </React.Fragment>
             }
           </Typography>
