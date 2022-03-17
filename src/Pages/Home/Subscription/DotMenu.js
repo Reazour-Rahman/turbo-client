@@ -37,7 +37,7 @@ export default function DotMenu() {
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
                 onClick={handleClick}
-                style={{ padding: "4px", color: "black" }}
+                style={{ padding: "4px", color: "white" }}
             >
                 <MoreVertIcon />
             </IconButton>

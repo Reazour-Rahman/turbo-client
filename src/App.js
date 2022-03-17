@@ -41,6 +41,7 @@ import History from "./Pages/Home/History/History";
 import Subscription from "./Pages/Home/Subscription/Subscription";
 import DetailProduct from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/DetailProduct/DetailProduct";
 import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/UploadAmazonProducts/UploadeAmazonProducts";
+// import Subscriptions from "./Pages/Home/Subscription/Subscriptions";
 
 
 function App() {
@@ -134,6 +135,9 @@ function App() {
             element={<AmazonProducts></AmazonProducts>}
           ></Route>
         </Route>
+
+
+
 
         <Route path="dashboard" element={<Dashboard />}>
           <Route path="/dashboard" element={<Default />}></Route>
