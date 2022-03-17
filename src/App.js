@@ -42,6 +42,8 @@ import HistoryList from "./Pages/Home/History/HistoryList";
 import DetailProduct from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/DetailProduct/DetailProduct";
 import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/UploadAmazonProducts/UploadeAmazonProducts";
 
+import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/AddCart/AddCart"
+
 
 function App() {
   const dispatch = useDispatch()
@@ -112,6 +114,8 @@ function App() {
 
           </Route>
           <Route exact path='/profile/detail/:productId' element={<DetailProduct />} />
+
+          <Route exact path='/profile/cart' element={<AddCart />} />
           
 
           <Route path="/userprofile/:email" element={<UserProfile />}></Route>
@@ -143,7 +147,7 @@ function App() {
           <Route exact path="/dashboard/default" element={<Default />} />
 
           <Route path="/dashboard/message" element={<UsersMessage />}></Route>
-          <Route exact path="/dashboard/upload-products" element={<UploadeAmazonProducts />} />
+          
 
           <Route exact path="/dashboard/analytics" element={<Analytics />} />
 
@@ -175,6 +179,7 @@ function App() {
           <Route path="/roomDashboard/content" element={<Content />}></Route>
           <Route path="/roomDashboard/userAnalytics" element={<Studio />} />
           <Route path="/roomDashboard/liquidity" element={<Liquidity />} />
+          <Route exact path="/roomDashboard/upload-products" element={<UploadeAmazonProducts />} />
         </Route>
 
 
