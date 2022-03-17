@@ -1,9 +1,8 @@
-import { Avatar, Box, Grid } from "@mui/material";
+import { Avatar, Box, createTheme, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+
 import { CardActionArea } from "@mui/material";
 import Video from "./Video";
 import "./Video.css";
@@ -12,6 +11,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { async } from "@firebase/util";
 import { useSelector } from "react-redux";
+
+
 
 const Blog = (props) => {
   /*:::::::::::::::::::::::::::::::::::::::::
@@ -50,12 +51,13 @@ const Blog = (props) => {
     await axios.post('https://aqueous-chamber-45567.herokuapp.com/views', data)
 
   }
+  
 
 
 
 
   return (
-    <Grid item xs={2} sm={4} md={4}>
+    <Grid item xs={12} sm={4} md={4} lg={3} xl={4} xxl={3}>
       <Box>
         <Box>
           <Card id={ theme === "light" ? "moreLight" : "moreDark" }>
@@ -71,9 +73,9 @@ const Blog = (props) => {
                     &nbsp;&nbsp;
                     <span style={{ display: "flex", flexDirection: "column" }}>
                       <small
-                        style={{ fontWeight: "bold", paddingBottom: "5px" }}
+                        style={{ fontWeight: "bold", paddingBottom: "5px", fontSize:"11px" }}
                       >
-                        {bloggerName.slice(0, 20)}..
+                        {bloggerName.slice(0, 15)}..
                       </small>
                       <small className="date-color" id={ theme === "light" ? "black" : "darkLight" }>{uploadTime}</small>
                     </span>
@@ -86,13 +88,7 @@ const Blog = (props) => {
               <Video video={video} poster={thumbnail}></Video>
               <div onClick={() => singleBlog(_id)}  style={{textDecoration:"none"}}>
               <CardContent>
-                <Typography
-                  id={ theme === "light" ? "black" : "darkLight" }
-                  variant="body2"
-                  
-                >
-                  {title.slice(0, 53)}...
-                </Typography>
+                <p id={ theme === "light" ? "black" : "darkLight" } style={{fontSize:"13px"}}>{title.slice(0, 35)}...</p>
               </CardContent>
               </div>
             </CardActionArea>

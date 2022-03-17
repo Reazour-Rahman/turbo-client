@@ -4,6 +4,7 @@ import Blog from "./Blog";
 import Progress from "./Progress";
 import "./Video.css";
 
+
 const Blogs = ({ filter }) => {
   /*:::::::::::::::::::::::::::::::::::::::::
                 ALl states
@@ -40,15 +41,15 @@ const Blogs = ({ filter }) => {
       <Box>
         <Grid
           container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 2, sm: 8, md: 12, lg: 16 }}
+          spacing={{ xs: 1, md: 3, lg:2, xl:1, xxl:21 }}
+          columns={{ xs: 12, sm: 8, md:12, lg: 12, xl: 20 }}
         >
           {!loading ? (
             blogs.map((blog) => <Blog key={blog._id} blog={blog}></Blog>)
           ) : (
-            <div>
-              <Progress />
-            </div>
+            
+              [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16, 17, 18, 19, 20].map(s=><Progress />)
+
           )}
         </Grid>
       </Box>

@@ -8,7 +8,7 @@ const Home = () => {
   const [filter, setFilter] = useState("");
   //   console.log(filter);
   return (
-    <div style={{ paddingLeft: "72px" }}>
+    <div style={{ paddingLeft: "51px" }}>
       <Banner/>
 
       <NavigationBar2 setFilter={setFilter}></NavigationBar2>
