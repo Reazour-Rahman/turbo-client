@@ -1,9 +1,9 @@
-import { Avatar, Box, Button, Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box, Grid } from "@mui/material";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+
 import { CardActionArea } from "@mui/material";
 
 import { Link } from "react-router-dom";
@@ -50,7 +50,7 @@ const Blogger = ({ blogger, followersCount, email }) => {
                           </small>
                           <small
                             style={{
-                              fontWeight: "bold",
+                              // fontWeight: "bold",
                               paddingBottom: "5px",
                               fontSize: "13px",
                             }}
