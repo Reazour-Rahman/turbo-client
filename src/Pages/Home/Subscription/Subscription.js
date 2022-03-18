@@ -1,409 +1,68 @@
-import { Avatar, Box, Button, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import { CardActionArea } from "@mui/material";
-import DotMenu from "./DotMenu"
-
+import FollowingBlogs from "./FollowingBlogs.js";
+import { useSelector } from "react-redux";
+import './Subscription.css'
 
 const Subscription = () => {
+  const user = useSelector((state) => state.firebase.user);
 
+  const [users, setUsers] = useState([]);
 
-    return (
-        <Box sx={{ mt: 2 }} className="subscription-margin" >
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // setLoading(true);
+    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/users`;
+    fetch(blogUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        // setLoading(false);
+        setUsers(data);
+      });
+  }, []);
+  // console.log(users);
+  const verifiedUser = users.filter((me) => me.email === user.email);
+  //   console.log(verifiedUser, "THis is me")
+
+  const [blog, setBlogs] = useState([]);
+  useEffect(() => {
+    // setLoading(true);
+    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+    fetch(blogUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        // setLoading(false);
+        setBlogs(data?.blogs);
+      });
+  }, []);
+  // console.log(blog, "eta hocce blog");
+
+  return (
+    // <Box sx={{ mt: 2 }} className="subscription-margin">
+    <Grid className="subscription-margin">
+      {verifiedUser?.map((item, index) => (
+        <div key={index}>
+          {item?.followers.map((c, i) => (
             <Grid
-                container
-                spacing={{ xs: 1, md: 1 }}
-                columns={{ xs: 12, sm: 12, md: 15, lg: 24 }}>
-
-                <Grid item xs={6} sm={4} md={3} lg={4} >
-                    <Box>
-                        <Box>
-                            <Card className="card-bg card-hover">
-                                <CardActionArea>
-                                    <CardContent className="pd">
-                                        <CardMedia
-                                            component="img"
-                                            height="120"
-                                            image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                            alt="Nate Alyn"
-                                            sx={{ mb: 2 }}
-                                        />
-                                        <Grid  >
-                                            <Grid >
-                                                <div className="" >
-                                                    <span style={{}}>
-                                                        <span style={{ display: "", flexDirection: "column" }} >
-
-                                                            <div>
-                                                                <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                                                    <div >
-                                                                        <small style={{ color: "white", fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                                            title
-                                                                        </small>
-                                                                    </div>
-                                                                    <div >
-                                                                        <DotMenu />
-                                                                    </div>
-
-                                                                </section>
-
-                                                            </div>
-
-                                                            <small style={{ paddingBottom: "3px" }} className="date-color">bloggerName</small><br />
-                                                            <small style={{ paddingBottom: "5px", fontSize: "13px" }} className="date-color">views</small>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Box>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} sm={4} md={3} lg={4} >
-                    <Box>
-                        <Box>
-                            <Card className="card-bg card-hover">
-                                <CardActionArea>
-                                    <CardContent className="pd">
-                                        <CardMedia
-                                            component="img"
-                                            height="120"
-                                            image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                            alt="Nate Alyn"
-                                            sx={{ mb: 2 }}
-                                        />
-                                        <Grid  >
-                                            <Grid >
-                                                <div className="" >
-                                                    <span style={{}}>
-                                                        <span style={{ display: "", flexDirection: "column" }} >
-
-                                                            <div>
-                                                                <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                                                    <div >
-                                                                        <small style={{ color: "white", fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                                            title
-                                                                        </small>
-                                                                    </div>
-                                                                    <div >
-                                                                        <DotMenu />
-                                                                    </div>
-
-                                                                </section>
-
-                                                            </div>
-
-                                                            <small style={{ paddingBottom: "3px" }} className="date-color">bloggerName</small><br />
-                                                            <small style={{ paddingBottom: "5px", fontSize: "13px" }} className="date-color">views</small>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Box>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} sm={4} md={3} lg={4} >
-                    <Box>
-                        <Box>
-                            <Card className="card-bg card-hover">
-                                <CardActionArea>
-                                    <CardContent className="pd">
-                                        <CardMedia
-                                            component="img"
-                                            height="120"
-                                            image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                            alt="Nate Alyn"
-                                            sx={{ mb: 2 }}
-                                        />
-                                        <Grid  >
-                                            <Grid >
-                                                <div className="" >
-                                                    <span style={{}}>
-                                                        <span style={{ display: "", flexDirection: "column" }} >
-
-                                                            <div>
-                                                                <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                                                    <div >
-                                                                        <small style={{ color: "white", fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                                            title
-                                                                        </small>
-                                                                    </div>
-                                                                    <div >
-                                                                        <DotMenu />
-                                                                    </div>
-
-                                                                </section>
-
-                                                            </div>
-
-                                                            <small style={{ paddingBottom: "3px" }} className="date-color">bloggerName</small><br />
-                                                            <small style={{ paddingBottom: "5px", fontSize: "13px" }} className="date-color">views</small>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Box>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} sm={4} md={3} lg={4} >
-                    <Box>
-                        <Box>
-                            <Card className="card-bg card-hover">
-                                <CardActionArea>
-                                    <CardContent className="pd">
-                                        <CardMedia
-                                            component="img"
-                                            height="120"
-                                            image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                            alt="Nate Alyn"
-                                            sx={{ mb: 2 }}
-                                        />
-                                        <Grid  >
-                                            <Grid >
-                                                <div className="" >
-                                                    <span style={{}}>
-                                                        <span style={{ display: "", flexDirection: "column" }} >
-
-                                                            <div>
-                                                                <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                                                    <div >
-                                                                        <small style={{ color: "white", fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                                            title
-                                                                        </small>
-                                                                    </div>
-                                                                    <div >
-                                                                        <DotMenu />
-                                                                    </div>
-
-                                                                </section>
-
-                                                            </div>
-
-                                                            <small style={{ paddingBottom: "3px" }} className="date-color">bloggerName</small><br />
-                                                            <small style={{ paddingBottom: "5px", fontSize: "13px" }} className="date-color">views</small>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Box>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} sm={4} md={3} lg={4} >
-                    <Box>
-                        <Box>
-                            <Card className="card-bg card-hover">
-                                <CardActionArea>
-                                    <CardContent className="pd">
-                                        <CardMedia
-                                            component="img"
-                                            height="120"
-                                            image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                            alt="Nate Alyn"
-                                            sx={{ mb: 2 }}
-                                        />
-                                        <Grid  >
-                                            <Grid >
-                                                <div className="" >
-                                                    <span style={{}}>
-                                                        <span style={{ display: "", flexDirection: "column" }} >
-
-                                                            <div>
-                                                                <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                                                    <div >
-                                                                        <small style={{ color: "white", fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                                            title
-                                                                        </small>
-                                                                    </div>
-                                                                    <div >
-                                                                        <DotMenu />
-                                                                    </div>
-
-                                                                </section>
-
-                                                            </div>
-
-                                                            <small style={{ paddingBottom: "3px" }} className="date-color">bloggerName</small><br />
-                                                            <small style={{ paddingBottom: "5px", fontSize: "13px" }} className="date-color">views</small>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Box>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} sm={4} md={3} lg={4} >
-                    <Box>
-                        <Box>
-                            <Card className="card-bg card-hover">
-                                <CardActionArea>
-                                    <CardContent className="pd">
-                                        <CardMedia
-                                            component="img"
-                                            height="120"
-                                            image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                            alt="Nate Alyn"
-                                            sx={{ mb: 2 }}
-                                        />
-                                        <Grid  >
-                                            <Grid >
-                                                <div className="" >
-                                                    <span style={{}}>
-                                                        <span style={{ display: "", flexDirection: "column" }} >
-
-                                                            <div>
-                                                                <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                                                    <div >
-                                                                        <small style={{ color: "white", fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                                            title
-                                                                        </small>
-                                                                    </div>
-                                                                    <div >
-                                                                        <DotMenu />
-                                                                    </div>
-
-                                                                </section>
-
-                                                            </div>
-
-                                                            <small style={{ paddingBottom: "3px" }} className="date-color">bloggerName</small><br />
-                                                            <small style={{ paddingBottom: "5px", fontSize: "13px" }} className="date-color">views</small>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Box>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} sm={4} md={3} lg={4} >
-                    <Box>
-                        <Box>
-                            <Card className="card-bg card-hover">
-                                <CardActionArea>
-                                    <CardContent className="pd">
-                                        <CardMedia
-                                            component="img"
-                                            height="120"
-                                            image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                            alt="Nate Alyn"
-                                            sx={{ mb: 2 }}
-                                        />
-                                        <Grid  >
-                                            <Grid >
-                                                <div className="" >
-                                                    <span style={{}}>
-                                                        <span style={{ display: "", flexDirection: "column" }} >
-
-                                                            <div>
-                                                                <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                                                    <div >
-                                                                        <small style={{ color: "white", fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                                            title
-                                                                        </small>
-                                                                    </div>
-                                                                    <div >
-                                                                        <DotMenu />
-                                                                    </div>
-
-                                                                </section>
-
-                                                            </div>
-
-                                                            <small style={{ paddingBottom: "3px" }} className="date-color">bloggerName</small><br />
-                                                            <small style={{ paddingBottom: "5px", fontSize: "13px" }} className="date-color">views</small>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Box>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} sm={4} md={3} lg={4} >
-                    <Box>
-                        <Box>
-                            <Card className="card-bg card-hover">
-                                <CardActionArea>
-                                    <CardContent className="pd">
-                                        <CardMedia
-                                            component="img"
-                                            height="120"
-                                            image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                            alt="Nate Alyn"
-                                            sx={{ mb: 2 }}
-                                        />
-                                        <Grid  >
-                                            <Grid >
-                                                <div className="" >
-                                                    <span style={{}}>
-                                                        <span style={{ display: "", flexDirection: "column" }} >
-
-                                                            <div>
-                                                                <section style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                                                    <div >
-                                                                        <small style={{ color: "white", fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                                            title
-                                                                        </small>
-                                                                    </div>
-                                                                    <div >
-                                                                        <DotMenu />
-                                                                    </div>
-
-                                                                </section>
-
-                                                            </div>
-
-                                                            <small style={{ paddingBottom: "3px" }} className="date-color">bloggerName</small><br />
-                                                            <small style={{ paddingBottom: "5px", fontSize: "13px" }} className="date-color">views</small>
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Box>
-                    </Box>
-                </Grid>
-
-
-
-
-
-
-
+              container
+              spacing={{ xs: 1, md: 1 }}
+              columns={{ xs: 12, sm: 12, md: 15, lg: 24, xl:14 }}
+            //   key={i}
+            >
+              {blog.map(
+                (bl) =>
+                  bl?.bloggerEmail === c?.followerEmail && (
+                    <FollowingBlogs b={bl} />
+                  )
+              )}
             </Grid>
-        </Box >
-    );
+          ))}
+        </div>
+      ))}
+    </Grid>
+    // </Box>
+  );
 };
 
 export default Subscription;
-

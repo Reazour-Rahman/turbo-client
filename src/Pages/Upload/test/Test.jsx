@@ -1,57 +1,56 @@
-import * as React from 'react';
+import React, { useEffect, useState } from "react";
 
-const dataItems = [{
-    title: "title1",
-    content: [{
-        imageUrl: "http://placehold.it/300x300",
-        title: "Campaigns",
-        description: "Short description explaining the use of this design in a single sentence."
-      },
-      {
-        imageUrl: "http://placehold.it/300x300",
-        title: "Events",
-        description: "Short description explaining the use of this design in a single sentence."
-      },
-      {
-        imageUrl: "http://placehold.it/300x300",
-        title: "General",
-        description: "Short description explaining the use of this design in a single sentence."
-      }
-    ]
-  },
-  {
-    title: "title2",
-    content: [{
-        imageUrl: "http://placehold.it/300x300",
-        title: "Video Template A",
-        description: "Short description explaining the use of this design in a single sentence."
-      },
-      {
-        imageUrl: "http://placehold.it/300x300",
-        title: "Video Template A",
-        description: "Short description explaining the use of this design in a single sentence."
-      }
-    ]
-  }
-];
+const Test = () => {
 
-class Test extends React.Component {
+  const [users, setUsers] = useState([]);
   
-  render() {
-    return <div style={{marginLeft:"100px"}}> 
-    {
-      dataItems.map((item, index) => {
-        return ( <div>
-            <h1>{item.title}</h1>
-            { item.content.map((c, i) => <div>
-            <h3>This is title {console.log(c)}</h3>
-            {/* <h3>{c.description}</h3> */}
-            </div>)}
-          </div>
-        )
-      })
-    }
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // setLoading(true);
+    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/users`;
+      fetch(blogUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          // setLoading(false);
+          setUsers(data)
+        });
+  }, []);
+  // console.log(users);
+
+
+  const [blog, setBlogs] = useState({});
+  useEffect(() => {
+    // setLoading(true);
+    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+      fetch(blogUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          // setLoading(false);
+          for (const blog of data.blogs) {
+            setBlogs(blog)
+          }
+          
+        });
+  }, []);
+  // console.log(blog, "eta hocce blog");
+
+  
+
+  return (
+    <div style={{marginLeft:"100px"}}>
+      {users?.map((item, index) => (
+        <div key={index}>
+          {item?.followers.map((c, i) => (
+            <div key={i}>
+              {
+                c.followerEmail === blog.bloggerEmail && <div> <img width={200} src={blog.thumbnail} alt="" /> {blog.title} </div>
+              }
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
-  }
-}
+  );
+};
 export default Test;
