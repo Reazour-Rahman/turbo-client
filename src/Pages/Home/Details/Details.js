@@ -93,6 +93,8 @@ const Details = () => {
 
   let theme;
   theme = localStorage.getItem("theme")
+  const text= theme === "light" ? "black" : "darkLight" ;
+  const card= theme === "light" ? "moreLight" : "moreDark";
   return (
     <div className="">
       <Grid spacing={3}>
@@ -110,16 +112,16 @@ const Details = () => {
                       className="video-size-details"
                       playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 3, 6]}
                     />
-                    <p className="title-font">{blog.title}</p>
+                    <p className="title-font"  id={text}>{blog.title}</p>
 
-                    <span className="interaction" id={ theme === "light" ? "black" : "darkLight" }>
-                      <small>{blog.views} views</small>
+                    <span className="interaction" >
+                      <small id={text}>{blog.views} views</small>
                       <span>
-                        <span className="interect">
-                          <MoodBadIcon /> 112k
+                        <span className="interect" id={text}>
+                          <MoodBadIcon  id={text}/> 112k
                         </span>
-                        <span>
-                          <FavoriteBorderIcon /> {singleBlog?.likes}
+                        <span id={text}>
+                          <FavoriteBorderIcon id={text}/> {singleBlog?.likes}
                         </span>
                       </span>
                     </span>
@@ -155,38 +157,40 @@ const Details = () => {
                     />
 
                     <div>
+                      <br />
                       <Accordion
+                      id={card}
                         className="bg-accordion"
                         expanded={expanded === "panel1"}
                         onChange={handleChange("panel1")}
                       >
                         <AccordionSummary
                           expandIcon={
-                            <ExpandMoreIcon className="bg-accordion" />
+                            <ExpandMoreIcon  id={text} className="bg-accordion" />
                           }
                           aria-controls="panel1bh-content"
                           id="panel1bh-header"
                         >
-                          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                          <Typography sx={{ width: "33%", flexShrink: 0 }}  id={text}>
                             See more...
                           </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                          <small>
-                            <span style={{ fontWeight: "bold" }}>
+                          <small id={text}>
+                            <span style={{ fontWeight: "bold" }}  id={text}>
                               Description :
                             </span>
                             &nbsp;&nbsp;
                             {blog.description}
                           </small>{" "}
                           <br /> <br />
-                          <small>
-                            <span style={{ fontWeight: "bold" }}>Tags :</span>
+                          <small id={text}>
+                            <span style={{ fontWeight: "bold" }}  id={text}>Tags :</span>
                             &nbsp;&nbsp; #bold #Game #BGMI #PUBG #FreeFire
                           </small>{" "}
                           <br /> <br />
-                          <small>
-                            <span style={{ fontWeight: "bold" }}>
+                          <small  id={text}>
+                            <span style={{ fontWeight: "bold" }}  id={text}>
                               Category :
                             </span>
                             &nbsp;&nbsp;
@@ -194,8 +198,8 @@ const Details = () => {
                             {blog.category}
                           </small>
                           <br /> <br />
-                          <small>
-                            <span style={{ fontWeight: "bold" }}>About :</span>
+                          <small id={text}>
+                            <span style={{ fontWeight: "bold" }} id={text}>About :</span>
                             &nbsp;&nbsp;
                             {blog.description}
                           </small>
@@ -233,12 +237,15 @@ const Details = () => {
                   <article>
                     <LinearProgressWithLabel style={{ color: "white" }} />
                     <Skeleton
+                    
+                      id={card}
                       className="video-size-details"
                       variant="rectangular"
                       animation="wave"
                     />
 
                     <Skeleton
+                    id={card}
                       className="title-font sk"
                       variant="text"
                       height={28}
@@ -246,12 +253,14 @@ const Details = () => {
                     />
 
                     <Skeleton
+                    id={card}
                       className="title-font sk"
                       variant="text"
                       height={28}
                       animation="wave"
                     />
                     <Skeleton
+                    id={card}
                       className="sk"
                       variant="text"
                       height={5}
@@ -259,6 +268,7 @@ const Details = () => {
                     />
 
                     <Skeleton
+                    id={card}
                       className="sk"
                       variant="text"
                       height={95}
@@ -267,6 +277,7 @@ const Details = () => {
 
                     <div>
                       <Skeleton
+                    id={card}
                         className="sk"
                         variant="text"
                         height={75}
@@ -275,6 +286,7 @@ const Details = () => {
                     </div>
                     {/* Comment page */}
                     <Skeleton
+                    id={card}
                       className="sk"
                       variant="text"
                       height={107}
@@ -295,6 +307,7 @@ const Details = () => {
                       >
                         <CardActionArea>
                           <Skeleton
+                            id={card}
                             className="sk"
                             variant="rectangular"
                             height={120}
@@ -309,18 +322,68 @@ const Details = () => {
                             }}
                           >
                             <Skeleton
+                              id={card}
                               className="sk"
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
+                              id={card}
                               className="sk"
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
+                            id={card}
+                              className="skHalf"
+                              variant="text"
+                              height={23.33}
+                              animation="wave"
+                            />
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                      <Card
+                        style={{
+                          backgroundColor: "transparent",
+                          color: "aliceblue",
+                        }}
+                        sx={{ boxShadow: 0 }}
+                      >
+                        <CardActionArea>
+                          <Skeleton
+                          id={card}
+                            className="sk"
+                            variant="rectangular"
+                            height={120}
+                            animation="wave"
+                          />
+
+                          <CardContent
+                            style={{
+                              margin: "0px",
+                              padding: "0px",
+                              paddingTop: "5px",
+                            }}
+                          >
+                            <Skeleton
+                            id={card}
+                              className="sk"
+                              variant="text"
+                              height={23.33}
+                              animation="wave"
+                            />
+                            <Skeleton
+                            id={card}
+                              className="sk"
+                              variant="text"
+                              height={23.33}
+                              animation="wave"
+                            />
+                            <Skeleton
+                            id={card}
                               className="skHalf"
                               variant="text"
                               height={23.33}
@@ -339,6 +402,7 @@ const Details = () => {
                         <CardActionArea>
                           <Skeleton
                             className="sk"
+                            id={card}
                             variant="rectangular"
                             height={120}
                             animation="wave"
@@ -353,18 +417,21 @@ const Details = () => {
                           >
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="skHalf"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
@@ -382,6 +449,7 @@ const Details = () => {
                         <CardActionArea>
                           <Skeleton
                             className="sk"
+                            id={card}
                             variant="rectangular"
                             height={120}
                             animation="wave"
@@ -396,18 +464,21 @@ const Details = () => {
                           >
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="skHalf"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
@@ -425,6 +496,7 @@ const Details = () => {
                         <CardActionArea>
                           <Skeleton
                             className="sk"
+                            id={card}
                             variant="rectangular"
                             height={120}
                             animation="wave"
@@ -439,18 +511,21 @@ const Details = () => {
                           >
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="skHalf"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
@@ -468,6 +543,7 @@ const Details = () => {
                         <CardActionArea>
                           <Skeleton
                             className="sk"
+                            id={card}
                             variant="rectangular"
                             height={120}
                             animation="wave"
@@ -482,18 +558,21 @@ const Details = () => {
                           >
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="skHalf"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
@@ -511,6 +590,7 @@ const Details = () => {
                         <CardActionArea>
                           <Skeleton
                             className="sk"
+                            id={card}
                             variant="rectangular"
                             height={120}
                             animation="wave"
@@ -525,18 +605,21 @@ const Details = () => {
                           >
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="skHalf"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
@@ -554,6 +637,7 @@ const Details = () => {
                         <CardActionArea>
                           <Skeleton
                             className="sk"
+                            id={card}
                             variant="rectangular"
                             height={120}
                             animation="wave"
@@ -568,61 +652,21 @@ const Details = () => {
                           >
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="sk"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"
                             />
                             <Skeleton
                               className="skHalf"
-                              variant="text"
-                              height={23.33}
-                              animation="wave"
-                            />
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                      <Card
-                        style={{
-                          backgroundColor: "transparent",
-                          color: "aliceblue",
-                        }}
-                        sx={{ boxShadow: 0 }}
-                      >
-                        <CardActionArea>
-                          <Skeleton
-                            className="sk"
-                            variant="rectangular"
-                            height={120}
-                            animation="wave"
-                          />
-
-                          <CardContent
-                            style={{
-                              margin: "0px",
-                              padding: "0px",
-                              paddingTop: "5px",
-                            }}
-                          >
-                            <Skeleton
-                              className="sk"
-                              variant="text"
-                              height={23.33}
-                              animation="wave"
-                            />
-                            <Skeleton
-                              className="sk"
-                              variant="text"
-                              height={23.33}
-                              animation="wave"
-                            />
-                            <Skeleton
-                              className="skHalf"
+                              id={card}
                               variant="text"
                               height={23.33}
                               animation="wave"

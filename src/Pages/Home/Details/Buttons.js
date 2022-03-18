@@ -135,6 +135,9 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
       boxShadow: 24,
       p: 4,
     };
+    let theme;
+    theme = localStorage.getItem("theme")
+    const text= theme === "light" ? "black" : "darkLight" ;
   
   return (
     <div>
@@ -147,23 +150,23 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
             />
 
             <p className="holder-details">
-              <p className="holder-details">{bloggerName}</p>
-              <small>{uploadTime}</small>
+              <p className="holder-details" id={text}>{bloggerName}</p>
+              <small id={text}>{uploadTime}</small>
             </p>
           </div>
 
           <p className="icons">
             
             {
-              !like  ? <FavoriteBorderIcon onClick={likePlus}/> :
+              !like  ? <FavoriteBorderIcon onClick={likePlus} id={text}/> :
               <FavoriteIcon onClick={likeMinus} style={{color:'red'}}/>
             }
-            <VideoStableIcon className="int-icons" />
-            <HistoryIcon className="int-icons" />
-            <AddLinkIcon className="int-icons" />
-            <span className="responsive-icons">
+            {/* <VideoStableIcon id={text} className="int-icons" />
+            <HistoryIcon id={text} className="int-icons" />
+            <AddLinkIcon id={text} className="int-icons" /> */}
+            {/* <span className="responsive-icons">
               <ResponsiveButton />
-            </span>
+            </span> */}
               {/*:::: payment modal start :::: */}
 
               <Button
@@ -191,7 +194,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
                 ></Payment>
               </Modal>
               {/*:::: payment modal end ::::*/}
-            <Button variant="outlined" className="icons-color">
+            <Button variant="outlined" className="icons-color" size="small">
               Follow 119M
             </Button>
           </p>

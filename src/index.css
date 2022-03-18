@@ -33,8 +33,9 @@ body {
  background-color: #18191A !important;
 }
 #darkLight{
-color: #d6d6d6 !important;
+color: #eeeeee !important;
 }
+
 #muted{
 color: #8b8b8b !important;
 }
@@ -49,4 +50,27 @@ color: #8b8b8b !important;
 }
 #black{
   color: #051624 !important;
+}
+
+
+
+/* Classes */
+.darkish{
+  background-color: #0e0e10 !important;
+}
+.lightest{
+  background-color: #efeff1 !important;
+}
+
+.darkLight{
+color: #eeeeee !important;
+}
+.black{
+  color: #051624 !important;
+}
+.moreDark{
+  background-color: #18191A !important;
+ }
+ .moreLight{
+  background-color: #FFFFFF !important;
 }

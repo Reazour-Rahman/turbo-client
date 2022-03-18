@@ -155,8 +155,8 @@ export default function MenuBar({ handleClickOpen }) {
               border: '.1px solid rgba(255, 255, 255, 0.309)',
 
               width: 350,
-              opacity: 1,
-              backgroundColor: "#091a2b",
+              opacity: 0.9,
+              backgroundColor: "#18191A",
               overflow: "visible",
               filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
               mt: 1.5,
