@@ -8,25 +8,19 @@ import Blogger from "./Blogger";
 const Bloggers = () => {
 
     const [bloggers, setBloggers] = useState([]);
-    const [bloggersContainer, setBloggersContainer] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         // const bloggerUrl = `https://mocki.io/v1/24ee15c5-3e9e-401c-b397-06a8e56db4a5`;
         const bloggerUrl = `http://localhost:5000/users`;
-
         fetch(bloggerUrl)
-            .then((response) => response.json())
-            .then((data) => {
-
-                for (const a of data) {
-                    setBloggers(a)
-                }
-            });
+        .then((response) => response.json())
+        .then((data) => {
+            setBloggers(data)
+        });
         setLoading(true);
-
     }, []);
-    console.log(bloggers.room);
+    
 
     return (
         <div>
@@ -39,13 +33,9 @@ const Bloggers = () => {
                     spacing={{ xs: 2, md: 2 }}
                     columns={{ xs: 2, sm: 8, md: 8, lg: 14 }}
                 >
-                    {loading ? (
-                        <Blogger email={bloggers?.email} followersCount={bloggers?.followersCount} blogger={bloggers?.room}></Blogger>
-                    ) : (
-                        <div>
-                            <h1 style={{ color: "white" }}>fhsdlhakdasfjhlgkjhas</h1>
-                        </div>
-                    )}
+                    {
+                        bloggers?.map((blogger) => blogger?.room?.roomName ? <Blogger email={blogger?.email} followersCount={blogger?.followersCount} blogger={blogger?.room}></Blogger> : null)
+                    }
                 </Grid>
 
 

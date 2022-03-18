@@ -76,7 +76,7 @@ const useFirebase = () => {
 
 
   const saveUser = (email, name, method) => {
-    const user = { email, name, room:[], followersCount: 0, followers:[] }
+    const user = { email, name, room:{}, followersCount: 0, followers:[] }
     fetch('https://aqueous-chamber-45567.herokuapp.com/users', {
       method: method,
       headers: {
