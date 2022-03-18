@@ -11,15 +11,16 @@ const Bloggers = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const bloggerUrl = `https://mocki.io/v1/24ee15c5-3e9e-401c-b397-06a8e56db4a5`;
-
+        // const bloggerUrl = `https://mocki.io/v1/24ee15c5-3e9e-401c-b397-06a8e56db4a5`;
+        const bloggerUrl = `http://localhost:5000/users`;
         fetch(bloggerUrl)
-            .then((response) => response.json())
-            .then((data) => setBloggers(data));
+        .then((response) => response.json())
+        .then((data) => {
+            setBloggers(data)
+        });
         setLoading(true);
-
     }, []);
-    console.log(bloggers);
+    
 
     return (
         <div>
@@ -32,13 +33,9 @@ const Bloggers = () => {
                     spacing={{ xs: 2, md: 2 }}
                     columns={{ xs: 2, sm: 8, md: 8, lg: 14 }}
                 >
-                    {loading ? (
-                        bloggers.map((blogger) => <Blogger key={blogger._id} blogger={blogger}></Blogger>)
-                    ) : (
-                        <div>
-
-                        </div>
-                    )}
+                    {
+                        bloggers?.map((blogger) => blogger?.room?.roomName ? <Blogger email={blogger?.email} followersCount={blogger?.followersCount} blogger={blogger?.room}></Blogger> : null)
+                    }
                 </Grid>
 
 

@@ -1,8 +1,12 @@
-@media only screen and (min-width: 701px) {
+.subscription-margin {
+  margin-left: 51px;
+}
+
+/* @media only screen and (min-width: 701px) {
   .subscription-margin {
     margin-left: 70px;
   }
-}
+} */
 @media only screen and (max-width: 700px) {
   .subscription-margin {
     margin-left: 51px;

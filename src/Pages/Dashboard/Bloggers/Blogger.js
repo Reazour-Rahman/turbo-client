@@ -8,65 +8,65 @@ import { CardActionArea } from "@mui/material";
 
 import { Link } from "react-router-dom";
 
-const Blogger = (props) => {
+const Blogger = ({ blogger, followersCount, email }) => {
+  const { profile, roomName } = blogger;
 
-    const { _id, bloggerName, category, bloggerEmail } =
-        props.blogger;
+  return (
+    <Grid item xs={2} sm={4} md={2}>
+      <Box>
+        <Box>
+          <Card className="card-bg card-hover">
+            <CardActionArea>
+              <CardContent className="pd">
+                <CardMedia
+                  component="img"
+                  height="120"
+                  image={profile}
+                  alt={roomName}
+                  sx={{ mb: 2 }}
+                />
 
-    return (
-        <Grid item xs={2} sm={4} md={2}>
-            <Box>
-                <Box>
-                    <Card className="card-bg card-hover">
-                        <CardActionArea>
-                            <CardContent className="pd">
-                                <CardMedia
-                                    component="img"
-                                    height="120"
-                                    image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                    alt="Nate Alyn"
-                                    sx={{ mb: 2 }}
-                                />
+                <Grid container>
+                  <Grid item xs={12}>
+                    <div className="name-color">
+                      <span style={{ display: "flex", alignItems: "center" }}>
+                        <span
+                          style={{ display: "flex", flexDirection: "column" }}
+                        >
+                          <small
+                            style={{
+                              fontWeight: "bold",
+                              paddingBottom: "3px",
+                              fontSize: "14px",
+                            }}
+                          >
+                            {roomName}
+                          </small>
+                          <small
+                            style={{ paddingBottom: "3px" }}
+                            className="date-color"
+                          >
+                            {email}
+                          </small>
+                          <small
+                            style={{
+                              fontWeight: "bold",
+                              paddingBottom: "5px",
+                              fontSize: "13px",
+                            }}
+                            className="date-color"
+                          >
+                            Followers: {followersCount}
+                          </small>
+                        </span>
+                      </span>
+                    </div>
+                  </Grid>
+                </Grid>
+              </CardContent>
 
-
-
-
-                                <Grid container >
-                                    <Grid item xs={12}>
-                                        <div className="name-color" >
-
-                                            <span style={{ display: "flex", alignItems: "center" }}>
-
-
-                                                <span style={{ display: "flex", flexDirection: "column" }} >
-                                                    <small style={{ fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                        {bloggerName}
-                                                    </small>
-                                                    <small style={{ paddingBottom: "3px" }} className="date-color">{bloggerEmail}</small>
-                                                    <small style={{ fontWeight: "bold", paddingBottom: "5px", fontSize: "13px" }} className="date-color">{category}</small>
-                                                </span>
-                                            </span>
-
-
-                                        </div>
-                                    </Grid>
-
-
-                                </Grid>
-
-
-
-
-
-
-
-
-
-
-                            </CardContent>
-
-                            <Link to={`profile/${_id}`} style={{ textDecoration: "none" }}>
-                                {/* <CardContent>
+              {/* <Link to={`profile/${_id}`} style={{ textDecoration: "none" }}> */}
+              {/* <CardContent>
                                     <Typography
                                         className="card-color"
                                         variant="body2"
@@ -75,14 +75,13 @@ const Blogger = (props) => {
 
                                     </Typography>
                                 </CardContent> */}
-                            </Link>
-                        </CardActionArea>
-                    </Card>
-                </Box>
-            </Box>
-        </Grid>
-    );
+              {/* </Link> */}
+            </CardActionArea>
+          </Card>
+        </Box>
+      </Box>
+    </Grid>
+  );
 };
 
 export default Blogger;
-

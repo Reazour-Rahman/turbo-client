@@ -15,11 +15,16 @@ const AmazonProducts = () => {
 
     console.log(products)
 
+    let mode = localStorage.getItem("theme");
+    const bg = mode === "light" ? "lightest" : "darkish";
+    const card = mode === "light" ? "moreLight" : "moreDark";
+    const text = mode === "light" ? "black" : "darkLight";
+
     return (
         <Box sx={{ flexGrow: 1, paddingLeft: "72px" }} >
             <ProfileHeader />
             <Box sx={{ mb: '20px', mt: '50px' }}>
-                <Typography>Use CODE: proPlayer23 for 10% Discount</Typography>
+                <Typography id={text}>Use CODE: proPlayer23 for 10% Discount</Typography>
             </Box>
             <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
 
@@ -50,9 +55,10 @@ const AmazonProducts = () => {
                                         height: "18px", 
                                         width: "75px", 
                                         fontSize: "12px",
-                                        color: 'rgba(255, 255, 255, 0.809)',
+                                        
                                         backgroundColor: green[900]
                                         }} 
+                                        id={text}
                                         size="small"
                                         >
                                             Detail
@@ -64,9 +70,10 @@ const AmazonProducts = () => {
                                         pl: 1,
                                         fontSize: "16px",
                                         fontWeight: 550,
-                                        color: 'rgba(255, 255, 255, 0.809)', marginBottom: '5px'
+                                         marginBottom: '5px'
                                     }}
                                     component="div"
+                                    id={text}
                                 >
                                     {productTitle}
                                 </Typography>
@@ -74,20 +81,22 @@ const AmazonProducts = () => {
                                     sx={{
                                         pl: 1,
                                         fontWeight: 400,
-                                        color: 'rgba(255, 255, 255, 0.809)', marginBottom: '5px'
+                                         marginBottom: '5px'
                                     }}
                                     component="div"
+                                    id={text}
                                 >
-                                    <small>{description.slice(0, 55)}</small>
+                                    <small id={text}>{description.slice(0, 55)}</small>
                                 </Typography>
 
                                 <Typography variant="body2" color="text.secondary"
+                                id={text}
                                     sx={{
                                         pl: 1,
                                         m1: 1,
                                         fontSize: '16px',
                                         fontWeight: 550,
-                                        color: 'rgba(255, 255, 255, 0.809)'
+                                        
                                     }}>
                                     ${productPrice}
                                 </Typography>
