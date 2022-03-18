@@ -1,30 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import JSONDATA from './blogfakedata.JSON'
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import logo from '../../../assets/logo.png'
 import { Grid } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
@@ -72,21 +50,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const SearchBox = () => {
-
+const SearchBox = (blogger) => {
+    const { roomName } = blogger;
     const [searchText, setSearchText] = useState('')
-    const [bloggerSearchEmail, setBloggerSearchEmail] = useState([]);
-    useEffect(() => {
-        const url = `https://mocki.io/v1/24ee15c5-3e9e-401c-b397-06a8e56db4a5?s=${searchText}`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setBloggerSearchEmail(data));
-    }, [searchText])
+    const [bloggerSearchRoom, setBloggerSearchRoom] = useState([]);
+    // useEffect(() => {
+    //     const url = `https://aqueous-chamber-45567.herokuapp.com/users`;
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => setBloggerSearchRoom(data));
+    // }, [searchText])
     const handleSearch = e => {
 
         const searchTextValue = e.target.value;
         console.log(searchTextValue)
         setSearchText(searchTextValue);
+        const roomNameMatch = roomName.filter.includes(searchText);
+        console.log(roomNameMatch);
 
     }
     return (
