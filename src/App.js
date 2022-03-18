@@ -127,7 +127,7 @@ function App() {
 
 
           <Route exact path='/profile/cart' element={<AddCart />} />
-          
+
 
 
           <Route path="/userprofile/:email" element={<UserProfile />}></Route>
@@ -162,7 +162,7 @@ function App() {
           <Route exact path="/dashboard/default" element={<Default />} />
 
           <Route path="/dashboard/message" element={<UsersMessage />}></Route>
-          
+
 
           <Route exact path="/dashboard/analytics" element={<Analytics />} />
 
