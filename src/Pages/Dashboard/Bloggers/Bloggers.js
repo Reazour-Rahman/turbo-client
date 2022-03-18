@@ -40,10 +40,10 @@ const Bloggers = () => {
                     columns={{ xs: 2, sm: 8, md: 8, lg: 14 }}
                 >
                     {loading ? (
-                        <Blogger email={bloggers?.email} followerCount={bloggers?.followersCount} blogger={bloggers?.room}></Blogger>
+                        <Blogger email={bloggers?.email} followersCount={bloggers?.followersCount} blogger={bloggers?.room}></Blogger>
                     ) : (
                         <div>
-
+                            <h1 style={{ color: "white" }}>fhsdlhakdasfjhlgkjhas</h1>
                         </div>
                     )}
                 </Grid>

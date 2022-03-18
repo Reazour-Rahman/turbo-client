@@ -23,7 +23,7 @@ const Blogger = ({ blogger, followersCount, email }) => {
                                     component="img"
                                     height="120"
                                     image={profile}
-                                    alt="{roomName}"
+                                    alt={roomName}
                                     sx={{ mb: 2 }}
                                 />
 
