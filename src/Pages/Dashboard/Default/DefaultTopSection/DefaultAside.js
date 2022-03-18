@@ -48,7 +48,7 @@ const DefaultAside = () => {
               flexDirection: "column",
             }}
           >
-            <p>Monthly Target</p>
+            <p>Yearly Target</p>
             <br />
             <CircularProgressWithLabel
               variant="determinate"

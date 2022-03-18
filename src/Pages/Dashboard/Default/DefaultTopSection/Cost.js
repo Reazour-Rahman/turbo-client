@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import "../Default.css";
 
 const Cost = ({cost}) => {
-  
+  /* Cost */
+  const costChange = ((cost[1]?.cost - cost[0]?.cost) / cost[0]?.cost) * 100;
+
+  console.log("CostPercentageChange", costChange,"%");
+
+  const condition = costChange < 0 ? "danger" : "success"
+
   return (
     <div>
       <section className="three-card-bg">
@@ -13,10 +20,10 @@ const Cost = ({cost}) => {
 
         <div className="top-align text-color-container">
           
-            <h2 className="default-margin">${cost[0]?.cost}</h2>
-            <h4 className="success">-11.4%</h4>
+            <h2 className="default-margin">${cost[1]?.cost}</h2>
+            <h4 className={condition}>{costChange.toFixed(2)}%</h4>
 
-          <ArrowUpwardIcon />
+            {costChange < 0 ? <ArrowDownwardIcon /> : <ArrowUpwardIcon/>}
         </div>
 
         <p className="paragraph-size">Compare to last year 2021</p>

@@ -26,6 +26,7 @@ import CreateProfile from "../Profile/CreateProfile/CreateProfile/CreateProfile"
 import SettingDrawer from "../../Shared/SettingDrawer.tsx";
 import MessageModal from "../../MessageModal/MessageModal.tsx";
 import UploadVideoModal from "../../Upload/UploadVideoModal";
+import QueryModal from "../../Query/QueryModal";
 
 
 const Search = styled("div")(({ theme }) => ({
@@ -146,7 +147,7 @@ export default function NavigationBar({user}) {
         <img width={150} src={logo} alt="" />
       </Typography>
       <Box sx={{ flexGrow: 1 }}>
-        <HomeSearch />
+        <QueryModal/>
       </Box>
 
       <Box sx={{ flexGrow: 1 }} />
