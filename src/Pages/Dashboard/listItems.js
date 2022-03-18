@@ -16,6 +16,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import './Dashboard.css';
+import Edit from './Edit';
 
 export const mainListItems = (
     <React.Fragment>
@@ -26,6 +27,8 @@ export const mainListItems = (
             </ListItemIcon>
             <ListItemText className='dashboard-button' primary="Default" />
         </ListItemButton>
+
+        <Edit></Edit>
 
         <ListItemButton as={Link} component="a" to="/dashboard/home">
             <ListItemIcon>

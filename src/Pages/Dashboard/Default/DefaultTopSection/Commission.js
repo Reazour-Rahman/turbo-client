@@ -2,7 +2,7 @@ import React from "react";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import "../Default.css";
 
-const Commission = () => {
+const Commission = ({revenue, cost}) => {
   return (
     <div>
       <section className="three-card-bg">
@@ -11,7 +11,7 @@ const Commission = () => {
         <p>Commissions</p>
 
         <div className="top-align text-color-container">
-          <h2 className="default-margin">$2,543</h2>
+          {/* <h2 className="default-margin">${(revenue[0].revenueGoal - revenue[0].netCashIF) - cost[0].cost}</h2> */}
           <h4 className="success">+11.4%</h4>
           <ArrowUpwardIcon />
         </div>

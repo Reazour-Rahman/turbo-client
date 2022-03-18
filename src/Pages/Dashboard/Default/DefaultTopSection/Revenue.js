@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import "../Default.css";
 
-const Revenue = () => {
+const Revenue = ({revenue, cost}) => {
+  
+
+const lastYearRevenue = (revenue[0]?.netCashIF - cost[0]?.cost) 
+const lastYearRevenuePer  = (lastYearRevenue / cost[0]?.cost) * 100
+
+const currentYearRevenue = (revenue[1]?.netCashIF - cost[1]?.cost) 
+const currentYearRevenuePer  = (currentYearRevenue / cost[1]?.cost) * 100
+
+
+
+const revenuePercentageChange = (currentYearRevenuePer - lastYearRevenuePer) / lastYearRevenue
+
+console.log(currentYearRevenuePer, lastYearRevenuePer, revenuePercentageChange * 100);
+
   return (
     <div>
       <section className="three-card-bg">
@@ -11,8 +25,9 @@ const Revenue = () => {
         <p>Revenue</p>
 
         <div className="top-align text-color-container">
-          <h2 className="default-margin">$2,543</h2>
-          <h4 className="danger">-11.4%</h4>
+   
+            <h2 className="default-margin">${revenue[1]?.netCashIF - cost[1]?.cost}</h2>
+            <h4 className="danger">{}%</h4>        
           <ArrowDownwardIcon />
         </div>
 
