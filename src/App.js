@@ -44,6 +44,7 @@ import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAma
 // import Subscriptions from "./Pages/Home/Subscription/Subscriptions";
 
 import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/AddCart/AddCart"
+import Test from "./Pages/Upload/test/Test.jsx"
 
 
 function App() {
@@ -81,6 +82,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />}></Route>
           <Route path="/logIn" element={<Auth></Auth>}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/test" element={<Test />}></Route>
 
           <Route path="/candyBlock" element={<CandyBlock />}></Route>
 

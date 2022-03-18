@@ -22,6 +22,7 @@ import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ExploreIcon from "@mui/icons-material/Explore";
 import RestoreIcon from "@mui/icons-material/Restore";
+import CodeOffIcon from '@mui/icons-material/CodeOff';
 import {
   Link,
   NavLink,
@@ -40,6 +41,7 @@ import { useSelector } from "react-redux";
 import SportsTennisIcon from '@mui/icons-material/SportsTennis';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 const drawerWidth = 240;
+
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -143,7 +145,7 @@ export default function MiniDrawer() {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon />
+            <CodeOffIcon />
           </IconButton>
           {/* <Typography variant="h6" noWrap component="div"> */}
           {/* <img width={150} src={logo} alt="" /> */}
@@ -167,9 +169,9 @@ export default function MiniDrawer() {
         <List id={ mode === "light" ? "moreLight" : "moreDark" } style={{ height: "100%", border:"0px" }}>
           <Link className="no-link" to="/home">
             <NavLink selected className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } to="/">
-              <ListItem className="nav-btn"  id={mode=== "light" ? "black" : "darkLight" }button>
+              <ListItem className="nav-btn"  id={mode=== "light" ? "black" : "darkLight" } button>
                 <ListItemIcon className="fs-6">
-                  <HomeIcon className="nav-btn" />
+                  <HomeIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
                 </ListItemIcon>
                 <ListItemText primary={"Home"} />
               </ListItem>
@@ -207,7 +209,7 @@ export default function MiniDrawer() {
               <ListItemIcon className="fs-6">
                 <SubscriptionsIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
               </ListItemIcon>
-              <ListItemText primary={"Subscriptions"} />
+              <ListItemText primary={"Followings"} />
             </ListItem>
           </NavLink>
 <Divider style={{backgroundColor:"white"}}/>
@@ -215,7 +217,7 @@ export default function MiniDrawer() {
           <NavLink className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } to="/">
             <ListItem className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } button>
               <ListItemIcon className="fs-6">
-                <i class="fas fa-spinner"></i>
+                <i class="fas fa-spinner" id={mode=== "light" ? "black" : "darkLight" }></i>
               </ListItemIcon>
               <ListItemText primary={"Library"} />
             </ListItem>
@@ -233,18 +235,19 @@ export default function MiniDrawer() {
           <NavLink className="nav-btn" to="/">
             <ListItem className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } button>
               <ListItemIcon className="fs-6">
-                <i class="fas fa-spinner"></i>
+                <i class="fas fa-spinner" id={mode=== "light" ? "black" : "darkLight" }></i>
               </ListItemIcon>
               <ListItemText primary={"Library"} />
             </ListItem>
           </NavLink>
+          
           <Divider style={{backgroundColor:"white"}}/>
           <NavLink className="nav-btn" to="/">
-            <ListItem button className="nav-btn">
+            <ListItem button className="nav-btn" id={mode=== "light" ? "black" : "darkLight" }>
               <ListItemIcon className="fs-6">
                 <RestoreIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
               </ListItemIcon>
-              <ListItemText primary={"Watch letter"} />
+              <ListItemText id={mode=== "light" ? "black" : "darkLight" } primary={"Watch letter"} />
             </ListItem>
           </NavLink>
 
@@ -253,7 +256,7 @@ export default function MiniDrawer() {
               <ListItemIcon className="fs-6">
                 <SlowMotionVideoIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
               </ListItemIcon>
-              <ListItemText primary={"Liked videos"} />
+              <ListItemText id={mode=== "light" ? "black" : "darkLight" } primary={"Liked videos"} />
             </ListItem>
           </NavLink>
 
@@ -262,7 +265,7 @@ export default function MiniDrawer() {
               <ListItemIcon className="fs-6">
                 <RestoreIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
               </ListItemIcon>
-              <ListItemText primary={"History"} />
+              <ListItemText id={mode=== "light" ? "black" : "darkLight" } primary={"History"} />
             </ListItem>
           </NavLink>
 
@@ -271,7 +274,7 @@ export default function MiniDrawer() {
             <ListItemIcon className="fs-6">
               <FavoriteBorderIcon  id={mode=== "light" ? "black" : "darkLight" } />
             </ListItemIcon>
-            <ListItemText primary={"Your videos"} />
+            <ListItemText id={mode=== "light" ? "black" : "darkLight" } primary={"Your videos"} />
           </ListItem>
 
         </List>
