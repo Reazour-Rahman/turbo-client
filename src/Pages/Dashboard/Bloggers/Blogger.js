@@ -8,10 +8,9 @@ import { CardActionArea } from "@mui/material";
 
 import { Link } from "react-router-dom";
 
-const Blogger = (props) => {
+const Blogger = ({ blogger, followersCount, email }) => {
 
-    const { _id, bloggerName, category, bloggerEmail } =
-        props.blogger;
+    const { profile, roomName } = blogger;
 
     return (
         <Grid item xs={2} sm={4} md={2}>
@@ -23,8 +22,8 @@ const Blogger = (props) => {
                                 <CardMedia
                                     component="img"
                                     height="120"
-                                    image="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                                    alt="Nate Alyn"
+                                    image={profile}
+                                    alt="{roomName}"
                                     sx={{ mb: 2 }}
                                 />
 
@@ -40,10 +39,10 @@ const Blogger = (props) => {
 
                                                 <span style={{ display: "flex", flexDirection: "column" }} >
                                                     <small style={{ fontWeight: "bold", paddingBottom: "3px", fontSize: "14px" }} >
-                                                        {bloggerName}
+                                                        {roomName}
                                                     </small>
-                                                    <small style={{ paddingBottom: "3px" }} className="date-color">{bloggerEmail}</small>
-                                                    <small style={{ fontWeight: "bold", paddingBottom: "5px", fontSize: "13px" }} className="date-color">{category}</small>
+                                                    <small style={{ paddingBottom: "3px" }} className="date-color">{email}</small>
+                                                    <small style={{ fontWeight: "bold", paddingBottom: "5px", fontSize: "13px" }} className="date-color">{followersCount}</small>
                                                 </span>
                                             </span>
 
@@ -65,8 +64,8 @@ const Blogger = (props) => {
 
                             </CardContent>
 
-                            <Link to={`profile/${_id}`} style={{ textDecoration: "none" }}>
-                                {/* <CardContent>
+                            {/* <Link to={`profile/${_id}`} style={{ textDecoration: "none" }}> */}
+                            {/* <CardContent>
                                     <Typography
                                         className="card-color"
                                         variant="body2"
@@ -75,7 +74,7 @@ const Blogger = (props) => {
 
                                     </Typography>
                                 </CardContent> */}
-                            </Link>
+                            {/* </Link> */}
                         </CardActionArea>
                     </Card>
                 </Box>

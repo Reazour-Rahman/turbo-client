@@ -1,10 +1,11 @@
 import { Avatar, Box, Button, Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import DotMenu from "./DotMenu"
+import "./Subscription.css"
 
 
 const Subscription = () => {
