@@ -63,7 +63,7 @@ export default function QueryModal() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open responsive dialog
+        Search
       </Button>
       <Dialog
         fullScreen={fullScreen}

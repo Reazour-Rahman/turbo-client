@@ -42,7 +42,7 @@ import Subscription from "./Pages/Home/Subscription/Subscription";
 import DetailProduct from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/DetailProduct/DetailProduct";
 import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/UploadAmazonProducts/UploadeAmazonProducts";
 // import Subscriptions from "./Pages/Home/Subscription/Subscriptions";
-
+import AllBookingProducts from "./Pages/Home/Profile/AmazonProducts/AllBookingProducts/AllBookingProducts";
 import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/AddCart/AddCart"
 import Test from "./Pages/Upload/test/Test.jsx"
 
@@ -122,7 +122,10 @@ function App() {
 
           <Route path="/profile" element={<Profile />}>
 
+            
+
           </Route>
+          <Route exact path='/profile/booking-products' element={<AllBookingProducts />} />
           <Route exact path='/profile/detail/:productId' element={<DetailProduct />} />
 
 
