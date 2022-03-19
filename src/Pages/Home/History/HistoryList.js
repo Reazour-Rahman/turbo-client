@@ -8,6 +8,7 @@ const HistoryList = () => {
 
 
   const [histories, setHistories] = useState([]);
+  const [searchHistories, setsearchHistories] = useState([]);
   const [loading, setLoading] = useState(false);
   const user = useSelector(state => state.firebase.user)
   useEffect(() => {
@@ -18,21 +19,27 @@ const HistoryList = () => {
       );
       const data = await response.json();
       setHistories(data);
+      setsearchHistories(data);
 
       setLoading(false);
     });
   }, []);
 
   console.log(histories);
+  const handleSearch = e => {
+    const searchTextValue = e.target.value;
+    const UserMatch = histories.filter(history => history?.title?.toLowerCase().includes(searchTextValue.toLowerCase()));
+    setsearchHistories(UserMatch);
+  }
 
-  const userHistory = histories.filter(h => h?.viewerEmail === user?.email)
+  const userHistory = searchHistories.filter(h => h?.viewerEmail === user?.email)
 
   return (
     <div style={{ color: "white" }}>
       <Box>
         <div class="wrap">
           <div class="search">
-            <input type="text" class="searchTerm" placeholder="What are you looking for?" />
+            <input type="text" class="searchTerm" placeholder="What are you looking for?" onChange={handleSearch} />
             <button type="submit" class="searchButton">
               <i class="fa fa-search"></i>
             </button>
