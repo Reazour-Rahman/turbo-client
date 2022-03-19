@@ -35,11 +35,16 @@ function CircularProgressWithLabel(props) {
   );
 }
 
+let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
 const DefaultAside = () => {
   return (
     <div className="aside-container">
       {/* Monthly target */}
-      <section className="aside-bg ">
+      <section className="aside-bg " id={card}>
         <div className="aside-inner-element">
           <div
             style={{
@@ -54,6 +59,7 @@ const DefaultAside = () => {
               variant="determinate"
               value={75}
               size={150}
+              id={text}
             />{" "}
           </div>
           <br />
@@ -65,8 +71,8 @@ const DefaultAside = () => {
               flexDirection: "column",
             }}
           >
-            <span>You need abit more effort to </span>
-            <span>hit monthly target</span>
+            <span id={text}>You need abit more effort to </span>
+            <span id={text}>hit monthly target</span>
           </small>
           <br />
           <Button
@@ -80,18 +86,18 @@ const DefaultAside = () => {
       </section>
 
       {/* Active members */}
-      <section className="aside-bg">
+      <section className="aside-bg" id={card} >
         <div style={{}}>
           <AsideActive />
           <div className="top-align text-color-container">
-            <h2 className="default-margin">$2,543</h2>
+            <h2 id={text} className="default-margin">$2,543</h2>
             <h4 className="success">-11.4%</h4>
-            <ArrowUpwardIcon />
+            <ArrowUpwardIcon id={text} />
           </div>
 
-          <p className="paragraph-size">Active Members</p>
-          <p className="paragraph-size">Status is almost ok</p>
-          <p className="paragraph-size">Need To Apply Strategy</p>
+          <p id={text} className="paragraph-size">Active Members</p>
+          <p id={text} className="paragraph-size">Status is almost ok</p>
+          <p id={text} className="paragraph-size">Need To Apply Strategy</p>
         </div>
       </section>
     </div>

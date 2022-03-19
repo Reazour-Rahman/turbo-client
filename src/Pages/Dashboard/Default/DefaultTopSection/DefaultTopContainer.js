@@ -5,6 +5,12 @@ import DefaultAside from "./DefaultAside.js";
 import Visitors from "./Visitors.tsx";
 
 const DefaultTopContainer = () => {
+  let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
   return (
     <div>
       <main className="default-top-container">
@@ -15,21 +21,21 @@ const DefaultTopContainer = () => {
 
           <DefaultTop />
           {/* Views */}
-          <div className="visitors-card-bg visitor-mt">
+          <div className="visitors-card-bg visitor-mt" id={card}>
             <div className="visitors-title text-color-container">
-              <p>Unique Visitors</p>
+              <p id={text}>Unique Visitors</p>
               <small className="indicators">
-                <small className="indicator-circle text-color-container">
-                  <span className="fullStop duration"></span> &nbsp;Session
+                <small className="indicator-circle text-color-container" id={text}>
+                  <span className="fullStop duration" ></span> &nbsp;Session
                   Duration
                 </small>
-                <small className="indicator-circle text-color-container">
+                <small className="indicator-circle text-color-container" id={text}>
                   <span className="fullStop views"></span> &nbsp;Page Views
                 </small>
               </small>
             </div>
 
-            <Visitors />
+            <Visitors id={text}/>
           </div>
 
         </section>

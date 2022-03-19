@@ -24,9 +24,15 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
     );
 };
 
+let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
 const AnalyticChart = () => {
     return (
-        <div className="chart-body">
+        <div className="chart-body" id={card}>
             <div className="container">
                 <div className="chart">
                     <PieChart width={300} height={300} >
@@ -46,7 +52,7 @@ const AnalyticChart = () => {
                         </Pie>
                     </PieChart>
                 </div>
-                <div className="counter-container">
+                <div className="counter-container" id={text}>
                     <div className="counter">
                         <li>Facebook</li>
                         <small>213423</small>

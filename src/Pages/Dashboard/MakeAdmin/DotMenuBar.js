@@ -44,16 +44,23 @@ export default function DotMenuBar() {
         setAnchorEl(null);
     };
 
+    let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
     return (
         <div >
             <IconButton
                 aria-label="more"
-                id="long-button"
+   
                 aria-controls={open ? 'long-menu' : undefined}
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
                 onClick={handleClick}
-                style={{ padding: "4px", color: "white" }}
+                style={{ padding: "4px"}}
+                id={text}
             >
                 <MoreVertIcon />
             </IconButton>

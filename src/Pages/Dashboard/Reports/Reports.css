@@ -1,16 +1,16 @@
 .report-message:nth-child(even) {
-  background-color: #102841;
+  /* background-color: #102841; */
   /* padding: 0px 10px; */
   /* color: white; */
 }
 .report-message:nth-child(odd) {
-  background-color: #0d2b4d;
+  /* background-color: #0d2b4d; */
   /* padding: 0px 10px; */
   /* color: white; */
 }
 
 .report-message:hover {
-  background-color: #091725;
+  /* background-color: #091725; */
 }
 .report-header {
   text-align: center;
@@ -36,14 +36,14 @@ Chart Grid
 .left-chart {
   width: 100% !important;
   height: 100% !important;
-  background-color: #102841;
+  /* background-color: #102841; */
   /* padding-right: 15px; */
 }
 
 .right-chart {
   width: 100% !important;
   height: 100% !important;
-  background-color: #102841;
+  /* background-color: #102841; */
   /* padding-right: 15px; */
 }
 

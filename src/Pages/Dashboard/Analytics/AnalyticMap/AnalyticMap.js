@@ -3,12 +3,18 @@ import GoogleMap from '../GoogleMap/GoogleMap';
 import "./AnalyticMap.css"
 
 const AnalyticMap = () => {
+    let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
     return (
         <div className="main">
-            <div className="map">
+            <div className="map" id={card}>
                 <div className="pre">
                     <div>
-                        <h6 className="header">Entrance of region</h6>
+                        <h6  id={text} className="header">Entrance of region</h6>
                     </div>
                     <div className="country-persentence">
                         <div className="throat">
@@ -16,30 +22,30 @@ const AnalyticMap = () => {
                             <h2 className="header">37.39%</h2>
                             
                         </div>
-                        <h4 className="banner-title">Top entrence region</h4>
+                        <h4 id={text} className="banner-title">Top entrence region</h4>
                     </div>
                     <div className="country-persentence">
                         <li className="li">
-                            <small>United States of America</small>37.39%
+                            <small id={text}>United States of America</small>37.39%
                             
                         </li>
-                        <li className="li">
+                        <li className="li" id={text}>
                             <small>Brazil</small> 37.39%
                             
                         </li>
-                        <li className="li">
+                        <li className="li" id={text}>
                             <small>India</small>37.39%
                             
-                        </li>
-                        <li className="li">
+                        </li> 
+                        <li className="li" id={text}>
                             <small>China</small>37.39%
                             
                         </li>
-                        <li className="li">
+                        <li className="li" id={text}>
                             <small>Malaysia</small>37.39%
                             
                         </li>
-                        <li className="li">
+                        <li className="li" id={text}>
                             <small>Thiland</small>37.39%
                             
                         </li>
