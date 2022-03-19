@@ -18,19 +18,26 @@ const HistoryList = () => {
       );
       const data = await response.json();
       setHistories(data);
-      
-        setLoading(false);
+
+      setLoading(false);
     });
   }, []);
 
-console.log(histories);
+  console.log(histories);
 
-const userHistory = histories.filter(h => h?.viewerEmail === user?.email)
+  const userHistory = histories.filter(h => h?.viewerEmail === user?.email)
 
   return (
     <div style={{ color: "white" }}>
       <Box>
-        
+        <div class="wrap">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="What are you looking for?" />
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
         {!loading ? (
           userHistory?.map((history) => (
             <HistoryVideo history={history}></HistoryVideo>

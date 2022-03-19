@@ -43,7 +43,7 @@ const MakeAdmin = (props) => {
 
             method: 'PUT',
             headers: {
-                // 'authorization': `Bearer ${localStorage.getItem('idToken')}`,
+                'authorization': `Bearer ${localStorage.getItem('idToken')}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)
