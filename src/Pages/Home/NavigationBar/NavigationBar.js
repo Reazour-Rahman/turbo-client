@@ -151,6 +151,7 @@ export default function NavigationBar({user}) {
       </Box>
 
       <Box sx={{ flexGrow: 1 }} />
+      
       {user?.email && <IconButton color="inherit" >
           <UploadVideoModal />
       </IconButton>}
