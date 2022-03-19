@@ -48,6 +48,7 @@ const DetailProduct = () => {
 Send Data to Database
 :::::::::::::::::::::::::::::::*/
   const user = useSelector((state) => state.firebase.user)
+  console.log(user)
 
   const bloggerName = user.displayName;
   const bloggerEmail = user.email;
@@ -89,10 +90,10 @@ Send Data to Database
   };
   return (
     <>
-      <Grid container spacing={2} sx={{ flexGrow: 1, paddingLeft: "50px", mt: 4 }}>
-        <Grid sx={{ display: "flex", justifyContent: 'space-between', mt: 2 }} item xs={12}>
+      <Grid container spacing={2} sx={{ flexGrow: 1, paddingLeft: "50px", mt: 4, }}>
+        <Grid sx={{ display: "flex", justifyContent: 'space-between', mt: 2, height: "582px" }} item xs={12}>
 
-        {/* =========Image side========= */}
+          {/* =========Image side========= */}
 
           <Grid xs={12} sm={4} md={4}>
             <CardMedia
@@ -104,7 +105,7 @@ Send Data to Database
             />
           </Grid>
 
-        {/* ===========Detail side=========== */}
+          {/* ===========Detail side=========== */}
 
           <Grid xs={12} sm={4} md={4} sx={{ m: 5, }}>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -129,23 +130,42 @@ Send Data to Database
             </form>
           </Grid>
 
-         {/*  ==============Extention=========== */}
-         
+          {/*  ==============Extention=========== */}
+
           <Grid xs={12} sm={4} md={4}>
             <Grid sx={{ m: 5 }}>
-              <Grid sx={{ display: "flex", justifyContent: 'space-between' }}>
+              <Grid 
+              sx={{ 
+                display: "flex", 
+                justifyContent: 'space-between' 
+                }}>
                 <Typography>Delivery</Typography>
                 <ErrorOutlineIcon sx={{ color: "white" }} />
               </Grid>
-              <Grid sx={{ display: "flex", mt: 5 }}>
+
+              <Grid 
+              sx={{ 
+                display: "flex", 
+                mt: 5 
+                }}>
                 <LocationOnIcon sx={{ color: "white", mr: 3 }} />
                 <Typography>Dhaka, Dhaka North, Banani Road No. 12 - 19</Typography>
               </Grid>
-              <Grid sx={{ display: "flex", mt: 5 }}>
+             
+              <Grid 
+              sx={{ 
+                display: "flex", 
+                mt: 5 
+                }}>
                 <CardTravelIcon sx={{ color: "white", mr: 3 }} />
                 <Typography>Ships from Overseas</Typography>
               </Grid>
-              <Grid sx={{ display: "flex", mt: 5 }}>
+              
+              <Grid 
+              sx={{ 
+                display: "flex", 
+                mt: 5 
+                }}>
                 <CurrencyExchangeIcon sx={{ color: "white", mr: 3 }} />
                 <Typography>Cash on Delivery Available</Typography>
               </Grid>
@@ -155,7 +175,11 @@ Send Data to Database
         </Grid>
 
       </Grid>
-      <BookingProduct open={open} handleCloseBookinModal={handleCloseBookinModal} />
+      <BookingProduct
+        time={time}
+        open={open}
+        handleCloseBookinModal={handleCloseBookinModal}
+        product={product} />
     </>
   );
 };
