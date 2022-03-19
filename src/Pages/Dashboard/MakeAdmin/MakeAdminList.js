@@ -49,7 +49,7 @@ const MakeAdminList = () => {
     const [bloggers, setBloggers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchUser, setsearchUser] = useState([]);
-    const { bloggerEmail, bloggerName, email } =
+    const { bloggerName, email } =
         MakeAdmin;
 
     useEffect(() => {
@@ -62,7 +62,6 @@ const MakeAdminList = () => {
             },
             body: JSON.stringify(email, bloggerName)
         })
-            // fetch(bloggerUrl)
             .then((response) => response.json())
             .then((data) => {
                 setBloggers(data);
@@ -71,14 +70,14 @@ const MakeAdminList = () => {
             });
         setLoading(true);
 
-    }, []);
+    }, [bloggerName, email, searchUser]);
 
     const handleSearch = e => {
         const searchTextValue = e.target.value;
         const UserMatch = bloggers?.filter(blogger => (blogger?.email || blogger?.bloggerName)?.toLowerCase().includes(searchTextValue.toLowerCase()));
         setsearchUser(UserMatch);
     }
-    console.log(searchUser)
+
 
     return (
         <div style={{ color: "white" }}>
