@@ -76,8 +76,8 @@ const UploadeAmazonProducts = () => {
                     </Typography>
                     <form onSubmit={handleAddedProduct}>
                         <IconButton
-                            sx={{ 
-                                color: "rgba(0, 0, 0, 0.727)" 
+                            sx={{
+                                color: "rgba(0, 0, 0, 0.727)"
                             }}
                             aria-label="upload picture"
                             component="span">
