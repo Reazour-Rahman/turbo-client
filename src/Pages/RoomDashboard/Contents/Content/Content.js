@@ -23,6 +23,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { Link } from 'react-router-dom';
 import UploadedVideos from '../UploadedVideo/UploadedVideos';
+import {  useSelector } from "react-redux";
 
 
 function createData(name, calories, fat, carbs, protein, comment, like) {
@@ -279,7 +280,22 @@ export default function Content() {
     setDense(event.target.checked);
   };
 
+const [loading, setLoading] = React.useState([]);
+const [blogs, setBlogs] = React.useState([])
+
+  React.useEffect(() => {
+    setLoading(true);
+    const url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+        setBlogs(data.blogs);
+      });
+  }, [blogs]);
+
   const isSelected = (name) => selected.indexOf(name) !== -1;
+  const user = useSelector((state) => state.firebase.user)
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -345,14 +361,18 @@ export default function Content() {
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.slice().sort(getComparator(order, orderBy)) */}
               {stableSort(rows, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                
                 .map((row, index) => {
                   console.log(row)
                   const isItemSelected = isSelected(row.name);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
-                    <TableRow
+                    <>
+                    {
+                      blogs?.map(c => 
+                        c.bloggerEmail === user.email &&
+                        <TableRow
                       hover
                       onClick={(event) => handleClick(event, row.name)}
                       role="checkbox"
@@ -392,13 +412,12 @@ export default function Content() {
                           <UploadedVideos></UploadedVideos>
                           </div> */}
 
-
-                          <img style={{ width: '45%' }} src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="" />
+                          <video style={{ width: '45%' }} src={c.video} poster={c.thumbnail} controls></video>
 
                           <Typography id={text}
                           style={{ marginLeft: '20px' 
                           }}>
-                            somethings will be heppend here</Typography>
+                            {c.title}</Typography>
                         </Box>
 
 
@@ -409,14 +428,26 @@ export default function Content() {
                       id={text}
                       align="right"
                       >
-                        23859
+                        {c.likes}
                       </TableCell>
                       <TableCell 
                       id={text}
                       align="right"
                       >
-                        456
+                        {c.views}
                       </TableCell>
+                      <TableCell 
+                      id={text}
+                      align="right"
+                      >
+                       {c.uploadTime}
+                        </TableCell>
+                      <TableCell 
+                      id={text}
+                      align="right"
+                      >
+                        {c.comment.length}
+                        </TableCell>
                       <TableCell 
                       id={text}
                       align="right"
@@ -427,21 +458,12 @@ export default function Content() {
                       id={text}
                       align="right"
                       >
-                        345
-                        </TableCell>
-                      <TableCell 
-                      id={text}
-                      align="right"
-                      >
                         35
-                        </TableCell>
-                      <TableCell 
-                      id={text}
-                      align="right"
-                      >
-                        3534
                       </TableCell>
                     </TableRow>
+                      )
+                    }
+                    </>
                   );
                 })}
               {emptyRows > 0 && (

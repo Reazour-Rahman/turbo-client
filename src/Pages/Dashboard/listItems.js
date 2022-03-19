@@ -17,6 +17,11 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import './Dashboard.css';
 import Edit from './Edit';
+let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
 
 export const mainListItems = (
     <React.Fragment>
@@ -92,7 +97,7 @@ export const mainListItems = (
 
 export const secondaryListItems = (
     <React.Fragment>
-        <ListSubheader className='dashboard-button' style={{backgroundColor:"#102841"}} component="div" inset>
+        <ListSubheader className='dashboard-button' id={card} component="div" inset>
             Welcome To Pro Player
         </ListSubheader>
 

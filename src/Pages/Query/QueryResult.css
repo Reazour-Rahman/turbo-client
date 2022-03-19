@@ -34,3 +34,14 @@ Video size
     display: flex;
     flex-direction: column;
 }
+
+
+.myInput {
+    background-image: url('../../assets/search.png');
+    background-position: 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 7px 15px 7px 40px;
+    border: 1px solid #ddd;
+  }

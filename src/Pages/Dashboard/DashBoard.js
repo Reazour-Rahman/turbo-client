@@ -107,8 +107,9 @@ function DashboardContent() {
                     <Toolbar
                         sx={{
                             pr: '24px', // keep right padding when drawer closed
-                            backgroundColor:"#102841"
+                            
                         }}
+                        id={card}
                     >
                         <IconButton
                             edge="start"
@@ -140,7 +141,7 @@ function DashboardContent() {
                 </AppBar>
                 <Drawer variant="permanent" open={open} >
                     <Toolbar
-                    style={{backgroundColor:"#102841"}}
+                    id={card}
                     
                         sx={{
                             display: 'flex',
@@ -154,7 +155,7 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav"  style={{backgroundColor:"#102841", color:"white", height:"100%"}}>
+                    <List component="nav" id={card} style={{ color:"white", height:"100%"}}>
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}

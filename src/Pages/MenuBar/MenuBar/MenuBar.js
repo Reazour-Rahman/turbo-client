@@ -93,26 +93,7 @@ export default function MenuBar({ handleClickOpen }) {
 
 
 
-  /* :::::::::::::::::::::::
-  Load Users 
-  :::::::::::::::::::::*/
-
-  const [users, setUsers] = React.useState({});
-  const [loading, setLoading] = React.useState(false);
-
-  React.useEffect(() => {
-    setLoading(true);
-    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/users`;
-      fetch(blogUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setLoading(false);
-          for (const allUser of data) {
-            setUsers(allUser)
-          }
-          
-        });
-  }, []);
+  const admin = useSelector((state) => state.firebase.admin);
 
   return (
     <>
@@ -198,7 +179,7 @@ export default function MenuBar({ handleClickOpen }) {
           </MenuItem>
 
           <Divider />
-          {users.role === "admin" &&<Link style={{ textDecoration: "none" }} to="/dashboard">
+          { admin &&<Link style={{ textDecoration: "none" }} to="/dashboard">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <AdminPanelSettingsIcon style={iconStyle} />
@@ -221,7 +202,7 @@ export default function MenuBar({ handleClickOpen }) {
               <ListItemIcon style={style}>
                 <CreateNewFolderIcon style={iconStyle} />
               </ListItemIcon>
-              {users?.room?.roomName ? "Edit Room" : "Create Room"}
+              {user?.room?.roomName ? "Edit Room" : "Create Room"}
             </MenuItem>
           </Button>
 
