@@ -30,11 +30,17 @@ const NewSubscriber = ({ user }) => {
   }, []);
   //   console.log(users);
 
+  let mode;
+  mode = localStorage.getItem("theme")
+  const text= mode === "light" ? "black" : "darkLight" ;
+  const card= mode === "light" ? "moreLight" : "moreDark";
+  const bg= mode ==="light" ? "lightest" : "darkish";
+
   return (
-    <div className=" members-container">
+    <div className=" members-container" id={card}>
       <section>
         <div className="new-members-head">
-          <p>My Followers</p>
+          <p id={text}>My Followers</p>
           <div>
             <IconButton
               className="add-btn"

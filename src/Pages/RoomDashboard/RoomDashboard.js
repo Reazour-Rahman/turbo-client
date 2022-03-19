@@ -82,7 +82,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         },
     }),
 );
-
+let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
 const mdTheme = createTheme();
 
 function RoomDashboardContent() {
@@ -99,14 +103,17 @@ function RoomDashboardContent() {
                     <Toolbar
                         sx={{
                             pr: '24px', // keep right padding when drawer closed
-                            backgroundColor: "#102841"
+                           
                         }}
+
+                        id={card}
                     >
                         <IconButton
                             edge="start"
                             color="inherit"
                             aria-label="open drawer"
                             onClick={toggleDrawer}
+                            id={text}
                             sx={{
                                 marginRight: '36px',
                                 ...(open && { display: 'none' }),
@@ -120,11 +127,12 @@ function RoomDashboardContent() {
                             color="inherit"
                             noWrap
                             sx={{ flexGrow: 1 }}
+                            id={text}
                         >
                             Room Dashboard
                         </Typography>
                         <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
+                            <Badge id={text} badgeContent={4} color="secondary">
                                 <Notification />
                             </Badge>
                         </IconButton>
@@ -135,8 +143,8 @@ function RoomDashboardContent() {
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
                     <Toolbar
-                        style={{ backgroundColor: "#102841" }}
-
+                        style={{  }}
+                        id={card}
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
@@ -149,7 +157,7 @@ function RoomDashboardContent() {
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav" style={{ backgroundColor: "#102841", color: "white" }}>
+                    <List component="nav" style={{ }} id={card}>
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}
@@ -167,7 +175,7 @@ function RoomDashboardContent() {
                         overflow: 'auto',
 
                     }}
-                    style={{ backgroundColor: "rgb(9 26 43)" }}
+                    id={bg}
                 >
                     <Toolbar />
 

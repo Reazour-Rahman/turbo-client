@@ -285,12 +285,20 @@ export default function Content() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+    let mode;
+    mode = localStorage.getItem("theme")
+    const text= mode === "light" ? "black" : "darkLight" ;
+    const card= mode === "light" ? "moreLight" : "moreDark";
+    const bg= mode ==="light" ? "lightest" : "darkish";
+
+
   return (
     <Box 
     sx={{ width: '100%', 
-    backgroundColor: 'rgb(9, 26, 43)', 
     mt: 5 
-    }}>
+    }}
+    id={bg}
+    >
       <Box>
         <Box sx={{mb: 2}} >
           <Link
@@ -387,7 +395,7 @@ export default function Content() {
 
                           <img style={{ width: '45%' }} src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="" />
 
-                          <Typography 
+                          <Typography id={text}
                           style={{ marginLeft: '20px' 
                           }}>
                             somethings will be heppend here</Typography>
@@ -397,37 +405,38 @@ export default function Content() {
                         {/* {row.name} */}
                       </TableCell>
                       <TableCell 
-                      sx={{color: 'white'}} 
+                      sx={{}} 
+                      id={text}
                       align="right"
                       >
                         23859
                       </TableCell>
                       <TableCell 
-                      sx={{color: 'white'}} 
+                      id={text}
                       align="right"
                       >
                         456
                       </TableCell>
                       <TableCell 
-                      sx={{color: 'white'}} 
+                      id={text}
                       align="right"
                       >
                         35
                         </TableCell>
                       <TableCell 
-                      sx={{color: 'white'}} 
+                      id={text}
                       align="right"
                       >
                         345
                         </TableCell>
                       <TableCell 
-                      sx={{color: 'white'}} 
+                      id={text}
                       align="right"
                       >
                         35
                         </TableCell>
                       <TableCell 
-                      sx={{color: 'white'}} 
+                      id={text}
                       align="right"
                       >
                         3534

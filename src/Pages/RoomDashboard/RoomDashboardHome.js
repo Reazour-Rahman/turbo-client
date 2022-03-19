@@ -38,6 +38,12 @@ const RoomDashboardHome = () => {
 
   // console.log('most views',mostviewed);
 
+  let mode;
+  mode = localStorage.getItem("theme")
+  const text= mode === "light" ? "black" : "darkLight" ;
+  const card= mode === "light" ? "moreLight" : "moreDark";
+  const bg= mode ==="light" ? "lightest" : "darkish";
+
   console.log(totalViews);
   return (
     <div>
@@ -46,8 +52,8 @@ const RoomDashboardHome = () => {
         <div class="grid-container" >
           {/* 1st Column */}
           <div className="first-column-size">
-            <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
-              <h6>Latest video performance</h6>
+            <div className="card" style={{}} id={card}>
+              <h6 id={text}>Latest video performance</h6>
               {
                 recentVideos.map(r => <>
                   <VideoPlayer
@@ -56,26 +62,26 @@ const RoomDashboardHome = () => {
                     poster={r.thumbnail}
                     playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
                   />
-                  <h1 style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
+                  <h1 id={text} style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
                   <div className="grid-carddetails-container">
                     <div class="grid-item">
-                      <p>Blog Views</p>
-                      <p>Total Like Impressions</p>
-                      <p>Upload At</p>
+                      <p id={text}>Blog Views</p>
+                      <p id={text}>Total Like Impressions</p>
+                      <p id={text}>Upload At</p>
                     </div>
                     <div class="grid-item " style={{ textAlign: "right" }}>
-                      <p>{r.views}</p>
-                      <p>{r.likes}</p>
-                      <p>{r.uploadTime}</p>
+                      <p id={text}>{r.views}</p>
+                      <p id={text}>{r.likes}</p>
+                      <p id={text}>{r.uploadTime}</p>
                     </div>
 
-                    <a href="" style={{ textDecoration: "none" }}>
+                    {/* <a href="" style={{ textDecoration: "none" }}>
                       GO TO VIDEO ANALYTICS
                     </a>
                     <br />
                     <a href="" style={{ textDecoration: "none" }}>
                       SEE COMMENTS{" "}
-                    </a>
+                    </a> */}
                   </div>
                 </>).reverse().slice(0, 1)
               }
@@ -84,27 +90,27 @@ const RoomDashboardHome = () => {
           {/* 2nd column */}
           <div style={{ width: "100%" }}>
             <div style={{}}>
-              <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
-                <h6>Room Analytics</h6>
-                <p>Current Followers</p>
-                <h4>{profile.followersCount}</h4>
+              <div className="card" id={card} style={{ }}>
+                <h6 id={text}>Room Analytics</h6>
+                <p id={text}>Current Followers</p>
+                <h4 id={text}>{profile.followersCount}</h4>
                 <hr className="hr" />
 
                 <h6 style={{ paddingBottom: "5px" }}>Summary</h6>
                 <div className="grid-carddetails-container">
                   <div>
-                    <p style={{ paddingBottom: "3px" }}>Total Blog Views</p>
-                    <p>Total Blog Likes</p>
-                    <p>Total Blog Upload</p>
+                    <p id={text} style={{ paddingBottom: "3px" }}>Total Blog Views</p>
+                    <p id={text}>Total Blog Likes</p>
+                    <p id={text}>Total Blog Upload</p>
                   </div>
                   <div style={{ textAlign: "right" }} class="">
-                    <p style={{ paddingBottom: "3px" }}>{totalViews}</p>
-                    <p>{totalLikes}</p>
-                    <p>{recentVideos.length}</p>
+                    <p id={text} style={{ paddingBottom: "3px" }}>{totalViews}</p>
+                    <p id={text}>{totalLikes}</p>
+                    <p id={text}>{recentVideos.length}</p>
                   </div>
                 </div>
                 <hr className="hr" />
-                <p style={{ fontSize: '20px', marginBottom: '5px' }}>Most Liked Blog video</p>
+                <p style={{ fontSize: '20px', marginBottom: '5px' }} id={text} >Most Liked Blog video</p>
                 {
                   recentVideos.sort((a, b) => b.likes - a.likes).map(r => <>
                     <VideoPlayer
@@ -116,14 +122,14 @@ const RoomDashboardHome = () => {
                     <h1 style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
                     <div className="grid-carddetails-container">
                       <div class="grid-item">
-                        <p>Blog Views</p>
-                        <p>Total Like Impressions</p>
-                        <p>Upload At</p>
+                        <p id={text}>Blog Views</p>
+                        <p id={text}>Total Like Impressions</p>
+                        <p id={text}>Upload At</p>
                       </div>
                       <div class="grid-item " style={{ textAlign: "right" }}>
-                        <p>{r.views}</p>
-                        <p>{r.likes}</p>
-                        <p>{r.uploadTime}</p>
+                        <p id={text}>{r.views}</p>
+                        <p id={text}>{r.likes}</p>
+                        <p id={text}>{r.uploadTime}</p>
                       </div>
                     </div>
                   </>).slice(0, 1)
@@ -134,14 +140,14 @@ const RoomDashboardHome = () => {
             <br />
             <br />
             <div style={{ width: "100%", height: "300px" }}>
-              <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
-                <h6>Latest Comments</h6>
-                <p>Room comments that I haven't responded to</p>
+              <div className="card" style={{  }} id={card}>
+                <h6 id={text}>Latest Comments</h6>
+                <p id={text}>Room comments that I haven't responded to</p>
 
                 <div className="grid-carddetails-container">
                   <div class="">
-                    <p>Study Care - 1 week ago</p>
-                    <p>go ahead bro</p>
+                    <p id={text}>Study Care - 1 week ago</p>
+                    <p id={text}>go ahead bro</p>
                   </div>
                   <div class="">
                     <img
@@ -154,8 +160,8 @@ const RoomDashboardHome = () => {
                 <hr />
                 <div className="grid-carddetails-container">
                   <div class="grid-item">
-                    <p>Nillama som - 2 months ago</p>
-                    <p>Good Job</p>
+                    <p id={text}>Nillama som - 2 months ago</p>
+                    <p id={text}>Good Job</p>
                   </div>
                   <div class="grid-item">
                     <img
@@ -177,8 +183,8 @@ const RoomDashboardHome = () => {
 
           <div style={{ width: "100%" }}>
             <div className="third-column-first-row-size" style={{ marginBottom: "30px" }}>
-              <div className="card" style={{ backgroundColor: "#102841", color: "white", marginBottom: "30px" }}>
-                <p style={{ fontSize: '20px', marginBottom: '5px' }}>Most Viewed Blog video</p>
+              <div className="card" style={{  marginBottom: "30px" }} id={card}>
+                <p style={{ fontSize: '20px', marginBottom: '5px' }} id={text}>Most Viewed Blog video</p>
                 {
                   recentVideos.sort((a, b) => b.views - a.views).map(r => <>
                     <VideoPlayer
@@ -188,17 +194,17 @@ const RoomDashboardHome = () => {
                       playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
                     />
 
-                    <h1 style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
+                    <h1 id={text} style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
                     <div className="grid-carddetails-container">
                       <div class="grid-item">
-                        <p>Blog Views</p>
-                        <p>Total Like Impressions</p>
-                        <p>Upload At</p>
+                        <p id={text}>Blog Views</p>
+                        <p id={text}>Total Like Impressions</p>
+                        <p id={text}>Upload At</p>
                       </div>
                       <div class="grid-item " style={{ textAlign: "right" }}>
-                        <p>{r.views}</p>
-                        <p>{r.likes}</p>
-                        <p>{r.uploadTime}</p>
+                        <p id={text}>{r.views}</p>
+                        <p id={text}>{r.likes}</p>
+                        <p id={text}>{r.uploadTime}</p>
                       </div>
                     </div>
                   </>).slice(0, 1)
@@ -206,17 +212,17 @@ const RoomDashboardHome = () => {
               </div>
             </div>
             <div style={{ width: "100%", marginTop: '30px' }}>
-              <div className="card third-column-second-row-size" style={{ backgroundColor: "#102841", color: "white", }}>
-                <h6>Ideas for you</h6>
+              <div className="card third-column-second-row-size" style={{  }} id={card}>
+                <h6 id={text}>Ideas for you</h6>
 
                 <div className="grid-carddetails-container">
                   <div class="">
-                    <h6>Protect your Room</h6>
-                    <p>
+                    <h6 id={text}>Protect your Room</h6>
+                    <p id={text}>
                       Your account is greater risk of attack without 2-step
                       verification.
                     </p>
-                    <p>Turn it on for extra security</p>
+                    <p id={text}>Turn it on for extra security</p>
                   </div>
                   <div class="grid-item">
                     <img
@@ -233,16 +239,16 @@ const RoomDashboardHome = () => {
             </div>
 
             <div style={{ width: "100%", height: "600px" }}>
-              <div className="card" style={{ backgroundColor: "#102841", color: "white" }}>
-                <h6>Creator Insider</h6>
+              <div className="card" style={{ }} id={card}>
+                <h6 id={text}>Creator Insider</h6>
                 <img
                   className="third-column-third-row-img"
                   src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
                   alt="Pic"
                 />
                 <div>
-                  <h6>This week at ProPlayers</h6>
-                  <p>
+                  <h6 id={text}>This week at ProPlayers</h6>
+                  <p id={text}>
                     Hello Insiders! we're back with a few launches this week
                   </p>
                 </div>
