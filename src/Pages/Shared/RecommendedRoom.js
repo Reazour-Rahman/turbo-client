@@ -31,6 +31,7 @@ const RecommendedRoom = () => {
 
   return (
     <>
+    <p style={{paddingLeft:"12px", paddingTop:"8px"}}>Recommended Room</p>
       {users?.map((blogger) =>
         blogger?.room?.roomName && 
           <NavLink className="nav-btn" to={`/userprofile/${blogger?.email}`}>

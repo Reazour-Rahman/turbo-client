@@ -57,14 +57,14 @@ export default function QueryModal() {
   const text= mode === "light" ? "black" : "darkLight" ;
   const card= mode === "light" ? "moreLight" : "moreDark";
   const fill = mode === "light" ? "" : "moreLight";
+  const bg = mode === "light" ? "moreLight" : "moreDark"
 
 
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Search
-      </Button>
+      <input type="text" id={bg} className="myInput" onClick={handleClickOpen} placeholder="Search for titles.." title="Type in a name"/>
+
       <Dialog
         fullScreen={fullScreen}
         open={open}
@@ -103,3 +103,8 @@ export default function QueryModal() {
     </div>
   );
 }
+
+
+/* 
+
+*/
