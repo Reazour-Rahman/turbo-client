@@ -95,6 +95,12 @@ const CustomizedLabel: FunctionComponent<any> = (props: any) => {
 const CustomizedAxisTick: FunctionComponent<any> = (props: any) => {
   const { x, y, payload } = props;
 
+  let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
   return (
     <g transform={`translate(${x},${y})`}>
       <text

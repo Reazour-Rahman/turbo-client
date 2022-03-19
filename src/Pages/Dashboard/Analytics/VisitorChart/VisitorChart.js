@@ -68,9 +68,15 @@ const CustomizedDot = (props) => {
 
 
 const VisitorChart = () => {
+    let mode;
+    mode = localStorage.getItem("theme")
+    const text= mode === "light" ? "black" : "darkLight" ;
+    const card= mode === "light" ? "moreLight" : "moreDark";
+    const bg= mode ==="light" ? "lightest" : "darkish";
+
     return (
-        <div className="visitor-chart">
-            <h2 className="chart-title">Unique Visitors</h2>
+        <div className="visitor-chart" id={card}>
+            <h2 id={text} className="chart-title">Unique Visitors</h2>
             <ResponsiveContainer width="100%" height={400}>
                 <LineChart
                     width={500}

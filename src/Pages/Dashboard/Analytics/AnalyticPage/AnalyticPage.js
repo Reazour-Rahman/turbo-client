@@ -6,53 +6,59 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const AnalyticPage = () => {
+    let mode;
+    mode = localStorage.getItem("theme")
+    const text= mode === "light" ? "black" : "darkLight" ;
+    const card= mode === "light" ? "moreLight" : "moreDark";
+    const bg= mode ==="light" ? "lightest" : "darkish";
+
     return (
         <div className="containers">
 
-            <div className="page-containers">
+            <div className="page-containers" id={card}>
                 <div className="visited-pages">
-                    <p>Most visited pages</p>
-                    <div className="rooms">
-                        <div className="room">
-                            <div>
-                                <p className="p-header">Home</p>
-                                <p className="p-link">dashboard/home</p>
+                    <p id={text}>Most visited pages</p>
+                    <div className="rooms" id={text}>
+                        <div className="room" id={text}>
+                            <div >
+                                <p className="p-header" id={text} >Home</p>
+                                <p className="p-link" id={text}>dashboard/home</p>
                             </div>
                             <div>
-                                <p className="p-view">2342</p>
-                            </div>
-                        </div>
-                        <hr />
-
-                        <div className="room">
-                            <div>
-                                <p className="p-header">Room</p>
-                                <p className="p-link">dashboard/room</p>
-                            </div>
-                            <div>
-                                <p className="p-view">2342</p>
+                                <p className="p-view" id={text}>2342</p>
                             </div>
                         </div>
                         <hr />
 
                         <div className="room">
                             <div>
-                                <p className="p-header">Message</p>
-                                <p className="p-link">dashboard/message</p>
+                                <p  className="p-header" id={text}>Room</p>
+                                <p className="p-link" id={text}>dashboard/room</p>
                             </div>
                             <div>
-                                <p className="p-view">2342</p>
+                                <p className="p-view" id={text}>2342</p>
                             </div>
                         </div>
                         <hr />
 
                         <div className="room">
                             <div>
-                                <p className="p-header">Game</p>
-                                <p className="p-link">dashboard/game</p>
+                                <p className="p-header" id={text}>Message</p>
+                                <p className="p-link" id={text}>dashboard/message</p>
                             </div>
                             <div>
-                                <p className="p-view">2342</p>
+                                <p className="p-view" id={text}>2342</p>
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div className="room">
+                            <div>
+                                <p className="p-header" id={text}>Game</p>
+                                <p className="p-link" id={text}>dashboard/game</p>
+                            </div>
+                            <div>
+                                <p className="p-view" id={text}>2342</p>
                             </div>
                         </div>
                         <hr />
@@ -72,12 +78,12 @@ const AnalyticPage = () => {
                                     <FacebookIcon style={{color: "#1774EB", fontSize:"50px", marginRight: 15}}/>
                                 </div>
                                 <div>
-                                <p className="p-header">Facebook</p>
-                                <p className="p-count">Total: 342</p>
+                                <p className="p-header" id={text}>Facebook</p>
+                                <p className="p-count" id={text}>Total: 342</p>
                                 </div>
                             </div>
                             <div>
-                                <p className="p-view">63%</p>
+                                <p className="p-view" id={text}>63%</p>
                             </div>
                         </div>
                         <hr />
@@ -87,12 +93,12 @@ const AnalyticPage = () => {
                                     <TwitterIcon style={{color: "#1774EB", fontSize:"50px", marginRight: 15}}/>
                                 </div>
                                 <div>
-                                <p className="p-header">Twitter</p>
-                                <p className="p-count">Total: 342</p>
+                                <p className="p-header" id={text}>Twitter</p>
+                                <p className="p-count" id={text}>Total: 342</p>
                                 </div>
                             </div>
                             <div>
-                                <p className="p-view">53%</p>
+                                <p className="p-view" id={text}>53%</p>
                             </div>
                         </div>
                         <hr />
@@ -102,12 +108,12 @@ const AnalyticPage = () => {
                                     <YouTubeIcon style={{color: "#FF0000", fontSize:"50px", marginRight: 15}}/>
                                 </div>
                                 <div>
-                                <p className="p-header">YouTube</p>
-                                <p className="p-count">Total: 342</p>
+                                <p className="p-header" id={text}>YouTube</p>
+                                <p className="p-count" id={text}>Total: 342</p>
                                 </div>
                             </div>
                             <div>
-                                <p className="p-view">34%</p>
+                                <p className="p-view" id={text}>34%</p>
                             </div>
                         </div>
                         <hr />
@@ -117,12 +123,12 @@ const AnalyticPage = () => {
                                     <LinkedInIcon style={{color: "#0077B4", fontSize:"50px", marginRight: 15}}/>
                                 </div>
                                 <div>
-                                <p className="p-header">LinkedIn</p>
-                                <p className="p-count">Total: 342</p>
+                                <p className="p-header" id={text}>LinkedIn</p>
+                                <p className="p-count" id={text}>Total: 342</p>
                                 </div>
                             </div>
                             <div>
-                                <p className="p-view">23%</p>
+                                <p className="p-view" id={text}>23%</p>
                             </div>
                         </div>
                         <hr />

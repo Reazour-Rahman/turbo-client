@@ -31,19 +31,26 @@ const NewMembers = ({user}) => {
   }, []);
   console.log(users);
 
+  let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
   return (
-    <div className=" members-container">
+    <div className=" members-container" id={card}>
       <section>
         <div className="new-members-head">
-          <p>New Join Members</p>
+          <p id={text}>New Join Members</p>
           <div>
             <IconButton
             className="add-btn"
-              id="fade-button"
+              id={text}
               aria-controls={open ? "fade-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
+              
             >
               <MoreHorizIcon />
             </IconButton>
@@ -74,8 +81,8 @@ const NewMembers = ({user}) => {
                   <Avatar alt="Remy Sharp" src={avatar} />
                 </div>
                 <div>
-                  <p className="paragraph-size ">{user.name}</p>
-                  <p className=" p-dark">{user.email}</p>
+                  <p id={text} className="paragraph-size ">{user.name}</p>
+                  <p id={text} className=" p-dark">{user.email}</p>
                 </div>
               </aside>
 

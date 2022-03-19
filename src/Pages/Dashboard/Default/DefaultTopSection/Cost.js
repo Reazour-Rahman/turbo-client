@@ -11,22 +11,29 @@ const Cost = ({cost}) => {
 
   const condition = costChange < 0 ? "danger" : "success"
 
+  let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
+
   return (
     <div>
-      <section className="three-card-bg">
+      <section className="three-card-bg" id={card}>
 
 
-        <p>Costs</p>
+        <p id={text}>Costs</p>
 
         <div className="top-align text-color-container">
           
             <h2 className="default-margin">${cost[1]?.cost}</h2>
             <h4 className={condition}>{costChange.toFixed(2)}%</h4>
 
-            {costChange < 0 ? <ArrowDownwardIcon /> : <ArrowUpwardIcon/>}
+            {costChange < 0 ? <ArrowDownwardIcon id={text} /> : <ArrowUpwardIcon id={text}/>}
         </div>
 
-        <p className="paragraph-size">Compare to last year 2021</p>
+        <p className="paragraph-size" id={text}>Compare to last year 2021</p>
 
 
       </section>
