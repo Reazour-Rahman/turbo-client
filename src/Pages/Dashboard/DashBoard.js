@@ -93,6 +93,12 @@ function DashboardContent() {
         setOpen(!open);
     };
 
+    let mode;
+    mode = localStorage.getItem("theme")
+    const text= mode === "light" ? "black" : "darkLight" ;
+    const card= mode === "light" ? "moreLight" : "moreDark";
+    const bg= mode ==="light" ? "lightest" : "darkish";
+
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -165,7 +171,7 @@ function DashboardContent() {
                         height: '100vh',
                         overflow: 'auto',
                     }}
-                    style={{backgroundColor:"rgb(9 26 43)"}}
+                    id={bg}
                 >
                     <Toolbar />
 

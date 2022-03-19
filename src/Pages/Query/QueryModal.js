@@ -28,6 +28,7 @@ export default function QueryModal() {
   const [blogs, setBlogs] = React.useState([]);
   const [displayBloggers, setDisplayBlogs] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [notMatch, setNoMatch] = React.useState(false);
 
   React.useEffect(() => {
       const blogURL = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
@@ -35,7 +36,7 @@ export default function QueryModal() {
           .then((response) => response.json())
           .then((data) => {
               setBlogs(data.blogs)
-              setDisplayBlogs(data.blogs)
+              setDisplayBlogs(data.blogs.slice(0, 3))
           });
       setLoading(true);
   }, []);
@@ -43,7 +44,12 @@ export default function QueryModal() {
   const handleSearch = e => {
       const searchTextValue = e.target.value;
       const titleMatch = blogs.filter(blog => blog?.title?.toLowerCase().includes(searchTextValue.toLowerCase()));
-      setDisplayBlogs(titleMatch);
+      
+      if (titleMatch.length >= 1 ) {
+        setDisplayBlogs(titleMatch)
+      }else{
+        setNoMatch(true);
+      }
   }
 
   let mode;
@@ -90,7 +96,7 @@ export default function QueryModal() {
         <DialogContent id={card} style={{width:"100%"}}>
           
           {
-              displayBloggers.map(db => <QueryResult key={db._id} db={db}/>)
+              !notMatch ? displayBloggers.map(db => <QueryResult key={db._id} db={db}/>) : <div></div>
           }
         </DialogContent>
       </Dialog>

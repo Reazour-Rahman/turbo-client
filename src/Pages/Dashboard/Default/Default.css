@@ -10,7 +10,7 @@
 
 /* All text color */
 .text-color-container {
-  color: aliceblue;
+  /* color: aliceblue; */
 }
 
 /* P size */
@@ -56,7 +56,7 @@ Top Three
 }
 
 .three-card-bg {
-  background-color: #102841;
+  /* background-color: #102841; */
   padding: 30px;
   border-radius: 10px;
 }
