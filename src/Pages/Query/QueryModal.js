@@ -44,13 +44,13 @@ export default function QueryModal() {
   const handleSearch = e => {
       const searchTextValue = e.target.value;
       const titleMatch = blogs.filter(blog => blog?.title?.toLowerCase().includes(searchTextValue.toLowerCase()));
-      
-      if (titleMatch.length >= 1 ) {
+        
+        if (titleMatch.length === 0) {
+          setNoMatch(true);
+        }
         setDisplayBlogs(titleMatch)
-      }else{
-        setNoMatch(true);
-      }
   }
+  console.log(notMatch);
 
   let mode;
   mode = localStorage.getItem("theme")
@@ -96,7 +96,7 @@ export default function QueryModal() {
         <DialogContent id={card} style={{width:"100%"}}>
           
           {
-              !notMatch ? displayBloggers.map(db => <QueryResult key={db._id} db={db}/>) : <div></div>
+            displayBloggers.map(db => <QueryResult key={db._id} db={db}/>) 
           }
         </DialogContent>
       </Dialog>
