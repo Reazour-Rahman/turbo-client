@@ -4,7 +4,7 @@ import ProfileHeader from "../UserProfileHeader/UserProfileHeader";
 
 const UserPlaylists = () => {
     return (
-        <div style={{paddingLeft:"72px"}}>
+        <div style={{paddingLeft:"51px"}}>
             <ProfileHeader/>
             <Grid>
                 <Grid sx={{mt: '40px'}}>

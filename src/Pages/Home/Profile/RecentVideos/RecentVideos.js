@@ -3,6 +3,8 @@ import { Box, Grid, Typography } from "@mui/material";
 import RecentVideo from "../RecentVideo/RecentVideo";
 import Progress from "../../BLogs/Progress";
 import { useSelector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const RecentVideos = () => {
   const [recentVideos, setRecentVideos] = useState([]);
@@ -10,13 +12,14 @@ const RecentVideos = () => {
   const user = useSelector((state) => state.firebase.user)
 
   useEffect(() => {
+    setLoading(true);
     const contentUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs?email=${user?.email}`;
-    setTimeout(() => {
       fetch(contentUrl)
         .then((response) => response.json())
-        .then((data) => setRecentVideos(data.blogs));
-      setLoading(true);
-    }, 4000);
+        .then((data) => {
+          setLoading(false);
+          setRecentVideos(data.blogs)});
+      
   }, [user?.email]);
 
   // const recentSomeVideos = recentVideos.sort()
@@ -31,15 +34,15 @@ const RecentVideos = () => {
       <Box>
         <Grid
           container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 2, sm: 8, md: 12, lg: 16 }}
+          spacing={{ xs: 1, md: 3, lg: 2, xl: 1, xxl: 21 }}
+          columns={{ xs: 12, sm: 8, md: 12, lg: 12, xl: 20 }}
         >
-          {loading ? (
+          {!loading ? (
             recentVideos.map((recentVideo) => <RecentVideo key={recentVideo._id} recentVideo={recentVideo}></RecentVideo>)
           ).reverse().slice(0,8) : (
-            <div>
-              <Progress />
-            </div>
+            <Grid style={{transform: `translate(100vh, 50vh)`}}>
+              <CircularProgress />
+            </Grid>
           )}
         </Grid>
       </Box>

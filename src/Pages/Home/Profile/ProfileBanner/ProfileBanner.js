@@ -7,76 +7,41 @@ import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
 import SaveIcon from "@mui/icons-material/Save";
-import PrintIcon from "@mui/icons-material/Print";
 import ShareIcon from "@mui/icons-material/Share";
 import EditIcon from "@mui/icons-material/Edit";
-import axios from 'axios';
-
-/* Thumb */
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../../../../firebase";
-import "../../../Upload/CloudStorage.css";
-import CloudCircleIcon from "@mui/icons-material/CloudCircle";
-import Progress from "../../../Upload/Progress";
-import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
-import ImageIcon from '@mui/icons-material/Image';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import BannerUpload from "./BannerUpload";
 
 
 
 const ProfileBanner = () => {
 
-  /* :::::::::::::::::::::::::::::
-  Cover
-  :::::::::::::::::::::::::::::::*/
-  const [progressBar, setProgress] = useState(0);
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-
-  const formHandler = (e) => {
-      e.preventDefault();
-      const file = e.target[0].files[0];
-      uploadFiles(file);
-  };
-
-  const uploadFiles = (file) => {
-      //
-      if (!file) return;
-      const sotrageRef = ref(storage, `files/${file.name}`);
-      const uploadTask = uploadBytesResumable(sotrageRef, file);
-
-      uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-          const prog = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          setProgress(prog);
-      },
-      (error) => console.log(error),
-      () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log("File available at", downloadURL);
-          setImage(downloadURL)
-          });
-      }
-      );
-  };
-
-
-
   const [cover, setCover] = useState("");
+  const [roomName, setRoomName] = useState("");
+  const [profile, setProfile] = useState("");
+
   const user = useSelector((state) => state.firebase.user);
   useEffect(() => {
     fetch(
       `https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`
     )
       .then((res) => res.json())
-      .then((data) => setCover(data.room.cover));
-  }, [user?.email]);
-  console.log(cover);
+      .then((data) => {
+        
+        setRoomName(data.room.roomName)
+        setCover(data.room.cover)
+        setProfile(data.room.profile)
+      });
+  }, [user?.email, cover, profile, roomName]);
+
+  const currentURL = window.location.href
+
+  let theme;
+  theme = localStorage.getItem("theme");
+  const card = theme === "light" ? "moreLight" : "moreDark";
+  const text = theme === "light" ? "black" : "darkLight" 
+
   
   return (
     <div>
@@ -94,19 +59,23 @@ const ProfileBanner = () => {
           <SpeedDial
             ariaLabel="SpeedDial openIcon example"
             sx={{ position: "absolute", bottom: 16, right: 16 }}
-            icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+            icon={<SpeedDialIcon  openIcon={<EditIcon />} />}
           >
             <SpeedDialAction
-            icon={<BannerUpload />}
+            icon={<BannerUpload cover={cover} roomName={roomName} profile={profile} user={user?.email}/>}
             tooltipTitle={"Edit Cover"}
             />
             <SpeedDialAction
+            target="_blank"
+            href={cover}
+            download
             icon={<SaveIcon />}
             tooltipTitle={"Save"}
             />
             <SpeedDialAction
-            icon={<ShareIcon />}
-            tooltipTitle={"Share"}
+            onClick={() => {navigator.clipboard.writeText(currentURL)}}
+            icon={<ContentCopyIcon />}
+            tooltipTitle={"Copy URL"}
             />
 
           </SpeedDial>
