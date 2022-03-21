@@ -25,9 +25,9 @@ const RecentVideos = () => {
   // const recentSomeVideos = recentVideos.sort()
   // console.log(recentSomeVideos);
   return (
-    <Box sx={{ mt: "50px", color: "inherit" }}>
+    <Box sx={{ mt: "30px", color: "inherit" }}>
       <Grid sx={{ mb: '20px' }}>
-        <Typography style={{ fontWeight: 900 }}>
+        <Typography style={{ fontWeight: 700 }}>
           Recent Video
         </Typography>
       </Grid>
