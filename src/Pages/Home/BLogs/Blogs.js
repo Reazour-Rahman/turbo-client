@@ -28,6 +28,7 @@ const Blogs = ({ filter, page, allBlogs }) => {
     url = `http://localhost:5000/blogs?filter=${filter}`;
     console.log(url);
   }
+
   /*:: filter end ::*/
 
   useEffect(() => {
