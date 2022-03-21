@@ -6,21 +6,29 @@ import NavigationBar2 from "./NavigationBar/NavigationBar2";
 
 const Home = () => {
   const [filter, setFilter] = useState("");
+  const [page, setPage] = useState(0);
+  const [allBlogs, setAllblogs] = useState(false);
+
+  const handleLoadMore = () => {
+    setPage(1);
+    setAllblogs(true);
+    console.log("load more");
+  };
+
   //   console.log(filter);
   return (
     <div style={{ paddingLeft: "51px" }}>
-      <Banner/>
-
+      <Banner />
       <NavigationBar2 setFilter={setFilter}></NavigationBar2>
-      <Blogs filter={filter} />
-
+      <Blogs filter={filter} page={page} allBlogs={allBlogs} />
       <br /> <br />
-
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        onClick={() => handleLoadMore()}
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         <LoadMore />
       </div>
       <br />
-      
     </div>
   );
 };
