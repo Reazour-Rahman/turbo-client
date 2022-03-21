@@ -58,10 +58,16 @@ const Transaction = () => {
 
   console.log(payments);
 
+  let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
   return (
-    <div className="members-container">
+    <div className="members-container" id={card}>
       <div className="new-members-head">
-        <p>Latest Transactions</p>
+        <p id={text}>Latest Transactions</p>
         <div>
           <IconButton
             className="add-btn"
@@ -93,28 +99,28 @@ const Transaction = () => {
       <br />
       <table id="customers">
         <tr>
-          <th>Customer</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Amount</th>
-          <th>Donor</th>
-          <th>Status</th>
+          <th id={text}>Customer</th>
+          <th id={text}>Date</th>
+          <th id={text}>Time</th>
+          <th id={text}>Amount</th>
+          <th id={text}>Donor</th>
+          <th id={text}>Status</th>
         </tr>
 
         {payments.map((payment) => (
           <tr>
-            <td className="td-flx">
+            <td className="td-flx" id={text}>
               <Avatar
                 sx={{ bgcolor: deepPurple[500] }}
                 src={payment.bloggerPhoto}
               ></Avatar>
               {payment.bloggerName}
             </td>
-            <td>{payment.time}</td>
-            <td>{payment.date}</td>
-            <td>$ {payment.amount / 100}</td>
-            <td>{payment.doner}</td>
-            <td className="status-transaction">Approve</td>
+            <td id={text}>{payment.time}</td>
+            <td id={text}>{payment.date}</td>
+            <td id={text}>$ {payment.amount / 100}</td>
+            <td id={text}>{payment.doner}</td>
+            <td id={text} className="status-transaction">Approve</td>
           </tr>
         ))}
       </table>

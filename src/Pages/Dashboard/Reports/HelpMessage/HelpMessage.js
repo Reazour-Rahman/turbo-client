@@ -26,20 +26,26 @@ const HelpMessage = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
   return (
     <div>
-      <div className="message-container fix-font-weight" onClick={handleOpen}>
+      <div className="message-container fix-font-weight"  id={card} onClick={handleOpen}>
         <div>
           <h1 className="reports-gap">
-            <b>{displayName}</b>
+            <b  id={text}>{displayName}</b>
           </h1>
-          <h1>{email}</h1>
+          <h1  id={text}>{email}</h1>
         </div>
         <div>
           <h1 className="reports-gap">
-            <b>Title:{title}</b>
+            <b  id={text}>Title:{title}</b>
           </h1>
-          <p>{shortDescription}</p>
+          <p  id={text}>{shortDescription}</p>
           {/* <Button onClick={handleOpen}>see full message</Button> */}
 
           {/* <button onClick={handleOpen}>see full post</button> */}

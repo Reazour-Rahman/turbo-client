@@ -1,0 +1,47 @@
+
+@media only screen and (max-width: 700px) {
+
+}
+.video-component{
+    margin: 15px 0px 15px 0px;
+}
+.history-video-container{
+    padding: 5px 0px 5px 0px;
+}
+.ds-fs{
+    font-size: smaller;
+}
+
+/* :::::::::::::::::::::::::::
+Video size
+:::::::::::::::::::::::::::::
+*/
+
+.history-video{
+    width: 100%;
+    height: 100%;
+}
+
+/* Video title and menu */
+.history-video-title-and-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0% !important;
+    margin: 0% !important;
+}
+.history-des{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.myInput {
+    background-image: url('../../assets/search.png');
+    background-position: 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 7px 15px 7px 40px;
+    border: 1px solid #ddd;
+  }

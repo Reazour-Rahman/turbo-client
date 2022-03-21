@@ -79,6 +79,12 @@ const MakeAdminList = () => {
     }
 
 
+
+    let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
     return (
         <div style={{ color: "white" }}>
             <Box sx={{ m: 5 }}>
@@ -110,19 +116,19 @@ const MakeAdminList = () => {
                         <TableRow >
                             <Grid container spacing={2}  >
                                 <Grid item xs={2}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Index</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }} id={text}>Index</TableCell>
                                 </Grid>
                                 <Grid item xs={3}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Blogger Name</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }} id={text}>Blogger Name</TableCell>
                                 </Grid>
                                 <Grid item xs={3}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Blogger Email</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }} id={text}>Blogger Email</TableCell>
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Role</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }} id={text}>Role</TableCell>
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }}>Status</TableCell>
+                                    <TableCell style={{ fontWeight: "bold", fontSize: "18px", color: "white" }} id={text}>Status</TableCell>
                                 </Grid>
                             </Grid>
                         </TableRow>

@@ -93,6 +93,12 @@ function DashboardContent() {
         setOpen(!open);
     };
 
+    let mode;
+    mode = localStorage.getItem("theme")
+    const text= mode === "light" ? "black" : "darkLight" ;
+    const card= mode === "light" ? "moreLight" : "moreDark";
+    const bg= mode ==="light" ? "lightest" : "darkish";
+
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -101,8 +107,9 @@ function DashboardContent() {
                     <Toolbar
                         sx={{
                             pr: '24px', // keep right padding when drawer closed
-                            backgroundColor:"#102841"
+                            
                         }}
+                        id={card}
                     >
                         <IconButton
                             edge="start"
@@ -134,7 +141,7 @@ function DashboardContent() {
                 </AppBar>
                 <Drawer variant="permanent" open={open} >
                     <Toolbar
-                    style={{backgroundColor:"#102841"}}
+                    id={card}
                     
                         sx={{
                             display: 'flex',
@@ -148,7 +155,7 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav"  style={{backgroundColor:"#102841", color:"white", height:"100%"}}>
+                    <List component="nav" id={card} style={{ color:"white", height:"100%"}}>
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}
@@ -165,7 +172,7 @@ function DashboardContent() {
                         height: '100vh',
                         overflow: 'auto',
                     }}
-                    style={{backgroundColor:"rgb(9 26 43)"}}
+                    id={bg}
                 >
                     <Toolbar />
 

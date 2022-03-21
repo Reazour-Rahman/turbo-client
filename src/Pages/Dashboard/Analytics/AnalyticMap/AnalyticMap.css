@@ -5,7 +5,7 @@
 .map{
     display: grid;
     grid-template-columns: 3fr 6fr;
-    background-color: rgb(16 40 65);
+    /* background-color: rgb(16 40 65); */
     border-radius: 10px;
     margin: 20px;
     
@@ -58,7 +58,7 @@
     margin-right: 25px;
     margin-bottom: 10px;
     font-size: 16px;
-    color:#abb6ca
+    /* color:#abb6ca */
     
 }
 

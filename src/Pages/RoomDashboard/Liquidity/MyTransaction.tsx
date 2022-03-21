@@ -35,10 +35,16 @@ const MyTransaction = ({ user }) => {
   //   console.log(users.payment);
   //   const payments: any = users.payment;
 
+  let mode;
+  mode = localStorage.getItem("theme")
+  const text= mode === "light" ? "black" : "darkLight" ;
+  const card= mode === "light" ? "moreLight" : "moreDark";
+  const bg= mode ==="light" ? "lightest" : "darkish";
+
   return (
-    <div className="members-container">
+    <div className="members-container" id={card}>
       <div className="new-members-head">
-        <p>Latest Transactions</p>
+        <p id={text} >Latest Transactions</p>
         <div>
           <IconButton
             className="add-btn"
@@ -70,27 +76,27 @@ const MyTransaction = ({ user }) => {
       <br />
       <table id="customers">
         <tr>
-          <th>Doner</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Amount</th>
-          <th>Blog </th>
-          <th>Status</th>
+          <th id={text}>Doner</th>
+          <th id={text}>Date</th>
+          <th id={text}>Time</th>
+          <th id={text}>Amount</th>
+          <th id={text}>Blog </th>
+          <th id={text}>Status</th>
         </tr>
         {payments?.map((payment) => (
           <tr>
-            <td className="td-flx">
+            <td className="td-flx" id={text}>
               <Avatar
                 sx={{ bgcolor: deepPurple[500] }}
                 src={payment.donorPhoto}
               ></Avatar>
               {payment.doner}
             </td>
-            <td>{payment.time}</td>
-            <td>{payment.date}</td>
-            <td>$ {payment.amount / 100}</td>
-            <td>{payment.blogTitle}</td>
-            <td className="status-transaction">Withdraw</td>
+            <td id={text}>{payment.time}</td>
+            <td id={text}>{payment.date}</td>
+            <td id={text}>$ {payment.amount / 100}</td>
+            <td id={text}>{payment.blogTitle}</td>
+            <td id={text} className="status-transaction">Withdraw</td>
           </tr>
         ))}
       </table>

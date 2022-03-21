@@ -40,6 +40,7 @@ import DarkMode from "../Theme/DarkMode";
 import { useSelector } from "react-redux";
 import SportsTennisIcon from '@mui/icons-material/SportsTennis';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import RecommendedRoom from "./RecommendedRoom";
 const drawerWidth = 240;
 
 
@@ -214,7 +215,7 @@ export default function MiniDrawer() {
           </NavLink>
 <Divider style={{backgroundColor:"white"}}/>
 
-          <NavLink className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } to="/">
+          {/* <NavLink className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } to="/">
             <ListItem className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } button>
               <ListItemIcon className="fs-6">
                 <i class="fas fa-spinner" id={mode=== "light" ? "black" : "darkLight" }></i>
@@ -239,7 +240,8 @@ export default function MiniDrawer() {
               </ListItemIcon>
               <ListItemText primary={"Library"} />
             </ListItem>
-          </NavLink>
+          </NavLink> */}
+          <RecommendedRoom/>
           
           <Divider style={{backgroundColor:"white"}}/>
           <NavLink className="nav-btn" to="/">
