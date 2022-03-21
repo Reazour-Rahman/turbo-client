@@ -4,10 +4,10 @@
   
 }
 .chart-container {
-  border: 1px solid #746f6f;
+  /* border: 1px solid #746f6f; */
 }
 .studio-tab {
-  background-color: #091a2b;
+  /* background-color: #091a2b; */
 }
 /* .studio-tab-left {
   background-color: #102841;
@@ -24,7 +24,7 @@
   /* overflow-x: hidden; */
 }
 .overview-left {
-  background-color: #102841 !important;
+  /* background-color: #102841 !important; */
   /* background-color: #f5f5f5 !important; */
 }
 * {

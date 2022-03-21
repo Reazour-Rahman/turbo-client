@@ -45,6 +45,8 @@ import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAma
 import AllBookingProducts from "./Pages/Home/Profile/AmazonProducts/AllBookingProducts/AllBookingProducts";
 import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/AddCart/AddCart"
 import Test from "./Pages/Upload/test/Test.jsx"
+import Blogs from "./Pages/Home/BLogs/Blogs";
+import AllBlogs from "./Pages/Dashboard/AllBlogs";
 
 
 function App() {
@@ -161,6 +163,7 @@ function App() {
 
           <Route exact path="/dashboard/home" element={<DashboardHome />} />
           <Route exact path="/dashboard/bloggerList" element={<Bloggers />} />
+          <Route exact path="/dashboard/allBlogs" element={<AllBlogs />} />
 
           <Route exact path="/dashboard/default" element={<Default />} />
 
