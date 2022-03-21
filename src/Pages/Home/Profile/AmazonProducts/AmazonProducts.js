@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { Link} from 'react-router-dom';
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
 import { green } from "@mui/material/colors";
+import { useSelector } from 'react-redux';
 
 const AmazonProducts = () => {
+    const user = useSelector((state) => state.firebase.user);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`https://aqueous-chamber-45567.herokuapp.com/products`)
+        fetch(`http://localhost:5000/products?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setProducts(data?.products))
     }, [])
