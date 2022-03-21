@@ -81,10 +81,10 @@ const MakeAdminList = () => {
 
 
     let mode;
-mode = localStorage.getItem("theme")
-const text= mode === "light" ? "black" : "darkLight" ;
-const card= mode === "light" ? "moreLight" : "moreDark";
-const bg= mode ==="light" ? "lightest" : "darkish";
+    mode = localStorage.getItem("theme")
+    const text = mode === "light" ? "black" : "darkLight";
+    const card = mode === "light" ? "moreLight" : "moreDark";
+    const bg = mode === "light" ? "lightest" : "darkish";
     return (
         <div style={{ color: "white" }}>
             <Box sx={{ m: 5 }}>
