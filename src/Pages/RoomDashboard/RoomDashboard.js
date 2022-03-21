@@ -153,7 +153,7 @@ function RoomDashboardContent() {
                         }}
                     >
                         <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon className="dashboard-button" />
+                            <ChevronLeftIcon  id={text} className="dashboard-button" />
                         </IconButton>
                     </Toolbar>
                     <Divider />

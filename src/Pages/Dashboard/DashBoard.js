@@ -113,7 +113,7 @@ function DashboardContent() {
                     >
                         <IconButton
                             edge="start"
-                            color="inherit"
+                            id={text}
                             aria-label="open drawer"
                             onClick={toggleDrawer}
                             sx={{
@@ -126,9 +126,10 @@ function DashboardContent() {
                         <Typography
                             component="h1"
                             variant="h6"
-                            color="inherit"
+                            
                             noWrap
                             sx={{ flexGrow: 1 }}
+                            id={text}
                         >
                             Dashboard
                         </Typography>
@@ -151,11 +152,11 @@ function DashboardContent() {
                         }}
                     >
                         <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon className="dashboard-button"/>
+                            <ChevronLeftIcon id={text} className="dashboard-button"/>
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav" id={card} style={{ color:"white", height:"100%"}}>
+                    <List component="nav" id={card} style={{ height:"100%"}}>
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}

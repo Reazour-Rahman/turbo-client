@@ -22,6 +22,12 @@ import ReportIcon from '@mui/icons-material/Report';
 import { Avatar } from '@mui/material';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
+let mode;
+    mode = localStorage.getItem("theme")
+    const text= mode === "light" ? "black" : "darkLight" ;
+    const card= mode === "light" ? "moreLight" : "moreDark";
+    const bg= mode ==="light" ? "lightest" : "darkish";
+
 export const mainListItems = (
 
     <React.Fragment>
@@ -29,71 +35,71 @@ export const mainListItems = (
             <ListItemIcon>
             <Avatar alt="Remy Sharp" src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M=" />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Reazour Rahaman" />
+            <ListItemText id={text} className='dashboard-button' primary="Reazour Rahaman" />
 
         </ListItemButton>
 
-        <ListItemButton as={Link} component="a" to="/roomDashboard">
-            <ListItemIcon>
-                <DashboardIcon className='dashboard-button' />
+        <ListItemButton as={Link} component="a"  to="/roomDashboard">
+            <ListItemIcon >
+                <DashboardIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Room Dashboard" />
+            <ListItemText id={text} className='dashboard-button' primary="Room Dashboard" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/">
             <ListItemIcon>
-                <HomeIcon className='dashboard-button' />
+                <HomeIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Home" />
+            <ListItemText id={text} className='dashboard-button' primary="Home" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/roomDashboard/content">
             <ListItemIcon>
-                <ArticleIcon className='dashboard-button' />
+                <ArticleIcon id={text}className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Content" />
+            <ListItemText id={text} className='dashboard-button' primary="Content" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/roomDashboard/userAnalytics">
             <ListItemIcon>
-                <BarChartIcon className='dashboard-button' />
+                <BarChartIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Analytics" />
+            <ListItemText id={text} className='dashboard-button' primary="Analytics" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="">
             <ListItemIcon>
-                <InsertCommentIcon className='dashboard-button' />
+                <InsertCommentIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Comments" />
+            <ListItemText id={text} className='dashboard-button' primary="Comments" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/roomDashboard/liquidity">
             <ListItemIcon>
-                <MonetizationOnIcon className='dashboard-button' />
+                <MonetizationOnIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="liquidity" />
+            <ListItemText id={text} className='dashboard-button' primary="liquidity" />
         </ListItemButton>
 
         <ListItemButton>
             <ListItemIcon>
-                <ReportIcon className='dashboard-button' />
+                <ReportIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Reports" />
+            <ListItemText id={text} className='dashboard-button' primary="Reports" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/roomDashboard/upload-products">
             <ListItemIcon>
-                <FileUploadIcon className='dashboard-button' />
+                <FileUploadIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Gaming Console" />
+            <ListItemText id={text} className='dashboard-button' primary="Gaming Console" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="">
             <ListItemIcon>
-                <ChatBubbleOutlineIcon className='dashboard-button' />
+                <ChatBubbleOutlineIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Message" />
+            <ListItemText id={text} className='dashboard-button' primary="Message" />
         </ListItemButton>
 
     </React.Fragment>
@@ -101,26 +107,26 @@ export const mainListItems = (
 
 export const secondaryListItems = (
     <React.Fragment>
-        <ListSubheader className='dashboard-button' style={{ backgroundColor: "#102841" }} component="div" inset>
+        <ListSubheader className='dashboard-button' id={text} component="div" inset>
             Saved reports
         </ListSubheader>
         <ListItemButton>
             <ListItemIcon>
-                <AssignmentIcon className='dashboard-button' />
+                <AssignmentIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Another" />
+            <ListItemText id={text} className='dashboard-button' primary="Another" />
         </ListItemButton>
         <ListItemButton>
             <ListItemIcon>
-                <AssignmentIcon className='dashboard-button' />
+                <AssignmentIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Another" />
+            <ListItemText id={text} className='dashboard-button' primary="Another" />
         </ListItemButton>
         <ListItemButton>
             <ListItemIcon>
-                <LogoutIcon className='dashboard-button' />
+                <LogoutIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="LogOut" />
+            <ListItemText id={text} className='dashboard-button' primary="LogOut" />
         </ListItemButton>
     </React.Fragment>
 );
