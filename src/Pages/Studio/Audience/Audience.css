@@ -1,3 +1,24 @@
 .card-text {
-  color: #aaa;
+  /* color: #aaa; */
+}
+.viewer-chart-container {
+  margin: 0px 15px;
+}
+
+.user-data-container {
+  display: grid;
+  column-gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 0px;
+}
+
+.user-data-left,
+.user-data-right {
+  padding: 0px 15px;
+}
+@media only screen and (max-width: 1025px) {
+  .user-data-container {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
 }

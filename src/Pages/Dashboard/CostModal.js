@@ -41,7 +41,7 @@ export default function CostModal({costOpen, setCostOpen}) {
         cost, date, year, adminName : user?.displayName, adminEmail : user?.email
     }
 
-    axios.put(`http://localhost:5000/cost`, data)
+    axios.put(`https://aqueous-chamber-45567.herokuapp.com/cost`, data)
     handleClose()
     
   }

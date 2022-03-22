@@ -207,10 +207,14 @@ export default function ProfileSearchBar() {
     setCount(count + 1)
     axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${user?.email}`, follower)
   }
+  let mode = localStorage.getItem("theme");
+  const card = mode === "light" ? "moreLight" : "moreDark" ;
+  const bg = mode === "light" ? "lightest" : "darkish";
+  const text = mode === "light" ? "black" : "darkLight" ;
   return (
     <Box>
       <Box sx={{ flexGrow: 1, mt: "25px" }}>
-        <AppBar position="static" style={{ backgroundColor: "inherit" }}>
+        <AppBar position="static" id={card}>
           <Toolbar>
             <IconButton
               size="large"
@@ -227,6 +231,7 @@ export default function ProfileSearchBar() {
             </IconButton>
             <Box>
               <Typography
+               id={text}
                 variant="h6"
                 noWrap
                 component="div"
@@ -234,17 +239,18 @@ export default function ProfileSearchBar() {
               >
                 {profile.roomName}
               </Typography>
-              <Typography style={{ fontSize: 12, fontWeight: 500, color: "rgba(255, 255, 255, 0.823)" }}>
+              <Typography style={{ fontSize: 12, fontWeight: 500, color: "rgba(255, 255, 255, 0.823)" }} id={text}>
               {bloggerProfile.followersCount} Followers
               </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Search sx={{ borderRadius: "20px" }}>
+              <Search sx={{ borderRadius: "20px" }} id={bg}>
                 <SearchIconWrapper>
-                  <SearchIcon />
+                  <SearchIcon id={text}/>
                 </SearchIconWrapper>
                 <StyledInputBase
+                 id={text}
                   placeholder="Search videos"
                   inputProps={{ "aria-label": "search" }}
                 />

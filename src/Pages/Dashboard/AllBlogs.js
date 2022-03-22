@@ -1,10 +1,11 @@
 import { Box, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Blog from "./Blog";
-import Progress from "./Progress";
-import "./Video.css";
+import Progress from "../Home/BLogs/Progress";
+import AllBlog from "./AllBlog";
 
-const Blogs = ({ filter, page, allBlogs }) => {
+
+
+const AllBlogs = ({ filter }) => {
   /*:::::::::::::::::::::::::::::::::::::::::
                 ALl states
     ::::::::::::::::::::::::::::::::::::::::::*/
@@ -17,7 +18,7 @@ const Blogs = ({ filter, page, allBlogs }) => {
   if (!filter) {
     url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
   } else {
-    url = `https://aqueous-chamber-45567.herokuapp.com/blogs?filter=${filter}`;
+    url = `http://localhost:5000/blogs?filter=${filter}`;
     console.log(url);
   }
   /*:: filter end ::*/
@@ -42,7 +43,7 @@ const Blogs = ({ filter, page, allBlogs }) => {
           columns={{ xs: 12, sm: 8, md: 12, lg: 12, xl: 20 }}
         >
           {!loading
-            ? blogs.map((blog) => <Blog key={blog._id} blog={blog}></Blog>)
+            ? blogs.map((blog) => <AllBlog key={blog._id} blog={blog}></AllBlog>)
             : [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
                 19, 20,
@@ -53,4 +54,4 @@ const Blogs = ({ filter, page, allBlogs }) => {
   );
 };
 
-export default Blogs;
+export default AllBlogs;

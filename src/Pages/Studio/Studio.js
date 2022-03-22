@@ -6,8 +6,13 @@ import "./Studio.css";
 import Audience from "./Audience/Audience";
 import { Route, Routes } from "react-router-dom";
 const Studio = () => {
+  let mode;
+  mode = localStorage.getItem("theme")
+  const text= mode === "light" ? "black" : "darkLight" ;
+  const card= mode === "light" ? "moreLight" : "moreDark";
+  const bg= mode ==="light" ? "lightest" : "darkish";
   return (
-    <div className="studio">
+    <div className="studio" id={bg} >
       <StudioHeader></StudioHeader>
 
       <Overview></Overview>

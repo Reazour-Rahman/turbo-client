@@ -17,18 +17,25 @@ const StudioHeader = () => {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  let mode;
+  mode = localStorage.getItem("theme")
+  const text= mode === "light" ? "black" : "darkLight" ;
+  const card= mode === "light" ? "moreLight" : "moreDark";
+  const bg= mode ==="light" ? "lightest" : "darkish";
+
   return (
     <Box>
       <AppBar position="static">
         <Toolbar
           sx={{
             pr: "24px", // keep right padding when drawer closed
-            backgroundColor: "#102841",
           }}
+          id={card}
         >
 
 
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" id={text} component="div" sx={{ flexGrow: 1 }}>
             Channel Analytics
           </Typography>
         </Toolbar>
@@ -36,23 +43,23 @@ const StudioHeader = () => {
         <Toolbar
           sx={{
             pr: "24px", // keep right padding when drawer closed
-            backgroundColor: "#102841",
           }}
+          id={card}
         >
           <Box sx={{ display: "flex", width: "50%" }}>
             <MenuItem>
-              <Typography textAlign="center">Overview</Typography>
+              <Typography id={text} textAlign="center">Overview</Typography>
             </MenuItem>
             <MenuItem>
-              <Typography textAlign="center">Audience</Typography>
+              <Typography id={text}  textAlign="center">Audience</Typography>
             </MenuItem>
             <MenuItem>
-              <Typography textAlign="center">Reach</Typography>
+              <Typography id={text}  textAlign="center">Reach</Typography>
             </MenuItem>
           </Box>
 
           <FormControl sx={{ width: 240 }}>
-            <InputLabel id="demo-simple-select-label" sx={{ color: "white" }}>
+            <InputLabel  id={text} >
               Timeline
             </InputLabel>
             <Select

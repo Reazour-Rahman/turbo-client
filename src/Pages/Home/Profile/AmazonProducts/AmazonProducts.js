@@ -1,14 +1,15 @@
 import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Link} from 'react-router-dom';
-import ProfileHeader from "../ProfileHeader/ProfileHeader";
 import { green } from "@mui/material/colors";
+import { useSelector } from 'react-redux';
 
 const AmazonProducts = () => {
+    const user = useSelector((state) => state.firebase.user);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`https://aqueous-chamber-45567.herokuapp.com/products`)
+        fetch(`http://localhost:5000/products?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setProducts(data?.products))
     }, [])
@@ -19,12 +20,13 @@ const AmazonProducts = () => {
     const bg = mode === "light" ? "lightest" : "darkish";
     const card = mode === "light" ? "moreLight" : "moreDark";
     const text = mode === "light" ? "black" : "darkLight";
+    const hr = mode === "light" ? "hr" : "hrm"
 
     return (
-        <Box sx={{ flexGrow: 1, paddingLeft: "72px" }} >
-            <ProfileHeader />
-            <Box sx={{ mb: '20px', mt: '50px' }}>
-                <Typography id={text}>Use CODE: proPlayer23 for 10% Discount</Typography>
+        <Box sx={{ flexGrow: 1, mb: '20px' }} >
+            
+            <Box sx={{ mb: '20px' }}>
+                
             </Box>
             <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
 
@@ -36,9 +38,10 @@ const AmazonProducts = () => {
                             sx={{
                                
                                 maxWidth: 345,
-                                backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                                olor: 'rgba(255, 255, 255, 0.809)',
-                            }}>
+                                
+                            }}
+                            id={card}
+                            >
                             <img
                                 style={{
                                     height: "170px",
