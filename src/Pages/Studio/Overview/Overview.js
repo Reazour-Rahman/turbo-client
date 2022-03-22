@@ -106,13 +106,13 @@ const Overview = () => {
   // const [clickedTab, setClickedTab]
   const [graph, setGraph] = useState(views);
   let mode;
-  mode = localStorage.getItem("theme")
-  const text= mode === "light" ? "black" : "darkLight" ;
-  const card= mode === "light" ? "moreLight" : "moreDark";
-  const bg= mode ==="light" ? "lightest" : "darkish";
+  mode = localStorage.getItem("theme");
+  const text = mode === "light" ? "black" : "darkLight";
+  const card = mode === "light" ? "moreLight" : "moreDark";
+  const bg = mode === "light" ? "lightest" : "darkish";
   //over view color css
   return (
-    <Box >
+    <Box>
       <Grid
         container
         direction="row"
@@ -123,7 +123,7 @@ const Overview = () => {
       >
         <Grid xs={7} className="overview-left" id={card}>
           <Box sx={{ mx: "auto", my: 2 }}>
-            <h3 style={{ textAlign: "center"}} id={text} >
+            <h3 style={{ textAlign: "center" }} id={text}>
               <b>3M views in the last 28 days</b>
             </h3>
           </Box>
@@ -143,9 +143,9 @@ const Overview = () => {
                   graph === views ? "studio-tab-clicked" : "studio-tab"
                 }
               >
-                <Box sx={{  }}>
-                  <h6 id={text} >Views</h6>
-                  <h3 id={text} >3M</h3>
+                <Box sx={{}}>
+                  <h6 id={text}>Views</h6>
+                  <h3 id={text}>3M</h3>
                 </Box>
               </Grid>
               <Grid
@@ -165,9 +165,9 @@ const Overview = () => {
                     : "studio-tab studio-tab-mid "
                 }
               >
-                <Box sx={{ }}>
-                  <h6 id={text} >Watchtime (hours)</h6>
-                  <h3 id={text} >125 Hours</h3>
+                <Box sx={{}}>
+                  <h6 id={text}>Watchtime (hours)</h6>
+                  <h3 id={text}>125 Hours</h3>
                 </Box>
               </Grid>
               <Grid
@@ -184,12 +184,13 @@ const Overview = () => {
                   graph === subscribers ? "studio-tab-clicked" : "studio-tab"
                 }
               >
-                <Box sx={{  }}>
-                  <h6 id={text} >Subscribers</h6>
-                  <h3 id={text} >326k</h3>
+                <Box sx={{}}>
+                  <h6 id={text}>Subscribers</h6>
+                  <h3 id={text}>326k</h3>
                 </Box>
               </Grid>
             </Grid>
+
             {/* chart starts  */}
 
             <Graph data={graph}></Graph>
@@ -201,15 +202,10 @@ const Overview = () => {
           <Card sx={{ width: "80%" }} className="overview-left" id={card}>
             <CardContent>
               <Box sx={{ py: 1, borderBottom: 1 }}>
-                <Typography
-                  variant="h5"
-                  component="div"
-                  sx={{}}
-                  id={text} 
-                >
+                <Typography variant="h5" component="div" sx={{}} id={text}>
                   Real Time
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} id={text}  style={{ }}>
+                <Typography sx={{ mb: 1.5 }} id={text} style={{}}>
                   updating live
                 </Typography>
               </Box>
@@ -217,12 +213,12 @@ const Overview = () => {
                 <Typography
                   variant="h5"
                   component="div"
-                  sx={{mt: 1 }}
-                  id={text} 
+                  sx={{ mt: 1 }}
+                  id={text}
                 >
                   326k
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} style={{  }} id={text} >
+                <Typography sx={{ mb: 1.5 }} style={{}} id={text}>
                   Subscribers
                   <br />
                   <Button
@@ -232,22 +228,22 @@ const Overview = () => {
                       // fontWeight: "bold",
                       fontSize: "16px",
                     }}
-                    id={text} 
+                    id={text}
                   >
                     See Live Event
                   </Button>
                 </Typography>
               </Box>
-              <Box sx={{ py: 1, borderBottom: 1}}>
+              <Box sx={{ py: 1, borderBottom: 1 }}>
                 <Typography
                   variant="h5"
                   component="div"
-                  sx={{  mt: 1 }}
-                  id={text} 
+                  sx={{ mt: 1 }}
+                  id={text}
                 >
                   3M
                 </Typography>
-                <Typography sx={{ mb: 5 }} style={{ }} id={text} >
+                <Typography sx={{ mb: 5 }} style={{}} id={text}>
                   Views · Last 48 hours
                   <br />
                 </Typography>
@@ -257,12 +253,15 @@ const Overview = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
-                  
                 }}
-                id={text} 
+                id={text}
               >
-                <Typography variant="body2" id={text} >-48hour</Typography>
-                <Typography variant="body2" id={text} >now</Typography>
+                <Typography variant="body2" id={text}>
+                  -48hour
+                </Typography>
+                <Typography variant="body2" id={text}>
+                  now
+                </Typography>
               </Box>
             </CardContent>
             <CardActions>
