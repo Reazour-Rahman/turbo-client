@@ -14,7 +14,7 @@ const AllBookingProducts = () => {
     const [bookingProducts, setBookingProducts] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:5000/bookingProducts')
+        fetch('https://aqueous-chamber-45567.herokuapp.com/bookingProducts')
             .then(res => res.json())
             .then(data => setBookingProducts(data))
     }, [])

@@ -5,7 +5,7 @@ import ProfileHome from "../ProfileHome/ProfileHome";
 
 const Profile = () => {
   return (
-    <div style={{paddingLeft:"72px"}}>
+    <div style={{paddingLeft:"51px"}}>
       <ProfileBanner />
       <ProfileHeader />
       <ProfileHome />

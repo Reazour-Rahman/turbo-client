@@ -12,7 +12,57 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 
+/* Thumb */
+import { useState, useEffect } from "react";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../../../../../firebase";
+import "../../../../Upload/CloudStorage.css";
+import CloudCircleIcon from "@mui/icons-material/CloudCircle";
+import Progress from "../../../../Upload/Progress";
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
+import ImageIcon from '@mui/icons-material/Image';
+
+
 export default function UploadPicture({ openPictureModal, handleCloseUpdatePicture, roomName,handleClose }) {
+
+/* :::::::::::::::::::::::::::::
+Thumbnail
+:::::::::::::::::::::::::::::::*/
+const [progressBar, setProgress] = useState(0);
+const [title, setTitle] = useState("");
+const [image, setImage] = useState("");
+
+const formHandler = (e) => {
+    e.preventDefault();
+    const file = e.target[0].files[0];
+    uploadFiles(file);
+};
+
+const uploadFiles = (file) => {
+    //
+    if (!file) return;
+    const sotrageRef = ref(storage, `files/${file.name}`);
+    const uploadTask = uploadBytesResumable(sotrageRef, file);
+
+    uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+        const prog = Math.round(
+        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(prog);
+    },
+    (error) => console.log(error),
+    () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        console.log("File available at", downloadURL);
+        setImage(downloadURL)
+        });
+    }
+    );
+};
+
+
 
   const [cover, setCover] = React.useState('https://timelinecovers.pro/facebook-cover/download/anime-one-piece-monkey-d-luffy-in-hat-facebook-cover.jpg')
   const [profile, setProfile] = React.useState('https://c4.wallpaperflare.com/wallpaper/535/25/215/anime-one-piece-monkey-d-luffy-wallpaper-preview.jpg')
@@ -25,14 +75,10 @@ export default function UploadPicture({ openPictureModal, handleCloseUpdatePictu
     const data = {
       roomName  : roomName,
       cover : cover,
-      profile : profile
-
+      profile : image
     }
-
-    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`, data)
-    
+    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`, data) 
     console.log(data);
-
     handleCloseUpdatePicture()
     handleClose()
   }
@@ -87,38 +133,58 @@ export default function UploadPicture({ openPictureModal, handleCloseUpdatePictu
               id="alert-dialog-description">
               Your profile picture appears next to your videos and comments, and in other places. It's your signature image on Por-Player.
             </DialogContentText>
-            <Stack 
-            style={{ 
-              display: 'inline' 
-              }} 
-              direction="row" 
-              alignItems="center" 
-              spacing={2}>
-              <label 
-              style={{ 
-                marginLeft: '30px' 
-                }} 
-                htmlFor="icon-button-file"
-                >
-                <Input 
-                style={{ 
-                  display: 'none', 
-                  }} 
-                  accept="image/*" 
-                  id="icon-button-file" 
-                  type="file" />
-                <IconButton color="primary" aria-label="upload picture" component="span">
-                  <img 
-                  style={{ 
-                    width: '150px', 
-                    height: '150px', 
-                    borderRadius: '75px', 
-                    alignContent: 'center' 
-                    }} 
-                    src="https://static.remove.bg/remove-bg-web/59c96072ccf69a79c0e6dd85a2eac05ceb4d0784/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png" alt="" />
-                </IconButton>
-              </label>
-            </Stack>
+            <div style={{display:"flex", justifyContent:"center"}}>
+            <form onSubmit={formHandler}>
+                    <div class="file has-name is-boxed">
+                        <label class="file-label">
+                        <input
+                        style={{padding:"0px"}}
+                            class="file-input"
+                            type="file"
+                            accept="image/*"
+                            name="resume"
+                            // alt="thumbnail"
+                            onChange={(event) => setTitle(event.target.value)}
+                        />
+                        <span class="file-cta">
+                            <span class="file-icon">
+                            <ImageIcon/>
+                            </span>
+                            <span class="file-label">Choose a Thumbnail</span>
+                        </span>
+                        <span class="file-name">{title}</span>
+                        </label>
+                    </div>
+                    {/* <button type="submit">Upload</button> */}
+
+                    {progressBar < 0.1 ? null : <Progress progressBar={progressBar} />}
+
+
+                    {progressBar === 100 ? (
+                        <Button
+                        variant="outlined"
+                        color="success"
+                        className={`full-width ${
+                            title === "" ? "conditional-btn" : null
+                        }`}
+                        endIcon={<ArrowCircleDownIcon />}
+                        >
+                        Please scroll down
+                        </Button>
+                    ) : (
+                        <Button
+                        type="submit"
+                        variant="outlined"
+                        className={`full-width ${
+                            title === "" ? "conditional-btn" : null
+                        }`}
+                        endIcon={<CloudCircleIcon />}
+                        >
+                        Upload
+                        </Button>
+                    )}
+            </form>
+            </div>
             <DialogContentText 
             style={{ 
               fontSize: 28, 

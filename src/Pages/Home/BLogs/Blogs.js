@@ -4,7 +4,7 @@ import Blog from "./Blog";
 import Progress from "./Progress";
 import "./Video.css";
 
-const Blogs = ({ filter }) => {
+const Blogs = ({ filter, page, allBlogs }) => {
   /*:::::::::::::::::::::::::::::::::::::::::
                 ALl states
     ::::::::::::::::::::::::::::::::::::::::::*/
@@ -17,7 +17,7 @@ const Blogs = ({ filter }) => {
   if (!filter) {
     url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
   } else {
-    url = `http://localhost:5000/blogs?filter=${filter}`;
+    url = `https://aqueous-chamber-45567.herokuapp.com/blogs?filter=${filter}`;
     console.log(url);
   }
   /*:: filter end ::*/
