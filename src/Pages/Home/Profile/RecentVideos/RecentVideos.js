@@ -22,19 +22,20 @@ const RecentVideos = () => {
       
   }, [user?.email]);
 
-  // const recentSomeVideos = recentVideos.sort()
-  // console.log(recentSomeVideos);
+  let mode = localStorage.getItem("theme");
+  const hr = mode === "light" ? "hr" : "hrm"
+
   return (
-    <Box sx={{ mt: "50px", color: "inherit" }}>
+    <Box sx={{ mt: "10px", color: "inherit" }}>
       <Grid sx={{ mb: '20px' }}>
-        <Typography style={{ fontWeight: 900 }}>
-          Recent Video
-        </Typography>
+        <p style={{ fontWeight: 600 }} className={hr}>
+          RECENT VIDEO
+        </p>
       </Grid>
       <Box>
         <Grid
           container
-          spacing={{ xs: 1, md: 3, lg: 2, xl: 1, xxl: 21 }}
+          spacing={{ xs: 12, md: 3, lg: 2, xl: 1, xxl: 21 }}
           columns={{ xs: 12, sm: 8, md: 12, lg: 12, xl: 20 }}
         >
           {!loading ? (
