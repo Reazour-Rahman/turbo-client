@@ -105,7 +105,12 @@ const watchtime = [
 const Overview = () => {
   // const [clickedTab, setClickedTab]
   const [graph, setGraph] = useState(views);
-
+  let mode;
+  mode = localStorage.getItem("theme")
+  const text= mode === "light" ? "black" : "darkLight" ;
+  const card= mode === "light" ? "moreLight" : "moreDark";
+  const bg= mode ==="light" ? "lightest" : "darkish";
+  //over view color css
   return (
     <div className="overview-container">
       <div className="left-container">
@@ -182,8 +187,69 @@ const Overview = () => {
 
             <Graph data={graph}></Graph>
           </Box>
+
+        </Grid>
+        {/* right side cards  */}
+        <Grid item xs={4}>
+          {/* card stats  */}
+          <Card sx={{ width: "80%" }} className="overview-left" id={card}>
+            <CardContent>
+              <Box sx={{ py: 1, borderBottom: 1 }}>
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{}}
+                  id={text} 
+                >
+                  Real Time
+                </Typography>
+                <Typography sx={{ mb: 1.5 }} id={text}  style={{ }}>
+                  updating live
+                </Typography>
+              </Box>
+              <Box sx={{ py: 1, borderBottom: 1, borderColor: "grey.500" }}>
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{mt: 1 }}
+                  id={text} 
+                >
+                  326k
+                </Typography>
+                <Typography sx={{ mb: 1.5 }} style={{  }} id={text} >
+                  Subscribers
+                  <br />
+                  <Button
+                    sx={{
+                      textAlign: "left",
+                      marginLeft: "-7px",
+                      // fontWeight: "bold",
+                      fontSize: "16px",
+                    }}
+                    id={text} 
+                  >
+                    See Live Event
+                  </Button>
+                </Typography>
+              </Box>
+              <Box sx={{ py: 1, borderBottom: 1}}>
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{  mt: 1 }}
+                  id={text} 
+                >
+                  3M
+                </Typography>
+                <Typography sx={{ mb: 5 }} style={{ }} id={text} >
+                  Views · Last 48 hours
+                  <br />
+                </Typography>
+              </Box>
+
         </div>
       </div>
+
 
       {/* right side cards  */}
 

@@ -253,12 +253,12 @@ export default function MiniDrawer() {
             </ListItem>
           </NavLink>
 
-          <NavLink className="nav-btn" to="/">
+          <NavLink className="nav-btn" to="/likedBlogs">
             <ListItem button className="nav-btn">
               <ListItemIcon className="fs-6">
                 <SlowMotionVideoIcon className="nav-btn" id={mode=== "light" ? "black" : "darkLight" } />
               </ListItemIcon>
-              <ListItemText id={mode=== "light" ? "black" : "darkLight" } primary={"Liked videos"} />
+              <ListItemText id={mode=== "light" ? "black" : "darkLight" } primary={"Liked Blogs"} />
             </ListItem>
           </NavLink>
 
