@@ -165,10 +165,10 @@ const Audience = () => {
       </Box>
 
       <Box sx={{ margin: "0 auto", my: 5, color: "white" }}>
-        <Grid container justifyContent="space-between">
+        <div className="user-data-container">
           {/* left  */}
-          <Grid xs={5.8}>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
+          <div className="user-data-left">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
               <Box>
                 <h5>When your viewers are on ProPlayers</h5>
                 <p className="card-text">
@@ -184,7 +184,7 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
               <Box>
                 <h5>Watch time from subscribers</h5>
                 <p className="card-text">Watch time · Last 28 days</p>
@@ -198,7 +198,7 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
               <Box>
                 <h5>Age and gender</h5>
                 <p className="card-text">Views · Last 28 days</p>
@@ -212,11 +212,11 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-          </Grid>
+          </div>
 
           {/* right  */}
-          <Grid xs={5.8}>
-            <Box sx={{}} className="chart-container">
+          <div className="user-data-right">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
               <Box>
                 <h5>Other channels your audience watches</h5>
                 <p className="card-text"> Last 28 days</p>
@@ -230,7 +230,7 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>Learn More</Button>
               </Box>
             </Box>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
               <Box>
                 <h5>Other videos your audience watched</h5>
                 <p className="card-text"> Last 7 days</p>
@@ -244,7 +244,7 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>Learn More</Button>
               </Box>
             </Box>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
               <Box>
                 <h5>Top geographies</h5>
                 <p className="card-text">Views · Last 28 days</p>
@@ -258,8 +258,8 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </Box>
     </Box>
   );

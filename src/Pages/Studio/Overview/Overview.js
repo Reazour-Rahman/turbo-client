@@ -110,7 +110,7 @@ const Overview = () => {
     <div className="overview-container">
       <div className="left-container">
         <div className="left-container-content overview-left">
-          <Box sx={{ mx: "auto", my: 2, pt: 2 }}>
+          <Box sx={{ mx: "auto", py: 2 }}>
             <h3 style={{ textAlign: "center", color: "white" }}>
               <b>3M views in the last 28 days</b>
             </h3>

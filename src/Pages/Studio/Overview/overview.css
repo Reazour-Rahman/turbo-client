@@ -38,23 +38,19 @@
 
 .overview-container {
   display: grid;
-  column-gap: 10px;
+  column-gap: 15px;
   grid-template-columns: 2fr 1fr;
-  margin: 20px 0px;
+  margin: 30px 0px;
 }
 
 .left-container,
 .right-container {
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 
 @media only screen and (max-width: 1025px) {
   .overview-container {
     grid-template-columns: 1fr;
     row-gap: 20px;
-  }
-  .right-container {
-    width: 80%;
-    margin: 0 auto;
   }
 }
