@@ -12,12 +12,12 @@ const Like = () => {
     let text = theme === "light" ? "black" : "darkLight";
     return (
         <Grid container columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} className="like-container">
-            <Grid item xs={4} sm={4} md={3} lg={4}>
+            <Grid item xs={12} sm={6} md={4} lg={4}>
                 <div className='like-friction-element'>
                     <LeftSection />
                 </div>
             </Grid>
-            <Grid item xs={8} sm={8} md={9} lg={8} id={theme === "light" ? "moreLight" : "moreDark"}>
+            <Grid item xs={12} sm={6} md={8} lg={8} id={theme === "light" ? "moreLight" : "moreDark"}>
                 <div className='like-friction-element-2'>
 
                     <section >

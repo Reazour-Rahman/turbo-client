@@ -12,7 +12,7 @@
   padding-top: 30px;
   padding-right: 30px;
 }
-@media only screen and (max-width: 880px) {
+@media only screen and (max-width: 1400px) {
   .like-friction-element {
     width: 100%;
     padding-bottom: 30px;
@@ -28,13 +28,30 @@
     padding-right: 0px;
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1200px) {
   .like-friction-element {
     width: 100%;
     padding-bottom: 30px;
-    padding-left: 60px;
+    padding-left: 70px;
+    padding-top: 30px;
+    padding-right: 10px;
+  }
+  .like-friction-element-2 {
+    width: 100%;
+    padding-bottom: 30px;
+    padding-left: 5px;
     padding-top: 30px;
     padding-right: 0px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .like-friction-element {
+    width: 100%;
+    padding-bottom: 30px;
+    padding-left: 51px;
+    padding-top: 30px;
+    padding-right: 0px;
+    margin-left: 0px;
   }
   .like-friction-element-2 {
     width: 100%;

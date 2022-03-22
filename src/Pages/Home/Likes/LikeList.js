@@ -1,7 +1,5 @@
-import { Box, Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Like from "./Like";
 import LikedVideo from "./LikedVideo";
 
 const LikeList = () => {
@@ -16,11 +14,6 @@ const LikeList = () => {
             .then((response) => response.json())
             .then((data) => {
                 setlikerLikes(data.blogs);
-                // console.log(data.blogs);
-                // const a = data.blogs;
-                // for (const likesdata of a) {
-                //     setlikerLikes(likesdata);
-                // }
             }
             );
         setLoading(false);
@@ -28,23 +21,15 @@ const LikeList = () => {
 
     console.log(likerLikes);
 
+    const likedBlogs = likerLikes.filter(character => {
+        return character?.likers?.find(f => {
+            return f?.likerEmail?.includes(user.email)
+        })
+    });
 
-    const userLikes = likerLikes?.likers?.filter(h => h?.likerEmail === user?.email)
-    console.log("asdasdasdas", userLikes);
     return (
         <div style={{ color: "white" }}>
-            <Box>
-                {!loading ? (
-                    likerLikes?.map((like) => (
-                        // console.log(like)
-                        <LikedVideo like={like} video={likerLikes.video} title={likerLikes.title}></LikedVideo>
-
-                    ))
-                ) : (
-                    <div></div>
-                )}
-
-            </Box>
+            {likedBlogs.map(l => <LikedVideo like={l} video={l.video} title={l.title}></LikedVideo>)}
         </div>
     );
 };

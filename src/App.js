@@ -46,7 +46,7 @@ import AllBookingProducts from "./Pages/Home/Profile/AmazonProducts/AllBookingPr
 import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/AddCart/AddCart"
 import Test from "./Pages/Upload/test/Test.jsx"
 import Like from "./Pages/Home/Likes/Like";
-import LikeList from "./Pages/Home/Likes/LikeList";
+
 
 
 function App() {
@@ -117,7 +117,7 @@ function App() {
 
           <Route path="/history" element={<History />}></Route>
           <Route path="/likes" element={<Like />}></Route>
-          {/* <Route path="/likes" element={<LikeList />}></Route> */}
+
 
 
           <Route path="/details/:blogId" element={<PrivateRoute><Details /></PrivateRoute>}></Route>

@@ -68,20 +68,16 @@ const LikedVideo = ({ like, title, video }) => {
                             TransitionComponent={Fade}
                         >
 
-                            {/* <MenuItem onClick={handleClose}>Add To Queue</MenuItem>
-                            {/* <MenuItem onClick={handleClose}>Save to Watch Later</MenuItem>
-                            {/* <MenuItem onClick={handleClose}>Save to PlayList</MenuItem>
+                            <MenuItem onClick={handleClose}>Add To Queue</MenuItem>
+                            <MenuItem onClick={handleClose}>Save to Watch Later</MenuItem>
+                            <MenuItem onClick={handleClose}>Save to PlayList</MenuItem>
                             <divider />
                             {/* <MenuItem onClick={() => deleteFromHistory(like._id)}>Remove From Liked Videos</MenuItem> */}
-                            {/* <MenuItem onClick={handleClose}>OPPS</MenuItem> */}
+
                         </Menu>
                     </div>
                 </div>
 
-                {/* <div className='like-des'>
-                    <small id={muted} className="ds-fs">{like.bloggerName}</small>
-
-                </div> */}
             </Grid>
         </Grid>
     );

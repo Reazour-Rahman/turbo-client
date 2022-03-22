@@ -4,7 +4,7 @@ import { Box, Button, Divider, Typography } from "@mui/material";
 import './Likes.css';
 import { useSelector } from "react-redux";
 
-const LeftSection = (like, video) => {
+const LeftSection = (like) => {
     let pl;
     pl = localStorage.getItem("theme");
     let text = pl === "light" ? "black" : "darkLight"
@@ -29,7 +29,7 @@ const LeftSection = (like, video) => {
     return (
         <div>
             <div>
-                <video controls src={video} poster={like.thumbnail} type="video" className='like-video'></video>
+                <video controls src={like.video} poster={like.thumbnail} type="video" className='like-video'></video>
             </div>
 
             <Button id={text}>Liked Videos</Button>
@@ -47,7 +47,7 @@ const LeftSection = (like, video) => {
                     />
                 </Avatar>
                 <Box sx={{ ml: 2, mt: 2 }}>
-                    <Typography className="likerFont">{user.displayName}</Typography>
+                    <Typography className="likerFont" id={text}>{user.displayName}</Typography>
 
                 </Box>
             </div>
