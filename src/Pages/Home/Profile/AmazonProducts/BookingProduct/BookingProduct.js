@@ -49,7 +49,7 @@ const BookingProduct = ({ handleCloseBookinModal, open, product, time }) => {
             date: new Date().toLocaleDateString()
         }
 
-        fetch('http://localhost:5000/bookingProducts', {
+        fetch('https://aqueous-chamber-45567.herokuapp.com/bookingProducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

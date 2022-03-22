@@ -48,7 +48,7 @@ const RoomDashboardHome = () => {
   return (
     <div>
       <div className="" style={{ color: "white", height: '100vh', marginLeft: "15px", marginRight: '15px' }}>
-        <h2 style={{ color: "white" }} className="mt-5 h2section" >Room dashboard</h2>
+        <h2 style={{  }} id={text} className="mt-5 h2section" >Room dashboard</h2>
         <div class="grid-container" >
           {/* 1st Column */}
           <div className="first-column-size">

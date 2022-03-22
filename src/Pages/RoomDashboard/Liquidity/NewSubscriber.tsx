@@ -78,7 +78,7 @@ const NewSubscriber = ({ user }) => {
                   
                 </div>
                 <div>
-                  <p className="paragraph-size ">{user.name}</p>
+                  <p id={text} className="paragraph-size ">{user.name}</p>
                   {/* <p className=" p-dark">{user?.photoURL}</p> */}
                 </div>
               </aside>

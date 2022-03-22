@@ -3,6 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import Progress from "../../BLogs/Progress";
 import { useSelector } from 'react-redux';
 import RecentVideo from "../../Profile/RecentVideo/RecentVideo";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const UserRecentVideos = ({email}) => {
   const [recentVideos, setRecentVideos] = useState([]);
@@ -37,9 +38,9 @@ const UserRecentVideos = ({email}) => {
           {loading ? (
             recentVideos.map((recentVideo) => <RecentVideo key={recentVideo._id} recentVideo={recentVideo}></RecentVideo>)
           ).reverse().slice(0,8) : (
-            <div>
-              <Progress />
-            </div>
+            <Grid style={{transform: `translate(100vh, 50vh)`}}>
+            <CircularProgress />
+          </Grid>
           )}
         </Grid>
       </Box>

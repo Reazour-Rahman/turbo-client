@@ -3,30 +3,35 @@ import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-
+import { useSelector } from 'react-redux';
+import swal from "sweetalert";
 
 const UploadeAmazonProducts = () => {
 
+    const user = useSelector((state) => state.firebase.user);
     const [image, setImage] = useState()
     const [productTitle, setProductTitle] = useState();
     const [productPrice, setProductPrice] = useState();
     const [description, setDescription] = useState();
+    const [email, setEmail] = useState(user.email);
 
     const handleAddedProduct = e => {
         e.preventDefault();
         console.log(image)
+        console.log(email);
         if (!image) {
             return;
         }
 
         /* =============Send data to bakend============ */
         const formData = new FormData();
+        formData.append('email', email);
         formData.append('productTitle', productTitle);
         formData.append('productPrice', productPrice);
         formData.append('description', description);
         formData.append('image', image);
 
-        fetch('https://aqueous-chamber-45567.herokuapp.com/products', {
+        fetch('http://localhost:5000/products', {
             method: 'POST',
             body: formData
         })
@@ -34,6 +39,11 @@ const UploadeAmazonProducts = () => {
             .then(data => {
                 if (data.insertedId) {
                     console.log("successfully")
+                    swal(
+                        "Good job!",
+                        "Added to the cart",
+                        "success"
+                    );
                 }
             })
             .catch(error => {
@@ -57,7 +67,7 @@ const UploadeAmazonProducts = () => {
                 sx={{
                     justifyContent: 'center',
                     width: "70%",
-                    height: "70%",
+                    
                     margin: "auto",
                     bgcolor: 'rgba(113, 172, 140, 0.672)',
                     borderRadius: "10px",
@@ -93,6 +103,17 @@ const UploadeAmazonProducts = () => {
 
                         <TextField
                             sx={{ width: "100%", mt: 3 }}
+                            disabled
+                            label="Email"
+                            type="text"
+                           value={user?.email}
+                            onChange={e => setEmail(e.target.value)}
+                            variant="outlined"
+                            required
+
+                        />
+                        <TextField
+                            sx={{ width: "100%", mt: 3 }}
                             label="Product-Title"
                             type="text"
                             onChange={e => setProductTitle(e.target.value)}
@@ -120,7 +141,7 @@ const UploadeAmazonProducts = () => {
 
                         />
                         <Button
-                            sx={{ width: "100%", mt: 3, backgroundColor: "rgba(45, 48, 45, 0.85)" }}
+                            sx={{ width: "100%", mt: 3, mb: 3, backgroundColor: "rgba(45, 48, 45, 0.85)" }}
                             type="submit"
                             variant="contained"
                         >

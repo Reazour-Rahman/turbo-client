@@ -78,6 +78,12 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
+let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
+
 /*========= Top list Name =========*/
 const headCells = [
   {
@@ -147,21 +153,21 @@ function EnhancedTableHead(props) {
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
-          sx={{color: 'white',}}
+          id={text}
             key={headCell.id}
             align={headCell.numeric ? 'left' : 'right'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
-            sx={{color: 'white',}}
+            id={text}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
             // onClick={createSortHandler(headCell.id)}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
+                <Box component="span" id={text}  sx={visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                 </Box>
               ) : null}
@@ -301,11 +307,7 @@ const [blogs, setBlogs] = React.useState([])
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-    let mode;
-    mode = localStorage.getItem("theme")
-    const text= mode === "light" ? "black" : "darkLight" ;
-    const card= mode === "light" ? "moreLight" : "moreDark";
-    const bg= mode ==="light" ? "lightest" : "darkish";
+
 
 
   return (
@@ -322,8 +324,8 @@ const [blogs, setBlogs] = React.useState([])
               marginLeft: '20px',
               textDecoration: 'none',
               fontWeight: 500,
-              color: 'rgba(255, 255, 255, 0.755)'
             }} to='/video'
+            id={text}
           >
             Video
           </Link>
@@ -332,15 +334,16 @@ const [blogs, setBlogs] = React.useState([])
               marginLeft: '20px',
               textDecoration: 'none',
               fontWeight: 500,
-              color: 'rgba(255, 255, 255, 0.755)'
             }} to='/live'
+
+            id={text}
           >Live
           </Link>
         </Box>
       </Box>
       <Paper 
       sx={{ width: '100%', 
-      mb: 2, backgroundColor: 'rgb(9, 26, 43)' 
+      mb: 2
       }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
