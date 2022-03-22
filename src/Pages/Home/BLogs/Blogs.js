@@ -18,7 +18,7 @@ const Blogs = ({ filter, page, setLoadMore }) => {
   if (!filter) {
     url = `http://localhost:5000/blogs?page=${page}&&size=${size}`;
   } else {
-    url = `https://aqueous-chamber-45567.herokuapp.com/blogs?filter=${filter}`;
+    url = `http://localhost:5000/blogs?filter=${filter}`;
     console.log(url);
   }
   /*:: filter end ::*/

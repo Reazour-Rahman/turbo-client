@@ -4,17 +4,16 @@ import { useSelector } from "react-redux";
 import History from "./History";
 import HistoryVideo from "./HistoryVideo";
 
-const HistoryList = ({ page }) => {
+const HistoryList = () => {
   const [histories, setHistories] = useState([]);
   const [searchHistories, setsearchHistories] = useState([]);
   const [loading, setLoading] = useState(false);
   const user = useSelector((state) => state.firebase.user);
-  const size = 5;
   useEffect(() => {
     setLoading(true);
     setTimeout(async () => {
       const response = await fetch(
-        `http://localhost:5000/views?page=${page}&&size=${size}`
+        "https://aqueous-chamber-45567.herokuapp.com/views"
       );
       const data = await response.json();
       setHistories(data);
@@ -22,10 +21,9 @@ const HistoryList = ({ page }) => {
 
       setLoading(false);
     });
-  }, [page]);
+  }, []);
 
   console.log(histories);
-
   const handleSearch = (e) => {
     const searchTextValue = e.target.value;
     const UserMatch = histories.filter((history) =>
@@ -55,7 +53,7 @@ const HistoryList = ({ page }) => {
           </div>
         </div>
         {!loading ? (
-          histories?.map((history) => (
+          userHistory?.map((history) => (
             <HistoryVideo history={history}></HistoryVideo>
           ))
         ) : (

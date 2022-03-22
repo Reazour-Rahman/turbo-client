@@ -27,7 +27,7 @@ const Home = () => {
         style={{ display: "flex", justifyContent: "center" }}
       >
         {/* {!allBlogs && !filter && <LoadMore />} */}
-        {loadMore && <LoadMore />}
+        {loadMore && !filter && <LoadMore />}
       </div>
       <br />
     </div>

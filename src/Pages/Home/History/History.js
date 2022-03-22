@@ -1,24 +1,14 @@
 import { Grid } from "@mui/material";
 import React, { useState } from "react";
-import LoadMore from "../BLogs/LoadMore";
 import "./History.css";
 import HistoryList from "./HistoryList";
 import HistoryRight from "./HistoryRight";
 import HistoryVideo from "./HistoryVideo";
 
 const History = () => {
-  const [page, setPage] = useState(0);
-  const [loadMore, setLoadMore] = useState(true);
-
   let theme;
   theme = localStorage.getItem("theme");
   let text = theme === "light" ? "black" : "darkLight";
-
-  const handleLoadMore = () => {
-    setPage(page + 1);
-    // setLoadMore(true);
-    console.log("load more");
-  };
   return (
     <Grid
       container
@@ -42,14 +32,8 @@ const History = () => {
             {/* :::::::::::::::::::::::::::::::
                     Please Map here for Video dynamic
                     :::::::::::::::::::::::::::::::::*/}
-            <HistoryList page={page} />
+            <HistoryList />
           </section>
-          <div
-            onClick={() => handleLoadMore()}
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            {loadMore && <LoadMore />}
-          </div>
         </div>
       </Grid>
       <Grid item xs={4} sm={4} md={3} lg={4}>
