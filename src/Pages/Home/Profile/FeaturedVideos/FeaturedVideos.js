@@ -15,10 +15,10 @@ const FeaturedVideos = () => {
 
 
   return (
-    <Box sx={{ mt: "50px", color: "inherit" }}>
+    <Box sx={{ mt: "20px", color: "inherit" }}>
       <Box sx={{ mb: "20px" }}>
         <Grid>
-          <Typography style={{ fontWeight: 900 }}>
+          <Typography style={{ fontWeight: 700 }}>
             Top Views Videos
           </Typography>
         </Grid>

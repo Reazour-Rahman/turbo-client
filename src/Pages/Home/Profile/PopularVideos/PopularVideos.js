@@ -22,7 +22,7 @@ const PopularVideos = () => {
   console.log(popularVideos);
 
   return (
-    <Box sx={{ mt: "50px", mb: 5, color: "inherit" }}>
+    <Box sx={{ mt: "30px", mb: 5, color: "inherit" }}>
       <Grid sx={{ mb: '20px' }}>
         <Typography style={{ fontWeight: 600 }}>
           All Videos

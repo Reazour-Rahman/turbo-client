@@ -9,7 +9,7 @@ const AddCart = () => {
     const [addedProduct, setAddedProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cart`)
+        fetch(`https://aqueous-chamber-45567.herokuapp.com/cart`)
             .then(res => res.json())
             .then(data => setCartProducts(data))
     }, [])
