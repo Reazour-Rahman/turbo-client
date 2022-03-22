@@ -4,7 +4,7 @@ import Blog from "./Blog";
 import Progress from "./Progress";
 import "./Video.css";
 
-const Blogs = ({ filter }) => {
+const Blogs = ({ filter, page, allBlogs }) => {
   /*:::::::::::::::::::::::::::::::::::::::::
                 ALl states
     ::::::::::::::::::::::::::::::::::::::::::*/

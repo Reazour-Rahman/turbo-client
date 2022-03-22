@@ -103,12 +103,16 @@ const Audience = () => {
   const bg= mode ==="light" ? "lightest" : "darkish";
 
   return (
+
+    <Box sx={{}}>
+      <Box className="chart-container overview-left viewer-chart-container">
     <Box sx={{  }}>
       <Box
         sx={{ margin: "0 auto", width: "80%" }}
         className="chart-container overview-left"
         id={card} 
       >
+
         <Grid container sx={{ textAlign: "center" }}>
           <Grid
             tabIndex="0"
@@ -173,11 +177,19 @@ const Audience = () => {
         <Graph data={graph}></Graph>
       </Box>
 
+
+      <Box sx={{ margin: "0 auto", my: 5, color: "white" }}>
+        <div className="user-data-container">
+          {/* left  */}
+          <div className="user-data-left">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
+
       <Box sx={{ margin: "0 auto", width: "80%", my: 5}}>
         <Grid container justifyContent="space-between">
           {/* left  */}
           <Grid xs={5.8}>
             <Box sx={{ p: 3, mb: 5 }} className="chart-container" id={card} >
+
               <Box>
                 <h5 id={text} >When your viewers are on ProPlayers</h5>
                 <p id={text}  className="card-text">
@@ -193,7 +205,11 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
+
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
+
             <Box sx={{ p: 3, mb: 5 }} className="chart-container" id={card} >
+
               <Box>
                 <h5 id={text} >Watch time from subscribers</h5>
                 <p id={text}  className="card-text">Watch time · Last 28 days</p>
@@ -207,7 +223,11 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
+
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
+
             <Box sx={{ p: 3, mb: 5 }} className="chart-container" id={card} >
+
               <Box>
                 <h5 id={text} >Age and gender</h5>
                 <p id={text}  className="card-text">Views · Last 28 days</p>
@@ -221,11 +241,16 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-          </Grid>
+          </div>
 
           {/* right  */}
+
+          <div className="user-data-right">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
+
           <Grid xs={5.8}>
             <Box sx={{ p: 3, mb: 5  }} className="chart-container" id={card} >
+
               <Box>
                 <h5 id={text} >Other channels your audience watches</h5>
                 <p id={text}  className="card-text"> Last 28 days</p>
@@ -239,7 +264,11 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>Learn More</Button>
               </Box>
             </Box>
+
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
+
             <Box sx={{ p: 3, mb: 5 }} className="chart-container" id={card} >
+
               <Box>
                 <h5 id={text} >Other videos your audience watched</h5>
                 <p id={text}  className="card-text"> Last 7 days</p>
@@ -253,7 +282,11 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>Learn More</Button>
               </Box>
             </Box>
+
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container">
+
             <Box sx={{ p: 3, mb: 5 }} className="chart-container" id={card} >
+
               <Box>
                 <h5 id={text} >Top geographies</h5>
                 <p id={text}  className="card-text">Views · Last 28 days</p>
@@ -267,8 +300,8 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </Box>
     </Box>
   );

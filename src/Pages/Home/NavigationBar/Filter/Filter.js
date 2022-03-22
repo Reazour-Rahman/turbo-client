@@ -56,6 +56,7 @@ const Filter = ({ setFilter }) => {
   };
 
   let categories = [
+    "All",
     "Action",
     "Adventure",
     "Puzzle",
@@ -80,7 +81,7 @@ const Filter = ({ setFilter }) => {
             <Button
               className="filter-button"
               onClick={() => getFilter(category)}
-              id={ theme === "light" ? "black" : "darkLight" }
+              id={theme === "light" ? "black" : "darkLight"}
               sx={{
                 border: 2,
                 borderRadius: 16,
