@@ -14,21 +14,12 @@ const Blogs = ({ filter, page, allBlogs }) => {
 
   /*:: filter start (this block will be inside useEffect) ::*/
   let url;
-
-  const size = "4";
   if (!filter) {
-    if (!allBlogs) {
-      url = `http://localhost:5000/blogs/?page=${page}&&size=${size}}`;
-    } else {
-      url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
-    }
-    // url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
-    // url = `http://localhost:5000/blogs/?page=${page}&&size=${size}}`;
+    url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
   } else {
     url = `http://localhost:5000/blogs?filter=${filter}`;
     console.log(url);
   }
-
   /*:: filter end ::*/
 
   useEffect(() => {

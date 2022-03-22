@@ -26,8 +26,8 @@ const Home = () => {
         onClick={() => handleLoadMore()}
         style={{ display: "flex", justifyContent: "center" }}
       >
-        {!allBlogs && !filter && <LoadMore />}
-        {/* <LoadMore /> */}
+        {/* {!allBlogs && !filter && <LoadMore />} */}
+        <LoadMore />
       </div>
       <br />
     </div>
