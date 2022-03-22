@@ -110,7 +110,7 @@ const Overview = () => {
   const text= mode === "light" ? "black" : "darkLight" ;
   const card= mode === "light" ? "moreLight" : "moreDark";
   const bg= mode ==="light" ? "lightest" : "darkish";
-
+  //over view color css
   return (
     <Box >
       <Grid
