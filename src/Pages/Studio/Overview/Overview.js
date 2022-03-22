@@ -110,7 +110,7 @@ const Overview = () => {
   const text= mode === "light" ? "black" : "darkLight" ;
   const card= mode === "light" ? "moreLight" : "moreDark";
   const bg= mode ==="light" ? "lightest" : "darkish";
-
+  //over view color css
   return (
     <Box >
       <Grid
@@ -198,7 +198,7 @@ const Overview = () => {
         {/* right side cards  */}
         <Grid item xs={4}>
           {/* card stats  */}
-          <Card sx={{ width: "80%" }} className="overview-left">
+          <Card sx={{ width: "80%" }} className="overview-left" id={card}>
             <CardContent>
               <Box sx={{ py: 1, borderBottom: 1 }}>
                 <Typography

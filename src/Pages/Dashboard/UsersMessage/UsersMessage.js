@@ -35,9 +35,9 @@ const UsersMessage = () => {
     // if(!authToken) return <Auth />
     
     return (
-        <div style={{height:'100vh', background:'#091a2b'}} className="app__wrapper">
-            <Chat client={client} theme="team light">
-                <ChannelListContainer 
+        <div style={{height:'100vh', background:'#0e0e10'}} className="app__wrapper">
+            <Chat client={client} theme= "team light">
+                <ChannelListContainer  
                     isCreating={isCreating}
                     setIsCreating={setIsCreating}
                     setCreateType={setCreateType}

@@ -1,8 +1,10 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import ButtonUnstyled, { buttonUnstyledClasses } from '@mui/base/ButtonUnstyled';
-import { styled } from '@mui/system';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import * as React from "react";
+import PropTypes from "prop-types";
+import ButtonUnstyled, {
+  buttonUnstyledClasses,
+} from "@mui/base/ButtonUnstyled";
+import { styled } from "@mui/system";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const ButtonRoot = React.forwardRef(function ButtonRoot(props, ref) {
   const { children, ...other } = props;
@@ -23,23 +25,23 @@ ButtonRoot.propTypes = {
 };
 
 const blue = {
-  50: '#F0F7FF',
-  100: '#C2E0FF',
-  200: '#99CCF3',
-  400: '#3399FF',
-  500: '#007FFF',
-  600: '#0072E5',
-  800: '#004C99',
-  900: '#003A75',
+  50: "#F0F7FF",
+  100: "#C2E0FF",
+  200: "#99CCF3",
+  400: "#3399FF",
+  500: "#007FFF",
+  600: "#0072E5",
+  800: "#004C99",
+  900: "#003A75",
 };
 
 const CustomButtonRoot = styled(ButtonRoot)(
   ({ theme }) => `
   overflow: visible;
   cursor: pointer;
-  --main-color: ${theme.palette.mode === 'light' ? blue[600] : blue[100]};
-  --hover-color: ${theme.palette.mode === 'light' ? blue[50] : blue[900]};
-  --active-color: ${theme.palette.mode === 'light' ? blue[100] : blue[800]};
+  --main-color: ${theme.palette.mode === "light" ? blue[600] : blue[100]};
+  --hover-color: ${theme.palette.mode === "light" ? blue[50] : blue[900]};
+  --active-color: ${theme.palette.mode === "light" ? blue[100] : blue[800]};
 
   & polygon {
     fill: transparent;
@@ -75,7 +77,7 @@ const CustomButtonRoot = styled(ButtonRoot)(
 
   &:focus,
   &.${buttonUnstyledClasses.focusVisible} {
-    outline: 2px solid ${theme.palette.mode === 'dark' ? blue[400] : blue[200]};
+    outline: 2px solid ${theme.palette.mode === "dark" ? blue[400] : blue[200]};
     outline-offset: 2px;
   }
 
@@ -105,7 +107,7 @@ const CustomButtonRoot = styled(ButtonRoot)(
     & svg {
       margin: 0 5px;
     }
-  }`,
+  }`
 );
 
 const SvgButton = React.forwardRef(function SvgButton(props, ref) {
@@ -113,5 +115,9 @@ const SvgButton = React.forwardRef(function SvgButton(props, ref) {
 });
 
 export default function LoadMore() {
-  return <SvgButton>Load More... <ArrowDownwardIcon/></SvgButton>;
+  return (
+    <SvgButton o>
+      Load More... <ArrowDownwardIcon />
+    </SvgButton>
+  );
 }

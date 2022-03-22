@@ -47,6 +47,7 @@ import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/Ad
 import Test from "./Pages/Upload/test/Test.jsx"
 import Blogs from "./Pages/Home/BLogs/Blogs";
 import AllBlogs from "./Pages/Dashboard/AllBlogs";
+import LikedBlogs from "./Pages/Home/LikedBlogs/LikedBlogs";
 
 
 function App() {
@@ -87,6 +88,7 @@ function App() {
           <Route path="/test" element={<Test />}></Route>
 
           <Route path="/candyBlock" element={<CandyBlock />}></Route>
+          <Route path="/likedBlogs" element={<LikedBlogs />}></Route>
 
           <Route
             path="/breakout"
