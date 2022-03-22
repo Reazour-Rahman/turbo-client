@@ -4,10 +4,10 @@ import { Box, Button, Divider, Typography } from "@mui/material";
 import './Likes.css';
 import { useSelector } from "react-redux";
 
-const LeftSection = (like) => {
+const LeftSection = ({video, thumbnail, views, likes, uploadTime}) => {
     let pl;
     pl = localStorage.getItem("theme");
-    let text = pl === "light" ? "black" : "darkLight"
+    let text = pl === "light" ? "black" : "darkLight";
 
     const [selectedValue, setSelectedValue] = React.useState("a");
     const user = useSelector((state) => state.firebase.user)
@@ -29,12 +29,12 @@ const LeftSection = (like) => {
     return (
         <div>
             <div>
-                <video controls src={like.video} poster={like.thumbnail} type="video" className='like-video'></video>
+                <video controls src={video} poster={thumbnail} type="video" className='like-video'></video>
             </div>
 
-            <Button id={text}>Liked Videos</Button>
+            <p id={text}>Liked Video</p>
             <br />
-            <small id={text}>39 videos  Last updated on Sep 15, 2021</small>
+            <small id={text}>{views} views  Last updated on {uploadTime}</small>
             <br />
             <br />
             <Divider />
