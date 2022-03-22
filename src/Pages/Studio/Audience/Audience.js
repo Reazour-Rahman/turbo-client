@@ -98,11 +98,8 @@ const Audience = () => {
   const [graph, setGraph] = useState(returningViewers);
 
   return (
-    <Box sx={{  }}>
-      <Box
-        sx={{ margin: "0 auto", width: "80%" }}
-        className="chart-container overview-left"
-      >
+    <Box sx={{}}>
+      <Box className="chart-container overview-left viewer-chart-container">
         <Grid container sx={{ textAlign: "center" }}>
           <Grid
             tabIndex="0"
@@ -167,7 +164,7 @@ const Audience = () => {
         <Graph data={graph}></Graph>
       </Box>
 
-      <Box sx={{ margin: "0 auto", width: "80%", my: 5, color: "white" }}>
+      <Box sx={{ margin: "0 auto", my: 5, color: "white" }}>
         <Grid container justifyContent="space-between">
           {/* left  */}
           <Grid xs={5.8}>
@@ -219,7 +216,7 @@ const Audience = () => {
 
           {/* right  */}
           <Grid xs={5.8}>
-            <Box sx={{  }} className="chart-container">
+            <Box sx={{}} className="chart-container">
               <Box>
                 <h5>Other channels your audience watches</h5>
                 <p className="card-text"> Last 28 days</p>
