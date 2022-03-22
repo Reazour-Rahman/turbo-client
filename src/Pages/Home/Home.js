@@ -7,11 +7,11 @@ import NavigationBar2 from "./NavigationBar/NavigationBar2";
 const Home = () => {
   const [filter, setFilter] = useState("");
   const [page, setPage] = useState(0);
-  const [allBlogs, setAllblogs] = useState(false);
+  const [loadMore, setLoadMore] = useState(true);
 
   const handleLoadMore = () => {
-    setPage(1);
-    setAllblogs(true);
+    setPage(page + 1);
+    // setLoadMore(true);
     console.log("load more");
   };
 
@@ -20,14 +20,14 @@ const Home = () => {
     <div style={{ paddingLeft: "51px" }}>
       <Banner />
       <NavigationBar2 setFilter={setFilter}></NavigationBar2>
-      <Blogs filter={filter} page={page} allBlogs={allBlogs} />
+      <Blogs filter={filter} page={page} setLoadMore={setLoadMore} />
       <br /> <br />
       <div
         onClick={() => handleLoadMore()}
         style={{ display: "flex", justifyContent: "center" }}
       >
         {/* {!allBlogs && !filter && <LoadMore />} */}
-        <LoadMore />
+        {loadMore && <LoadMore />}
       </div>
       <br />
     </div>

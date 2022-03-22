@@ -4,18 +4,19 @@ import Blog from "./Blog";
 import Progress from "./Progress";
 import "./Video.css";
 
-const Blogs = ({ filter, page, allBlogs }) => {
+const Blogs = ({ filter, page, setLoadMore }) => {
   /*:::::::::::::::::::::::::::::::::::::::::
                 ALl states
     ::::::::::::::::::::::::::::::::::::::::::*/
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const size = 4;
   // console.log(filter) ;
 
   /*:: filter start (this block will be inside useEffect) ::*/
   let url;
   if (!filter) {
-    url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+    url = `http://localhost:5000/blogs?page=${page}&&size=${size}`;
   } else {
     url = `https://aqueous-chamber-45567.herokuapp.com/blogs?filter=${filter}`;
     console.log(url);
@@ -30,6 +31,10 @@ const Blogs = ({ filter, page, allBlogs }) => {
       .then((data) => {
         setLoading(false);
         setBlogs(data.blogs);
+        const n = Math.ceil(data.count / 4);
+        if (page === n - 1) {
+          setLoadMore(false);
+        }
       });
   }, [url]);
 
