@@ -4,15 +4,15 @@ import { Link} from 'react-router-dom';
 import { green } from "@mui/material/colors";
 import { useSelector } from 'react-redux';
 
-const AmazonProducts = () => {
+const UserAmazonProducts = ({email}) => {
     const user = useSelector((state) => state.firebase.user);
     const [products, setProducts] = useState([]);
-
+console.log(email);
     useEffect(() => {
-        fetch(`http://localhost:5000/products?email=${user?.email}`)
+        fetch(`http://localhost:5000/products?email=${email.email}`)
             .then(res => res.json())
             .then(data => setProducts(data?.products))
-    }, [user.email])
+    }, [email.email])
 
     console.log(products)
 
@@ -114,4 +114,4 @@ const AmazonProducts = () => {
     );
 };
 
-export default AmazonProducts;
+export default UserAmazonProducts;

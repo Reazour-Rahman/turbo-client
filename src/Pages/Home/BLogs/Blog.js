@@ -27,7 +27,7 @@ const Blog = (props) => {
   const matched = viewers?.find(v => v.viewerEmail === user.email)
 
   const singleBlog = async (id) => {
-    navigate(`details/${id}`)
+    navigate(`/details/${id}`)
 
     if (matched) {
       const viewsData = {

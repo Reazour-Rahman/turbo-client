@@ -70,6 +70,7 @@ export default function UserProfileSearchBar({email}) {
   const [bloggerProfile, setBloggerProfile] = React.useState({})
   const [follow, setFollow] = React.useState(false)
   const [count, setCount] = React.useState(0)
+  const [myUser, setMyUser] = React.useState({})
 
   const user = useSelector(state => state.firebase.user)
   React.useEffect(() => {
@@ -97,7 +98,15 @@ export default function UserProfileSearchBar({email}) {
     })
   },[email.email, count])
 
-  console.log(followed);
+  React.useEffect(() => {
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/user/${user?.email}`)
+    .then(res => res.json())
+    .then(data => {
+      setMyUser(data)
+    })
+  },[user.email, count])
+
+  console.log('my user', myUser);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -190,27 +199,43 @@ export default function UserProfileSearchBar({email}) {
       followersCount : bloggerProfile.followersCount + 1,
       followers : [{followerEmail : user.email}, ...bloggerProfile.followers]
     }
+    const following = {
+      followingsCount : myUser.followingsCount + 1,
+      followings : [{followingEmail : email.email}, ...myUser.followings]
+    }
     setFollowed(true)
     setCount(count + 1)
     axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${email.email}`, follower)
+    axios.put(`http://localhost:5000/users/followings/${user?.email}`, following)
   }
 
   const handleUnFollow = () => {
     console.log('unfollow clicked');
     const userWithdraw = bloggerProfile.followers.filter(l => l?.followerEmail !== user?.email)
+    const userWithdraw2 = myUser.followings.filter(l => l?.followingEmail !== email.email)
     console.log(userWithdraw);
     const follower = {
       followersCount : bloggerProfile.followersCount - 1,
       followers : [...userWithdraw]
     }
+    const following = {
+      followingsCount : myUser.followingsCount - 1,
+      followings : [...userWithdraw2]
+    }
     setFollowed(false)
     setCount(count + 1)
     axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${email.email}`, follower)
+    axios.put(`http://localhost:5000/users/followings/${user?.email}`, following)
   }
+
+  let mode = localStorage.getItem("theme");
+  const card = mode === "light" ? "moreLight" : "moreDark" ;
+  const bg = mode === "light" ? "lightest" : "darkish";
+  const text = mode === "light" ? "black" : "darkLight" ;
   return (
     <Box>
       <Box sx={{ flexGrow: 1, mt: "25px" }}>
-        <AppBar position="static" style={{ backgroundColor: "inherit" }}>
+        <AppBar position="static" id={card}>
           <Toolbar>
             <IconButton
               size="large"
@@ -227,6 +252,7 @@ export default function UserProfileSearchBar({email}) {
             </IconButton>
             <Box>
               <Typography
+               id={text}
                 variant="h6"
                 noWrap
                 component="div"
@@ -234,17 +260,18 @@ export default function UserProfileSearchBar({email}) {
               >
                 {profile.roomName}
               </Typography>
-              <Typography style={{ fontSize: 12, fontWeight: 500, color: "rgba(255, 255, 255, 0.823)" }}>
-                {bloggerProfile.followersCount} Followers
+              <Typography style={{ fontSize: 12, fontWeight: 500, color: "rgba(255, 255, 255, 0.823)" }} id={text}>
+              {bloggerProfile.followersCount} Followers
               </Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Search sx={{ borderRadius: "20px" }}>
+              <Search sx={{ borderRadius: "20px" }} id={bg}>
                 <SearchIconWrapper>
-                  <SearchIcon />
+                  <SearchIcon id={text}/>
                 </SearchIconWrapper>
                 <StyledInputBase
+                 id={text}
                   placeholder="Search videos"
                   inputProps={{ "aria-label": "search" }}
                 />

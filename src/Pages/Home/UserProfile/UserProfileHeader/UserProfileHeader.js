@@ -8,7 +8,7 @@ const UserProfileHeader = ({email}) => {
     return (
         <Grid>
             <UserProfileSearchBar email={email}/>
-            <UserProfileNavbar email={email} />
+            {/* <UserProfileNavbar email={email} /> */}
         </Grid>
     );
 };
