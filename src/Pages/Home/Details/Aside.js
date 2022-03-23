@@ -5,12 +5,45 @@ import { CardActionArea } from "@mui/material";
 import "./detailsvideo.css";
 import VideoPlayer from "react-video-js-player";
 import videoSrc from "../../../assets/gig.mp4";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 export default function Aside(props) {
   const { data } = props;
   const p = data[0];
 
-  console.log("rabby bahi", p);
+  const [allViewers, setAllViewers] = React.useState([])
+  const { _id, title, video, bloggerName, category, bloggerEmail, viewers, uploadTime, thumbnail, bloggerPhoto, views, description } =data;
+  const navigate = useNavigate()
+  const user = useSelector(state => state.firebase.user)
+  const matched = viewers?.find(v => v.viewerEmail === user.email)
+
+  const singleBlog = async (id) => {
+    navigate(`/details/${id}`)
+
+    if (matched) {
+      const viewsData = {
+        views : views + 1,
+        viewers : [...viewers]
+      }
+      await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
+    }
+    else {
+      const viewerData = {viewerEmail :user.email}
+      const viewsData = {
+        views : views + 1,
+        viewers : [...viewers,  viewerData]
+      }
+      await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
+    }
+
+    const data = {
+      blogId : _id, viewerName:user.displayName, viewerEmail:user.email, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto, views, description
+    }
+    await axios.post('https://aqueous-chamber-45567.herokuapp.com/views', data)
+
+  }
 
   const [products, setProducts] = React.useState([]);
   const [loader, setLoader] = React.useState(false);
@@ -54,15 +87,17 @@ export default function Aside(props) {
                     poster={blog.thumbnail}
                     className="video-size-aside"
                   />
-                  <CardContent
-                    style={{ margin: "0px", padding: "0px", paddingTop: "5px" }}
-                  >
-                    <small id={text} gutterBottom>{blog.title.slice(0, 40)}..</small>{" "}
-                    <br />
-                    <small>
-                      <strong id={text}>{blog.bloggerName}</strong>
-                    </small>
-                  </CardContent>
+                  <div onClick={() => singleBlog(blog._id)}  style={{textDecoration:"none"}}>
+                    <CardContent
+                      style={{ margin: "0px", padding: "0px", paddingTop: "5px" }}
+                    >
+                      <small id={text} gutterBottom>{blog.title.slice(0, 40)}..</small>{" "}
+                      <br />
+                      <small>
+                        <strong id={text}>{blog.bloggerName}</strong>
+                      </small>
+                    </CardContent>
+                  </div>
                 </CardActionArea>
               </Card>
             ) : null

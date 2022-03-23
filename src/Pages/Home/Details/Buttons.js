@@ -146,7 +146,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
           <div className="holder-container">
             <Avatar
               alt="Remy Sharp"
-              src="https://reazour-rahaman.netlify.app/static/media/MyPgoto.a3d16b45.png"
+              src={bloggerPhoto}
             />
 
             <p className="holder-details">

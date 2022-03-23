@@ -29,25 +29,14 @@ function preventDefault(event) {
 
 
 const MakeAdmin = (props) => {
-    const { _id, bloggerName, index, status, bloggerEmail, pending, approved, name, role, email } =
+    const { index, name, role, email } =
         props.blogger;
-    const [adminemail, setadminEmail] = useState('');
-    const [success, setSuccess] = useState(false);
-
-    const handleMakeAdmin = e => {
-        const makeAdmin = { email };
-    }
-
     const handleAdminSubmit = e => {
-
         const user = { email, role };
-
         fetch("https://aqueous-chamber-45567.herokuapp.com/makeAdmin", {
-
-
             method: 'PUT',
             headers: {
-                // 'authorization': `Bearer ${localStorage.getItem('idToken')}`,
+                'authorization': `Bearer ${localStorage.getItem('idToken')}`,
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)
@@ -90,14 +79,11 @@ const MakeAdmin = (props) => {
                                                 {role == "admin" ? <form onClick={handleAdminSubmit}>
                                                     <Button className='bg-success' style={{
                                                         borderRadius: 35,
-                                                        // backgroundColor: "#21b6ae",
-                                                        // backgroundColor: "#21b6ae",
                                                         padding: "4px 16px",
                                                         fontSize: "10px",
                                                         status: 'pending',
                                                         onclick: { handleAdminSubmit },
 
-                                                        // role: 'admin'
                                                     }} variant="contained">Admin</Button></form> : <form onClick={handleAdminSubmit}>
                                                     <Button style={{
                                                         borderRadius: 35,
@@ -105,7 +91,6 @@ const MakeAdmin = (props) => {
                                                         padding: "4px 16px",
                                                         fontSize: "10px",
                                                         onclick: { handleAdminSubmit },
-                                                        // role: 'admin'
                                                     }} variant="contained"> User</Button>
                                                 </form>}
 

@@ -45,9 +45,14 @@ import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAma
 import AllBookingProducts from "./Pages/Home/Profile/AmazonProducts/AllBookingProducts/AllBookingProducts";
 import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/AddCart/AddCart"
 import Test from "./Pages/Upload/test/Test.jsx"
+
+import Like from "./Pages/Home/Likes/Like";
+
 import Blogs from "./Pages/Home/BLogs/Blogs";
 import AllBlogs from "./Pages/Dashboard/AllBlogs";
 import LikedBlogs from "./Pages/Home/LikedBlogs/LikedBlogs";
+import YourVideos from "./Pages/Home/YourVideos/YourVideos";
+
 
 
 function App() {
@@ -118,6 +123,9 @@ function App() {
           {/* <Route path="/history" element={<HistoryList />}></Route> */}
 
           <Route path="/history" element={<History />}></Route>
+          <Route path="/yourVideos" element={<YourVideos />}></Route>
+          <Route path="/likes" element={<Like />}></Route>
+
 
 
           <Route path="/details/:blogId" element={<PrivateRoute><Details /></PrivateRoute>}></Route>
@@ -126,7 +134,7 @@ function App() {
 
           <Route path="/profile" element={<Profile />}>
 
-            
+
 
           </Route>
           <Route exact path='/profile/booking-products' element={<AllBookingProducts />} />

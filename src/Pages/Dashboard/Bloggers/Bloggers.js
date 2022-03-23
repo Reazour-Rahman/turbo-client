@@ -107,6 +107,8 @@ const Bloggers = () => {
                         displayBloggers?.map((blogger) => blogger?.room?.roomName ? <Blogger email={blogger?.email} followersCount={blogger?.followersCount} blogger={blogger?.room}></Blogger> : null)
                     }
                 </Grid>
+
+
             </Box>
         </div>
     );
