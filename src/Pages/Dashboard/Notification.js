@@ -16,9 +16,9 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Button } from "@mui/material";
 import useFirebase from "../../Hooks/useFirebase";
 import { fontSize } from "@mui/system";
+import { useSelector } from "react-redux";
 
 export default function Messaging() {
-  const { user, logOut } = useFirebase();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -37,6 +37,25 @@ export default function Messaging() {
   const iconStyle = {
     marginRight: 25,
   };
+  const user = useSelector((state) => state.firebase.user)
+  const [notification, setNotification] = React.useState({});
+  const [myNot, setMyNot] = React.useState({});
+
+  React.useEffect(()=>{
+    fetch('http://localhost:5000/notifications')
+    .then(res => res.json())
+    .then(data => {
+      // data.map(d=> d.email === user.email && setNotification(d));
+      
+      for (const d of data) {
+        setNotification(d)
+      }
+    })
+  },[]);
+
+  
+  
+
 
   return (
     <React.Fragment>
@@ -112,10 +131,10 @@ export default function Messaging() {
 
         <Divider className="dev" />
 
-        {[0, 1, 2, 3, 4, 5, 6].map((element) => (
-          <Link style={{ textDecoration: "none" }} to="/manage-account">
+        {[1].map((element) => (
+          <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style">
-              <small style={{width:"100px", color:"white"}}>Rabby rahaman requested <br /> for having monetization waterway.</small>
+              <small style={{width:"100px", color:"white"}}>{notification?.title} <br /> {notification?.reply}</small>
             </MenuItem>
           </Link>
         ))}

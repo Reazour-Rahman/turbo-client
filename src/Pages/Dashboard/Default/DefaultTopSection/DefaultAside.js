@@ -151,7 +151,7 @@ const DefaultAside = () => {
           <p id={text}>2021 Costs</p>
 
           <div className="top-align text-color-container">
-            <h2 className="default-margin">${cost[1]?.cost}</h2>
+            <h2 className="default-margin">${cost[0]?.cost}</h2>
             <h4 className={condition0}>{costChange.toFixed(2)}%</h4>
 
             {costChange < 0 ? (
