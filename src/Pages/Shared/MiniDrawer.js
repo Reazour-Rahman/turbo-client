@@ -51,6 +51,7 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
+  overflowY: "auto",
 });
 
 const closedMixin = (theme) => ({
@@ -59,6 +60,7 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
+  overflowY: "auto",
   width: `calc(${theme.spacing(7)} - 21px)`,
   [theme.breakpoints.up("xs")]: {
     width: `calc(${theme.spacing(9)} - 21px)`,
