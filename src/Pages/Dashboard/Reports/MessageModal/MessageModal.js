@@ -4,7 +4,17 @@ import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
 import { Button, Divider, TextField } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
-const MessageModal = (props) => {
+import { useForm } from "react-hook-form";
+import axios from "axios";
+const MessageModal = ({
+  open,
+  handleClose,
+  style,
+  displayName,
+  title,
+  description,
+  email,
+}) => {
   /* ::: textarea style ::::*/
   const CssTextField = styled(TextField)({
     "& label.Mui-focused": {
@@ -26,13 +36,19 @@ const MessageModal = (props) => {
     },
   });
 
-  const open = props.open;
-  const handleClose = props.handleClose;
-  const style = props.style;
-  const displayName = props.displayName;
-  const title = props.title;
-  const description = props.description;
-  const email = props.email;
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data) => {
+    const notification = {
+      displayName,
+      email,
+      title,
+      description,
+      type: "Reply from admin",
+      ...data,
+    };
+    axios.post("http://localhost:5000/notifications", notification);
+    reset();
+  };
 
   return (
     <Modal
@@ -60,6 +76,7 @@ const MessageModal = (props) => {
         </Box>
 
         <form
+          onSubmit={handleSubmit(onSubmit)}
           action="
        "
         >
@@ -70,6 +87,7 @@ const MessageModal = (props) => {
             multiline
             rows={4}
             focused
+            {...register("reply", { required: true })}
           />
           <Button
             type="submit"

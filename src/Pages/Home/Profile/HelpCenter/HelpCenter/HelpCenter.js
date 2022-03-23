@@ -14,8 +14,9 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import ChannelSetting from "../ChannelSetting/ChannelSetting";
 import useFirebase from "../../../../../Hooks/useFirebase";
 import { useForm } from "react-hook-form";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CloseIcon from '@mui/icons-material/Close';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CloseIcon from "@mui/icons-material/Close";
+import { useSelector } from "react-redux";
 
 const style = {
   position: "absolute",
@@ -29,7 +30,7 @@ const style = {
   boxShadow: 24,
   p: 4,
   // backgroundColor: '#091a2b',
-  color: 'white'
+  color: "white",
 };
 
 const Search = styled("div")(({ theme }) => ({
@@ -82,10 +83,12 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
 
   /* const [title, setTitle] = useState("");
   const [description, setDescription] = useState(""); */
-  const { user } = useFirebase();
+  // const { user } = useFirebase();
+  const user = useSelector((state) => state.firebase.user);
   const displayName = user?.displayName;
   const email = user?.email;
 
+  console.log(user);
   const handleModalSubmit = (data) => {
     // console.log(data);
     let userHelp = { ...data, displayName, email };
@@ -122,25 +125,26 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
         }}
       >
         <Fade in={openModal}>
-
           <Box sx={style} id={bg}>
-            <Grid 
-            style={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              marginBottom: '30px' 
-              }}>
+            <Grid
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "30px",
+              }}
+            >
               <Button onClick={handleCloseModal}>
                 <ArrowBackIcon></ArrowBackIcon>
               </Button>
 
-              <Typography 
-              sx={{ 
-                fontWeight: 'bold', 
-                }} 
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                }}
                 id={text}
                 variant="h4"
-                >Help Center
+              >
+                Help Center
               </Typography>
 
               <Button onClick={handleCloseModal}>
@@ -157,49 +161,45 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
               />
             </Search>
             <Box sx={{ mt: 3 }}>
-              <Typography 
-              id={text}
-              variant="h6" 
-              component="h2" 
-              sx={{ 
-      
-                }}>
+              <Typography id={text} variant="h6" component="h2" sx={{}}>
                 Popular help resources
               </Typography>
               <Divider />
               <Box sx={{ mt: 2 }}>
                 <Button
                   onClick={handleOpenSetting}
-                  sx={{ 
-                    textDecoration: "none", 
-                    color: "inherit" 
+                  sx={{
+                    textDecoration: "none",
+                    color: "inherit",
                   }}
                 >
                   <MenuItem sx={{ fontSize: 15, fontWeight: 400 }}>
                     <ListItemIcon>
-                      <DescriptionIcon 
-                      id={text}
-                      sx={{ 
-                        fontSize: 18 
-                        }} />
+                      <DescriptionIcon
+                        id={text}
+                        sx={{
+                          fontSize: 18,
+                        }}
+                      />
                     </ListItemIcon>
                     Manage clannel settings
                   </MenuItem>
                 </Button>
                 <Button
                   onClick={handleOpenSetting}
-                  sx={{ 
-                    textDecoration: "none", 
-                    color: "inherit" 
-                }}
+                  sx={{
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
                 >
                   <MenuItem sx={{ fontSize: 15, fontWeight: 400 }} id={text}>
                     <ListItemIcon>
-                      <DescriptionIcon 
-                      id={text}
-                      sx={{ 
-                        fontSize: 18 
-                        }} />
+                      <DescriptionIcon
+                        id={text}
+                        sx={{
+                          fontSize: 18,
+                        }}
+                      />
                     </ListItemIcon>
                     Manage clannel settings
                   </MenuItem>
@@ -210,24 +210,23 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
                 >
                   <MenuItem sx={{ fontSize: 15, fontWeight: 400 }} id={text}>
                     <ListItemIcon>
-                      <DescriptionIcon 
-                      id={text}
-                      sx={{ 
-
-                        fontSize: 18 }} />
+                      <DescriptionIcon
+                        id={text}
+                        sx={{
+                          fontSize: 18,
+                        }}
+                      />
                     </ListItemIcon>
                     Manage clannel settings
                   </MenuItem>
                 </Button>
-
-
               </Box>
               {/* :::::::::::::::::::::::::
                 form starts        
                 ::::::::::::::::::::::::*/}
               <form onSubmit={handleSubmit(handleModalSubmit)}>
                 <TextField
-                focused
+                  focused
                   className={card}
                   sx={{ width: "100%", mt: 2 }}
                   id="outlined-multiline-static"
@@ -241,7 +240,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
                 />
 
                 <TextField
-                focused
+                  focused
                   className={card}
                   sx={{ width: "100%", mt: 2 }}
                   id="outlined-multiline-static"
@@ -253,10 +252,10 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
                   required
                   {...register("description", { required: true })}
 
-                //   onBlur={(e) => setDescription(e.target.value)}
+                  //   onBlur={(e) => setDescription(e.target.value)}
                 />
                 <Button
-                id={text}
+                  id={text}
                   sx={{ width: "100%", mt: 2 }}
                   type="submit"
                   variant="contained"
