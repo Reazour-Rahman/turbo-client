@@ -38,6 +38,8 @@ const RoomDashboardHome = () => {
 
   // console.log('most views',mostviewed);
 
+  console.log(recentVideos);
+
   let mode;
   mode = localStorage.getItem("theme")
   const text= mode === "light" ? "black" : "darkLight" ;
@@ -53,7 +55,7 @@ const RoomDashboardHome = () => {
           {/* 1st Column */}
           <div className="first-column-size">
             <div className="card" style={{}} id={card}>
-              <h6 id={text}>Latest video performance</h6>
+              <h6 id={text}>Latest Blog performance</h6>
               {
                 recentVideos.map(r => <>
                   <VideoPlayer
@@ -141,39 +143,28 @@ const RoomDashboardHome = () => {
             <br />
             <div style={{ width: "100%", height: "300px" }}>
               <div className="card" style={{  }} id={card}>
-                <h6 id={text}>Latest Comments</h6>
-                <p id={text}>Room comments that I haven't responded to</p>
-
-                <div className="grid-carddetails-container">
-                  <div class="">
-                    <p id={text}>Study Care - 1 week ago</p>
-                    <p id={text}>go ahead bro</p>
-                  </div>
-                  <div class="">
-                    <img
-                      style={{ width: "50%" }}
-                      src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                      alt="Pic"
-                    />
-                  </div>
-                </div>
-                <hr />
-                <div className="grid-carddetails-container">
-                  <div class="grid-item">
-                    <p id={text}>Nillama som - 2 months ago</p>
-                    <p id={text}>Good Job</p>
-                  </div>
-                  <div class="grid-item">
-                    <img
-                      style={{ width: "50%" }}
-                      src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                      alt="Pic"
-                    />
-                  </div>
-                </div>
-                <a href="" style={{ textDecoration: "none" }}>
-                  VIEW MORE
-                </a>
+                <h6 id={text}>Latest Blog Comments</h6>
+                <h6 style={{marginBottom:'5px'}} id={text}>Latest 2 Comment Of Recent Blog</h6>
+                {
+                  recentVideos.map(ma=> <div>
+                    {
+                      ma.comment.map(m => <div style={{marginTop:'5px'}} className="grid-carddetails-container">
+                      <div >
+                        <p id={text}>{m.username} - {m.createdAt}</p>
+                        <p id={text}>{m.comment}</p>
+                      </div>
+                      <div class="">
+                        <img
+                          style={{ width: "50%" }}
+                          src={m.userImage}
+                          alt="Pic"
+                        />
+                      </div>
+                    </div>).reverse().slice(0,2)
+                    }
+                  </div>).reverse().slice(0,1)
+                }
+                
                 <br />
               </div>
             </div>
