@@ -55,6 +55,7 @@ import YourVideos from "./Pages/Home/YourVideos/YourVideos";
 
 
 
+
 function App() {
   const dispatch = useDispatch()
 
@@ -123,7 +124,9 @@ function App() {
           {/* <Route path="/history" element={<HistoryList />}></Route> */}
 
           <Route path="/history" element={<History />}></Route>
+
           <Route path="/yourVideos" element={<YourVideos />}></Route>
+
           <Route path="/likes" element={<Like />}></Route>
 
 

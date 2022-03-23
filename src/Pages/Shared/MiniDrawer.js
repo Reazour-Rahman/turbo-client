@@ -276,8 +276,12 @@ export default function MiniDrawer() {
           </NavLink>
 
           <Divider style={{ backgroundColor: "white" }} />
+
           <NavLink className='nav-btn' to='/yourVideos'>
           <ListItem button className="nav-btn" >
+
+          <ListItem button className="nav-btn">
+
             <ListItemIcon className="fs-6">
               <FavoriteBorderIcon id={mode === "light" ? "black" : "darkLight"} />
             </ListItemIcon>

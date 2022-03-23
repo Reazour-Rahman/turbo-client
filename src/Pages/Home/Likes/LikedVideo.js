@@ -1,10 +1,13 @@
+
 import React, { useState } from 'react';
+
 import './Likes.css';
 import video from '../../../assets/gig.mp4';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
+
 import { Box, IconButton, Typography } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Grid } from '@mui/material';
@@ -15,6 +18,15 @@ import { useSelector } from 'react-redux';
 
 
 const LikedVideo = ({ like }) => {
+
+import { IconButton } from '@mui/material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Grid } from '@mui/material';
+import axios from 'axios';
+
+
+const LikedVideo = ({ like, title, video }) => {
+
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -38,6 +50,7 @@ const LikedVideo = ({ like }) => {
     //         })
     //     handleClose()
     // }
+
 
     const [allViewers, setAllViewers] = useState([])
     const { _id, title, video, bloggerName, category, bloggerEmail, viewers, uploadTime, thumbnail, bloggerPhoto, views, description } =like;
@@ -71,12 +84,14 @@ const LikedVideo = ({ like }) => {
   
     }
 
+
     return (
         <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} className='like-video-container'>
 
             <Grid item xs={12} sm={12} md={4} lg={3}>
                 <video controls src={like.video} poster={like.thumbnail} type="video" className='like-video'></video>
             </Grid>
+
 
             <Grid item xs={12} sm={12} md={8} lg={9}> 
                 <div className='like-video-title-and-menu'>
@@ -91,6 +106,12 @@ const LikedVideo = ({ like }) => {
                    <p  id={text}>{like.description.slice(0,300)}</p>
                    </Box>
                     </div>
+
+            <Grid item xs={12} sm={12} md={8} lg={9}>
+                <div className='like-video-title-and-menu'>
+                    <p id={text}>{like.title}</p>
+                    <div>
+
                         <IconButton
                             size="large"
                             id="fade-button"
@@ -120,6 +141,11 @@ const LikedVideo = ({ like }) => {
 
                         </Menu>
                     </div>
+
+
+                </div>
+
+
             </Grid>
         </Grid>
     );
