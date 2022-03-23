@@ -20,6 +20,7 @@ import { green } from "@mui/material/colors";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import FollowingList from "./FollowingList";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -255,18 +256,8 @@ export default function ProfileSearchBar() {
                   inputProps={{ "aria-label": "search" }}
                 />
               </Search>
-              <Button
-                style={{
-                  backgroundColor: green[900],
-                  borderRadius: "20px",
-                  paddingInline: "15px",
-                  color: "white",
-                  marginRight: "10px",
-                }}
-              >
-                Donate
-              </Button>
-              {
+              <FollowingList></FollowingList>
+              {/* {
                 followed  ? <Button
                 style={{
                   backgroundColor: green[900],
@@ -292,7 +283,7 @@ export default function ProfileSearchBar() {
               >
                 Follow
               </Button>
-              }
+              } */}
               
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
