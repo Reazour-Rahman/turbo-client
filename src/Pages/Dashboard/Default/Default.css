@@ -223,3 +223,62 @@ tr{
 .status-transaction{
   color: #32cd32 !important;
 }
+
+
+/* Media */
+@media only screen and (max-width:1120px) {
+  .default-top-container {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: 15px;
+    padding: 25px;
+  }
+}
+@media only screen and (max-width:1090px) {
+  .default-top-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
+  }
+  .default-bottom-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
+    padding-top: 0% ;
+  }
+}
+
+@media only screen and (max-width:750px) {
+  .default-top-container {
+    gap: 10px;
+    padding: 10px;
+  }
+  .default-bottom-container {
+    gap: 10px;
+    padding: 10px;
+    padding-top: 0% ;
+  }
+}
+@media only screen and (max-width:650px) {
+  .default-top-container {
+    gap: 10px;
+    padding: 10px;
+  }
+  .default-bottom-container {
+    gap: 10px;
+    padding: 10px;
+    padding-top: 0% ;
+  }
+  .top-three-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  .members-container{
+  display: none;
+  }
+  
+  
+}

@@ -1,5 +1,6 @@
 
-import React, { FunctionComponent } from "react";
+import  { FunctionComponent } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -137,10 +138,23 @@ const CustomizedYAxisTick: FunctionComponent<any> = (props: any) => {
 };
 
 export default function Visitors() {
+    /* Send Visitors Data  */
+    const [visit, setVisit] = useState([]);
+
+    useEffect(()=>{
+      fetch("http://localhost:5000/uniqueVisitors")
+      .then(res => res.json())
+      .then(data => {
+        // data.map(d => setVisit(d)) 
+        setVisit(data) 
+      })
+    },[])
+
+    
   return (
     <ResponsiveContainer height={450}>
     <LineChart
-      data={data}
+      data={visit}
     >
       <CartesianGrid strokeDasharray="0 0" />
       <XAxis dataKey="name" height={60} tick={<CustomizedAxisTick />} />
