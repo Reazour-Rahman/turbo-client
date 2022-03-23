@@ -1,0 +1,10 @@
+.Multiplication {
+    text-align: center;
+    overscroll-behavior: none;
+}
+
+@media only screen and (max-width: 465px) {
+  .game-media{
+
+  }
+}
