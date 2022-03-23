@@ -35,7 +35,7 @@ console.log(email);
             </Box>
             {!isLoading===true ? 
              
-             <Grid style={{ textAlign: 'center' }}>
+             <Grid style={{ textAlign: 'center', height:"300px" }}>
                  <CircularProgress  id={text}/>
              </Grid>
              : 

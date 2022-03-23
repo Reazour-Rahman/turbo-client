@@ -52,6 +52,7 @@ import Blogs from "./Pages/Home/BLogs/Blogs";
 import AllBlogs from "./Pages/Dashboard/AllBlogs";
 import LikedBlogs from "./Pages/Home/LikedBlogs/LikedBlogs";
 import YourVideos from "./Pages/Home/YourVideos/YourVideos";
+import Multiplication from "./Pages/MultificaitonGame/Multificaiton";
 
 
 
@@ -116,6 +117,7 @@ function App() {
             }
           ></Route>
           <Route path="/message" element={<UsersMessage />}></Route>
+          <Route path="/multiplication" element={<Multiplication />}></Route>
 
 
           <Route path="/history" element={<History />}></Route>
