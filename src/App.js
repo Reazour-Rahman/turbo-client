@@ -51,6 +51,8 @@ import Like from "./Pages/Home/Likes/Like";
 import Blogs from "./Pages/Home/BLogs/Blogs";
 import AllBlogs from "./Pages/Dashboard/AllBlogs";
 import LikedBlogs from "./Pages/Home/LikedBlogs/LikedBlogs";
+import YourVideos from "./Pages/Home/YourVideos/YourVideos";
+
 
 
 
@@ -122,6 +124,9 @@ function App() {
           {/* <Route path="/history" element={<HistoryList />}></Route> */}
 
           <Route path="/history" element={<History />}></Route>
+
+          <Route path="/yourVideos" element={<YourVideos />}></Route>
+
           <Route path="/likes" element={<Like />}></Route>
 
 

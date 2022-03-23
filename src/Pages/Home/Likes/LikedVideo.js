@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Likes.css';
 import video from '../../../assets/gig.mp4';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
-import { IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Grid } from '@mui/material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
-const LikedVideo = ({ like, title, video }) => {
+const LikedVideo = ({ like }) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -36,6 +38,38 @@ const LikedVideo = ({ like, title, video }) => {
     //     handleClose()
     // }
 
+    const [allViewers, setAllViewers] = useState([])
+    const { _id, title, video, bloggerName, category, bloggerEmail, viewers, uploadTime, thumbnail, bloggerPhoto, views, description } =like;
+    const navigate = useNavigate()
+    const user = useSelector(state => state.firebase.user)
+    const matched = viewers?.find(v => v.viewerEmail === user.email)
+  
+    const singleBlog = async (id) => {
+      navigate(`/details/${id}`)
+  
+      if (matched) {
+        const viewsData = {
+          views : views + 1,
+          viewers : [...viewers]
+        }
+        await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
+      }
+      else {
+        const viewerData = {viewerEmail :user.email}
+        const viewsData = {
+          views : views + 1,
+          viewers : [...viewers,  viewerData]
+        }
+        await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
+      }
+  
+      const data = {
+        blogId : _id, viewerName:user.displayName, viewerEmail:user.email, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto, views, description
+      }
+      await axios.post('https://aqueous-chamber-45567.herokuapp.com/views', data)
+  
+    }
+
     return (
         <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} className='like-video-container'>
 
@@ -45,7 +79,17 @@ const LikedVideo = ({ like, title, video }) => {
 
             <Grid item xs={12} sm={12} md={8} lg={9}>
                 <div className='like-video-title-and-menu'>
+                <div onClick={() => singleBlog(like._id)} style={{cursor:'pointer'}} >
+                    <div>
                     <p id={text}>{like.title}</p>
+                    </div>
+                   <div>
+                   <p id={text}>{like.views} views </p>
+                   </div>
+                   <Box sx={{mt:2}}>
+                   <p  id={text}>{like.description.slice(0,300)}</p>
+                   </Box>
+                    </div>
                     <div>
                         <IconButton
                             size="large"
