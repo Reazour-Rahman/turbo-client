@@ -107,21 +107,7 @@ export const mainListItems = (
 
 export const secondaryListItems = (
     <React.Fragment>
-        <ListSubheader className='dashboard-button' id={text} component="div" inset>
-            Saved reports
-        </ListSubheader>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon id={text} className='dashboard-button' />
-            </ListItemIcon>
-            <ListItemText id={text} className='dashboard-button' primary="Another" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon id={text} className='dashboard-button' />
-            </ListItemIcon>
-            <ListItemText id={text} className='dashboard-button' primary="Another" />
-        </ListItemButton>
+        
         <ListItemButton>
             <ListItemIcon>
                 <LogoutIcon id={text} className='dashboard-button' />

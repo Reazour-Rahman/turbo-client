@@ -141,7 +141,7 @@ function RoomDashboardContent() {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open}>
+                <Drawer style={{height: '100vh'}} variant="permanent" open={open}>
                     <Toolbar
                         style={{  }}
                         id={card}
@@ -157,7 +157,7 @@ function RoomDashboardContent() {
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav" style={{ }} id={card}>
+                    <List component="nav" style={{ height: '100vh', }} id={card}>
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}
