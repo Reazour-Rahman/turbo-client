@@ -68,13 +68,14 @@ const AmazonProducts = () => {
                                <Button 
                                sx={{
                                borderRadius:"15px", 
-                               height: "18px", 
+                               height: "20px", 
                                width: "75px", 
                                fontSize: "12px",
-                               
+                               paddingTop: "8px",
+                               color: "white",
                                backgroundColor: green[900]
                                }} 
-                               id={text}
+                               
                                size="small"
                                >
                                    Detail
