@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './History.css';
 import video from '../../../assets/gig.mp4';
 import Button from '@mui/material/Button';
@@ -9,6 +9,8 @@ import { IconButton } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Grid } from '@mui/material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const HistoryVideo = ({history}) => {
@@ -38,6 +40,39 @@ const HistoryVideo = ({history}) => {
         }
       })
       handleClose()
+    }
+
+    const [allViewers, setAllViewers] = useState([])
+    const { _id, title, video, bloggerName, category, bloggerEmail, viewers, uploadTime, thumbnail, bloggerPhoto, views, description } = history;
+    const navigate = useNavigate()
+    const user = useSelector(state => state.firebase.user)
+    const matched = viewers?.find(v => v.viewerEmail === user.email)
+  
+    const singleBlog = async (id) => {
+      navigate(`/details/${id}`)
+  
+      if (matched) {
+        const viewsData = {
+          views : views + 1,
+          viewers : [...viewers]
+        }
+        await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
+      }
+      else {
+        const viewerData = {viewerEmail :user.email}
+        const viewsData = {
+          views : views + 1,
+          viewers : [...viewers,  viewerData]
+        }
+        await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
+      }
+  
+      const data = {
+        blogId : _id, viewerName:user.displayName, viewerEmail:user.email, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto, views, description
+      }
+      await axios.post('https://aqueous-chamber-45567.herokuapp.com/views', data)
+      handleClose()
+  
     }
     
     return (
@@ -72,8 +107,7 @@ const HistoryVideo = ({history}) => {
                             TransitionComponent={Fade}
                         >
                             <MenuItem onClick={() => deleteFromHistory(history._id)}>Remove From History</MenuItem>
-                            <MenuItem onClick={handleClose}>Add To Que</MenuItem>
-                            <MenuItem onClick={handleClose}>OPPS</MenuItem>
+                            <MenuItem onClick={() => singleBlog(history.blogId)}>Visit The Bog</MenuItem>
                         </Menu>
                     </div>
                 </div>

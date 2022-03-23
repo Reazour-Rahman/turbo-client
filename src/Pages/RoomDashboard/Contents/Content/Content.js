@@ -24,6 +24,9 @@ import { visuallyHidden } from '@mui/utils';
 import { Link } from 'react-router-dom';
 import UploadedVideos from '../UploadedVideo/UploadedVideos';
 import {  useSelector } from "react-redux";
+import { Button } from '@mui/material';
+import swal from 'sweetalert';
+import axios from 'axios';
 
 
 function createData(name, calories, fat, carbs, protein, comment, like) {
@@ -126,7 +129,7 @@ const headCells = [
     id: 'like',
     numeric: true,
     disablePadding: false,
-    label: 'like (vs Dislike)',
+    label: 'like',
   },
 ];
 
@@ -138,7 +141,7 @@ function EnhancedTableHead(props) {
   // };
 
   return (
-    <TableHead>
+    <TableHead id={card}>
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
@@ -196,12 +199,9 @@ const EnhancedTableToolbar = (props) => {
       sx={{
         
         pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-        }),
+        pr: { xs: 1, sm: 1 }
       }}
+      id={bg}
     >
 
       {numSelected > 0 ? (
@@ -308,6 +308,32 @@ const [blogs, setBlogs] = React.useState([])
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
 
+    const handleDelete = (id) => {
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary Blog!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          axios.delete(`http://localhost:5000/blogs/${id}`)
+          .then(res => {
+              if (res.data.deletedCount) {
+                    const remaining = blogs.filter(b => b._id !== id)
+                    setBlogs(remaining)
+                    swal("Poof! Your imaginary Blog has been deleted!", {
+                      icon: "success",
+                    });
+              }
+            })
+          
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
+    }
 
 
   return (
@@ -317,8 +343,8 @@ const [blogs, setBlogs] = React.useState([])
     }}
     id={bg}
     >
-      <Box>
-        <Box sx={{mb: 2}} >
+      <Box id={bg}>
+        <Box  sx={{mb: 2}} >
           <Link
             style={{
               marginLeft: '20px',
@@ -351,6 +377,7 @@ const [blogs, setBlogs] = React.useState([])
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
             size={dense ? 'small' : 'medium'}
+            id={card}
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -360,43 +387,26 @@ const [blogs, setBlogs] = React.useState([])
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
-            <TableBody>
-              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
-              {stableSort(rows, getComparator(order, orderBy))
-                
-                .map((row, index) => {
-                  console.log(row)
-                  const isItemSelected = isSelected(row.name);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+            <TableBody id={card}>
 
-                  return (
                     <>
                     {
-                      blogs?.map(c => 
-                        c.bloggerEmail === user.email &&
+                      blogs.filter(b => b.bloggerEmail === user.email).map(c => 
+                        
                         <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
                       role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.name}
-                      selected={isItemSelected}
+
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
                           color="primary"
-                          checked={isItemSelected}
-                          inputProps={{
-                            'aria-labelledby': labelId,
-                          }}
                         />
                       </TableCell>
 
                       <TableCell
                         component="th"
-                        id={labelId}
+      
                         scope="row"
                         padding="none"
                         sx={{color: 'white'}}
@@ -408,7 +418,9 @@ const [blogs, setBlogs] = React.useState([])
                           justifyContent: 'spaceBetween', 
                           alignItems: 'center', 
                           padding: '10px'
-                          }}>
+                          }} id={card}>
+
+                            
 
                          {/*========== video will be added here  ===========*/}
                           {/* <div style={{ width: '200px' }}>
@@ -449,7 +461,7 @@ const [blogs, setBlogs] = React.useState([])
                       id={text}
                       align="right"
                       >
-                        {c.comment.length}
+                        {c.likes}
                         </TableCell>
                       <TableCell 
                       id={text}
@@ -461,14 +473,20 @@ const [blogs, setBlogs] = React.useState([])
                       id={text}
                       align="right"
                       >
-                        35
+                        {c.likes}
+                      </TableCell>
+                      <TableCell 
+                      id={text}
+                      align="right"
+                      >
+                        <Button onClick={() => handleDelete(c._id)} variant='contained'>Remove</Button>
                       </TableCell>
                     </TableRow>
                       )
                     }
                     </>
-                  );
-                })}
+
+
               {emptyRows > 0 && (
                 <TableRow
                   style={{
@@ -481,7 +499,7 @@ const [blogs, setBlogs] = React.useState([])
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
+        {/* <TablePagination id={bg}
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}
@@ -489,7 +507,7 @@ const [blogs, setBlogs] = React.useState([])
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+        /> */}
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
