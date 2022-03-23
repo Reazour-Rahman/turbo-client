@@ -1,9 +1,9 @@
 body {
   margin: 0;
   font-size: small !important;
-  font-family: 'Lato', sans-serif !important;
-  font-family: 'Poppins', sans-serif !important;
-  
+  font-family: "Lato", sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,88 +15,66 @@ body {
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-.css-19kzrtu{
+.css-19kzrtu {
   padding: 0% !important;
 }
 
 /* Dark Colors */
-#darkish{
+#darkish {
   background-color: #0e0e10 !important;
 }
-#moreDark{
- background-color: #18191A !important;
+#moreDark {
+  background-color: #18191a !important;
 }
-#darkLight{
-color: #eeeeee !important;
+#darkLight {
+  color: #eeeeee !important;
 }
 
-#muted{
-color: #8b8b8b !important;
+#muted {
+  color: #8b8b8b !important;
 }
 
 /* Light Colors */
-#lightest{
- 
- background-color: #efeff1 !important;
+#lightest {
+  background-color: #efeff1 !important;
 }
-#moreLight{
-  background-color: #FFFFFF !important;
+#moreLight {
+  background-color: #ffffff !important;
 }
-#black{
+#black {
   color: #051624 !important;
 }
 
-
-
 /* Classes */
-.darkish{
+.darkish {
   background-color: #0e0e10 !important;
 }
-.lightest{
+.lightest {
   background-color: #efeff1 !important;
 }
 
-.darkLight{
-color: #eeeeee !important;
+.darkLight {
+  color: #eeeeee !important;
 }
-.black{
+.black {
   color: #051624 !important;
 }
-.moreDark{
-  background-color: #18191A !important;
- }
- .moreLight{
-  background-color: #FFFFFF !important;
+.moreDark {
+  background-color: #18191a !important;
+}
+.moreLight {
+  background-color: #ffffff !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Devide hr */
-
-
 
 .hr {
   display: flex;
@@ -111,7 +89,6 @@ color: #eeeeee !important;
   margin: auto;
 }
 
-
 .hrm {
   display: flex;
   flex-direction: row;
@@ -124,6 +101,3 @@ color: #eeeeee !important;
   border-bottom: 1px solid rgb(202, 202, 202);
   margin: auto;
 }
-
-
-
