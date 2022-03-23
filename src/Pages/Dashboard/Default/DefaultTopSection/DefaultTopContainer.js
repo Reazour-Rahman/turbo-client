@@ -29,7 +29,7 @@ const bg= mode ==="light" ? "lightest" : "darkish";
                   <span className="fullStop duration" ></span> &nbsp;Total Views
                 </small>
                 <small className="indicator-circle text-color-container" id={text}>
-                  <span className="fullStop views"></span> &nbsp;Page Views
+                  <span className="fullStop views"></span> &nbsp;Minimum Range
                 </small>
               </small>
             </div>
