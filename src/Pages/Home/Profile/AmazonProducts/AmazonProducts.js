@@ -34,11 +34,14 @@ const AmazonProducts = () => {
             <Box sx={{ mb: '20px' }}>
                 
             </Box>
+
              {!isLoading===true ? 
-             
-             <Grid style={{ textAlign: 'center' }}>
+             <div style={{height:"500px"}}>
+                 <Grid style={{ textAlign: 'center' }}>
                  <CircularProgress  id={text}/>
              </Grid>
+             </div>
+             
              : 
              
              <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>

@@ -154,7 +154,7 @@ export default function Visitors() {
   return (
     <ResponsiveContainer height={450}>
     <LineChart
-      data={visit}
+      data={visit.slice(-10)}
     >
       <CartesianGrid strokeDasharray="0 0" />
       <XAxis dataKey="name" height={60} tick={<CustomizedAxisTick />} />
@@ -168,4 +168,4 @@ export default function Visitors() {
     </LineChart>
     </ResponsiveContainer>
   );
-}
+} 

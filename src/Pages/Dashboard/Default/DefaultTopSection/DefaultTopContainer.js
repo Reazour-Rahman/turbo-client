@@ -26,8 +26,7 @@ const bg= mode ==="light" ? "lightest" : "darkish";
               <p id={text}>Unique Visitors</p>
               <small className="indicators">
                 <small className="indicator-circle text-color-container" id={text}>
-                  <span className="fullStop duration" ></span> &nbsp;Session
-                  Duration
+                  <span className="fullStop duration" ></span> &nbsp;Total Views
                 </small>
                 <small className="indicator-circle text-color-container" id={text}>
                   <span className="fullStop views"></span> &nbsp;Page Views

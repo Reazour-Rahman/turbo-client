@@ -15,6 +15,7 @@ import RevenueModal from "./RevenueModal";
 import CostModal from "./CostModal";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 const Edit = () => {
   const style = {
@@ -68,6 +69,16 @@ const Edit = () => {
     })
   },[])
 
+  const [graph, setGraph] = useState({});
+
+  useEffect(()=>{
+    fetch("http://localhost:5000/uniqueVisitors")
+    .then(res => res.json())
+    .then(data => {
+      data?.map(d => setGraph(d)) 
+    })
+  },[])
+
 
   var sum=0;
 
@@ -90,7 +101,12 @@ const Edit = () => {
         uv:2000,
         pv:sum
     }
-    axios.post(`http://localhost:5000/uniqueVisitors`, data)
+    if (graph?.name == today) {
+      axios.put(`http://localhost:5000/uniqueVisitors/${graph?.name}`, data)
+      // window.alert("You already Refresh Today's Visit")
+    }else{
+      axios.post(`http://localhost:5000/uniqueVisitors`, data)
+    }
     handleClose()
   }
 
@@ -178,13 +194,13 @@ const Edit = () => {
         >
           <form onSubmit={handleVisit}>
           <ListItemIcon  style={style}>
-          <button type="submit">
+          <Button type="submit" id={text}>
           <CreateNewFolderIcon style={iconStyle} />
-            Update Visitors
+            Refresh Visitors
           
             
          
-          </button>
+          </Button>
           </ListItemIcon>
           </form>
         </MenuItem>
