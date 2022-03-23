@@ -3,15 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { Link} from 'react-router-dom';
 import { green } from "@mui/material/colors";
 import { useSelector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const UserAmazonProducts = ({email}) => {
     const user = useSelector((state) => state.firebase.user);
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
 console.log(email);
     useEffect(() => {
         fetch(`http://localhost:5000/products?email=${email.email}`)
             .then(res => res.json())
-            .then(data => setProducts(data?.products))
+            .then(data => {
+                setIsLoading(true)
+                setProducts(data?.products)
+            })
     }, [email.email])
 
     console.log(products)
@@ -28,6 +33,13 @@ console.log(email);
             <Box sx={{ mb: '20px' }}>
                 
             </Box>
+            {!isLoading===true ? 
+             
+             <Grid style={{ textAlign: 'center' }}>
+                 <CircularProgress  id={text}/>
+             </Grid>
+             : 
+             
             <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
 
                 {/* ==========Product map=========== */}
@@ -109,7 +121,7 @@ console.log(email);
                         </Card>
                     </Grid>
                 ))}
-            </Grid>
+            </Grid>}
         </Box>
     );
 };
