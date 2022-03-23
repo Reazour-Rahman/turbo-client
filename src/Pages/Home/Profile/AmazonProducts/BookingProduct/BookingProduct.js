@@ -62,7 +62,7 @@ const BookingProduct = ({ handleCloseBookinModal, open, product, time }) => {
                     console.log("server a gece");
                     swal(
                         "Good job!",
-                        "Added to the cart",
+                        "Ordered Successfully",
                         "success"
                     );
                     handleCloseBookinModal();

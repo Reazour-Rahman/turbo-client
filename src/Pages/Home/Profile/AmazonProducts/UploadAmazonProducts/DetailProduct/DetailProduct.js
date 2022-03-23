@@ -14,11 +14,13 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useSelector } from 'react-redux';
 import BookingProduct from '../../BookingProduct/BookingProduct';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const DetailProduct = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState();
+  const [isLoading, setIsLoading] = useState(false)
 
   // Open booking modal 
 
@@ -34,7 +36,10 @@ const DetailProduct = () => {
   useEffect(() => {
     fetch(`https://aqueous-chamber-45567.herokuapp.com/products/${productId}`)
       .then((res) => res.json())
-      .then((data) => setProduct(data));
+      .then((data) => {
+        setIsLoading(true)
+        setProduct(data)
+      });
   }, []);
 
 
@@ -88,10 +93,23 @@ Send Data to Database
         }
       });
   };
+
+  let mode = localStorage.getItem("theme");
+  const bg = mode === "light" ? "lightest" : "darkish";
+  const card = mode === "light" ? "moreLight" : "moreDark";
+  const text = mode === "light" ? "black" : "darkLight";
+  const hr = mode === "light" ? "hr" : "hrm"
+
   return (
     <>
-      <Grid container spacing={2} sx={{ flexGrow: 1, paddingLeft: "50px", mt: 4, }}>
-        <Grid sx={{ display: "flex", justifyContent: 'space-between', mt: 2, height: "582px" }} item xs={12}>
+    {!isLoading===true ? 
+             
+             <Grid style={{ textAlign: 'center'}}>
+                 <CircularProgress color="success" />
+             </Grid>
+             : 
+      <Grid container spacing={2} sx={{ flexGrow: 1, paddingLeft: "20px", mt: 5, }}>
+        <Grid sx={{ display: "flex", justifyContent: 'space-between', mt: 2, height: "782px" }} item xs={12}>
 
           {/* =========Image side========= */}
 
@@ -107,16 +125,31 @@ Send Data to Database
 
           {/* ===========Detail side=========== */}
 
-          <Grid xs={12} sm={4} md={4} sx={{ m: 5, }}>
+          <Grid xs={12} sm={4} md={4} sx={{ m: 3, }}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Grid sx={{ ml: 5, color: 'white' }}>
-                <Typography sx={{ my: 2, }} gutterBottom variant="h5" component="div">
+                <Typography sx={{ my: 2, }} 
+                id={text}
+                gutterBottom variant="h5" component="div">
                   {product?.productTitle}
                 </Typography>
-                <Typography sx={{ my: 2, fontSize: 20 }}>
+                <Typography 
+                sx={{ 
+                  my: 2, 
+                  fontSize: 17
+                  }}
+                  id={text}
+                  >
                   {product?.description}
                 </Typography>
-                <Typography sx={{ my: 2 }} gutterBottom variant="h5" component="div">
+                <Typography 
+                sx={{
+                  my: 2 
+                }} 
+                id={text}
+                gutterBottom variant="h5" 
+                component="div"
+                >
                   ${product?.productPrice}
                 </Typography>
 
@@ -139,8 +172,8 @@ Send Data to Database
                 display: "flex", 
                 justifyContent: 'space-between' 
                 }}>
-                <Typography>Delivery</Typography>
-                <ErrorOutlineIcon sx={{ color: "white" }} />
+                <Typography id={text}>Delivery</Typography>
+                <ErrorOutlineIcon id={text} sx={{ color: "white" }} />
               </Grid>
 
               <Grid 
@@ -148,8 +181,8 @@ Send Data to Database
                 display: "flex", 
                 mt: 5 
                 }}>
-                <LocationOnIcon sx={{ color: "white", mr: 3 }} />
-                <Typography>Dhaka, Dhaka North, Banani Road No. 12 - 19</Typography>
+                <LocationOnIcon id={text} sx={{ color: "white", mr: 3 }} />
+                <Typography id={text}>Dhaka, Dhaka North, Banani Road No. 12 - 19</Typography>
               </Grid>
              
               <Grid 
@@ -157,8 +190,8 @@ Send Data to Database
                 display: "flex", 
                 mt: 5 
                 }}>
-                <CardTravelIcon sx={{ color: "white", mr: 3 }} />
-                <Typography>Ships from Overseas</Typography>
+                <CardTravelIcon id={text} sx={{ color: "white", mr: 3 }} />
+                <Typography id={text}>Ships from Overseas</Typography>
               </Grid>
               
               <Grid 
@@ -166,15 +199,15 @@ Send Data to Database
                 display: "flex", 
                 mt: 5 
                 }}>
-                <CurrencyExchangeIcon sx={{ color: "white", mr: 3 }} />
-                <Typography>Cash on Delivery Available</Typography>
+                <CurrencyExchangeIcon id={text} sx={{ color: "white", mr: 3 }} />
+                <Typography id={text}>Cash on Delivery Available</Typography>
               </Grid>
             </Grid>
           </Grid>
 
         </Grid>
 
-      </Grid>
+      </Grid>}
       <BookingProduct
         time={time}
         open={open}
