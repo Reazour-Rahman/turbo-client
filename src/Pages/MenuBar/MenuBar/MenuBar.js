@@ -25,31 +25,30 @@ import HelpCenter from "../../Home/Profile/HelpCenter/HelpCenter/HelpCenter";
 import Cookies from "universal-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsLoading, setUser } from "../../../reducers/slices/firebaseSlice";
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import WorkspacesIcon from '@mui/icons-material/Workspaces';
-import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import WorkspacesIcon from "@mui/icons-material/Workspaces";
+import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 
 const cookies = new Cookies();
 
-
 const logout = () => {
   cookies.remove("token");
-  cookies.remove('userId');
-  cookies.remove('username');
-  cookies.remove('fullName');
-  cookies.remove('avatarURL');
-  cookies.remove('hashedPassword');
-  cookies.remove('phoneNumber');
+  cookies.remove("userId");
+  cookies.remove("username");
+  cookies.remove("fullName");
+  cookies.remove("avatarURL");
+  cookies.remove("hashedPassword");
+  cookies.remove("phoneNumber");
 
   window.location.reload();
-}
+};
 
 export default function MenuBar({ handleClickOpen }) {
-  const {signOut,auth} = useFirebase();
-  const user = useSelector((state) => state.firebase.user)
+  const { signOut, auth } = useFirebase();
+  const user = useSelector((state) => state.firebase.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -61,23 +60,23 @@ export default function MenuBar({ handleClickOpen }) {
 
   const userLogOut = () => {
     signOut(auth)
-    .then(() => {
-      dispatch(setUser({}));
-      logout()
-    })
-    .catch((error) => {
-      // An error happened.
-    })
-    .finally(() => {
-      dispatch(setIsLoading(false));
-    });
-  }
+      .then(() => {
+        dispatch(setUser({}));
+        logout();
+      })
+      .catch((error) => {
+        // An error happened.
+      })
+      .finally(() => {
+        dispatch(setIsLoading(false));
+      });
+  };
 
   const style = {
     color: "#fff3e0",
     marginLeft: 10,
     fontSize: "16px",
-    fontWeight: 300
+    fontWeight: 300,
   };
 
   const iconStyle = {
@@ -91,10 +90,22 @@ export default function MenuBar({ handleClickOpen }) {
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
 
-
-
   const admin = useSelector((state) => state.firebase.admin);
 
+  /* :::::::::::::::::::::::::::::::::
+ location API
+  ::::::::::::::::::::::::::::::::::::*/
+  const [location, setLocation] = React.useState({});
+  React.useEffect(() => {
+    fetch(
+      `https://geolocation-db.com/json/2d7a1090-a7e0-11ec-bb96-d99740183a81`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLocation(data);
+      });
+  }, []);
   return (
     <>
       <React.Fragment>
@@ -133,7 +144,7 @@ export default function MenuBar({ handleClickOpen }) {
           PaperProps={{
             elevation: 0,
             style: {
-              border: '.1px solid rgba(255, 255, 255, 0.309)',
+              border: ".1px solid rgba(255, 255, 255, 0.309)",
 
               width: 350,
               opacity: 0.9,
@@ -164,7 +175,7 @@ export default function MenuBar({ handleClickOpen }) {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem sx={{ color: 'white'}}>
+          <MenuItem sx={{ color: "white" }}>
             <Avatar>
               <img
                 style={{ width: 40, height: 40 }}
@@ -179,14 +190,16 @@ export default function MenuBar({ handleClickOpen }) {
           </MenuItem>
 
           <Divider />
-          { admin &&<Link style={{ textDecoration: "none" }} to="/dashboard">
-            <MenuItem className="menu-style" style={style}>
-              <ListItemIcon style={style}>
-                <AdminPanelSettingsIcon style={iconStyle} />
-              </ListItemIcon>
-              Admin Panel
-            </MenuItem>
-          </Link>}
+          {admin && (
+            <Link style={{ textDecoration: "none" }} to="/dashboard">
+              <MenuItem className="menu-style" style={style}>
+                <ListItemIcon style={style}>
+                  <AdminPanelSettingsIcon style={iconStyle} />
+                </ListItemIcon>
+                Admin Panel
+              </MenuItem>
+            </Link>
+          )}
 
           <Link style={{ textDecoration: "none" }} to="/profile">
             <MenuItem className="menu-style" style={style}>
@@ -197,8 +210,11 @@ export default function MenuBar({ handleClickOpen }) {
             </MenuItem>
           </Link>
 
-          <Button onClick={handleClickOpen} style={{ textDecoration: "none", color: '#f1f8e9'}}>
-            <MenuItem className="menu-style" sx={{fontSize: 14,}}>
+          <Button
+            onClick={handleClickOpen}
+            style={{ textDecoration: "none", color: "#f1f8e9" }}
+          >
+            <MenuItem className="menu-style" sx={{ fontSize: 14 }}>
               <ListItemIcon style={style}>
                 <CreateNewFolderIcon style={iconStyle} />
               </ListItemIcon>
@@ -209,7 +225,7 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <ManageAccountsIcon style={iconStyle}/>
+                <ManageAccountsIcon style={iconStyle} />
               </ListItemIcon>
               Manage account
             </MenuItem>
@@ -217,7 +233,7 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/roomDashboard">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <YoutubeSearchedForIcon style={iconStyle}/>
+                <YoutubeSearchedForIcon style={iconStyle} />
               </ListItemIcon>
               ProPlayer Studio
             </MenuItem>
@@ -225,7 +241,7 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <PersonAdd style={iconStyle}/>
+                <PersonAdd style={iconStyle} />
               </ListItemIcon>
               Add another account
             </MenuItem>
@@ -233,15 +249,18 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <LocationOnIcon style={iconStyle}/>
+                <LocationOnIcon style={iconStyle} />
               </ListItemIcon>
-              Location
+              {location.city}, {location.country_name}
             </MenuItem>
           </Link>
-          <Button onClick={handleOpenModal} style={{ textDecoration: "none", color: '#f1f8e9'}}>
-            <MenuItem className="menu-style"sx={{fontSize: 14,}}>
+          <Button
+            onClick={handleOpenModal}
+            style={{ textDecoration: "none", color: "#f1f8e9" }}
+          >
+            <MenuItem className="menu-style" sx={{ fontSize: 14 }}>
               <ListItemIcon style={style}>
-                <HelpOutlineIcon sx={{mr: 4}} />
+                <HelpOutlineIcon sx={{ mr: 4 }} />
               </ListItemIcon>
               Help center
             </MenuItem>
@@ -249,7 +268,7 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <Settings style={iconStyle}/>
+                <Settings style={iconStyle} />
               </ListItemIcon>
               Settings
             </MenuItem>
@@ -257,7 +276,7 @@ export default function MenuBar({ handleClickOpen }) {
 
           <MenuItem onClick={userLogOut} className="menu-style" style={style}>
             <ListItemIcon style={style}>
-              <Logout style={iconStyle}/>
+              <Logout style={iconStyle} />
             </ListItemIcon>
             Logout
           </MenuItem>
