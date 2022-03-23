@@ -7,14 +7,14 @@ import '../Default.css'
 const DefaultTop = () => {
     const [cost, setCost] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/cost')
+    fetch('https://aqueous-chamber-45567.herokuapp.com/cost')
     .then(res => res.json())
     .then(data => setCost(data))
   },[])
 
   const [revenue, setRevenue] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/revenue')
+    fetch('https://aqueous-chamber-45567.herokuapp.com/revenue')
     .then(res => res.json())
     .then(data => setRevenue(data))
   },[])

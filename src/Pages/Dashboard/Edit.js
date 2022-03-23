@@ -47,6 +47,13 @@ const handleCostOpen = () => setCostOpen(true);
   const handleCost = () => {
     handleCostOpen()
   }
+
+  let mode;
+    mode = localStorage.getItem("theme")
+    const text= mode === "light" ? "black" : "darkLight" ;
+    const card= mode === "light" ? "moreLight" : "moreDark";
+    const bg= mode ==="light" ? "lightest" : "darkish";
+
     return (
         <div>
         <ListItemButton  component="a" id="fade-button"
@@ -55,9 +62,9 @@ const handleCostOpen = () => setCostOpen(true);
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick} >
             <ListItemIcon>
-                <AppRegistrationIcon className='dashboard-button'/>
+                <AppRegistrationIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Edit" />
+            <ListItemText id={text} className='dashboard-button' primary="Edit" />
         </ListItemButton>
 
         <Menu

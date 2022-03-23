@@ -23,6 +23,9 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+.css-19kzrtu {
+  padding: 0% !important;
+}
 
 /* Dark Colors */
 #darkish {
@@ -69,4 +72,32 @@ body {
 }
 .moreLight {
   background-color: #ffffff !important;
+}
+
+/* Devide hr */
+
+.hr {
+  display: flex;
+  flex-direction: row;
+}
+
+.hr:before,
+.hr:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid rgb(20, 20, 20);
+  margin: auto;
+}
+
+.hrm {
+  display: flex;
+  flex-direction: row;
+}
+
+.hrm:before,
+.hrm:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  margin: auto;
 }

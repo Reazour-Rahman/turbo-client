@@ -19,7 +19,7 @@ const Contents = (props) => {
         }, 4000);
     }, []);
     return (
-        <Box style={{paddingLeft:"72px"}}>
+        <Box style={{paddingLeft:"51px"}}>
             <ProfileHeader/>
             <Grid sx={{ mb: '20px', mt: '45px' }}>
                 <Typography style={{ fontWeight: 400, fontSize: 22 }}>

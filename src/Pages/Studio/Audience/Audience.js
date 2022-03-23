@@ -96,14 +96,16 @@ const subscribers = [
 ];
 const Audience = () => {
   const [graph, setGraph] = useState(returningViewers);
+  let mode;
+  mode = localStorage.getItem("theme")
+  const text= mode === "light" ? "black" : "darkLight" ;
+  const card= mode === "light" ? "moreLight" : "moreDark";
+  const bg= mode ==="light" ? "lightest" : "darkish";
 
   return (
-    <Box sx={{  }}>
-      <Box
-        sx={{ margin: "0 auto", width: "80%" }}
-        className="chart-container overview-left"
-      >
-        <Grid container sx={{ textAlign: "center" }}>
+    <Box sx={{}}>
+      <Box className="chart-container overview-left viewer-chart-container" id={card}>
+        <Grid container sx={{ textAlign: "center" }} >
           <Grid
             tabIndex="0"
             xs={4}
@@ -113,14 +115,15 @@ const Audience = () => {
               alignItems: "center",
               py: 1,
             }}
+            id={card}
             onClick={() => setGraph(returningViewers)}
             className={
               graph === returningViewers ? "studio-tab-clicked" : "studio-tab"
             }
           >
-            <Box sx={{ color: "white" }}>
-              <h6>Returning Viewers</h6>
-              <h3>100k</h3>
+            <Box id={text}>
+              <h6 >Returning Viewers</h6>
+              <h3 >100k</h3>
             </Box>
           </Grid>
           <Grid
@@ -139,7 +142,7 @@ const Audience = () => {
                 : "studio-tab studio-tab-mid "
             }
           >
-            <Box sx={{ color: "white" }}>
+            <Box id={text}>
               <h6>Unique Viewers</h6>
               <h3>20k</h3>
             </Box>
@@ -158,7 +161,7 @@ const Audience = () => {
               graph === subscribers ? "studio-tab-clicked" : "studio-tab"
             }
           >
-            <Box sx={{ color: "white" }}>
+            <Box id={text}>
               <h6>Subscribers</h6>
               <h3>326k</h3>
             </Box>
@@ -167,19 +170,19 @@ const Audience = () => {
         <Graph data={graph}></Graph>
       </Box>
 
-      <Box sx={{ margin: "0 auto", width: "80%", my: 5, color: "white" }}>
-        <Grid container justifyContent="space-between">
+      <Box sx={{ margin: "0 auto", my: 5, color: "white" }}>
+        <div className="user-data-container">
           {/* left  */}
-          <Grid xs={5.8}>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
-              <Box>
+          <div className="user-data-left">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container" id={card}>
+              <Box id={text}>
                 <h5>When your viewers are on ProPlayers</h5>
-                <p className="card-text">
+                <p id={text} className="card-text">
                   Your local time (GMT +0600) · Last 28 days
                 </p>
               </Box>
               <Box sx={{ my: 3 }}>
-                <p style={{ fontSize: "18px" }} className="card-text">
+                <p id={text} style={{ fontSize: "18px" }} className="card-text">
                   Not enough viewer data to show this report
                 </p>
               </Box>
@@ -187,13 +190,13 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
-              <Box>
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container" id={card}>
+              <Box id={text}>
                 <h5>Watch time from subscribers</h5>
-                <p className="card-text">Watch time · Last 28 days</p>
+                <p id={text} className="card-text">Watch time · Last 28 days</p>
               </Box>
               <Box sx={{ my: 3 }}>
-                <p style={{ fontSize: "18px" }} className="card-text">
+                <p id={text} style={{ fontSize: "18px" }} className="card-text">
                   Nothing to show for these dates
                 </p>
               </Box>
@@ -201,13 +204,13 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
-              <Box>
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container" id={card}>
+              <Box id={text}>
                 <h5>Age and gender</h5>
-                <p className="card-text">Views · Last 28 days</p>
+                <p id={text} className="card-text">Views · Last 28 days</p>
               </Box>
               <Box sx={{ my: 3 }}>
-                <p style={{ fontSize: "18px" }} className="card-text">
+                <p id={text} style={{ fontSize: "18px" }} className="card-text">
                   Not enough demographic data to show this report
                 </p>
               </Box>
@@ -215,17 +218,17 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-          </Grid>
+          </div>
 
           {/* right  */}
-          <Grid xs={5.8}>
-            <Box sx={{  }} className="chart-container">
-              <Box>
+          <div className="user-data-right">
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container" id={card}>
+              <Box id={text}>
                 <h5>Other channels your audience watches</h5>
-                <p className="card-text"> Last 28 days</p>
+                <p id={text} className="card-text"> Last 28 days</p>
               </Box>
               <Box sx={{ my: 3 }}>
-                <p style={{ fontSize: "18px" }} className="card-text">
+                <p id={text} style={{ fontSize: "18px" }} className="card-text">
                   Not enough eligible audience data to show this report.
                 </p>
               </Box>
@@ -233,13 +236,13 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>Learn More</Button>
               </Box>
             </Box>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
-              <Box>
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container" id={card}>
+              <Box id={text}>
                 <h5>Other videos your audience watched</h5>
-                <p className="card-text"> Last 7 days</p>
+                <p id={text} className="card-text"> Last 7 days</p>
               </Box>
               <Box sx={{ my: 3 }}>
-                <p style={{ fontSize: "18px" }} className="card-text">
+                <p id={text} style={{ fontSize: "18px" }} className="card-text">
                   Not enough eligible audience data to show this report.
                 </p>
               </Box>
@@ -247,13 +250,13 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>Learn More</Button>
               </Box>
             </Box>
-            <Box sx={{ p: 3, mb: 5 }} className="chart-container">
-              <Box>
-                <h5>Top geographies</h5>
-                <p className="card-text">Views · Last 28 days</p>
+            <Box sx={{ p: 3, mb: 3 }} className="chart-container" id={card}>
+              <Box id={text}>
+                <h5 >Top geographies</h5>
+                <p id={text} className="card-text">Views · Last 28 days</p>
               </Box>
               <Box sx={{ my: 3 }}>
-                <p style={{ fontSize: "18px" }} className="card-text">
+                <p id={text} style={{ fontSize: "18px" }} className="card-text">
                   Not enough geography data to show this report
                 </p>
               </Box>
@@ -261,8 +264,8 @@ const Audience = () => {
                 <Button sx={{ p: 0 }}>See More</Button>
               </Box>
             </Box>
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </Box>
     </Box>
   );

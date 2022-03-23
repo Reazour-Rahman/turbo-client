@@ -28,68 +28,75 @@ export const mainListItems = (
 
         <ListItemButton as={Link} component="a" to="/dashboard">
             <ListItemIcon>
-                <AppRegistrationIcon className='dashboard-button'/>
+                <AppRegistrationIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Default" />
+            <ListItemText id={text} className='dashboard-button' primary="Default" />
         </ListItemButton>
 
         <Edit></Edit>
 
         <ListItemButton as={Link} component="a" to="/dashboard/home">
             <ListItemIcon>
-                <DashboardIcon className='dashboard-button'/>
+                <DashboardIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Dashboard" />
+            <ListItemText id={text} className='dashboard-button' primary="Dashboard" />
+        </ListItemButton>
+
+        <ListItemButton as={Link} component="a" to="/dashboard/allBlogs">
+            <ListItemIcon>
+                <DashboardIcon id={text} className='dashboard-button'/>
+            </ListItemIcon>
+            <ListItemText id={text} className='dashboard-button' primary="All Blogs" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/">
             <ListItemIcon>
-                <HomeIcon className='dashboard-button'/>
+                <HomeIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Home" />
+            <ListItemText id={text} className='dashboard-button' primary="Home" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/dashboard/analytics">
             <ListItemIcon>
-                <SubscriptionsIcon className='dashboard-button'/>
+                <SubscriptionsIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Analytics" />
+            <ListItemText id={text} className='dashboard-button' primary="Analytics" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/dashboard/bloggerList">
             <ListItemIcon>
-                <PeopleIcon className='dashboard-button'/>
+                <PeopleIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Bloggers" />
+            <ListItemText id={text} className='dashboard-button' primary="Bloggers" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/dashboard/upload">
             <ListItemIcon>
-                <CloudUploadIcon className='dashboard-button'/>
+                <CloudUploadIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Upload" />
+            <ListItemText id={text} className='dashboard-button' primary="Upload" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/dashboard/makeAdmin">
             <ListItemIcon>
-                <PeopleIcon className='dashboard-button'/>
+                <PeopleIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Make Admin" />
+            <ListItemText id={text} className='dashboard-button' primary="Make Admin" />
         </ListItemButton>
 
         <ListItemButton as={Link} component="a" to="/dashboard/reports">
             <ListItemIcon>
-                <BarChartIcon className='dashboard-button' />
+                <BarChartIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Reports" />
+            <ListItemText id={text} className='dashboard-button' primary="Reports" />
         </ListItemButton>
 
 
         <ListItemButton as={Link} component="a" to="/dashboard/message">
             <ListItemIcon>
-                <ChatBubbleOutlineIcon className='dashboard-button' />
+                <ChatBubbleOutlineIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="Message" />
+            <ListItemText id={text} className='dashboard-button' primary="Message" />
         </ListItemButton>
 
     </React.Fragment>
@@ -97,15 +104,15 @@ export const mainListItems = (
 
 export const secondaryListItems = (
     <React.Fragment>
-        <ListSubheader className='dashboard-button' id={card} component="div" inset>
+        <ListSubheader className='dashboard-button' id={text} component="div" inset>
             Welcome To Pro Player
         </ListSubheader>
 
         <ListItemButton>
             <ListItemIcon>
-                <LogoutIcon className='dashboard-button' />
+                <LogoutIcon id={text} className='dashboard-button' />
             </ListItemIcon>
-            <ListItemText className='dashboard-button' primary="LogOut" />
+            <ListItemText id={text} className='dashboard-button' primary="LogOut" />
         </ListItemButton>
     </React.Fragment>
 );

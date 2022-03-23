@@ -16,7 +16,7 @@ const Graph = (props) => {
   const data = props.data;
 
   return (
-    <div style={{ width: "80%", margin: "10px auto 0", height: 300 }}>
+    <div style={{ width: "100%", margin: "10px auto 0", height: 300 }}>
       <ResponsiveContainer>
         <LineChart
           data={data}

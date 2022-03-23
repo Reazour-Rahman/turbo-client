@@ -5,23 +5,27 @@ import ContentVideos from '../Videos/ContentVideos/ContentVideos';
 const RecentVideo = (props) => {
     const { _id, title, video, uploadTime, thumbnail } =
         props.recentVideo;
+
+    let mode = localStorage.getItem("theme");
+    const card = mode === "light" ? "moreLight" : "moreDark" ;
+    const text = mode === "light" ? "black" : "darkLight" ;
+
     return (
         <Grid item xs={2} sm={4} md={4}>
             <Box>
                 <Box>
-                    <Card className="card-bg">
+                    <Card className="" id={card}>
                         <CardActionArea>
                             <ContentVideos video={video} thumbnail={thumbnail}></ContentVideos>
                             <Link to={`details/${_id}`} style={{ textDecoration: "none" }}>
                                 <CardContent>
-                                    <Typography
-                                        className="card-color"
-                                        variant="body2"
-                                        color="text.secondary"
+                                    <p
+                                        style={{ fontWeight: 500, fontSize:"12px" }}
+                                        id={text}
                                     >
-                                        {title.slice(0, 53)}...
-                                    </Typography>
-                                    <small className="date-color">
+                                        {title.slice(0, 33)}...
+                                    </p>
+                                    <small id={text}>
                                         {uploadTime}
                                     </small>
                                 </CardContent>

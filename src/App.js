@@ -45,7 +45,12 @@ import UploadeAmazonProducts from "./Pages/Home/Profile/AmazonProducts/UploadAma
 import AllBookingProducts from "./Pages/Home/Profile/AmazonProducts/AllBookingProducts/AllBookingProducts";
 import AddCart from "./Pages/Home/Profile/AmazonProducts/UploadAmazonProducts/AddCart/AddCart"
 import Test from "./Pages/Upload/test/Test.jsx"
+
 import Like from "./Pages/Home/Likes/Like";
+
+import Blogs from "./Pages/Home/BLogs/Blogs";
+import AllBlogs from "./Pages/Dashboard/AllBlogs";
+import LikedBlogs from "./Pages/Home/LikedBlogs/LikedBlogs";
 
 
 
@@ -87,6 +92,7 @@ function App() {
           <Route path="/test" element={<Test />}></Route>
 
           <Route path="/candyBlock" element={<CandyBlock />}></Route>
+          <Route path="/likedBlogs" element={<LikedBlogs />}></Route>
 
           <Route
             path="/breakout"
@@ -165,6 +171,7 @@ function App() {
 
           <Route exact path="/dashboard/home" element={<DashboardHome />} />
           <Route exact path="/dashboard/bloggerList" element={<Bloggers />} />
+          <Route exact path="/dashboard/allBlogs" element={<AllBlogs />} />
 
           <Route exact path="/dashboard/default" element={<Default />} />
 

@@ -42,7 +42,7 @@ export default function RevenueModal({revenueOpen, setRevenueOpen}) {
         revenueGoal , netCashIF, date, year, adminName : user?.displayName, adminEmail : user?.email
     }
 
-    axios.put(`http://localhost:5000/revenue`, data)
+    axios.put(`https://aqueous-chamber-45567.herokuapp.com/revenue`, data)
     handleClose()
     
   }
