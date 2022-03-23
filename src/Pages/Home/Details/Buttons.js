@@ -13,9 +13,10 @@ import { useSelector } from "react-redux";
 import { Avatar, Button, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Payment from "./Payment";
+import { green } from "@mui/material/colors";
 
 
-const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering, allLikers, allReadyLiked, setRendering, bloggerEmail,blogTitle, bloggerPhoto,}) => {
+const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering, allLikers, allReadyLiked, setRendering, bloggerEmail,blogTitle, bloggerPhoto}) => {
 
 
   /* uploadTime,
@@ -138,6 +139,84 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
     let theme;
     theme = localStorage.getItem("theme")
     const text= theme === "light" ? "black" : "darkLight" ;
+
+    const [followed, setFollowed] = React.useState(false)
+
+  const [profile, setProfile] = React.useState('')
+  const [bloggerProfile, setBloggerProfile] = React.useState({})
+  const [follow, setFollow] = React.useState(false)
+  const [count, setCount] = React.useState(0)
+  const [myUser, setMyUser] = React.useState({})
+
+  React.useEffect(() => {
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${bloggerEmail}`)
+    .then(res => res.json())
+    .then(data => setProfile(data.room))
+  },[bloggerEmail, followed, count])
+
+  React.useEffect(() => {
+    const alreadyFollowed = bloggerProfile?.followers?.find(b => b?.followerEmail === user.email)
+    console.log('already', alreadyFollowed);
+    if (alreadyFollowed?.followerEmail === user.email) {
+      setFollowed(true)
+    }
+    else{
+      setFollowed(false)
+    }
+  },[user.email, bloggerProfile?.followers])
+
+  React.useEffect(() => {
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${bloggerEmail}`)
+    .then(res => res.json())
+    .then(data => {
+      setBloggerProfile(data)
+    })
+  },[bloggerEmail, count])
+
+  React.useEffect(() => {
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/user/${user?.email}`)
+    .then(res => res.json())
+    .then(data => {
+      setMyUser(data)
+    })
+  },[user.email, count])
+
+  console.log('my user', myUser);
+
+    const handleFollow = () => {
+      console.log('follow clicked');
+      const follower = {
+        followersCount : bloggerProfile.followersCount + 1,
+        followers : [{followerEmail : user.email}, ...bloggerProfile.followers]
+      }
+      const following = {
+        followingsCount : myUser.followingsCount + 1,
+        followings : [{followingEmail : bloggerEmail}, ...myUser.followings]
+      }
+      setFollowed(true)
+      setCount(count + 1)
+      axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${bloggerEmail}`, follower)
+      axios.put(`http://localhost:5000/users/followings/${user?.email}`, following)
+    }
+  
+    const handleUnFollow = () => {
+      console.log('unfollow clicked');
+      const userWithdraw = bloggerProfile.followers.filter(l => l?.followerEmail !== user?.email)
+      const userWithdraw2 = myUser.followings.filter(l => l?.followingEmail !== bloggerEmail)
+      console.log(userWithdraw);
+      const follower = {
+        followersCount : bloggerProfile.followersCount - 1,
+        followers : [...userWithdraw]
+      }
+      const following = {
+        followingsCount : myUser.followingsCount - 1,
+        followings : [...userWithdraw2]
+      }
+      setFollowed(false)
+      setCount(count + 1)
+      axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${bloggerEmail}`, follower)
+      axios.put(`http://localhost:5000/users/followings/${user?.email}`, following)
+    }
   
   return (
     <div>
@@ -194,9 +273,21 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
                 ></Payment>
               </Modal>
               {/*:::: payment modal end ::::*/}
-            <Button variant="outlined" className="icons-color" size="small">
-              Follow 119M
-            </Button>
+              {
+                followed  ? <Button
+                variant="outlined"
+                className="icons-color"
+                onClick={handleUnFollow}
+              >
+                UnFollow 
+              </Button> : <Button
+                variant="outlined"
+                className="icons-color"
+                onClick={handleFollow}
+              >
+                Follow
+              </Button>
+              }
           </p>
         </div>
       </section>
