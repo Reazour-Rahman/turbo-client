@@ -21,12 +21,17 @@ const UserPopularVideos = ({email}) => {
 
   console.log(popularVideos);
 
+  let mode = localStorage.getItem("theme");
+  const text = mode === "light" ? "black" : "darkLight" ;
+  const hr = mode === "light" ? "hr" : "hrm"
+
+
   return (
-    <Box sx={{ mt: "50px", mb: 5, color: "inherit" }}>
+    <Box sx={{ mt: "10px", mb: 5 }}>
+        <p style={{ fontWeight: 600 }} className={hr}>
+          ALL VIDEOS
+        </p>
       <Grid sx={{ mb: '20px' }}>
-        <Typography style={{ fontWeight: 600 }}>
-          All Videos
-        </Typography>
       </Grid>
       <Box>
         <Grid
@@ -34,13 +39,9 @@ const UserPopularVideos = ({email}) => {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 2, sm: 8, md: 12, lg: 16 }}
         >
-          {loading ? (
+          {
             popularVideos.map((popularVideo) => <PopularVideo key={popularVideo._id} popularVideo={popularVideo}></PopularVideo>)
-          ) : (
-            <div>
-              <Progress />
-            </div>
-          )}
+          }
         </Grid>
       </Box>
     </Box>

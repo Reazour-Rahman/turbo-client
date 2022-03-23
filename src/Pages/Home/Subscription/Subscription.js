@@ -37,13 +37,24 @@ const Subscription = () => {
       });
   }, []);
   // console.log(blog, "eta hocce blog");
-
+  let theme;
+  theme = localStorage.getItem("theme");
+  let text = theme === "light" ? "black" : "darkLight" ;
   return (
     // <Box sx={{ mt: 2 }} className="subscription-margin">
     <Grid className="subscription-margin">
+      <div className=''>
+                    <h5 id={text}>Following Users</h5>
+                    <br />
+                    <h5 id={text}>All Blogs</h5>
+                    <br />
+                    <section >
+                    </section>
+
+                </div>
       {verifiedUser?.map((item, index) => (
         <div key={index}>
-          {item?.followers.map((c, i) => (
+          {item?.followings.map((c, i) => (
             <Grid
               container
               spacing={{ xs: 1, md: 1 }}
@@ -52,7 +63,7 @@ const Subscription = () => {
             >
               {blog.map(
                 (bl) =>
-                  bl?.bloggerEmail === c?.followerEmail && (
+                  bl?.bloggerEmail === c?.followingEmail && (
                     <FollowingBlogs b={bl} />
                   )
               )}
