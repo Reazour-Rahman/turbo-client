@@ -17,6 +17,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import './Dashboard.css';
 import Edit from './Edit';
+import DensitySmallIcon from '@mui/icons-material/DensitySmall';
 let mode;
 mode = localStorage.getItem("theme")
 const text= mode === "light" ? "black" : "darkLight" ;
@@ -44,7 +45,7 @@ export const mainListItems = (
 
         <ListItemButton as={Link} component="a" to="/dashboard/allBlogs">
             <ListItemIcon>
-                <DashboardIcon id={text} className='dashboard-button'/>
+                <DensitySmallIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
             <ListItemText id={text} className='dashboard-button' primary="All Blogs" />
         </ListItemButton>
@@ -70,12 +71,12 @@ export const mainListItems = (
             <ListItemText id={text} className='dashboard-button' primary="Bloggers" />
         </ListItemButton>
 
-        <ListItemButton as={Link} component="a" to="/dashboard/upload">
+        {/* <ListItemButton as={Link} component="a" to="/dashboard/upload">
             <ListItemIcon>
                 <CloudUploadIcon id={text} className='dashboard-button'/>
             </ListItemIcon>
             <ListItemText id={text} className='dashboard-button' primary="Upload" />
-        </ListItemButton>
+        </ListItemButton> */}
 
         <ListItemButton as={Link} component="a" to="/dashboard/makeAdmin">
             <ListItemIcon>
@@ -104,9 +105,9 @@ export const mainListItems = (
 
 export const secondaryListItems = (
     <React.Fragment>
-        <ListSubheader className='dashboard-button' id={text} component="div" inset>
+        {/* <ListSubheader className='dashboard-button' id={text} component="div" inset>
             Welcome To Pro Player
-        </ListSubheader>
+        </ListSubheader> */}
 
         <ListItemButton>
             <ListItemIcon>

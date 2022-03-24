@@ -11,7 +11,7 @@ const AmazonProducts = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?email=${user?.email}`)
+        fetch(`https://aqueous-chamber-45567.herokuapp.com/products?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsLoading(true)

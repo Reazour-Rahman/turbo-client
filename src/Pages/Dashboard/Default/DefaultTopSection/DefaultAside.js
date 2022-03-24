@@ -124,7 +124,7 @@ const DefaultAside = () => {
             className="text-color-container"
             size="small"
           >
-            Learn More
+            Goal {thisYearGoal}
           </Button>
         </div>
       </section>

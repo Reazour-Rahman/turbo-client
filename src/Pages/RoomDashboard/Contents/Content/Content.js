@@ -318,7 +318,7 @@ const [blogs, setBlogs] = React.useState([])
       })
       .then((willDelete) => {
         if (willDelete) {
-          axios.delete(`http://localhost:5000/blogs/${id}`)
+          axios.delete(`https://aqueous-chamber-45567.herokuapp.com/blogs/${id}`)
           .then(res => {
               if (res.data.deletedCount) {
                     const remaining = blogs.filter(b => b._id !== id)

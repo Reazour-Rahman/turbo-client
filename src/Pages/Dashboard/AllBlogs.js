@@ -18,7 +18,7 @@ const AllBlogs = ({ filter }) => {
   if (!filter) {
     url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
   } else {
-    url = `http://localhost:5000/blogs?filter=${filter}`;
+    url = `https://aqueous-chamber-45567.herokuapp.com/blogs?filter=${filter}`;
     console.log(url);
   }
   /*:: filter end ::*/

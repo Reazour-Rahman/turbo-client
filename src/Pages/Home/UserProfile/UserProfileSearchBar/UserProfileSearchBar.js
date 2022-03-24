@@ -206,7 +206,7 @@ export default function UserProfileSearchBar({email}) {
     setFollowed(true)
     setCount(count + 1)
     axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${email.email}`, follower)
-    axios.put(`http://localhost:5000/users/followings/${user?.email}`, following)
+    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followings/${user?.email}`, following)
   }
 
   const handleUnFollow = () => {
@@ -225,7 +225,7 @@ export default function UserProfileSearchBar({email}) {
     setFollowed(false)
     setCount(count + 1)
     axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${email.email}`, follower)
-    axios.put(`http://localhost:5000/users/followings/${user?.email}`, following)
+    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followings/${user?.email}`, following)
   }
 
   let mode = localStorage.getItem("theme");

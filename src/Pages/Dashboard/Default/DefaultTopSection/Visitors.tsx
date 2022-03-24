@@ -142,7 +142,7 @@ export default function Visitors() {
     const [visit, setVisit] = useState([]);
 
     useEffect(()=>{
-      fetch("http://localhost:5000/uniqueVisitors")
+      fetch("https://aqueous-chamber-45567.herokuapp.com/uniqueVisitors")
       .then(res => res.json())
       .then(data => {
         // data.map(d => setVisit(d)) 

@@ -46,7 +46,7 @@ const MessageModal = ({
       type: "Reply from admin",
       ...data,
     };
-    axios.post("http://localhost:5000/notifications", notification);
+    axios.post("https://aqueous-chamber-45567.herokuapp.com/notifications", notification);
     reset();
   };
 

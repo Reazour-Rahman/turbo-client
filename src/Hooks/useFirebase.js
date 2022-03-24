@@ -68,7 +68,7 @@ const useFirebase = () => {
   // checking admin
 
   // useEffect( () => {
-  //   fetch(`http://localhost:5000/users/${user?.email}`)
+  //   fetch(`https://aqueous-chamber-45567.herokuapp.com/users/${user?.email}`)
   //   .then(res => res.json())
   //   .then(data =>  dispatch(setAdmin(data?.admin)))
   // },[user?.email])

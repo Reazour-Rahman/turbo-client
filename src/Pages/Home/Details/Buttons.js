@@ -196,7 +196,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
       setFollowed(true)
       setCount(count + 1)
       axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${bloggerEmail}`, follower)
-      axios.put(`http://localhost:5000/users/followings/${user?.email}`, following)
+      axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followings/${user?.email}`, following)
     }
   
     const handleUnFollow = () => {
@@ -215,7 +215,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
       setFollowed(false)
       setCount(count + 1)
       axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${bloggerEmail}`, follower)
-      axios.put(`http://localhost:5000/users/followings/${user?.email}`, following)
+      axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followings/${user?.email}`, following)
     }
   
   return (

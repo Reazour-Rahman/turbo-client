@@ -156,7 +156,7 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav" id={card} style={{ height:"100%"}}>
+                    <List component="nav" id={card} style={{ overflowY:'scroll', height:'100%'}}>
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}
@@ -170,8 +170,9 @@ function DashboardContent() {
                         //         ? theme.palette.grey[100]
                         //         : theme.palette.grey[900],
                         flexGrow: 1,
-                        height: '100vh',
-                        overflow: 'auto',
+                        height: '100%',
+                        minHeight:'100vh',
+                        overflowY: 'scroll',
                     }}
                     id={bg}
                 >

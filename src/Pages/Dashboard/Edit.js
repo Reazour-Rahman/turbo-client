@@ -16,6 +16,7 @@ import CostModal from "./CostModal";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Button } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
 
 const Edit = () => {
   const style = {
@@ -72,7 +73,7 @@ const Edit = () => {
   const [graph, setGraph] = useState({});
 
   useEffect(()=>{
-    fetch("http://localhost:5000/uniqueVisitors")
+    fetch("https://aqueous-chamber-45567.herokuapp.com/uniqueVisitors")
     .then(res => res.json())
     .then(data => {
       data?.map(d => setGraph(d)) 
@@ -102,10 +103,10 @@ const Edit = () => {
         pv:sum
     }
     if (graph?.name == today) {
-      axios.put(`http://localhost:5000/uniqueVisitors/${graph?.name}`, data)
+      axios.put(`https://aqueous-chamber-45567.herokuapp.com/uniqueVisitors/${graph?.name}`, data)
       // window.alert("You already Refresh Today's Visit")
     }else{
-      axios.post(`http://localhost:5000/uniqueVisitors`, data)
+      axios.post(`https://aqueous-chamber-45567.herokuapp.com/uniqueVisitors`, data)
     }
     handleClose()
   }
@@ -121,7 +122,7 @@ const Edit = () => {
         onClick={handleClick}
       >
         <ListItemIcon>
-          <AppRegistrationIcon id={text} className="dashboard-button" />
+          <EditIcon id={text} className="dashboard-button" />
         </ListItemIcon>
         <ListItemText id={text} className="dashboard-button" primary="Edit" />
       </ListItemButton>

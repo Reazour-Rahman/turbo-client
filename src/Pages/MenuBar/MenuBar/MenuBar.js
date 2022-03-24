@@ -222,14 +222,14 @@ export default function MenuBar({ handleClickOpen }) {
             </MenuItem>
           </Button>
 
-          <Link style={{ textDecoration: "none" }} to="/">
+          {/* <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <ManageAccountsIcon style={iconStyle} />
               </ListItemIcon>
               Manage account
             </MenuItem>
-          </Link>
+          </Link> */}
           <Link style={{ textDecoration: "none" }} to="/roomDashboard">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
@@ -238,14 +238,14 @@ export default function MenuBar({ handleClickOpen }) {
               ProPlayer Studio
             </MenuItem>
           </Link>
-          <Link style={{ textDecoration: "none" }} to="/">
+          {/* <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <PersonAdd style={iconStyle} />
               </ListItemIcon>
               Add another account
             </MenuItem>
-          </Link>
+          </Link> */}
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
@@ -265,14 +265,14 @@ export default function MenuBar({ handleClickOpen }) {
               Help center
             </MenuItem>
           </Button>
-          <Link style={{ textDecoration: "none" }} to="/">
+          {/* <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <Settings style={iconStyle} />
               </ListItemIcon>
               Settings
             </MenuItem>
-          </Link>
+          </Link> */}
 
           <MenuItem onClick={userLogOut} className="menu-style" style={style}>
             <ListItemIcon style={style}>
