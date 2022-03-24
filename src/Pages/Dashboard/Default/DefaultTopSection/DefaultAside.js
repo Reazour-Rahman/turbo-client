@@ -79,8 +79,9 @@ const DefaultAside = () => {
 
   /* Achived */
   const thisYearRevenue =  revenue[1]?.netCashIF - cost[1]?.cost;
+  console.log(thisYearRevenue)
   const thisYearGoal = revenue[1]?.revenueGoal;
-  const growth = ((thisYearGoal - thisYearRevenue) / thisYearGoal) * 100
+  const growth = (thisYearRevenue/thisYearGoal) * 100;
   const fixedGrowth = growth.toFixed(2)
 
 
