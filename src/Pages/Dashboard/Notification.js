@@ -124,7 +124,7 @@ const bg= mode ==="light" ? "lightest" : "darkish";
         {[1].map((element) => (
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem>
-              <p style={{width:"100%"}}>Our User {notification?.displayName}'s Problem is "{notification?.title}" <br /> Admin Replied : {notification?.reply.slice(0,50)}</p>
+              <p style={{width:"100%"}}>Our User {notification?.displayName}'s Problem is "{notification?.title}" <br /> Admin Replied : {notification?.reply?.slice(0,50)}</p>
             </MenuItem>
           </Link>
         ))}

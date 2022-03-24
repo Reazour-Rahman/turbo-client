@@ -30,7 +30,7 @@ const Like = () => {
     let text = theme === "light" ? "black" : "darkLight";
 
     return (
-        <Grid container columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} className="like-container" style={{height:"100vh"}}>
+        <Grid container columns={{ xs: 12, sm: 12, md: 12, lg: 12 }} className="like-container" style={{height:"100%"}}>
             {likerLikes.slice(0, 1).map((a)=>
             <Grid item xs={12} sm={6} md={4} lg={4}>
             <div className='like-friction-element'>

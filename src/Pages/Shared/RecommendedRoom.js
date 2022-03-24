@@ -57,15 +57,3 @@ const RecommendedRoom = () => {
 };
 
 export default RecommendedRoom;
-
-/* <Blogger email={blogger?.email} followersCount={blogger?.followersCount} blogger={blogger?.room}></Blogger> Math.max
-
-          <NavLink className="nav-btn" to="/">
-            <ListItem className="nav-btn"  button>
-              <ListItemIcon className="fs-6">
-                <i class="fas fa-spinner" ></i>
-              </ListItemIcon>
-              <ListItemText primary={"Library"} />
-            </ListItem>
-          </NavLink>
-*/

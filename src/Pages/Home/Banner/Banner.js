@@ -28,7 +28,7 @@ const Banner = () => {
         .then((data) => {
           
 
-          let db = data.blogs.map((a) =>    
+          let db = data?.blogs?.slice(-10)?.map((a) =>    
             <div className='banner-container' id={bg}>
                 <BannerVideo v={a.video} t={a.thumbnail} />
                 <div className='banner-text-container'>
@@ -56,7 +56,7 @@ const Banner = () => {
 
     return (
         <div className='banner'>
-            {!loading ?<Carousel slides={topVideo} autoplay={false} onSlideChange={callback}/> : 
+            {!loading ?<Carousel slides={topVideo} autoplay={true} onSlideChange={callback}/> : 
             <div className='banner-video-size'>
                   <Skeleton
                         sx={{ bgcolor: 'grey.900' }}

@@ -182,7 +182,7 @@ export default function MiniDrawer() {
             </NavLink>
           </Link>
 
-          <NavLink className="nav-btn" id={mode === "light" ? "black" : "darkLight"} to="/">
+          <NavLink className="nav-btn hoverAll" id={mode === "light" ? "black" : "darkLight"} to="/">
             <ListItem className="nav-btn" id={mode === "light" ? "black" : "darkLight"} button>
               <ListItemIcon className="fs-6">
                 <ExploreIcon className="nav-btn" id={mode === "light" ? "black" : "darkLight"} />

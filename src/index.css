@@ -74,6 +74,19 @@ body {
   background-color: #ffffff !important;
 }
 
+.hoverLight{
+
+}
+.hoverAll:hover{
+  background-color: #8b8b8b;
+}
+
+
+
+
+
+
+
 /* Devide hr */
 
 .hr {

@@ -75,12 +75,14 @@ const StudioHeader = () => {
     const data = {
       name: today,
       yAxis: visit,
+      email: user.email
     };
     if (graph?.name == today) {
-      // window.alert("You already Refresh Today's Visit")
+      window.alert("You already Refresh Today's Visit")
     } else {
       axios.post(`http://localhost:5000/userVisitorS`, data);
       handleClick();
+      window.location.reload();
     }
   };
 

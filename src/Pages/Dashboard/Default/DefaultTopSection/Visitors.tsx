@@ -148,7 +148,7 @@ export default function Visitors() {
         // data.map(d => setVisit(d)) 
         setVisit(data) 
       })
-    },[])
+    },[visit])
 
     
   return (

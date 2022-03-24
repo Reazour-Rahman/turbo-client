@@ -10,8 +10,10 @@ import {
   ResponsiveContainer,
   Label,
 } from "recharts";
+import { useSelector } from "react-redux";
 
 const Graph = (props) => {
+  const user = useSelector((state) => state.firebase.user);
 
   const [graph, setGraph] = useState([]);
 
@@ -22,13 +24,14 @@ const Graph = (props) => {
       // data?.map(d => setGraph(d)) 
       setGraph(data)
     })
-  },[])
+  },[graph])
+  const filterGraph = graph.filter(f => f.email === user.email);
 
   return (
     <div style={{ width: "100%", margin: "10px auto 0", height: 300 }}>
       <ResponsiveContainer>
         <LineChart
-          data={graph?.slice(-12)}
+          data={filterGraph?.slice(-12)}
           margin={{
             top: 5,
             right: 30,
