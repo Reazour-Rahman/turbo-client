@@ -1,5 +1,6 @@
 import { Box, Button, Grid } from "@mui/material";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Graph from "../Graph/Graph";
 import "./Audience.css";
 const returningViewers = [
@@ -102,6 +103,40 @@ const Audience = () => {
   const card= mode === "light" ? "moreLight" : "moreDark";
   const bg= mode ==="light" ? "lightest" : "darkish";
 
+
+  const [myUser, setMyUser] = React.useState({})
+  const [myViews, setMyViews] = React.useState(0)
+
+  const user = useSelector(state => state.firebase.user)
+
+  React.useEffect(() => {
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/user/${user?.email}`)
+    .then(res => res.json())
+    .then(data => {
+      setMyUser(data)
+    })
+  },[user.email])
+
+  React.useEffect(() => {
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs`)
+    .then(res => res.json())
+    .then(data => {
+        var sum=0;
+        data?.blogs?.forEach(function(elem){
+        if(elem?.bloggerEmail === user?.email){
+          sum+=Number(elem.views);
+          setMyViews(sum)
+        }
+      });
+    })
+  },[user.email])
+  console.log(myViews , "total views");
+  const watchTIme = myViews / 60;
+  const roundWatchTime = watchTIme.toFixed(2)
+
+
+
+
   return (
     <Box sx={{}}>
       <Box className="chart-container overview-left viewer-chart-container" id={card}>
@@ -122,8 +157,8 @@ const Audience = () => {
             }
           >
             <Box id={text}>
-              <h6 >Returning Viewers</h6>
-              <h3 >100k</h3>
+              <h6 >Watch Time</h6>
+              <h3 >{roundWatchTime} hr</h3>
             </Box>
           </Grid>
           <Grid
@@ -143,8 +178,8 @@ const Audience = () => {
             }
           >
             <Box id={text}>
-              <h6>Unique Viewers</h6>
-              <h3>20k</h3>
+              <h6>Viewers</h6>
+              <h3>{myViews}</h3>
             </Box>
           </Grid>
           <Grid
@@ -162,8 +197,8 @@ const Audience = () => {
             }
           >
             <Box id={text}>
-              <h6>Subscribers</h6>
-              <h3>326k</h3>
+              <h6>Followers</h6>
+              <h3>{myUser?.followersCount}</h3>
             </Box>
           </Grid>
         </Grid>

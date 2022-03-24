@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -12,14 +12,23 @@ import {
 } from "recharts";
 
 const Graph = (props) => {
-  //   console.log(props.data);
-  const data = props.data;
+
+  const [graph, setGraph] = useState([]);
+
+  useEffect(()=>{
+    fetch("http://localhost:5000/userVisitors")
+    .then(res => res.json())
+    .then(data => {
+      // data?.map(d => setGraph(d)) 
+      setGraph(data)
+    })
+  },[])
 
   return (
     <div style={{ width: "100%", margin: "10px auto 0", height: 300 }}>
       <ResponsiveContainer>
         <LineChart
-          data={data}
+          data={graph?.slice(-12)}
           margin={{
             top: 5,
             right: 30,

@@ -1,28 +1,105 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import { MenuItem } from "@mui/material";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { IconButton, Snackbar } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const StudioHeader = () => {
+  /* SnackBar */
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  /*  */
+
   const [age, setAge] = React.useState("");
   const handleChange = (event) => {
     setAge(event.target.value);
   };
 
   let mode;
-  mode = localStorage.getItem("theme")
-  const text= mode === "light" ? "black" : "darkLight" ;
-  const card= mode === "light" ? "moreLight" : "moreDark";
-  const bg= mode ==="light" ? "lightest" : "darkish";
+  mode = localStorage.getItem("theme");
+  const text = mode === "light" ? "black" : "darkLight";
+  const card = mode === "light" ? "moreLight" : "moreDark";
+  const bg = mode === "light" ? "lightest" : "darkish";
+
+  const user = useSelector((state) => state.firebase.user);
+
+  /* Send Visitors Data  */
+  const [visit, setVisit] = useState(0);
+  React.useEffect(() => {
+    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs`)
+      .then((res) => res.json())
+      .then((data) => {
+        var sum = 0;
+        data?.blogs?.forEach(function (elem) {
+          if (elem?.bloggerEmail === user?.email) {
+            sum += Number(elem.views);
+            setVisit(sum);
+          }
+        });
+      });
+  }, [user.email]);
+
+  const [graph, setGraph] = useState({});
+
+  useEffect(() => {
+    fetch("http://localhost:5000/userVisitors")
+      .then((res) => res.json())
+      .then((data) => {
+        data?.map((d) => setGraph(d));
+      });
+  }, []);
+
+  const day = new Date().toLocaleString("en-US", { day: "2-digit" });
+  const month = new Date().toLocaleString("en-US", { month: "long" });
+  const today = `${day} ${month}`;
+
+  const handleVisit = (e) => {
+    e.preventDefault();
+    const data = {
+      name: today,
+      yAxis: visit,
+    };
+    if (graph?.name == today) {
+      // window.alert("You already Refresh Today's Visit")
+    } else {
+      axios.post(`http://localhost:5000/userVisitorS`, data);
+      handleClick();
+    }
+  };
+
+  /* SnackBar */
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   return (
     <Box>
@@ -33,48 +110,26 @@ const StudioHeader = () => {
           }}
           id={card}
         >
-
-
-          <Typography variant="h6" id={text} component="div" sx={{ flexGrow: 1 }}>
-            Channel Analytics
+          <Typography
+            variant="h6"
+            id={text}
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
+            Analytics
           </Typography>
-        </Toolbar>
-
-        <Toolbar
-          sx={{
-            pr: "24px", // keep right padding when drawer closed
-          }}
-          id={card}
-        >
-          <Box sx={{ display: "flex", width: "50%" }}>
-            <MenuItem>
-              <Typography id={text} textAlign="center">Overview</Typography>
-            </MenuItem>
-            <MenuItem>
-              <Typography id={text}  textAlign="center">Audience</Typography>
-            </MenuItem>
-            <MenuItem>
-              <Typography id={text}  textAlign="center">Reach</Typography>
-            </MenuItem>
-          </Box>
-
-          <FormControl sx={{ width: 240 }}>
-            <InputLabel  id={text} >
-              Timeline
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={age}
-              label="Age"
-              onChange={handleChange}
-              sx={{ color: "white" }}
-            >
-              <MenuItem value={10}> Last 7 days</MenuItem>
-              <MenuItem value={20}> Last 14 days</MenuItem>
-              <MenuItem value={30}> Last 28 days</MenuItem>
-            </Select>
-          </FormControl>
+          <form onSubmit={handleVisit}>
+            <Button variant="contained" color="success" type="submit">
+              Refresh
+            </Button>
+          </form>
+          <Snackbar
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            message="Refreshed Done"
+            action={action}
+          />
         </Toolbar>
       </AppBar>
     </Box>

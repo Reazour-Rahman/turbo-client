@@ -149,7 +149,7 @@ const RoomDashboardHome = () => {
                 {
                   recentVideos.map(ma=> <div>
                     {
-                      ma.comment.map(m => <div style={{marginTop:'5px'}} className="grid-carddetails-container">
+                      ma?.comment?.map(m => <div style={{marginTop:'5px'}} className="grid-carddetails-container">
                       <div >
                         <p id={text} className="pra">{m.username} - {m.createdAt}</p>
                         <p id={text} className="pra">{m.comment}</p>
