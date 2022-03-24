@@ -28,6 +28,7 @@ import { setIsLoading, setUser } from "../../../reducers/slices/firebaseSlice";
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
+import ManageAccountModal from "../../Home/ManageAccount/ManageAccountModal";
 
 const cookies = new Cookies();
 
@@ -45,7 +46,7 @@ const logout = () => {
 }
 
 export default function MenuBar({ handleClickOpen }) {
-  const {signOut,auth} = useFirebase();
+  const { signOut, auth } = useFirebase();
   const user = useSelector((state) => state.firebase.user)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -61,16 +62,16 @@ export default function MenuBar({ handleClickOpen }) {
 
   const userLogOut = () => {
     signOut(auth)
-    .then(() => {
-      dispatch(setUser({}));
-      logout()
-    })
-    .catch((error) => {
-      // An error happened.
-    })
-    .finally(() => {
-      dispatch(setIsLoading(false));
-    });
+      .then(() => {
+        dispatch(setUser({}));
+        logout()
+      })
+      .catch((error) => {
+        // An error happened.
+      })
+      .finally(() => {
+        dispatch(setIsLoading(false));
+      });
   }
 
   const style = {
@@ -90,6 +91,11 @@ export default function MenuBar({ handleClickOpen }) {
   const [openModal, setOpenModal] = React.useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
+
+  // Manage Account Modal
+  const [openManageModal, setOpenManageModal] = React.useState(false);
+  const handleOpenManageModal = () => setOpenManageModal(true);
+  const handleCloseManageModal = () => setOpenManageModal(false);
 
 
 
@@ -164,7 +170,7 @@ export default function MenuBar({ handleClickOpen }) {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem sx={{ color: 'white'}}>
+          <MenuItem sx={{ color: 'white' }}>
             <Avatar>
               <img
                 style={{ width: 40, height: 40 }}
@@ -179,7 +185,7 @@ export default function MenuBar({ handleClickOpen }) {
           </MenuItem>
 
           <Divider />
-          { admin &&<Link style={{ textDecoration: "none" }} to="/dashboard">
+          {admin && <Link style={{ textDecoration: "none" }} to="/dashboard">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
                 <AdminPanelSettingsIcon style={iconStyle} />
@@ -197,8 +203,8 @@ export default function MenuBar({ handleClickOpen }) {
             </MenuItem>
           </Link>
 
-          <Button onClick={handleClickOpen} style={{ textDecoration: "none", color: '#f1f8e9'}}>
-            <MenuItem className="menu-style" sx={{fontSize: 14,}}>
+          <Button onClick={handleClickOpen} style={{ textDecoration: "none", color: '#f1f8e9' }}>
+            <MenuItem className="menu-style" sx={{ fontSize: 14, }}>
               <ListItemIcon style={style}>
                 <CreateNewFolderIcon style={iconStyle} />
               </ListItemIcon>
@@ -206,10 +212,10 @@ export default function MenuBar({ handleClickOpen }) {
             </MenuItem>
           </Button>
 
-          <Link style={{ textDecoration: "none" }} to="/">
+          <Link onClick={handleOpenManageModal} style={{ textDecoration: "none", color: '#f1f8e9' }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <ManageAccountsIcon style={iconStyle}/>
+                <ManageAccountsIcon style={iconStyle} />
               </ListItemIcon>
               Manage account
             </MenuItem>
@@ -217,7 +223,7 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/roomDashboard">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <YoutubeSearchedForIcon style={iconStyle}/>
+                <YoutubeSearchedForIcon style={iconStyle} />
               </ListItemIcon>
               ProPlayer Studio
             </MenuItem>
@@ -225,7 +231,7 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <PersonAdd style={iconStyle}/>
+                <PersonAdd style={iconStyle} />
               </ListItemIcon>
               Add another account
             </MenuItem>
@@ -233,15 +239,15 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <LocationOnIcon style={iconStyle}/>
+                <LocationOnIcon style={iconStyle} />
               </ListItemIcon>
               Location
             </MenuItem>
           </Link>
-          <Button onClick={handleOpenModal} style={{ textDecoration: "none", color: '#f1f8e9'}}>
-            <MenuItem className="menu-style"sx={{fontSize: 14,}}>
+          <Button onClick={handleOpenModal} style={{ textDecoration: "none", color: '#f1f8e9' }}>
+            <MenuItem className="menu-style" sx={{ fontSize: 14, }}>
               <ListItemIcon style={style}>
-                <HelpOutlineIcon sx={{mr: 4}} />
+                <HelpOutlineIcon sx={{ mr: 4 }} />
               </ListItemIcon>
               Help center
             </MenuItem>
@@ -249,7 +255,7 @@ export default function MenuBar({ handleClickOpen }) {
           <Link style={{ textDecoration: "none" }} to="/">
             <MenuItem className="menu-style" style={style}>
               <ListItemIcon style={style}>
-                <Settings style={iconStyle}/>
+                <Settings style={iconStyle} />
               </ListItemIcon>
               Settings
             </MenuItem>
@@ -257,7 +263,7 @@ export default function MenuBar({ handleClickOpen }) {
 
           <MenuItem onClick={userLogOut} className="menu-style" style={style}>
             <ListItemIcon style={style}>
-              <Logout style={iconStyle}/>
+              <Logout style={iconStyle} />
             </ListItemIcon>
             Logout
           </MenuItem>
@@ -267,6 +273,10 @@ export default function MenuBar({ handleClickOpen }) {
         openModal={openModal}
         handleCloseModal={handleCloseModal}
       ></HelpCenter>
+      <ManageAccountModal
+        openManageModal={openManageModal}
+        handleCloseManageModal={handleCloseManageModal}
+      ></ManageAccountModal>
     </>
   );
 }

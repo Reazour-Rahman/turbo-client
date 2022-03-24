@@ -84,9 +84,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 let mode;
 mode = localStorage.getItem("theme")
-const text= mode === "light" ? "black" : "darkLight" ;
-const card= mode === "light" ? "moreLight" : "moreDark";
-const bg= mode ==="light" ? "lightest" : "darkish";
+const text = mode === "light" ? "black" : "darkLight";
+const card = mode === "light" ? "moreLight" : "moreDark";
+const bg = mode === "light" ? "lightest" : "darkish";
 const mdTheme = createTheme();
 
 function RoomDashboardContent() {
@@ -103,7 +103,7 @@ function RoomDashboardContent() {
                     <Toolbar
                         sx={{
                             pr: '24px', // keep right padding when drawer closed
-                           
+
                         }}
 
                         id={card}
@@ -143,7 +143,7 @@ function RoomDashboardContent() {
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
                     <Toolbar
-                        style={{  }}
+                        style={{}}
                         id={card}
                         sx={{
                             display: 'flex',
@@ -153,11 +153,11 @@ function RoomDashboardContent() {
                         }}
                     >
                         <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon  id={text} className="dashboard-button" />
+                            <ChevronLeftIcon id={text} className="dashboard-button" />
                         </IconButton>
                     </Toolbar>
                     <Divider />
-                    <List component="nav" style={{ }} id={card}>
+                    <List component="nav" style={{}} id={card}>
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}
