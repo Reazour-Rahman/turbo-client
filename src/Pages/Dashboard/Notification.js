@@ -54,7 +54,11 @@ export default function Messaging() {
   },[]);
 
   
-  
+  let mode;
+mode = localStorage.getItem("theme")
+const text= mode === "light" ? "black" : "darkLight" ;
+const card= mode === "light" ? "moreLight" : "moreDark";
+const bg= mode ==="light" ? "lightest" : "darkish";
 
 
   return (
@@ -72,7 +76,7 @@ export default function Messaging() {
           </IconButton>
         </Tooltip>
       </Box>
-      <Menu
+      <Menu 
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
@@ -81,14 +85,14 @@ export default function Messaging() {
         PaperProps={{
           elevation: 0,
           style: {
-            width: 350,
+            // width: 350,
             opacity: 1,
             backgroundColor: "#091a2b",
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
             "& .MuiAvatar-root": {
-              width: 32,
+              // width: 32,
               height: 32,
               ml: -0.5,
               mr: 1,
@@ -111,30 +115,16 @@ export default function Messaging() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem className="p-li">
-          <Box>
-            <p className="p-mg">Notifications</p>
-          </Box>
+            <p id={text} >Notifications</p>
         </MenuItem>
-        <MenuItem>
-          <Box className="not-filter">
-            <Button className="category-color" variant="outlined" size="small">
-              All
-            </Button>
-            <Button className="category-color" variant="outlined" size="small">
-              Unread
-            </Button>
-            <Button className="category-color" variant="outlined" size="small">
-              Priority
-            </Button>
-          </Box>
-        </MenuItem>
+
 
         <Divider className="dev" />
 
         {[1].map((element) => (
           <Link style={{ textDecoration: "none" }} to="/">
-            <MenuItem className="menu-style">
-              <small style={{width:"100px", color:"white"}}>{notification?.title} <br /> {notification?.reply}</small>
+            <MenuItem>
+              <p style={{width:"100%"}}>Our User {notification?.displayName}'s Problem is "{notification?.title}" <br /> Admin Replied : {notification?.reply.slice(0,50)}</p>
             </MenuItem>
           </Link>
         ))}
