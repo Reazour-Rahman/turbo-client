@@ -75,6 +75,15 @@ const DefaultAside = () => {
   const condition0 = costChange < 0 ? "danger" : "success";
 
   const condition = revenuePercentage < 0 ? "danger" : "success";
+
+
+  /* Achived */
+  const thisYearRevenue =  revenue[1]?.netCashIF - cost[1]?.cost;
+  const thisYearGoal = revenue[1]?.revenueGoal;
+  const growth = ((thisYearGoal - thisYearRevenue) / thisYearGoal) * 100
+  const fixedGrowth = growth.toFixed(2)
+
+
   return (
     <div className="aside-container">
       {/* Monthly target */}
@@ -91,7 +100,7 @@ const DefaultAside = () => {
             <br />
             <CircularProgressWithLabel
               variant="determinate"
-              value={75}
+              value={fixedGrowth}
               size={150}
               id={text}
             />{" "}
