@@ -173,7 +173,7 @@ function App() {
 
 
 
-        <Route path="dashboard" element={<Dashboard />}>
+        <Route path="dashboard" element={ <AdminRoute><Dashboard /></AdminRoute>}>
           <Route path="/dashboard" element={<Default />}></Route>
 
           <Route exact path="/dashboard/home" element={<DashboardHome />} />
