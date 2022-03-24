@@ -23,6 +23,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ExploreIcon from "@mui/icons-material/Explore";
 import RestoreIcon from "@mui/icons-material/Restore";
 import CodeOffIcon from '@mui/icons-material/CodeOff';
+import GridViewIcon from '@mui/icons-material/GridView';
 import {
   Link,
   NavLink,
@@ -169,7 +170,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
 
-        <List id={mode === "light" ? "moreLight" : "moreDark"} style={{ height: "100%", border: "0px" }}>
+        <List id={mode === "light" ? "moreLight" : "moreDark"} style={{  border: "0px" }}>
           <Link className="no-link" to="/home">
             <NavLink selected className="nav-btn" id={mode === "light" ? "black" : "darkLight"} to="/">
               <ListItem className="nav-btn" id={mode === "light" ? "black" : "darkLight"} button>
@@ -204,6 +205,15 @@ export default function MiniDrawer() {
                 <SportsTennisIcon className="nav-btn" id={mode === "light" ? "black" : "darkLight"} />
               </ListItemIcon>
               <ListItemText primary={"Break It Out"} />
+            </ListItem>
+          </NavLink>
+
+          <NavLink className="nav-btn" id={mode === "light" ? "black" : "darkLight"} to="/multiplication">
+            <ListItem className="nav-btn" id={mode === "light" ? "black" : "darkLight"} button>
+              <ListItemIcon className="fs-6">
+                <GridViewIcon className="nav-btn" id={mode === "light" ? "black" : "darkLight"} />
+              </ListItemIcon>
+              <ListItemText primary={"ProPlayer"} />
             </ListItem>
           </NavLink>
 

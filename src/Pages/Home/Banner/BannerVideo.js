@@ -1,13 +1,9 @@
 import React from "react";
 import VideoPlayer from "react-video-js-player";
-import videoSrc from "../../../assets/gig.mp4";
 import './Banner.css'
 
 
 const BannerVideo = ({v, t}) => {
-  const poster = "https://wallpapercave.com/wp/wp6543230.jpg";
-  const videoSource = videoSrc;
-
   return (
     <div>
       <VideoPlayer

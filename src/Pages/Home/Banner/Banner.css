@@ -47,7 +47,7 @@ Carousel text
 
 
 
-@media screen and (min-width: 500px) and (max-width: 1000px) {
+@media screen and (min-width: 300px) and (max-width: 1000px) {
     .banner{
         height: 485px;
     }
@@ -66,8 +66,21 @@ Carousel text
     }
 }
 
-@media screen and (min-width: 200px) and (max-width: 595px) {
+@media screen and  (max-width: 600px) {
 .banner{
-    margin-bottom: 15px;
+    margin-bottom: 55px;
 }
+.banner-video-size{
+    width: 100%;
+    height: 200px;
+}
+}
+@media screen and (min-width: 200px) and (max-width: 495px) {
+    .banner{
+        margin-bottom: 65px;
+    }
+    .banner-video-size{
+        width: 100%;
+        height: 150px;
+    }
 }

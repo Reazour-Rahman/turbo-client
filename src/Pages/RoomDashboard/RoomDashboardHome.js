@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./RoomDashboardHome.css";
 import VideoPlayer from "react-video-js-player";
+import Divider from '@mui/material/Divider';
 
 const RoomDashboardHome = () => {
   const [recentVideos, setRecentVideos] = useState([]);
@@ -49,13 +50,12 @@ const RoomDashboardHome = () => {
   console.log(totalViews);
   return (
     <div>
-      <div className="" style={{ color: "white", height: '100vh', marginLeft: "15px", marginRight: '15px' }}>
-        <h2 style={{  }} id={text} className="mt-5 h2section" >Room dashboard</h2>
+      <div className="" style={{ color: "white",  marginLeft: "15px", marginRight: '15px', marginTop:"15px" }}>
         <div class="grid-container" >
           {/* 1st Column */}
           <div className="first-column-size">
             <div className="card" style={{}} id={card}>
-              <h6 id={text}>Latest Blog performance</h6>
+              <p className="pra-1" id={text}>Latest Blog performance</p>
               {
                 recentVideos.map(r => <>
                   <VideoPlayer
@@ -64,17 +64,17 @@ const RoomDashboardHome = () => {
                     poster={r.thumbnail}
                     playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
                   />
-                  <h1 id={text} style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
+                  <p id={text} style={{ marginTop: '10px' }} className="pra">{r.title}</p>
                   <div className="grid-carddetails-container">
                     <div class="grid-item">
-                      <p id={text}>Blog Views</p>
-                      <p id={text}>Total Like Impressions</p>
-                      <p id={text}>Upload At</p>
+                      <p id={text} className="pra">Blog Views</p>
+                      <p id={text} className="pra">Total Like Impressions</p>
+                      <p id={text} className="pra">Upload At</p>
                     </div>
                     <div class="grid-item " style={{ textAlign: "right" }}>
-                      <p id={text}>{r.views}</p>
-                      <p id={text}>{r.likes}</p>
-                      <p id={text}>{r.uploadTime}</p>
+                      <p id={text} className="pra">{r.views}</p>
+                      <p id={text} className="pra">{r.likes}</p>
+                      <p id={text} className="pra">{r.uploadTime}</p>
                     </div>
 
                     {/* <a href="" style={{ textDecoration: "none" }}>
@@ -93,26 +93,28 @@ const RoomDashboardHome = () => {
           <div style={{ width: "100%" }}>
             <div style={{}}>
               <div className="card" id={card} style={{ }}>
-                <h6 id={text}>Room Analytics</h6>
-                <p id={text}>Current Followers</p>
-                <h4 id={text}>{profile.followersCount}</h4>
-                <hr className="hr" />
+                <p id={text} className="pra-1">Room Analytics</p>
+                <p id={text} className="pra">Current Followers</p>
+                <p id={text} className="pra">{profile.followersCount}</p>
 
-                <h6 style={{ paddingBottom: "5px" }}>Summary</h6>
+                <Divider style={{margin:"5px 0px"}}/>
+
+                <p style={{ }} className="pra">Summary</p>
                 <div className="grid-carddetails-container">
                   <div>
-                    <p id={text} style={{ paddingBottom: "3px" }}>Total Blog Views</p>
-                    <p id={text}>Total Blog Likes</p>
-                    <p id={text}>Total Blog Upload</p>
+                    <p id={text} style={{ paddingBottom: "3px" }} className="pra">Total Blog Views</p>
+                    <p id={text} className="pra">Total Blog Likes</p>
+                    <p id={text} className="pra">Total Blog Upload</p>
                   </div>
                   <div style={{ textAlign: "right" }} class="">
-                    <p id={text} style={{ paddingBottom: "3px" }}>{totalViews}</p>
-                    <p id={text}>{totalLikes}</p>
-                    <p id={text}>{recentVideos.length}</p>
+                    <p id={text} style={{ paddingBottom: "3px" }} className="pra">{totalViews}</p>
+                    <p id={text} className="pra">{totalLikes}</p>
+                    <p id={text} className="pra">{recentVideos.length}</p>
                   </div>
                 </div>
-                <hr className="hr" />
-                <p style={{ fontSize: '20px', marginBottom: '5px' }} id={text} >Most Liked Blog video</p>
+                <Divider style={{margin:"5px 0px"}}/>
+                <p className="pra-1" id={text} >Most Liked Blog video</p>
+
                 {
                   recentVideos.sort((a, b) => b.likes - a.likes).map(r => <>
                     <VideoPlayer
@@ -121,17 +123,17 @@ const RoomDashboardHome = () => {
                       poster={r.thumbnail}
                       playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
                     />
-                    <h1 style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
+                    <p style={{ marginTop: '10px' }} className="pra">{r.title}</p>
                     <div className="grid-carddetails-container">
                       <div class="grid-item">
-                        <p id={text}>Blog Views</p>
-                        <p id={text}>Total Like Impressions</p>
-                        <p id={text}>Upload At</p>
+                        <p id={text} className="pra">Blog Views</p>
+                        <p id={text} className="pra">Total Like Impressions</p>
+                        <p id={text} className="pra">Upload At</p>
                       </div>
                       <div class="grid-item " style={{ textAlign: "right" }}>
-                        <p id={text}>{r.views}</p>
-                        <p id={text}>{r.likes}</p>
-                        <p id={text}>{r.uploadTime}</p>
+                        <p id={text} className="pra">{r.views}</p>
+                        <p id={text} className="pra">{r.likes}</p>
+                        <p id={text} className="pra">{r.uploadTime}</p>
                       </div>
                     </div>
                   </>).slice(0, 1)
@@ -140,18 +142,17 @@ const RoomDashboardHome = () => {
               </div>
             </div>{" "}
             <br />
-            <br />
-            <div style={{ width: "100%", height: "300px" }}>
+            <div style={{ width: "100%"}}>
               <div className="card" style={{  }} id={card}>
-                <h6 id={text}>Latest Blog Comments</h6>
-                <h6 style={{marginBottom:'5px'}} id={text}>Latest 2 Comment Of Recent Blog</h6>
+                <p id={text} className="pra-1">Latest Blog Comments</p>
+                <p style={{marginBottom:'5px'}} className="pra" id={text}>Latest 2 Comment Of Recent Blog</p>
                 {
                   recentVideos.map(ma=> <div>
                     {
                       ma.comment.map(m => <div style={{marginTop:'5px'}} className="grid-carddetails-container">
                       <div >
-                        <p id={text}>{m.username} - {m.createdAt}</p>
-                        <p id={text}>{m.comment}</p>
+                        <p id={text} className="pra">{m.username} - {m.createdAt}</p>
+                        <p id={text} className="pra">{m.comment}</p>
                       </div>
                       <div class="">
                         <img
@@ -175,7 +176,7 @@ const RoomDashboardHome = () => {
           <div style={{ width: "100%" }}>
             <div className="third-column-first-row-size" style={{ marginBottom: "30px" }}>
               <div className="card" style={{  marginBottom: "30px" }} id={card}>
-                <p style={{ fontSize: '20px', marginBottom: '5px' }} id={text}>Most Viewed Blog video</p>
+                <p style={{ marginBottom: '5px' }} id={text} className="pra-1">Most Viewed Blog video</p>
                 {
                   recentVideos.sort((a, b) => b.views - a.views).map(r => <>
                     <VideoPlayer
@@ -185,67 +186,21 @@ const RoomDashboardHome = () => {
                       playbackRates={[0.5, 1, 1.2, 1.5, 1.7, 2, 2.5, 3, 4, 6]}
                     />
 
-                    <h1 id={text} style={{ fontSize: '22px', marginTop: '10px' }}>{r.title}</h1>
+                    <p id={text} style={{ marginTop: '10px' }} className="pra">{r.title}</p>
                     <div className="grid-carddetails-container">
                       <div class="grid-item">
-                        <p id={text}>Blog Views</p>
-                        <p id={text}>Total Like Impressions</p>
-                        <p id={text}>Upload At</p>
+                        <p id={text} className="pra">Blog Views</p>
+                        <p id={text} className="pra">Total Like Impressions</p>
+                        <p id={text} className="pra">Upload At</p>
                       </div>
                       <div class="grid-item " style={{ textAlign: "right" }}>
-                        <p id={text}>{r.views}</p>
-                        <p id={text}>{r.likes}</p>
-                        <p id={text}>{r.uploadTime}</p>
+                        <p id={text} className="pra">{r.views}</p>
+                        <p id={text} className="pra">{r.likes}</p>
+                        <p id={text} className="pra">{r.uploadTime}</p>
                       </div>
                     </div>
                   </>).slice(0, 1)
                 }
-              </div>
-            </div>
-            <div style={{ width: "100%", marginTop: '30px' }}>
-              <div className="card third-column-second-row-size" style={{  }} id={card}>
-                <h6 id={text}>Ideas for you</h6>
-
-                <div className="grid-carddetails-container">
-                  <div class="">
-                    <h6 id={text}>Protect your Room</h6>
-                    <p id={text}>
-                      Your account is greater risk of attack without 2-step
-                      verification.
-                    </p>
-                    <p id={text}>Turn it on for extra security</p>
-                  </div>
-                  <div class="grid-item">
-                    <img
-                      style={{ width: "50%" }}
-                      src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                      alt="Pic"
-                    />
-                  </div>
-                </div>
-                <a href="" style={{ textDecoration: "none" }}>
-                  GET STARTED
-                </a>
-              </div>
-            </div>
-
-            <div style={{ width: "100%", height: "600px" }}>
-              <div className="card" style={{ }} id={card}>
-                <h6 id={text}>Creator Insider</h6>
-                <img
-                  className="third-column-third-row-img"
-                  src="https://media.istockphoto.com/vectors/ninja-esport-vector-id1253989842?k=20&m=1253989842&s=612x612&w=0&h=YLJZtIzr3PHxCj3-4Bs2gCLyhoRlvOqQO23SA0yTT0M="
-                  alt="Pic"
-                />
-                <div>
-                  <h6 id={text}>This week at ProPlayers</h6>
-                  <p id={text}>
-                    Hello Insiders! we're back with a few launches this week
-                  </p>
-                </div>
-                <a href="" style={{ textDecoration: "none" }}>
-                  WATCH ON PRO-PLAYERS
-                </a>
               </div>
             </div>
           </div>
