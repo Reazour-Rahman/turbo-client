@@ -158,7 +158,7 @@ export default function MiniDrawer() {
           <NavigationBar user={user}></NavigationBar>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open} className="side-navigation">
+      <Drawer variant="permanent" open={open} className="side-navigation" >
         <DrawerHeader id={mode === "light" ? "moreLight" : "moreDark"} className="no-border">
           <IconButton className="nav-btn" id={mode === "light" ? "black" : "darkLight"} onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -170,7 +170,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
 
-        <List id={mode === "light" ? "moreLight" : "moreDark"} style={{  border: "0px" }}>
+        <List id={mode === "light" ? "moreLight" : "moreDark"} style={{  border: "0px", height:"100vh" }}>
           <Link className="no-link" to="/home">
             <NavLink selected className="nav-btn" id={mode === "light" ? "black" : "darkLight"} to="/">
               <ListItem className="nav-btn" id={mode === "light" ? "black" : "darkLight"} button>
