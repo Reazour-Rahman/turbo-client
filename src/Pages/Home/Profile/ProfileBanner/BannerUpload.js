@@ -127,7 +127,7 @@ export default function BannerUpload({ roomName, cover, user, profile }) {
 
             {progressBar < 0.1 ? null : <Progress progressBar={progressBar} />}
 
-            {progressBar === 100 ? (
+            {image.length > 10 ? (
               <Button
                 onClick={handleCreateRoom}
                 autoFocus
@@ -150,7 +150,7 @@ export default function BannerUpload({ roomName, cover, user, profile }) {
                 }`}
                 endIcon={<CloudCircleIcon />}
               >
-                Upload
+                Upload Await
               </Button>
             )}
           </form>

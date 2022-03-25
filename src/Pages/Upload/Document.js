@@ -235,7 +235,7 @@ const onSubmit = (data) => {
       if (res.data.insertedId) {
         swal(
           "Good job!",
-          "Successfully submitted! An admin will approve your post",
+          "Successfully submitted!",
           "success"
         );
         reset();
@@ -378,7 +378,7 @@ const onSubmit = (data) => {
             </FormControl>
             <DialogActions>
           <Button onClick={close}>CANCEL</Button>
-          <Button type="submit">NEXT</Button>
+          {videoSrc.length > 5 ? <Button type="submit">NEXT</Button> : <Button >Please Upload Media</Button>}
         </DialogActions>
 
           </form>
