@@ -74,7 +74,7 @@ export default function ProfileSearchBar() {
 
   const user = useSelector(state => state.firebase.user)
   React.useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`)
+    fetch(`https://proplayer-backend.vercel.app/users/room/${user?.email}`)
     .then(res => res.json())
     .then(data => setProfile(data.room))
   },[user?.email, followed, count])
@@ -91,7 +91,7 @@ export default function ProfileSearchBar() {
   },[user.email, bloggerProfile?.followers])
 
   React.useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`)
+    fetch(`https://proplayer-backend.vercel.app/users/room/${user?.email}`)
     .then(res => res.json())
     .then(data => {
       setBloggerProfile(data)
@@ -193,7 +193,7 @@ export default function ProfileSearchBar() {
     }
     setFollowed(true)
     setCount(count + 1)
-    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${user?.email}`, follower)
+    axios.put(`https://proplayer-backend.vercel.app/users/followers/${user?.email}`, follower)
   }
 
   const handleUnFollow = () => {
@@ -206,7 +206,7 @@ export default function ProfileSearchBar() {
     }
     setFollowed(false)
     setCount(count + 1)
-    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/followers/${user?.email}`, follower)
+    axios.put(`https://proplayer-backend.vercel.app/users/followers/${user?.email}`, follower)
   }
   let mode = localStorage.getItem("theme");
   const card = mode === "light" ? "moreLight" : "moreDark" ;

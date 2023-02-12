@@ -28,7 +28,7 @@ const Login = () => {
 
         const { username, password, phoneNumber, avatarURL } = form;
 
-        const URL = 'https://aqueous-chamber-45567.herokuapp.com/auth';
+        const URL = 'https://proplayer-backend.vercel.app/auth';
         // const URL = 'https://medical-pager.herokuapp.com/auth';
 
         const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {

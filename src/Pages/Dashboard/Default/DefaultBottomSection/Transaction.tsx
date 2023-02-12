@@ -21,7 +21,7 @@ const Transaction = () => {
   const [users, setUsers] = useState([]);
   const payments = [];
 
-  const url = `https://aqueous-chamber-45567.herokuapp.com/users`;
+  const url = `https://proplayer-backend.vercel.app/users`;
 
   useEffect(() => {
     fetch(url)
@@ -59,10 +59,10 @@ const Transaction = () => {
   console.log(payments);
 
   let mode;
-mode = localStorage.getItem("theme")
-const text= mode === "light" ? "black" : "darkLight" ;
-const card= mode === "light" ? "moreLight" : "moreDark";
-const bg= mode ==="light" ? "lightest" : "darkish";
+  mode = localStorage.getItem("theme");
+  const text = mode === "light" ? "black" : "darkLight";
+  const card = mode === "light" ? "moreLight" : "moreDark";
+  const bg = mode === "light" ? "lightest" : "darkish";
 
   return (
     <div className="members-container" id={card}>
@@ -120,7 +120,9 @@ const bg= mode ==="light" ? "lightest" : "darkish";
             <td id={text}>{payment.date}</td>
             <td id={text}>$ {payment.amount / 100}</td>
             <td id={text}>{payment.doner}</td>
-            <td id={text} className="status-transaction">Approve</td>
+            <td id={text} className="status-transaction">
+              Approve
+            </td>
           </tr>
         ))}
       </table>

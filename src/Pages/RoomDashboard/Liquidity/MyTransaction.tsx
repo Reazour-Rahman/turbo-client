@@ -19,7 +19,7 @@ const MyTransaction = ({ user }) => {
 
   const [payments, setPayments] = useState([]);
 
-  const url = `https://aqueous-chamber-45567.herokuapp.com/user/${user?.email}`;
+  const url = `https://proplayer-backend.vercel.app/user/${user?.email}`;
 
   useEffect(() => {
     fetch(url)
@@ -36,15 +36,15 @@ const MyTransaction = ({ user }) => {
   //   const payments: any = users.payment;
 
   let mode;
-  mode = localStorage.getItem("theme")
-  const text= mode === "light" ? "black" : "darkLight" ;
-  const card= mode === "light" ? "moreLight" : "moreDark";
-  const bg= mode ==="light" ? "lightest" : "darkish";
+  mode = localStorage.getItem("theme");
+  const text = mode === "light" ? "black" : "darkLight";
+  const card = mode === "light" ? "moreLight" : "moreDark";
+  const bg = mode === "light" ? "lightest" : "darkish";
 
   return (
     <div className="members-container" id={card}>
       <div className="new-members-head">
-        <p id={text} >Latest Transactions</p>
+        <p id={text}>Latest Transactions</p>
         <div>
           <IconButton
             className="add-btn"
@@ -96,7 +96,9 @@ const MyTransaction = ({ user }) => {
             <td id={text}>{payment.date}</td>
             <td id={text}>$ {payment.amount / 100}</td>
             <td id={text}>{payment.blogTitle}</td>
-            <td id={text} className="status-transaction">Withdraw</td>
+            <td id={text} className="status-transaction">
+              Withdraw
+            </td>
           </tr>
         ))}
       </table>

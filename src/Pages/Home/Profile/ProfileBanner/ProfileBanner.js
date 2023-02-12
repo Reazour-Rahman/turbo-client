@@ -24,7 +24,7 @@ const ProfileBanner = () => {
   const user = useSelector((state) => state.firebase.user);
   useEffect(() => {
     fetch(
-      `https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`
+      `https://proplayer-backend.vercel.app/users/room/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {

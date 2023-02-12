@@ -13,7 +13,7 @@ const RecentVideos = () => {
 
   useEffect(() => {
     setLoading(true);
-    const contentUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs?email=${user?.email}`;
+    const contentUrl = `https://proplayer-backend.vercel.app/blogs?email=${user?.email}`;
       fetch(contentUrl)
         .then((response) => response.json())
         .then((data) => {

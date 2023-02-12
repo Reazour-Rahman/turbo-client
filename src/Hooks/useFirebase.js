@@ -68,7 +68,7 @@ const useFirebase = () => {
   // checking admin
 
   // useEffect( () => {
-  //   fetch(`https://aqueous-chamber-45567.herokuapp.com/users/${user?.email}`)
+  //   fetch(`https://proplayer-backend.vercel.app/users/${user?.email}`)
   //   .then(res => res.json())
   //   .then(data =>  dispatch(setAdmin(data?.admin)))
   // },[user?.email])
@@ -77,7 +77,7 @@ const useFirebase = () => {
 
   const saveUser = (email, name, method) => {
     const user = { email, name, room:{}, followersCount: 0, followers:[] , followingsCount : 0, followings :[]}
-    fetch('https://aqueous-chamber-45567.herokuapp.com/users', {
+    fetch('https://proplayer-backend.vercel.app/users', {
       method: method,
       headers: {
         'content-type': 'application/json'

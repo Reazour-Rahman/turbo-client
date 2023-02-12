@@ -49,7 +49,7 @@ const BookingProduct = ({ handleCloseBookinModal, open, product, time }) => {
             date: new Date().toLocaleDateString()
         }
 
-        fetch('https://aqueous-chamber-45567.herokuapp.com/bookingProducts', {
+        fetch('https://proplayer-backend.vercel.app/bookingProducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

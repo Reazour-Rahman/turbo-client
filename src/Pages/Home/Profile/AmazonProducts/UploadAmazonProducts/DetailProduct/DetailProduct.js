@@ -34,7 +34,7 @@ const DetailProduct = () => {
   };
 
   useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/products/${productId}`)
+    fetch(`https://proplayer-backend.vercel.app/products/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         setIsLoading(true)
@@ -69,7 +69,7 @@ Send Data to Database
   const onSubmit = (data) => {
     console.log("click has been happned");
     axios
-      .post("https://aqueous-chamber-45567.herokuapp.com/cart", data, (
+      .post("https://proplayer-backend.vercel.app/cart", data, (
         data.customarName = bloggerName,
         data.customarEmail = bloggerEmail,
         data.addedTime = time.toLocaleString("en-US", {

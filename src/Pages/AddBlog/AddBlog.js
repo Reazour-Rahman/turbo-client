@@ -48,7 +48,7 @@ const AddBlog = () => {
         blogs.append('video', video)
         blogs.append('tags', tags)
         console.log(blogs)
-        axios.post('https://aqueous-chamber-45567.herokuapp.com/blogs', blogs)
+        axios.post('https://proplayer-backend.vercel.app/blogs', blogs)
         e.preventDefault()
       };
       

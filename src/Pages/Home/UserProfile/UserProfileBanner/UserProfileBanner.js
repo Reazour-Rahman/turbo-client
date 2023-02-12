@@ -11,7 +11,7 @@ const UserProfileBanner = () => {
 
   console.log(email);
   useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/room/${email}`)
+    fetch(`https://proplayer-backend.vercel.app/users/room/${email}`)
     .then(res => res.json())
     .then(data => setCover(data.room.cover))
   },[email])

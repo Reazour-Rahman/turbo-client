@@ -110,7 +110,7 @@ const Audience = () => {
   const user = useSelector(state => state.firebase.user)
 
   React.useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/user/${user?.email}`)
+    fetch(`https://proplayer-backend.vercel.app/user/${user?.email}`)
     .then(res => res.json())
     .then(data => {
       setMyUser(data)
@@ -118,7 +118,7 @@ const Audience = () => {
   },[user.email])
 
   React.useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs`)
+    fetch(`https://proplayer-backend.vercel.app/blogs`)
     .then(res => res.json())
     .then(data => {
         var sum=0;

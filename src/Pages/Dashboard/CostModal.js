@@ -41,7 +41,7 @@ export default function CostModal({costOpen, setCostOpen}) {
         cost, date, year, adminName : user?.displayName, adminEmail : user?.email
     }
 
-    axios.put(`https://aqueous-chamber-45567.herokuapp.com/cost`, data)
+    axios.put(`https://proplayer-backend.vercel.app/cost`, data)
     handleClose()
     
   }

@@ -31,7 +31,7 @@ const UploadeAmazonProducts = () => {
         formData.append('description', description);
         formData.append('image', image);
 
-        fetch('https://aqueous-chamber-45567.herokuapp.com/products', {
+        fetch('https://proplayer-backend.vercel.app/products', {
             method: 'POST',
             body: formData
         })

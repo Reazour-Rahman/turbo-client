@@ -33,7 +33,7 @@ const MakeAdmin = (props) => {
         props.blogger;
     const handleAdminSubmit = e => {
         const user = { email, role };
-        fetch("https://aqueous-chamber-45567.herokuapp.com/makeAdmin", {
+        fetch("https://proplayer-backend.vercel.app/makeAdmin", {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('idToken')}`,

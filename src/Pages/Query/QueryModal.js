@@ -31,7 +31,7 @@ export default function QueryModal() {
   const [notMatch, setNoMatch] = React.useState(false);
 
   React.useEffect(() => {
-      const blogURL = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+      const blogURL = `https://proplayer-backend.vercel.app/blogs`;
       fetch(blogURL)
           .then((response) => response.json())
           .then((data) => {

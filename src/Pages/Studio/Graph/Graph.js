@@ -18,7 +18,7 @@ const Graph = (props) => {
   const [graph, setGraph] = useState([]);
 
   useEffect(()=>{
-    fetch("https://aqueous-chamber-45567.herokuapp.com/userVisitors")
+    fetch("https://proplayer-backend.vercel.app/userVisitors")
     .then(res => res.json())
     .then(data => {
       // data?.map(d => setGraph(d)) 

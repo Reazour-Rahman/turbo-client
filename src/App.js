@@ -81,7 +81,7 @@ function App() {
   }, [auth, dispatch])
 
   useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/users/${user?.email}`)
+    fetch(`https://proplayer-backend.vercel.app/users/${user?.email}`)
       .then(res => res.json())
       .then(data => dispatch(setAdmin(data?.admin)))
   }, [user?.email])

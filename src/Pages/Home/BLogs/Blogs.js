@@ -15,16 +15,16 @@ const Blogs = ({ filter, page, allBlogs }) => {
   /*:: filter start (this block will be inside useEffect) ::*/
   let url;
   if (!filter) {
-    url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+    url = `https://proplayer-backend.vercel.app/blogs`;
   } else {
-    url = `https://aqueous-chamber-45567.herokuapp.com/blogs?filter=${filter}`;
+    url = `https://proplayer-backend.vercel.app/blogs?filter=${filter}`;
     console.log(url);
   }
   /*:: filter end ::*/
 
   useEffect(() => {
     setLoading(true);
-    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+    const blogUrl = `https://proplayer-backend.vercel.app/blogs`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {

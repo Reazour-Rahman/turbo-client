@@ -33,7 +33,7 @@ const HistoryVideo = ({history}) => {
     let muted = theme === "light" ? "black" : "muted" ;
 
     const deleteFromHistory = (id) => {
-      axios.delete(`https://aqueous-chamber-45567.herokuapp.com/views/${id}`)
+      axios.delete(`https://proplayer-backend.vercel.app/views/${id}`)
       .then(res => {
         if (res.data.deletedCount) {
               window.location.reload();
@@ -56,7 +56,7 @@ const HistoryVideo = ({history}) => {
           views : views + 1,
           viewers : [...viewers]
         }
-        await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
+        await axios.put(`https://proplayer-backend.vercel.app/blogs/views/${id}`, viewsData)
       }
       else {
         const viewerData = {viewerEmail :user.email}
@@ -64,13 +64,13 @@ const HistoryVideo = ({history}) => {
           views : views + 1,
           viewers : [...viewers,  viewerData]
         }
-        await axios.put(`https://aqueous-chamber-45567.herokuapp.com/blogs/views/${id}`, viewsData)
+        await axios.put(`https://proplayer-backend.vercel.app/blogs/views/${id}`, viewsData)
       }
   
       const data = {
         blogId : _id, viewerName:user.displayName, viewerEmail:user.email, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto, views, description
       }
-      await axios.post('https://aqueous-chamber-45567.herokuapp.com/views', data)
+      await axios.post('https://proplayer-backend.vercel.app/views', data)
       handleClose()
   
     }

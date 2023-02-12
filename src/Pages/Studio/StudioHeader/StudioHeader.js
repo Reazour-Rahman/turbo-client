@@ -43,7 +43,7 @@ const StudioHeader = () => {
   /* Send Visitors Data  */
   const [visit, setVisit] = useState(0);
   React.useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs`)
+    fetch(`https://proplayer-backend.vercel.app/blogs`)
       .then((res) => res.json())
       .then((data) => {
         var sum = 0;
@@ -59,7 +59,7 @@ const StudioHeader = () => {
   const [graph, setGraph] = useState({});
 
   useEffect(() => {
-    fetch("https://aqueous-chamber-45567.herokuapp.com/userVisitors")
+    fetch("https://proplayer-backend.vercel.app/userVisitors")
       .then((res) => res.json())
       .then((data) => {
         data?.map((d) => setGraph(d));
@@ -80,7 +80,7 @@ const StudioHeader = () => {
     if (graph?.name == today) {
       window.alert("You already Refresh Today's Visit")
     } else {
-      axios.post(`https://aqueous-chamber-45567.herokuapp.com/userVisitorS`, data);
+      axios.post(`https://proplayer-backend.vercel.app/userVisitorS`, data);
       handleClick();
       window.location.reload();
     }

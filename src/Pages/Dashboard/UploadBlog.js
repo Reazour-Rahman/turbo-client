@@ -89,6 +89,7 @@ export default function InputAdornments() {
     const onSubmitSignUp = (e) => {
         e.preventDefault()
         const blogs = new FormData()
+        
         blogs.append('title', title)
         blogs.append('category', category)
         blogs.append('privacy', privacy)
@@ -105,7 +106,7 @@ export default function InputAdornments() {
         blogs.append('date', date)
 
         if (tags.length >= 5 && video) {
-            axios.post('https://aqueous-chamber-45567.herokuapp.com/blogs', blogs)
+            axios.post('https://proplayer-backend.vercel.app/blogs', blogs)
                 .then(res => {
                     if (res.data.insertedId) {
                         e.target.reset()
@@ -126,7 +127,7 @@ export default function InputAdornments() {
 
 
     React.useEffect(() => {
-        fetch('https://aqueous-chamber-45567.herokuapp.com/blogs')
+        fetch('https://proplayer-backend.vercel.app/blogs')
             .then(res => res.json())
             .then(data => setValues(data))
 
@@ -140,12 +141,6 @@ export default function InputAdornments() {
         <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
 
             <Container>
-
-
-
-
-
-
 
 
 

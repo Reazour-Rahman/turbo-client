@@ -25,7 +25,7 @@ export default function AllBlogSetting({id, bloggerEmail}) {
 
   const handleDelete = (id) => {
     console.log(id);
-    axios.delete(`https://aqueous-chamber-45567.herokuapp.com/blogs/${id}`)
+    axios.delete(`https://proplayer-backend.vercel.app/blogs/${id}`)
     .then(res => {
         if (res.data.deletedCount) {
               window.location.reload();

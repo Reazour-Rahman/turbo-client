@@ -9,7 +9,7 @@ const AddCart = () => {
     const [addedProduct, setAddedProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`https://aqueous-chamber-45567.herokuapp.com/cart`)
+        fetch(`https://proplayer-backend.vercel.app/cart`)
             .then(res => res.json())
             .then(data => setCartProducts(data))
     }, [])

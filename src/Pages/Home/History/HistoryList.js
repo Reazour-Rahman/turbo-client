@@ -15,7 +15,7 @@ const HistoryList = () => {
     setLoading(true);
     setTimeout(async () => {
       const response = await fetch(
-        "https://aqueous-chamber-45567.herokuapp.com/views"
+        "https://proplayer-backend.vercel.app/views"
       );
       const data = await response.json();
       setHistories(data);

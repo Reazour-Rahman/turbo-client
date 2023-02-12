@@ -7,7 +7,7 @@ const RecommendedRoom = () => {
 
   useEffect(() => {
     // setLoading(true);
-    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/users`;
+    const blogUrl = `https://proplayer-backend.vercel.app/users`;
     fetch(blogUrl)
       .then((response) => response.json())
       .then((data) => {

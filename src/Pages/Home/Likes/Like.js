@@ -13,7 +13,7 @@ const Like = () => {
     const user = useSelector(state => state.firebase.user)
 
     useEffect(() => {
-        const likersUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+        const likersUrl = `https://proplayer-backend.vercel.app/blogs`;
         setLoading(true);
         fetch(likersUrl)
             .then((response) => response.json())

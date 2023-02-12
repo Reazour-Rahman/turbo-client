@@ -14,7 +14,7 @@ const AllBookingProducts = () => {
     const [bookingProducts, setBookingProducts] = useState();
 
     useEffect(() => {
-        fetch('https://aqueous-chamber-45567.herokuapp.com/bookingProducts')
+        fetch('https://proplayer-backend.vercel.app/bookingProducts')
             .then(res => res.json())
             .then(data => setBookingProducts(data))
     }, [])

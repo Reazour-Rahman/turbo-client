@@ -22,7 +22,7 @@ const Banner = () => {
   
     useEffect(() => {
       setLoading(true);
-      const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+      const blogUrl = `https://proplayer-backend.vercel.app/blogs`;
       fetch(blogUrl)
         .then((response) => response.json())
         .then((data) => {

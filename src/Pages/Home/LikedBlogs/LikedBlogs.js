@@ -13,7 +13,7 @@ const LikedBlogs = () => {
 
   useEffect(() => {
     // setLoading(true);
-    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/users`;
+    const blogUrl = `https://proplayer-backend.vercel.app/users`;
     fetch(blogUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -28,7 +28,7 @@ const LikedBlogs = () => {
   const [blog, setBlogs] = useState([]);
   useEffect(() => {
     // setLoading(true);
-    const blogUrl = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+    const blogUrl = `https://proplayer-backend.vercel.app/blogs`;
     fetch(blogUrl)
       .then((response) => response.json())
       .then((data) => {

@@ -55,7 +55,7 @@ const SearchBox = (blogger) => {
     const [searchText, setSearchText] = useState('')
     const [bloggerSearchRoom, setBloggerSearchRoom] = useState([]);
     // useEffect(() => {
-    //     const url = `https://aqueous-chamber-45567.herokuapp.com/users`;
+    //     const url = `https://proplayer-backend.vercel.app/users`;
     //     fetch(url)
     //         .then(res => res.json())
     //         .then(data => setBloggerSearchRoom(data));

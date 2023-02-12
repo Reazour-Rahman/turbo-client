@@ -24,17 +24,17 @@ const NewSubscriber = ({ user }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://aqueous-chamber-45567.herokuapp.com/users")
+    fetch("https://proplayer-backend.vercel.app/users")
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);
   //   console.log(users);
 
   let mode;
-  mode = localStorage.getItem("theme")
-  const text= mode === "light" ? "black" : "darkLight" ;
-  const card= mode === "light" ? "moreLight" : "moreDark";
-  const bg= mode ==="light" ? "lightest" : "darkish";
+  mode = localStorage.getItem("theme");
+  const text = mode === "light" ? "black" : "darkLight";
+  const card = mode === "light" ? "moreLight" : "moreDark";
+  const bg = mode === "light" ? "lightest" : "darkish";
 
   return (
     <div className=" members-container" id={card}>
@@ -74,11 +74,11 @@ const NewSubscriber = ({ user }) => {
           {users.map((user) => (
             <section className="team-members-list">
               <aside className="team-members-id">
+                <div></div>
                 <div>
-                  
-                </div>
-                <div>
-                  <p id={text} className="paragraph-size ">{user.name}</p>
+                  <p id={text} className="paragraph-size ">
+                    {user.name}
+                  </p>
                   {/* <p className=" p-dark">{user?.photoURL}</p> */}
                 </div>
               </aside>

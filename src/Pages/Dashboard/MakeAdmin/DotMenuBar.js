@@ -19,7 +19,7 @@ export default function DotMenuBar() {
     const [email, setEmail] = React.useState('');
     const handleAdminClick = e => {
         const user = { email };
-        fetch("https://aqueous-chamber-45567.herokuapp.com/users", {
+        fetch("https://proplayer-backend.vercel.app/users", {
             method: 'PUT',
             headers: {
 

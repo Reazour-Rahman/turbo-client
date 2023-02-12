@@ -62,7 +62,7 @@ const Edit = () => {
   /* Send Visitors Data  */
   const [visit, setVisit] = useState([])
   useEffect(()=>{
-    fetch("https://aqueous-chamber-45567.herokuapp.com/views")
+    fetch("https://proplayer-backend.vercel.app/views")
     .then(res => res.json())
     .then(data => {
       // data.map(d => setVisit(d)) 
@@ -73,7 +73,7 @@ const Edit = () => {
   const [graph, setGraph] = useState({});
 
   useEffect(()=>{
-    fetch("https://aqueous-chamber-45567.herokuapp.com/uniqueVisitors")
+    fetch("https://proplayer-backend.vercel.app/uniqueVisitors")
     .then(res => res.json())
     .then(data => {
       data?.map(d => setGraph(d)) 
@@ -103,10 +103,10 @@ const Edit = () => {
         pv:sum
     }
     if (graph?.name == today) {
-      axios.put(`https://aqueous-chamber-45567.herokuapp.com/uniqueVisitors/${graph?.name}`, data)
+      axios.put(`https://proplayer-backend.vercel.app/uniqueVisitors/${graph?.name}`, data)
       // window.alert("You already Refresh Today's Visit")
     }else{
-      axios.post(`https://aqueous-chamber-45567.herokuapp.com/uniqueVisitors`, data)
+      axios.post(`https://proplayer-backend.vercel.app/uniqueVisitors`, data)
     }
     handleClose()
   }

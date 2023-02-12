@@ -7,14 +7,14 @@ import '../Default.css'
 const DefaultTop = () => {
     const [cost, setCost] = useState([])
   useEffect(() => {
-    fetch('https://aqueous-chamber-45567.herokuapp.com/cost')
+    fetch('https://proplayer-backend.vercel.app/cost')
     .then(res => res.json())
     .then(data => setCost(data))
   },[])
 
   const [revenue, setRevenue] = useState([])
   useEffect(() => {
-    fetch('https://aqueous-chamber-45567.herokuapp.com/revenue')
+    fetch('https://proplayer-backend.vercel.app/revenue')
     .then(res => res.json())
     .then(data => setRevenue(data))
   },[])

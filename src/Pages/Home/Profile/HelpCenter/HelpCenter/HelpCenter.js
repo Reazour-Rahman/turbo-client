@@ -94,7 +94,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
     let userHelp = { ...data, displayName, email };
     console.log(userHelp);
 
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/userhelp`, {
+    fetch(`https://proplayer-backend.vercel.app/userhelp`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

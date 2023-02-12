@@ -83,7 +83,7 @@ export default function BannerUpload({ roomName, cover, user, profile }) {
     };
     axios
       .put(
-        `https://aqueous-chamber-45567.herokuapp.com/users/room/${user}`,
+        `https://proplayer-backend.vercel.app/users/room/${user}`,
         data
       )
       handleClose();

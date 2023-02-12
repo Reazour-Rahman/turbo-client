@@ -77,7 +77,7 @@ const uploadFiles = (file) => {
       cover : cover,
       profile : image
     }
-    axios.put(`https://aqueous-chamber-45567.herokuapp.com/users/room/${user?.email}`, data) 
+    axios.put(`https://proplayer-backend.vercel.app/users/room/${user?.email}`, data) 
     console.log(data);
     handleCloseUpdatePicture()
     handleClose()

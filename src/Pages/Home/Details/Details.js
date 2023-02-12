@@ -44,7 +44,7 @@ const Details = () => {
     setLoader(true);
     setTimeout(async () => {
       const response = await fetch(
-        "https://aqueous-chamber-45567.herokuapp.com/blogs/"
+        "https://proplayer-backend.vercel.app/blogs/"
       );
       const data = await response.json();
       setLoader(false);
@@ -58,7 +58,7 @@ const Details = () => {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs/${blogId}`)
+    fetch(`https://proplayer-backend.vercel.app/blogs/${blogId}`)
     .then(res => res.json())
     .then(data => setBackendComment(data.comment))
   },[blogId])
@@ -82,13 +82,13 @@ const Details = () => {
 
 
     useEffect(() => {
-    fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs/${blogId}`)
+    fetch(`https://proplayer-backend.vercel.app/blogs/${blogId}`)
     .then(res => res.json())
     .then(data => {
       setSingleBlog(data)
       setCount(data.likes)
     })
-  },[blogId, rendering, singleBlog?.likers])
+  },[])
 
 
   let theme;

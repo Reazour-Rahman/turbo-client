@@ -46,7 +46,7 @@ const MessageModal = ({
       type: "Reply from admin",
       ...data,
     };
-    axios.post("https://aqueous-chamber-45567.herokuapp.com/notifications", notification);
+    axios.post("https://proplayer-backend.vercel.app/notifications", notification);
     reset();
   };
 

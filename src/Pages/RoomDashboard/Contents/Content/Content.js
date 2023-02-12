@@ -291,7 +291,7 @@ const [blogs, setBlogs] = React.useState([])
 
   React.useEffect(() => {
     setLoading(true);
-    const url = `https://aqueous-chamber-45567.herokuapp.com/blogs`;
+    const url = `https://proplayer-backend.vercel.app/blogs`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -318,7 +318,7 @@ const [blogs, setBlogs] = React.useState([])
       })
       .then((willDelete) => {
         if (willDelete) {
-          axios.delete(`https://aqueous-chamber-45567.herokuapp.com/blogs/${id}`)
+          axios.delete(`https://proplayer-backend.vercel.app/blogs/${id}`)
           .then(res => {
               if (res.data.deletedCount) {
                     const remaining = blogs.filter(b => b._id !== id)

@@ -42,7 +42,7 @@ export default function Messaging() {
   const [myNot, setMyNot] = React.useState({});
 
   React.useEffect(()=>{
-    fetch('https://aqueous-chamber-45567.herokuapp.com/notifications')
+    fetch('https://proplayer-backend.vercel.app/notifications')
     .then(res => res.json())
     .then(data => {
       // data.map(d=> d.email === user.email && setNotification(d));

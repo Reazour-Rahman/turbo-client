@@ -18,7 +18,7 @@ export default function TotalViews() {
 
     const date = current.toLocaleDateString(undefined, options);
     React.useEffect(() => {
-        fetch(`https://aqueous-chamber-45567.herokuapp.com/blogs`)
+        fetch(`https://proplayer-backend.vercel.app/blogs`)
         .then(res => res.json())
         .then(data => setBlogs(data.blogs))
     },[])

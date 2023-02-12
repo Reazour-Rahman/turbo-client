@@ -53,7 +53,7 @@ const MakeAdminList = () => {
         MakeAdmin;
 
     useEffect(() => {
-        const bloggerUrl = "https://aqueous-chamber-45567.herokuapp.com/users";
+        const bloggerUrl = "https://proplayer-backend.vercel.app/users";
         fetch(bloggerUrl, {
             method: 'GET',
             headers: {
