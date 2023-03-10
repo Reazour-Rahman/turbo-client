@@ -53,7 +53,7 @@ const MakeAdminList = () => {
         MakeAdmin;
 
     useEffect(() => {
-        const bloggerUrl = "https://proplayer-backend.vercel.app/users";
+        const bloggerUrl = "https://grass-dour-wasp.glitch.me/users";
         fetch(bloggerUrl, {
             method: 'GET',
             headers: {

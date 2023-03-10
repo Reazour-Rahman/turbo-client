@@ -10,7 +10,7 @@ const YourVideos = () => {
   const [blog, setBlogs] = useState([]);
   useEffect(() => {
     // setLoading(true);
-    const blogUrl = `https://proplayer-backend.vercel.app/blogs?email=${user?.email}`;
+    const blogUrl = `https://grass-dour-wasp.glitch.me/blogs?email=${user?.email}`;
     fetch(blogUrl)
       .then((response) => response.json())
       .then((data) => {

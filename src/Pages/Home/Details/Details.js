@@ -44,7 +44,7 @@ const Details = () => {
     setLoader(true);
     setTimeout(async () => {
       const response = await fetch(
-        "https://proplayer-backend.vercel.app/blogs/"
+        "https://grass-dour-wasp.glitch.me/blogs/"
       );
       const data = await response.json();
       setLoader(false);
@@ -58,7 +58,7 @@ const Details = () => {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/blogs/${blogId}`)
+    fetch(`https://grass-dour-wasp.glitch.me/blogs/${blogId}`)
     .then(res => res.json())
     .then(data => setBackendComment(data.comment))
   },[blogId])
@@ -82,7 +82,7 @@ const Details = () => {
 
 
     useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/blogs/${blogId}`)
+    fetch(`https://grass-dour-wasp.glitch.me/blogs/${blogId}`)
     .then(res => res.json())
     .then(data => {
       setSingleBlog(data)

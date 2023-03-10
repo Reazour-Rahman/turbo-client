@@ -29,7 +29,7 @@ const QueryResult = ({db}) => {
     let muted = theme === "light" ? "black" : "muted" ;
 
     const deleteFromHistory = (id) => {
-      axios.delete(`https://proplayer-backend.vercel.app/views/${id}`)
+      axios.delete(`https://grass-dour-wasp.glitch.me/views/${id}`)
       .then(res => {
         if (res.data.deletedCount) {
               window.location.reload();

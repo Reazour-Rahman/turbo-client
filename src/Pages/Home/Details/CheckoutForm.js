@@ -40,7 +40,7 @@ const CheckoutForm = ({
     donation["amount"] = parseInt(donateRef.current?.value);
     console.log(donation, typeof donation.amount);
     axios
-      .post("https://proplayer-backend.vercel.app/create-payment-intent", {
+      .post("https://grass-dour-wasp.glitch.me/create-payment-intent", {
         ...donation,
       })
       .then(function (response) {
@@ -98,7 +98,7 @@ const CheckoutForm = ({
       setSuccess("Your payment processed successfully");
       setProcessing(false);
 
-      const url = `https://proplayer-backend.vercel.app/blogs/payment/${bloggerEmail}`;
+      const url = `https://grass-dour-wasp.glitch.me/blogs/payment/${bloggerEmail}`;
       const payment = {
         amount: paymentIntent.amount,
         trasaction: paymentIntent.client_secret,

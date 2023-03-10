@@ -11,7 +11,7 @@ const UserAmazonProducts = ({email}) => {
     const [isLoading, setIsLoading] = useState(false)
 console.log(email);
     useEffect(() => {
-        fetch(`https://proplayer-backend.vercel.app/products?email=${email.email}`)
+        fetch(`https://grass-dour-wasp.glitch.me/products?email=${email.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsLoading(true)

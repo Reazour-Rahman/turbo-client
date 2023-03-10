@@ -14,7 +14,7 @@ const AllBookingProducts = () => {
     const [bookingProducts, setBookingProducts] = useState();
 
     useEffect(() => {
-        fetch('https://proplayer-backend.vercel.app/bookingProducts')
+        fetch('https://grass-dour-wasp.glitch.me/bookingProducts')
             .then(res => res.json())
             .then(data => setBookingProducts(data))
     }, [])

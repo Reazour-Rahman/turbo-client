@@ -33,7 +33,7 @@ const HistoryVideo = ({history}) => {
     let muted = theme === "light" ? "black" : "muted" ;
 
     const deleteFromHistory = (id) => {
-      axios.delete(`https://proplayer-backend.vercel.app/views/${id}`)
+      axios.delete(`https://grass-dour-wasp.glitch.me/views/${id}`)
       .then(res => {
         if (res.data.deletedCount) {
               window.location.reload();
@@ -56,7 +56,7 @@ const HistoryVideo = ({history}) => {
           views : views + 1,
           viewers : [...viewers]
         }
-        await axios.put(`https://proplayer-backend.vercel.app/blogs/views/${id}`, viewsData)
+        await axios.put(`https://grass-dour-wasp.glitch.me/blogs/views/${id}`, viewsData)
       }
       else {
         const viewerData = {viewerEmail :user.email}
@@ -64,13 +64,13 @@ const HistoryVideo = ({history}) => {
           views : views + 1,
           viewers : [...viewers,  viewerData]
         }
-        await axios.put(`https://proplayer-backend.vercel.app/blogs/views/${id}`, viewsData)
+        await axios.put(`https://grass-dour-wasp.glitch.me/blogs/views/${id}`, viewsData)
       }
   
       const data = {
         blogId : _id, viewerName:user.displayName, viewerEmail:user.email, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto, views, description
       }
-      await axios.post('https://proplayer-backend.vercel.app/views', data)
+      await axios.post('https://grass-dour-wasp.glitch.me/views', data)
       handleClose()
   
     }

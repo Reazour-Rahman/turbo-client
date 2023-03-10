@@ -31,7 +31,7 @@ export default function QueryModal() {
   const [notMatch, setNoMatch] = React.useState(false);
 
   React.useEffect(() => {
-      const blogURL = `https://proplayer-backend.vercel.app/blogs`;
+      const blogURL = `https://grass-dour-wasp.glitch.me/blogs`;
       fetch(blogURL)
           .then((response) => response.json())
           .then((data) => {

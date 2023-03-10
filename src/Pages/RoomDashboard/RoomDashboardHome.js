@@ -9,7 +9,7 @@ const RoomDashboardHome = () => {
   const user = useSelector((state) => state.firebase.user)
 
   useEffect(() => {
-    const contentUrl = `https://proplayer-backend.vercel.app/blogs?email=${user?.email}`;
+    const contentUrl = `https://grass-dour-wasp.glitch.me/blogs?email=${user?.email}`;
     fetch(contentUrl)
       .then((response) => response.json())
       .then((data) => setRecentVideos(data.blogs));
@@ -18,7 +18,7 @@ const RoomDashboardHome = () => {
   const [profile, setProfile] = React.useState('')
 
   useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/users/room/${user?.email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/users/room/${user?.email}`)
       .then(res => res.json())
       .then(data => setProfile(data))
   }, [user?.email])

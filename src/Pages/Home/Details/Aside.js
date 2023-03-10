@@ -27,7 +27,7 @@ export default function Aside(props) {
         views : views + 1,
         viewers : [...viewers]
       }
-      await axios.put(`https://proplayer-backend.vercel.app/blogs/views/${id}`, viewsData)
+      await axios.put(`https://grass-dour-wasp.glitch.me/blogs/views/${id}`, viewsData)
     }
     else {
       const viewerData = {viewerEmail :user.email}
@@ -35,13 +35,13 @@ export default function Aside(props) {
         views : views + 1,
         viewers : [...viewers,  viewerData]
       }
-      await axios.put(`https://proplayer-backend.vercel.app/blogs/views/${id}`, viewsData)
+      await axios.put(`https://grass-dour-wasp.glitch.me/blogs/views/${id}`, viewsData)
     }
 
     const data = {
       blogId : _id, viewerName:user.displayName, viewerEmail:user.email, title, video, bloggerName, category, bloggerEmail, uploadTime, thumbnail, bloggerPhoto, views, description
     }
-    await axios.post('https://proplayer-backend.vercel.app/views', data)
+    await axios.post('https://grass-dour-wasp.glitch.me/views', data)
 
   }
 
@@ -52,7 +52,7 @@ export default function Aside(props) {
     setLoader(true);
     setTimeout(async () => {
       const response = await fetch(
-        "https://proplayer-backend.vercel.app/blogs"
+        "https://grass-dour-wasp.glitch.me/blogs"
       );
       const data = await response.json();
       setLoader(false);

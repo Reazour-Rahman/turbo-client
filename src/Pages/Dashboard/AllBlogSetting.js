@@ -25,7 +25,7 @@ export default function AllBlogSetting({id, bloggerEmail}) {
 
   const handleDelete = (id) => {
     console.log(id);
-    axios.delete(`https://proplayer-backend.vercel.app/blogs/${id}`)
+    axios.delete(`https://grass-dour-wasp.glitch.me/blogs/${id}`)
     .then(res => {
         if (res.data.deletedCount) {
               window.location.reload();

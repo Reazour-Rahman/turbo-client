@@ -25,7 +25,7 @@ function App() {
   
     useEffect(() => {
     //   setLoading(true);
-      const blogUrl = `https://proplayer-backend.vercel.app/blogs`;
+      const blogUrl = `https://grass-dour-wasp.glitch.me/blogs`;
   
         fetch(blogUrl)
           .then((response) => response.json())

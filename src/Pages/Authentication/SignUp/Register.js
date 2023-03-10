@@ -68,7 +68,7 @@ const Register = ({ handleClose }) => {
   } = useForm();
 
   useEffect(() => {
-    const userListUrl = 'https://proplayer-backend.vercel.app/users'
+    const userListUrl = 'https://grass-dour-wasp.glitch.me/users'
     fetch(userListUrl)
     .then(res => res.json())
     .then(data => setUserList(data))
@@ -81,7 +81,7 @@ const Register = ({ handleClose }) => {
         const matched = userList.find(u => u?.email === user?.email)
         console.log('mathced ', userList ,matched);
         if (matched) {
-          const URL = 'https://proplayer-backend.vercel.app/auth';
+          const URL = 'https://grass-dour-wasp.glitch.me/auth';
         // const URL = 'https://medical-pager.herokuapp.com/auth';
         const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/login`, {
             username : user.email, password : user.uid, 
@@ -93,7 +93,7 @@ const Register = ({ handleClose }) => {
         cookies.set('userId', userId);
         }
         else{
-          const URL = 'https://proplayer-backend.vercel.app/auth';
+          const URL = 'https://grass-dour-wasp.glitch.me/auth';
         // const URL = 'https://medical-pager.herokuapp.com/auth';
         const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username : user.email, password : user.uid, fullName: user.displayName, phoneNumber : user.phoneNumber, avatarURL : user.photoURL,
@@ -133,7 +133,7 @@ const Register = ({ handleClose }) => {
       .then(async(userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        const URL = 'https://proplayer-backend.vercel.app/auth';
+        const URL = 'https://grass-dour-wasp.glitch.me/auth';
             // const URL = 'https://medical-pager.herokuapp.com/auth';
             const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
                 username : email, password : password, fullName: name, phoneNumber : mobileNumber, avatarURL : image,
@@ -190,7 +190,7 @@ const Register = ({ handleClose }) => {
     loginWithEmailAndPassword(data.email, data.password, handleClose)
     .then(async(res) => {
 
-      const URL = 'https://proplayer-backend.vercel.app/auth';
+      const URL = 'https://grass-dour-wasp.glitch.me/auth';
       // const URL = 'https://medical-pager.herokuapp.com/auth';
       const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/login`, {
           username : data.email, password : data.password, 

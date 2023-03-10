@@ -15,7 +15,7 @@ const HistoryList = () => {
     setLoading(true);
     setTimeout(async () => {
       const response = await fetch(
-        "https://proplayer-backend.vercel.app/views"
+        "https://grass-dour-wasp.glitch.me/views"
       );
       const data = await response.json();
       setHistories(data);

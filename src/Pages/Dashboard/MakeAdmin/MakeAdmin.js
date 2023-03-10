@@ -33,7 +33,7 @@ const MakeAdmin = (props) => {
         props.blogger;
     const handleAdminSubmit = e => {
         const user = { email, role };
-        fetch("https://proplayer-backend.vercel.app/makeAdmin", {
+        fetch("https://grass-dour-wasp.glitch.me/makeAdmin", {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('idToken')}`,

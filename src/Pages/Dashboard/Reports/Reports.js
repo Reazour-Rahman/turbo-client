@@ -148,7 +148,7 @@ const Reports = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/userhelp`)
+    fetch(`https://grass-dour-wasp.glitch.me/userhelp`)
       .then((res) => res.json())
       .then((data) => setMessages(data));
   }, []);

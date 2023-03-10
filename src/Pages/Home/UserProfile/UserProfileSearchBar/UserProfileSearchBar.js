@@ -74,7 +74,7 @@ export default function UserProfileSearchBar({email}) {
 
   const user = useSelector(state => state.firebase.user)
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/users/room/${email.email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/users/room/${email.email}`)
     .then(res => res.json())
     .then(data => setProfile(data.room))
   },[email.email, followed, count])
@@ -91,7 +91,7 @@ export default function UserProfileSearchBar({email}) {
   },[user.email, bloggerProfile?.followers])
 
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/users/room/${email.email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/users/room/${email.email}`)
     .then(res => res.json())
     .then(data => {
       setBloggerProfile(data)
@@ -99,7 +99,7 @@ export default function UserProfileSearchBar({email}) {
   },[email.email, count])
 
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/user/${user?.email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/user/${user?.email}`)
     .then(res => res.json())
     .then(data => {
       setMyUser(data)
@@ -205,8 +205,8 @@ export default function UserProfileSearchBar({email}) {
     }
     setFollowed(true)
     setCount(count + 1)
-    axios.put(`https://proplayer-backend.vercel.app/users/followers/${email.email}`, follower)
-    axios.put(`https://proplayer-backend.vercel.app/users/followings/${user?.email}`, following)
+    axios.put(`https://grass-dour-wasp.glitch.me/users/followers/${email.email}`, follower)
+    axios.put(`https://grass-dour-wasp.glitch.me/users/followings/${user?.email}`, following)
   }
 
   const handleUnFollow = () => {
@@ -224,8 +224,8 @@ export default function UserProfileSearchBar({email}) {
     }
     setFollowed(false)
     setCount(count + 1)
-    axios.put(`https://proplayer-backend.vercel.app/users/followers/${email.email}`, follower)
-    axios.put(`https://proplayer-backend.vercel.app/users/followings/${user?.email}`, following)
+    axios.put(`https://grass-dour-wasp.glitch.me/users/followers/${email.email}`, follower)
+    axios.put(`https://grass-dour-wasp.glitch.me/users/followings/${user?.email}`, following)
   }
 
   let mode = localStorage.getItem("theme");

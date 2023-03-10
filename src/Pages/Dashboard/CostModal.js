@@ -41,7 +41,7 @@ export default function CostModal({costOpen, setCostOpen}) {
         cost, date, year, adminName : user?.displayName, adminEmail : user?.email
     }
 
-    axios.put(`https://proplayer-backend.vercel.app/cost`, data)
+    axios.put(`https://grass-dour-wasp.glitch.me/cost`, data)
     handleClose()
     
   }

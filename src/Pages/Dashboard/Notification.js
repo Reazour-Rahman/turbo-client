@@ -42,7 +42,7 @@ export default function Messaging() {
   const [myNot, setMyNot] = React.useState({});
 
   React.useEffect(()=>{
-    fetch('https://proplayer-backend.vercel.app/notifications')
+    fetch('https://grass-dour-wasp.glitch.me/notifications')
     .then(res => res.json())
     .then(data => {
       // data.map(d=> d.email === user.email && setNotification(d));

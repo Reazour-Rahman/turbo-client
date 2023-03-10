@@ -31,7 +31,7 @@ const UploadeAmazonProducts = () => {
         formData.append('description', description);
         formData.append('image', image);
 
-        fetch('https://proplayer-backend.vercel.app/products', {
+        fetch('https://grass-dour-wasp.glitch.me/products', {
             method: 'POST',
             body: formData
         })

@@ -94,7 +94,7 @@ const HelpCenter = ({ openModal, handleCloseModal }) => {
     let userHelp = { ...data, displayName, email };
     console.log(userHelp);
 
-    fetch(`https://proplayer-backend.vercel.app/userhelp`, {
+    fetch(`https://grass-dour-wasp.glitch.me/userhelp`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

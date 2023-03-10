@@ -62,7 +62,7 @@ const Edit = () => {
   /* Send Visitors Data  */
   const [visit, setVisit] = useState([])
   useEffect(()=>{
-    fetch("https://proplayer-backend.vercel.app/views")
+    fetch("https://grass-dour-wasp.glitch.me/views")
     .then(res => res.json())
     .then(data => {
       // data.map(d => setVisit(d)) 
@@ -73,7 +73,7 @@ const Edit = () => {
   const [graph, setGraph] = useState({});
 
   useEffect(()=>{
-    fetch("https://proplayer-backend.vercel.app/uniqueVisitors")
+    fetch("https://grass-dour-wasp.glitch.me/uniqueVisitors")
     .then(res => res.json())
     .then(data => {
       data?.map(d => setGraph(d)) 
@@ -103,10 +103,10 @@ const Edit = () => {
         pv:sum
     }
     if (graph?.name == today) {
-      axios.put(`https://proplayer-backend.vercel.app/uniqueVisitors/${graph?.name}`, data)
+      axios.put(`https://grass-dour-wasp.glitch.me/uniqueVisitors/${graph?.name}`, data)
       // window.alert("You already Refresh Today's Visit")
     }else{
-      axios.post(`https://proplayer-backend.vercel.app/uniqueVisitors`, data)
+      axios.post(`https://grass-dour-wasp.glitch.me/uniqueVisitors`, data)
     }
     handleClose()
   }

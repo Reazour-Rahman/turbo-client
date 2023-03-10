@@ -55,7 +55,7 @@ const SearchBox = (blogger) => {
     const [searchText, setSearchText] = useState('')
     const [bloggerSearchRoom, setBloggerSearchRoom] = useState([]);
     // useEffect(() => {
-    //     const url = `https://proplayer-backend.vercel.app/users`;
+    //     const url = `https://grass-dour-wasp.glitch.me/users`;
     //     fetch(url)
     //         .then(res => res.json())
     //         .then(data => setBloggerSearchRoom(data));

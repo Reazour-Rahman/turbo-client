@@ -83,7 +83,7 @@ export default function BannerUpload({ roomName, cover, user, profile }) {
     };
     axios
       .put(
-        `https://proplayer-backend.vercel.app/users/room/${user}`,
+        `https://grass-dour-wasp.glitch.me/users/room/${user}`,
         data
       )
       handleClose();

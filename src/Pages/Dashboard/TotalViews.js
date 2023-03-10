@@ -18,7 +18,7 @@ export default function TotalViews() {
 
     const date = current.toLocaleDateString(undefined, options);
     React.useEffect(() => {
-        fetch(`https://proplayer-backend.vercel.app/blogs`)
+        fetch(`https://grass-dour-wasp.glitch.me/blogs`)
         .then(res => res.json())
         .then(data => setBlogs(data.blogs))
     },[])

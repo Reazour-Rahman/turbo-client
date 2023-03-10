@@ -291,7 +291,7 @@ const [blogs, setBlogs] = React.useState([])
 
   React.useEffect(() => {
     setLoading(true);
-    const url = `https://proplayer-backend.vercel.app/blogs`;
+    const url = `https://grass-dour-wasp.glitch.me/blogs`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -318,7 +318,7 @@ const [blogs, setBlogs] = React.useState([])
       })
       .then((willDelete) => {
         if (willDelete) {
-          axios.delete(`https://proplayer-backend.vercel.app/blogs/${id}`)
+          axios.delete(`https://grass-dour-wasp.glitch.me/blogs/${id}`)
           .then(res => {
               if (res.data.deletedCount) {
                     const remaining = blogs.filter(b => b._id !== id)

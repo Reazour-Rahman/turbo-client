@@ -13,7 +13,7 @@ const Like = () => {
     const user = useSelector(state => state.firebase.user)
 
     useEffect(() => {
-        const likersUrl = `https://proplayer-backend.vercel.app/blogs`;
+        const likersUrl = `https://grass-dour-wasp.glitch.me/blogs`;
         setLoading(true);
         fetch(likersUrl)
             .then((response) => response.json())

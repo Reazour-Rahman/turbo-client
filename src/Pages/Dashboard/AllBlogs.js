@@ -16,16 +16,16 @@ const AllBlogs = ({ filter }) => {
   /*:: filter start (this block will be inside useEffect) ::*/
   let url;
   if (!filter) {
-    url = `https://proplayer-backend.vercel.app/blogs`;
+    url = `https://grass-dour-wasp.glitch.me/blogs`;
   } else {
-    url = `https://proplayer-backend.vercel.app/blogs?filter=${filter}`;
+    url = `https://grass-dour-wasp.glitch.me/blogs?filter=${filter}`;
     console.log(url);
   }
   /*:: filter end ::*/
 
   useEffect(() => {
     setLoading(true);
-    const blogUrl = `https://proplayer-backend.vercel.app/blogs`;
+    const blogUrl = `https://grass-dour-wasp.glitch.me/blogs`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {

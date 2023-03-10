@@ -12,7 +12,7 @@ const UserRecentVideos = ({email}) => {
 
   useEffect(() => {
     setLoading(true);
-    const contentUrl = `https://proplayer-backend.vercel.app/blogs?email=${email.email}`;
+    const contentUrl = `https://grass-dour-wasp.glitch.me/blogs?email=${email.email}`;
       fetch(contentUrl)
         .then((response) => response.json())
         .then((data) => {

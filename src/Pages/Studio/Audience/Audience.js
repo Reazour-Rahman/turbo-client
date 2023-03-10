@@ -110,7 +110,7 @@ const Audience = () => {
   const user = useSelector(state => state.firebase.user)
 
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/user/${user?.email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/user/${user?.email}`)
     .then(res => res.json())
     .then(data => {
       setMyUser(data)
@@ -118,7 +118,7 @@ const Audience = () => {
   },[user.email])
 
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/blogs`)
+    fetch(`https://grass-dour-wasp.glitch.me/blogs`)
     .then(res => res.json())
     .then(data => {
         var sum=0;

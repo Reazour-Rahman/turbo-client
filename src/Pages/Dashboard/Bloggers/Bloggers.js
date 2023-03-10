@@ -50,7 +50,7 @@ const Bloggers = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const bloggerUrl = `https://proplayer-backend.vercel.app/users`;
+    const bloggerUrl = `https://grass-dour-wasp.glitch.me/users`;
     fetch(bloggerUrl)
       .then((response) => response.json())
       .then((data) => {

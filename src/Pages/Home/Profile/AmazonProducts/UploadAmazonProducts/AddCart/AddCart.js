@@ -9,7 +9,7 @@ const AddCart = () => {
     const [addedProduct, setAddedProduct] = useState([]);
 
     useEffect(() => {
-        fetch(`https://proplayer-backend.vercel.app/cart`)
+        fetch(`https://grass-dour-wasp.glitch.me/cart`)
             .then(res => res.json())
             .then(data => setCartProducts(data))
     }, [])

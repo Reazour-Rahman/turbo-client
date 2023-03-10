@@ -7,14 +7,14 @@ import '../Default.css'
 const DefaultTop = () => {
     const [cost, setCost] = useState([])
   useEffect(() => {
-    fetch('https://proplayer-backend.vercel.app/cost')
+    fetch('https://grass-dour-wasp.glitch.me/cost')
     .then(res => res.json())
     .then(data => setCost(data))
   },[])
 
   const [revenue, setRevenue] = useState([])
   useEffect(() => {
-    fetch('https://proplayer-backend.vercel.app/revenue')
+    fetch('https://grass-dour-wasp.glitch.me/revenue')
     .then(res => res.json())
     .then(data => setRevenue(data))
   },[])

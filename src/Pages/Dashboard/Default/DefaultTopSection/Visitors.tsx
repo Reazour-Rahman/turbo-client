@@ -134,7 +134,7 @@ export default function Visitors() {
   const [visit, setVisit] = useState([]);
 
   useEffect(() => {
-    fetch("https://proplayer-backend.vercel.app/uniqueVisitors")
+    fetch("https://grass-dour-wasp.glitch.me/uniqueVisitors")
       .then((res) => res.json())
       .then((data) => {
         // data.map(d => setVisit(d))

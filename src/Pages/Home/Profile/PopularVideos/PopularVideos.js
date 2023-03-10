@@ -10,7 +10,7 @@ const PopularVideos = () => {
   const user = useSelector((state) => state.firebase.user)
 
   useEffect(() => {
-    const contentUrl = `https://proplayer-backend.vercel.app/blogs?email=${user?.email}`;
+    const contentUrl = `https://grass-dour-wasp.glitch.me/blogs?email=${user?.email}`;
     setTimeout(() => {
       fetch(contentUrl)
         .then((response) => response.json())

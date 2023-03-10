@@ -21,7 +21,7 @@ const Transaction = () => {
   const [users, setUsers] = useState([]);
   const payments = [];
 
-  const url = `https://proplayer-backend.vercel.app/users`;
+  const url = `https://grass-dour-wasp.glitch.me/users`;
 
   useEffect(() => {
     fetch(url)

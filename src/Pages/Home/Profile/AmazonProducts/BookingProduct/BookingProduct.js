@@ -49,7 +49,7 @@ const BookingProduct = ({ handleCloseBookinModal, open, product, time }) => {
             date: new Date().toLocaleDateString()
         }
 
-        fetch('https://proplayer-backend.vercel.app/bookingProducts', {
+        fetch('https://grass-dour-wasp.glitch.me/bookingProducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -107,14 +107,14 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
           likes : likeCount,
           likers : [liker, ...blog?.likers]
         }
-        axios.put(`https://proplayer-backend.vercel.app/blogs/likes/${blogId}`, likes)
+        axios.put(`https://grass-dour-wasp.glitch.me/blogs/likes/${blogId}`, likes)
       }
       else{
         const likes = {
           likes : likeCount,
           likers : [...liker]
         }
-        axios.put(`https://proplayer-backend.vercel.app/blogs/likes/${blogId}`, likes)
+        axios.put(`https://grass-dour-wasp.glitch.me/blogs/likes/${blogId}`, likes)
       }
     }
     
@@ -149,7 +149,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
   const [myUser, setMyUser] = React.useState({})
 
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/users/room/${bloggerEmail}`)
+    fetch(`https://grass-dour-wasp.glitch.me/users/room/${bloggerEmail}`)
     .then(res => res.json())
     .then(data => setProfile(data.room))
   },[bloggerEmail, followed, count])
@@ -166,7 +166,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
   },[user.email, bloggerProfile?.followers])
 
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/users/room/${bloggerEmail}`)
+    fetch(`https://grass-dour-wasp.glitch.me/users/room/${bloggerEmail}`)
     .then(res => res.json())
     .then(data => {
       setBloggerProfile(data)
@@ -174,7 +174,7 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
   },[bloggerEmail, count])
 
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/user/${user?.email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/user/${user?.email}`)
     .then(res => res.json())
     .then(data => {
       setMyUser(data)
@@ -195,8 +195,8 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
       }
       setFollowed(true)
       setCount(count + 1)
-      axios.put(`https://proplayer-backend.vercel.app/users/followers/${bloggerEmail}`, follower)
-      axios.put(`https://proplayer-backend.vercel.app/users/followings/${user?.email}`, following)
+      axios.put(`https://grass-dour-wasp.glitch.me/users/followers/${bloggerEmail}`, follower)
+      axios.put(`https://grass-dour-wasp.glitch.me/users/followings/${user?.email}`, following)
     }
   
     const handleUnFollow = () => {
@@ -214,8 +214,8 @@ const Buttons = ({ uploadTime, bloggerName, blogId, blog, countNumber, rendering
       }
       setFollowed(false)
       setCount(count + 1)
-      axios.put(`https://proplayer-backend.vercel.app/users/followers/${bloggerEmail}`, follower)
-      axios.put(`https://proplayer-backend.vercel.app/users/followings/${user?.email}`, following)
+      axios.put(`https://grass-dour-wasp.glitch.me/users/followers/${bloggerEmail}`, follower)
+      axios.put(`https://grass-dour-wasp.glitch.me/users/followings/${user?.email}`, following)
     }
   
   return (

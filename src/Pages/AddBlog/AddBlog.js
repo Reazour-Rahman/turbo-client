@@ -48,7 +48,7 @@ const AddBlog = () => {
         blogs.append('video', video)
         blogs.append('tags', tags)
         console.log(blogs)
-        axios.post('https://proplayer-backend.vercel.app/blogs', blogs)
+        axios.post('https://grass-dour-wasp.glitch.me/blogs', blogs)
         e.preventDefault()
       };
       

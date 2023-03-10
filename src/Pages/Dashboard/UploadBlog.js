@@ -106,7 +106,7 @@ export default function InputAdornments() {
         blogs.append('date', date)
 
         if (tags.length >= 5 && video) {
-            axios.post('https://proplayer-backend.vercel.app/blogs', blogs)
+            axios.post('https://grass-dour-wasp.glitch.me/blogs', blogs)
                 .then(res => {
                     if (res.data.insertedId) {
                         e.target.reset()
@@ -127,7 +127,7 @@ export default function InputAdornments() {
 
 
     React.useEffect(() => {
-        fetch('https://proplayer-backend.vercel.app/blogs')
+        fetch('https://grass-dour-wasp.glitch.me/blogs')
             .then(res => res.json())
             .then(data => setValues(data))
 

@@ -7,7 +7,7 @@ const RecommendedRoom = () => {
 
   useEffect(() => {
     // setLoading(true);
-    const blogUrl = `https://proplayer-backend.vercel.app/users`;
+    const blogUrl = `https://grass-dour-wasp.glitch.me/users`;
     fetch(blogUrl)
       .then((response) => response.json())
       .then((data) => {

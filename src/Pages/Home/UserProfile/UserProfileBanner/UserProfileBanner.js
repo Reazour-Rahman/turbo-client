@@ -11,7 +11,7 @@ const UserProfileBanner = () => {
 
   console.log(email);
   useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/users/room/${email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/users/room/${email}`)
     .then(res => res.json())
     .then(data => setCover(data.room.cover))
   },[email])

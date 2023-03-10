@@ -9,7 +9,7 @@ const UserFeaturedVideos = ({email}) => {
   const user = useSelector((state) => state.firebase.user)
   const [load, setLoad] = useState(false)
   useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/blogs?email=${email.email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/blogs?email=${email.email}`)
       .then((res) => res.json())
       .then((data) => {
         setFeaturedVideos(data.blogs)

@@ -211,7 +211,7 @@ const { register, handleSubmit, reset, trigger } = useForm();
 
 const onSubmit = (data) => {
   axios
-    .post("https://proplayer-backend.vercel.app/blogs", data, (data.status = "pending", 
+    .post("https://grass-dour-wasp.glitch.me/blogs", data, (data.status = "pending", 
     data.video = videoSrc, 
     data.thumbnail= image, 
     data.category=personName,

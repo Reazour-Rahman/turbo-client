@@ -42,7 +42,7 @@ export default function RevenueModal({revenueOpen, setRevenueOpen}) {
         revenueGoal , netCashIF, date, year, adminName : user?.displayName, adminEmail : user?.email
     }
 
-    axios.put(`https://proplayer-backend.vercel.app/revenue`, data)
+    axios.put(`https://grass-dour-wasp.glitch.me/revenue`, data)
     handleClose()
     
   }

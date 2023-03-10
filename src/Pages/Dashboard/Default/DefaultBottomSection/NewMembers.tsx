@@ -25,7 +25,7 @@ const NewMembers = ({ user }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://proplayer-backend.vercel.app/users")
+    fetch("https://grass-dour-wasp.glitch.me/users")
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);

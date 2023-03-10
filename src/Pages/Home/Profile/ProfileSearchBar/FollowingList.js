@@ -34,7 +34,7 @@ export default function FollowingList() {
 
   const user = useSelector(state => state.firebase.user)
   React.useEffect(() => {
-    fetch(`https://proplayer-backend.vercel.app/user/${user?.email}`)
+    fetch(`https://grass-dour-wasp.glitch.me/user/${user?.email}`)
     .then(res => res.json())
     .then(data => {
       setMyUser(data)

@@ -19,7 +19,7 @@ export default function DotMenuBar() {
     const [email, setEmail] = React.useState('');
     const handleAdminClick = e => {
         const user = { email };
-        fetch("https://proplayer-backend.vercel.app/users", {
+        fetch("https://grass-dour-wasp.glitch.me/users", {
             method: 'PUT',
             headers: {
 

@@ -46,7 +46,7 @@ const MessageModal = ({
       type: "Reply from admin",
       ...data,
     };
-    axios.post("https://proplayer-backend.vercel.app/notifications", notification);
+    axios.post("https://grass-dour-wasp.glitch.me/notifications", notification);
     reset();
   };
 
